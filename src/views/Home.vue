@@ -9,8 +9,11 @@
           <p class="mt-6 text-lg leading-8 text-gray-600">Club attendance has never been easier! Just scan the QR code provided by the club president and login with your school email to log your attendance.</p>
         </div>
 
-        <Login class="mt-8" />
-        <Calender />
+        <div class="flex flex-col mt-8">
+          <Login class="" />
+          <Calender />
+        </div>
+
 
       </div>
       <img src="@/assets/sammy.jpg" alt="screenshot" class="w-[28rem] sm:w-[50rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 2xl:w-[70rem] md:-ml-4 lg:-ml-0" >
