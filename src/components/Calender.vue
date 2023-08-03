@@ -1,7 +1,7 @@
 
 
 <template>
-    <div class="h-80 flex justify-center items-center">
+    <div class="flex justify-center items-center">
         <div v-if="open == false && close==false " class="box" @click="open = !open">
             <CalendarDaysIcon />
         </div>
