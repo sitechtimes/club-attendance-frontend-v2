@@ -4,14 +4,12 @@
     <div class="h-80 flex justify-center items-center">
         <div v-if="open == false && close==false " class="box" @click="open = !open">
             <CalendarDaysIcon />
-        
         </div>
-        <div v-else-if="open == true && close==false" class="box-open flex" @click="close = !close">
+        <div v-else-if="open == true && close==false" class="box-open flex" @click="closeCalender">
             <CalendarDaysIcon class="h-[3.75rem]"/>
             <img src="@/assets/calender.png" alt="placeholder" />
         </div>
-
-        <div v-else-if="close == true && open == true " class="box-close" @click="close = !close; open = !open">
+        <div v-else-if="close == true && open == true " class="box-close">
             <CalendarDaysIcon class="h-[3.75rem]"/>
         </div>
     </div>
@@ -25,6 +23,13 @@ let open = ref(false)
 let close = ref(false)
 
 
+function closeCalender(){
+    close.value = !close.value
+    setTimeout(()=>{
+        close.value = !close.value
+        open.value = !open.value
+    }, 3500)
+}
 
 </script>
 
