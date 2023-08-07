@@ -14,13 +14,15 @@
         class="bg-black h-[7vh] w-[50vh] flex flex-col items-center justify-center rounded-full text-[#fff]"
         >Photo Attendance Link</a
       >
-      <p>Advisor: {{ advisor }}</p>
-      <p>President: {{ president }}</p>
+      <p>Advisor: advisor name</p>
+      <p>President: president name</p>
+      <StudentCard></StudentCard>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
 defineProps({
   clubName: String,

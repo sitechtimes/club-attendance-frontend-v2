@@ -8,10 +8,10 @@
         class="bg-black w-full flex flex-col items-center justify-center rounded-[15px] h-[4.5rem]"
       >
         <div class="w-full flex flex-row items-center justify-center">
-          <div class="text-[#c2b669] text-xl">name</div>
+          <div class="text-[#c2b669] text-xl">{{ props.name }}</div>
         </div>
         <div class="w-full flex justify-center items-center">
-          <div class="text-[#c2b669] text-sm">president</div>
+          <div class="text-[#c2b669] text-sm">{{ props.president }}</div>
         </div>
       </div>
     </div>
@@ -20,11 +20,10 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-defineProps({
+const props = defineProps({
   name: String,
   president: String,
 });
-
 const router = useRouter();
 
 function push() {
