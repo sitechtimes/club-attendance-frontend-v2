@@ -5,8 +5,8 @@
       <div class="lg:pr-8 lg:pt-4">
         <div class="lg:max-w-lg">
           <h2 class="text-base font-semibold leading-7 text-[#c2b669]">Attendance, made faster</h2>
-          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Club Attendance</p>
-          <p class="mt-6 text-lg leading-8 text-gray-600">Club attendance has never been easier! Just scan the QR code provided by the club president and login with your school email to log your attendance.</p>
+          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Afterschool Attendance</p>
+          <p class="mt-6 text-lg leading-8 text-gray-600">Afterschool attendance has never been easier! Just scan the QR code provided by the club president and login with your school email to log your attendance.</p>
         </div>
 
         <div class="flex flex-col mt-8">
@@ -16,7 +16,8 @@
 
 
       </div>
-      <img src="@/assets/sammy.jpg" alt="screenshot" class="w-[28rem] sm:w-[50rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 2xl:w-[70rem] md:-ml-4 lg:-ml-0" >
+      <img src="@/assets/sammy.jpg" alt="screenshot" class="w-[60vw] rounded">
+      <!-- <img src="@/assets/sammy.jpg" alt="screenshot" class="w-[25vw] sm:w-[50rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 2xl:w-[70rem] md:-ml-4 lg:-ml-0" > -->
     </div>
   </div>
 </div>
