@@ -5,34 +5,40 @@
       <SearchBar></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center">
-      <AdminClubCard name="Joe" president="Joe" />
+      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs">
+        <div
+          class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
+        >
+          <div
+            class="bg-black w-full flex flex-col items-center justify-center rounded-[15px] h-[4.5rem]"
+          >
+            <div class="w-full flex flex-row items-center justify-center">
+              <div class="text-[#c2b669] text-xl">{{ item.clubName }}</div>
+            </div>
+            <div class="w-full flex justify-center items-center">
+              <div class="text-[#c2b669] text-sm">{{ item.clubPresident }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import AdminClubCard from "@/components/AdminClubCard.vue";
 import SearchBar from "@/components/SearchBar.vue";
+import { onMounted, onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/user";
+import { useRouter } from "vue-router";
 
-const store = useUserStore();
+const userStore = useUserStore();
+const router = useRouter();
 
-console.log(store.user, "user");
+function pushToClub() {
+  router.push({ path: "/information" });
+}
 
-// async function getData(url = "") {
-//   const response = await fetch(url, {
-//     method: "GET",
-//     mode: "cors",
-//     cache: "no-cache",
-//     credentials: "same-origin",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     redirect: "follow",
-//   });
-//   return response.json();
-// }
-
-// getData("http://localhost:3000/getAllClubData").then((data) => {
-//   console.log(data);
+onMounted(() => {
+  userStore.getData();
+});
 </script>

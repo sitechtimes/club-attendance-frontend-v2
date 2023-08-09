@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import { onMounted } from "vue";
 const props = defineProps({
   name: String,
   president: String,
@@ -29,4 +30,8 @@ const router = useRouter();
 function push() {
   router.push({ path: "/information" });
 }
+
+onMounted(() => {
+  console.log(props.value);
+});
 </script>

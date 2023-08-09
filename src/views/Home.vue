@@ -39,4 +39,31 @@
 <script setup lang="ts">
 import Login from "@/components/Login.vue";
 import Calender from "@/components/Calender.vue";
+import { onMounted } from "vue";
+import { useUserStore } from "@/stores/user";
+
+const store = useUserStore();
+
+const parseCookie = (str) =>
+  str
+    .split(";")
+    .map((v) => v.split("="))
+    .reduce((acc, v) => {
+      acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
+      return acc;
+    }, {});
+
+function getCookie(name: string) {
+  const value: any = `; ${document.cookie}`;
+  const parts: any = value.split(`; ${name}=`);
+  const cookieString: any = parts.pop().split(";").shift();
+  if (parts.length === 2) console.log(cookieString);
+
+  const parsedString = parseCookie(cookieString);
+  console.log(parsedString);
+}
+
+onMounted(() => {
+  getCookie("user_data");
+});
 </script>
