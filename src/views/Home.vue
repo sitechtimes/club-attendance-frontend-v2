@@ -43,7 +43,7 @@ import { onMounted } from "vue";
 import { useUserStore } from "@/stores/user";
 
 const store = useUserStore();
-
+// token starts as string, make the unstringify the string then use the object
 const parseCookie = (str) =>
   str
     .split(";")
@@ -60,7 +60,7 @@ function getCookie(name: string) {
   if (parts.length === 2) console.log(cookieString);
 
   const parsedString = parseCookie(cookieString);
-  console.log(parsedString);
+  console.log(JSON.parse(JSON.stringify(parsedString)));
 }
 
 onMounted(() => {
