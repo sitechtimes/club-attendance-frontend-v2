@@ -6,7 +6,7 @@ import router from '../router/index'
 export const useUserStore = defineStore('user', {
     state: () => ({
         user:'',
-
+        // isAuthenticated: document.cookie.includes('token'),
         
       }),
 
@@ -19,7 +19,6 @@ export const useUserStore = defineStore('user', {
           .then((res)=>{
             console.log(res)
             window.location.href = res.data.redirectUri
-            console.log(res)
           })
             
         }
