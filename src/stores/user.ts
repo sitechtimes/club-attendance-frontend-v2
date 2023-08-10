@@ -6,23 +6,34 @@ import router from '../router/index'
 export const useUserStore = defineStore('user', {
     state: () => ({
         user:'',
-        // isAuthenticated: document.cookie.includes('token'),
-        
+        clubs: null,      
       }),
-
 
       actions: {
         async googleLink(){
           await axios.get(`${import.meta.env.VITE_BACKEND_URL}/returnRedirectUrl`,{
             headers: {}
           })
-          .then((res)=>{
+          .then((res: { data: { redirectUri: string } })=>{
             console.log(res)
             window.location.href = res.data.redirectUri
           })
-            
-        }
 
+        },
+        async getData(){
+          const response = await fetch('http://localhost:3000/getAllClubData', {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            redirect: "follow", 
+          });
+          this.clubs = await response.json()
+          console.log(this.clubs)
+        }
       },
 
 })
