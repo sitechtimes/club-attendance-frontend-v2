@@ -62,7 +62,10 @@
                 <button
                   type="button"
                   class="w-full my-1 justify-center rounded-md px-3 bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:ml-3 sm:w-auto"
-                  @click="dateMeeting = true"
+                  @click="
+                    dateMeeting = true;
+                    open = false;
+                  "
                 >
                   Add/Change meeting date
                 </button>
@@ -121,6 +124,23 @@
         role="dialog"
         aria-modal="true"
       >
+        <input type="text" class="meetingDate" />
+        <button
+          type="button"
+          class="w-full my-1 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-6 sm:w-fill sm:h-10"
+          @click="meetingDate = false"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+    <!-- <div v-show="dateMeeting">
+      <div
+        class="relative z-10"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
         <div
           class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
         ></div>
@@ -146,9 +166,9 @@
               </button>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
   </div>
 </template>
 
