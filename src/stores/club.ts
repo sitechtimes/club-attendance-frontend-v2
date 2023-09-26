@@ -2,15 +2,15 @@ import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore("user", ()=> {
    const user = ({
-    name: "Matt",
+    date: "8/12/2023",
    });
 
-   const changeName = (newName: any) => {
-    user.name = newName; 
+   const changeDate = (newDate: any) => {
+    user.date = newDate; 
    };
 
    return {
     user, 
-    changeName, 
+    changeDate, 
    }
   });

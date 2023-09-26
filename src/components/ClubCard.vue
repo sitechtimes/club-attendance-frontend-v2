@@ -63,8 +63,8 @@
                   type="button"
                   class="w-full my-1 justify-center rounded-md px-3 bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:ml-3 sm:w-auto"
                   @click="
-                    // dateMeeting = true;
-                    open = true
+                    changeDate = true;
+                    open = false;
                   "
                 >
                   Add/Change meeting date
@@ -112,31 +112,46 @@
               >
                 Close
               </button>
-              <!-- <h1>Name is {{ store.user.name }}</h1>
-              <input type="text" placeholder="NewName" />
-              <button @click="handleSubmit">Change name</button> -->
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div v-show="dateMeeting">
+    <div v-show="changeDate">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
       >
-        <input type="text" class="meetingDate" />
-        <button
-          type="button"
-          class="w-full my-1 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-6 sm:w-fill sm:h-10"
-          @click="dateMeeting = false"
-        >
-          Close
-        </button>
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        ></div>
+        <div class="fixed inset-0 z-10 flex justify-center">
+          <div
+            class="flex w-full items-center justify-center p-4 text-center sm:p-0"
+          >
+            <div
+              class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+            >
+              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <ChangeDate />
+              </div>
+              <button
+                type="button"
+                class="w-full my-1 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-fill sm:h-10"
+                @click="
+                  changeDate = false;
+                  open = true;
+                "
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -144,26 +159,16 @@
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { ref } from "vue";
 import QrCode from "./QrCode.vue";
-import { useUserStore } from "@/stores/club";
 import ChangeDate from "./ChangeDate.vue";
-
 
 const props = defineProps({
   name: String,
   nextMeeting: String,
-  // datemeeting: String,
 });
 
 const open = ref(false);
 const qrCode = ref(false);
-
-const store = useUserStore();
-const nameInput = ref("");
-
-const handleSubmit = () => {
-  store.changeName(nameInput.value);
-  nameInput.value = "";
-};
+const changeDate = ref(false);
 </script>
 
 <style scoped>
