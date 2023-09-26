@@ -14,13 +14,17 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useUserStore } from "../stores/club";
+import { useClubStore } from "../stores/club";
+import { nextMeeting } from "./ClubCard.vue";
+import { onMounted } from "vue";
 
-const store = useUserStore();
-const nameInput = ref("");
+const store = useClubStore();
+const nextMeeting = ref("");
 
+onMounted(() => {
+  console.log(store.date);
+});
 const handleSubmit = () => {
-  store.changeDate(nameInput.value);
-  nameInput.value = "";
+  store.date = nextMeeting.value;
 };
 </script>

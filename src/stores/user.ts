@@ -8,8 +8,6 @@ export const useUserStore = defineStore('user', {
 
         
       }),
-
-
       actions: {
         async googleLink(){
           await axios.get(`${import.meta.env.VITE_BACKEND_URL}/oauth2`,{
