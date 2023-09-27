@@ -1,8 +1,8 @@
 <template>
   <section class="w-screen h-screen">
     <div class="w-full h-[15%] border-b-2 justify-center flex items-center">
-      <div class="w-[32%] text-lg font-medium">Administration</div>
-      <SearchBar></SearchBar>
+      <div class="w-[32%] text-lg font-medium">Administration {{ query }}</div>
+      <SearchBar v-model="query"></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center">
       <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs">
@@ -27,12 +27,14 @@
 
 <script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
-import { onMounted, onBeforeMount } from "vue";
+import { onMounted, onBeforeMount, ref } from "vue";
 import { useUserStore } from "@/stores/user";
 import { useRouter } from "vue-router";
 
+const query = ref()
 const userStore = useUserStore();
 const router = useRouter();
+//const searchedClubs = userStore.clubs.filter((item) => item.clubName == query)
 
 function pushToClub() {
   router.push({ path: "/information" });
