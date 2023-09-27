@@ -5,7 +5,7 @@
       <SearchBar></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center">
-      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs">
+      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
         <div
           class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
         >
@@ -34,8 +34,13 @@ import { useRouter } from "vue-router";
 const userStore = useUserStore();
 const router = useRouter();
 
-function pushToClub() {
-  router.push({ path: "/information" });
+// function pushToClub() {
+//   router.push({ path: "/information" });
+// }
+
+function pushToInfo(clubName: string) {
+  console.log(clubName)
+  router.push({path: "/information"})
 }
 
 onMounted(() => {

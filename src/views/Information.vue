@@ -24,6 +24,15 @@
 <script setup lang="ts">
 import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
+import { onMounted } from "vue";
+import { useClubStore } from '../stores/club'
+
+const clubStore = useClubStore()
+
+onMounted(() => {
+  console.log("mounted works")
+});
+
 defineProps({
   clubName: String,
   memberAmount: Number,
