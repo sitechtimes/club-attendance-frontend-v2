@@ -1,8 +1,8 @@
 <template>
   <section class="w-screen h-screen">
     <div class="w-full h-[15%] border-b-2 justify-center flex items-center">
-      <div class="w-[32%] text-lg font-medium">Administration {{ query }}</div>
-      <SearchBar v-model="query"></SearchBar>
+      <div class="w-[32%] text-lg font-medium">Administration</div>
+      <SearchBar v-model="query" @keyup.enter="onEnter"></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center">
       <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs">
@@ -35,14 +35,25 @@ const query = ref()
 const userStore = useUserStore();
 const router = useRouter();
 let searchedClubs = userStore.clubs
-const onEnter = function(
- searchedClubs = userStore.clubs.filter((item) => item.clubName == query)
-)
 
 function pushToClub() {
   router.push({ path: "/information" });
 }
-
+const onEnter = function(){
+  if (query.value == ''){
+    searchedClubs = userStore.clubs
+    console.log("empty")
+  }
+  else if (query.value == undefined){
+    searchedClubs = userStore.clubs
+    console.log("empty")
+  }
+  else {
+    console.log(query)
+    searchedClubs = userStore.clubs.filter((item) => item.clubName == query.value) 
+    console.log(searchedClubs)
+  }
+} 
 onMounted(() => {
   userStore.getData();
 });
