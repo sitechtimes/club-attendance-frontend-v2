@@ -167,13 +167,12 @@ onMounted(() => {
   console.log("hi");
 });
 
-const nextMeeting = useClubStore.date;
+// const nextMeeting = useClubStore.date;
 
 const props = defineProps({
   name: String,
   nextMeeting: String,
 });
-
 const open = ref(false);
 const qrCode = ref(false);
 const changeDate = ref(false);
