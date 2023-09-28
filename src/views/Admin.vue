@@ -5,7 +5,7 @@
       <SearchBar v-model="query"></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center">
-      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs">
+      <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs">
         <div
           class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
         >
@@ -34,7 +34,10 @@ import { useRouter } from "vue-router";
 const query = ref()
 const userStore = useUserStore();
 const router = useRouter();
-//const searchedClubs = userStore.clubs.filter((item) => item.clubName == query)
+let searchedClubs = userStore.clubs
+const onEnter = function(
+ searchedClubs = userStore.clubs.filter((item) => item.clubName == query)
+)
 
 function pushToClub() {
   router.push({ path: "/information" });
