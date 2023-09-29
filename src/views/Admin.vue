@@ -39,8 +39,11 @@ const router = useRouter();
 // }
 
 function pushToInfo(clubName: string) {
-  console.log(clubName)
-  router.push({path: "/information"})
+  console.log(clubName, '1')
+  const clubJSON = JSON.stringify(clubName)
+  console.log(clubJSON, '2')
+  
+  //router.push({path: "/information"})
 }
 
 onMounted(() => {

@@ -26,11 +26,14 @@ import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
 import { onMounted } from "vue";
 import { useClubStore } from '../stores/club'
+import { useRoute, useRouter } from 'vue-router'
 
 const clubStore = useClubStore()
 
+const route = useRoute()
+
 onMounted(() => {
-  console.log("mounted works")
+  console.log(route.params.id.toString())
 });
 
 defineProps({
