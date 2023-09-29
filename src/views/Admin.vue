@@ -49,23 +49,16 @@ const onEnter = function(){
     console.log("empty")
   }
   else {
-    console.log(query)
-    searchedClubs = userStore.clubs.filter((item: { clubName: any; }) => item.clubName == query.value) 
+    searchedClubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
     console.log(searchedClubs)
   }
 } 
-const searchFilter = function(club, query){
+const searchFilter = function(club: object, query: any){
  const splitQuery = query.split('')
  const splitClubName = club.clubName.split('')
- let i = 0
-  splitQuery.forEach((character: any) => {
-  if (character == splitClubName[i]){
-   i++
-  } else{
-    break
-  }
-  return clubName
- });
+ console.log(splitQuery)
+ console.log(splitClubName)
+ for
 }
 onMounted(() => {
   userStore.getData();
