@@ -27,13 +27,18 @@ import { UserIcon } from "@heroicons/vue/20/solid";
 import { onMounted } from "vue";
 import { useClubStore } from '../stores/club'
 import { useRoute, useRouter } from 'vue-router'
+import axios from "axios";
 
 const clubStore = useClubStore()
-
 const route = useRoute()
 
+function grabClubData() {
+  const daresponse = 'help'
+}
+
 onMounted(() => {
-  console.log(route.params.id.toString())
+  console.log(route, "this is the route")
+  console.log(route.query.name)
 });
 
 defineProps({

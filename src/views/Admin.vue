@@ -29,20 +29,28 @@
 import SearchBar from "@/components/SearchBar.vue";
 import { onMounted, onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/user";
-import { useRouter } from "vue-router";
+import { useClubStore } from "@/stores/club";
+import { useRouter, useRoute } from "vue-router";
 
 const userStore = useUserStore();
+const clubStore = useClubStore();
 const router = useRouter();
-
+const route = useRoute()
 // function pushToClub() {
 //   router.push({ path: "/information" });
 // }
 
 function pushToInfo(clubName: string) {
-  console.log(clubName, '1')
+  clubStore.clubName = clubName  
   const clubJSON = JSON.stringify(clubName)
-  console.log(clubJSON, '2')
+  console.log(clubStore.clubName, "this is the club Name")
+  console.log(clubJSON, 'this is the club JSON')
   
+  function routePush() {
+    router.push(`/club/?name=${clubStore.clubName}`)
+  }
+  setTimeout(routePush, 1000)
+
   //router.push({path: "/information"})
 }
 

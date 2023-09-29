@@ -25,7 +25,7 @@ const router = createRouter({
       component: () => import('../views/President.vue')
     },
     {
-      path: '/information',
+      path: '/club',
       name: 'information',
       component: () => import('../views/Information.vue'),
       meta: {
