@@ -50,10 +50,23 @@ const onEnter = function(){
   }
   else {
     console.log(query)
-    searchedClubs = userStore.clubs.filter((item) => item.clubName == query.value) 
+    searchedClubs = userStore.clubs.filter((item: { clubName: any; }) => item.clubName == query.value) 
     console.log(searchedClubs)
   }
 } 
+const searchFilter = function(club, query){
+ const splitQuery = query.split('')
+ const splitClubName = club.clubName.split('')
+ let i = 0
+  splitQuery.forEach((character: any) => {
+  if (character == splitClubName[i]){
+   i++
+  } else{
+    break
+  }
+  return clubName
+ });
+}
 onMounted(() => {
   userStore.getData();
 });
