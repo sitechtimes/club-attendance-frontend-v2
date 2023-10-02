@@ -30,6 +30,7 @@ import SearchBar from "@/components/SearchBar.vue";
 import { onMounted, onBeforeMount, ref } from "vue";
 import { useUserStore } from "@/stores/user";
 import { useRouter } from "vue-router";
+import { split } from "postcss/lib/list";
 
 const query = ref()
 const userStore = useUserStore();
@@ -58,7 +59,27 @@ const searchFilter = function(club: object, query: any){
  const splitClubName = club.clubName.split('')
  console.log(splitQuery)
  console.log(splitClubName)
- for
+ let i = 0
+ let result = Boolean
+ splitQuery.forEach((character: any) => {
+  console.log(character)
+  console.log(splitQuery.length)
+  console.log(splitClubName[i])
+  if(i == (splitQuery.length - 1) && character == splitClubName[i]){
+    console.log("true")
+    let result = true    
+  }
+  else if(character != splitClubName[i]){
+    console.log("false")
+    let result = false
+  }
+  else if( character == splitClubName[i]){
+    console.log("loop")
+    i++
+  }
+ });
+ console.log(result)
+ return result
 }
 onMounted(() => {
   userStore.getData();
