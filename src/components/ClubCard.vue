@@ -163,11 +163,7 @@ import ChangeDate from "./ChangeDate.vue";
 import { onMounted } from "vue";
 import { useClubStore } from "../stores/club";
 
-onMounted(() => {
-  console.log("hi");
-});
-
-// const nextMeeting = useClubStore.date;
+const nextMeeting = useClubStore.value;
 
 const props = defineProps({
   name: String,
