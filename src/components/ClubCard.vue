@@ -163,8 +163,9 @@ import ChangeDate from "./ChangeDate.vue";
 import { onMounted } from "vue";
 import { useClubStore } from "../stores/club";
 
-const nextMeeting = useClubStore.value;
-
+const clubStore = useClubStore();
+const nextMeeting = 6;
+clubStore.nextMeeting = nextMeeting;
 const props = defineProps({
   name: String,
   nextMeeting: String,

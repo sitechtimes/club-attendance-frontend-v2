@@ -4,11 +4,11 @@ import { defineStore } from 'pinia';
       state: () => ({
           user:'',
           date:'1',
-          
+          nextMeeting: ''
         }),
   });
 
-const changeDate = (newDate: any) =>{
-   useClubStore.value.date = newDate;
-};
+// const changeName = (newDate: any) =>{
+//    useClubStore.value.date = newname;
+// };
 

@@ -15,16 +15,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useClubStore } from "../stores/club";
-// import { nextMeeting } from "./ClubCard.vue";
 
 const nameInput = ref("");
-const store = useClubStore();
+const clubStore = useClubStore();
 
 const handleSubmit = () => {
-  store.changeDate(nameInput.value);
-  // console.log(store);
-  // useClubStore.changeName(nameInput.value);
-  // nameInput.value = nextMeeting.value;
-  // nextMeeting.value = "";
+  const date = clubStore.nextMeeting;
+  console.log(date);
 };
 </script>
