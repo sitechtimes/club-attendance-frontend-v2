@@ -32,13 +32,22 @@ import axios from "axios";
 const clubStore = useClubStore()
 const route = useRoute()
 
-function grabClubData() {
-  const daresponse = 'help'
-}
+async function getData(clubName:string|undefined, year: string ) {
+  const response = await fetch(`http://localhost:3000/getClubData/#${clubName}/${year}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  })
+  console.log(response)
+} 
 
 onMounted(() => {
-  console.log(route, "this is the route")
-  console.log(route.query.name)
+  console.log(JSON.stringify(route.query.name))
+  const queryVal = route.query.name
+  const queryStr:string|undefined = queryVal?.toString()
+  const year = "2023-2024"
+  getData(queryStr, year)
 });
 
 defineProps({
