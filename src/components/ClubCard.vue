@@ -164,7 +164,7 @@ import { onMounted } from "vue";
 import { useClubStore } from "../stores/club";
 
 const clubStore = useClubStore();
-const nextMeeting = 6;
+const nextMeeting = "";
 clubStore.nextMeeting = nextMeeting;
 const props = defineProps({
   name: String,

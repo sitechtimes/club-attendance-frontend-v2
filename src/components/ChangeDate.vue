@@ -16,11 +16,16 @@
 import { ref } from "vue";
 import { useClubStore } from "../stores/club";
 
+// console.log(nextMeeting.value);
 const nameInput = ref("");
 const clubStore = useClubStore();
 
 const handleSubmit = () => {
-  const date = clubStore.nextMeeting;
+  let date = clubStore.nextMeeting;
+  let input = nameInput.value;
+  date = input;
   console.log(date);
+  // console.log(input);
+  input = "";
 };
 </script>
