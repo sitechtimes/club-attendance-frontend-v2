@@ -2,7 +2,7 @@
   <section class="w-screen h-screen">
     <div class="w-full h-[15%] border-b-2 justify-center flex items-center">
       <div class="w-[32%] text-lg font-medium">Administration</div>
-      <SearchBar v-model="query" @keyup.enter="onEnter"></SearchBar>
+      <SearchBar v-model="query" @input="onInput"></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center">
       <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs" :key="listKey">
@@ -40,7 +40,7 @@ const listKey = ref(0)
 function pushToClub() {
   router.push({ path: "/information" });
 }
-const onEnter = function(){
+const onInput = function(){
   if (query.value == ''){
     searchedClubs = userStore.clubs
     console.log("empty")
@@ -68,15 +68,15 @@ const searchFilter = function(club: object, query: any){
   console.log(character)
   console.log(splitQuery.length)
   console.log(splitClubName[i])
-  if(i == (splitQuery.length - 1) && character == splitClubName[i]){
+  if(i == (splitQuery.length - 1) && character == splitClubName[i].toLowerCase() || character == splitClubName[i]){
     console.log("true")
     result = true    
   }
-  else if(character != splitClubName[i]){
+  else if(character != splitClubName[i].toLowerCase() || character == splitClubName[i]){
     console.log("false")
     result = false
   }
-  else if( character == splitClubName[i]){
+  else if( character == splitClubName[i].toLowerCase() || character == splitClubName[i]){
     console.log("loop")
     i++
   }
