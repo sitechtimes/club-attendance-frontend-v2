@@ -5,7 +5,7 @@
       <SearchBar v-model="query" @keyup.enter="onEnter"></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center">
-      <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs">
+      <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs" :key="listKey">
         <div
           class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
         >
@@ -32,11 +32,11 @@ import { useUserStore } from "@/stores/user";
 import { useRouter } from "vue-router";
 import { split } from "postcss/lib/list";
 
-const query = ref()
+let query = ref()
 const userStore = useUserStore();
 const router = useRouter();
 let searchedClubs = userStore.clubs
-
+const listKey = ref(0)
 function pushToClub() {
   router.push({ path: "/information" });
 }
@@ -44,14 +44,17 @@ const onEnter = function(){
   if (query.value == ''){
     searchedClubs = userStore.clubs
     console.log("empty")
+    listKey.value += 1
   }
   else if (query.value == undefined){
     searchedClubs = userStore.clubs
     console.log("empty")
+    listKey.value += 1
   }
   else {
     searchedClubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
     console.log(searchedClubs)
+    listKey.value += 1
   }
 } 
 const searchFilter = function(club: object, query: any){
@@ -60,18 +63,18 @@ const searchFilter = function(club: object, query: any){
  console.log(splitQuery)
  console.log(splitClubName)
  let i = 0
- let result = Boolean
+ let result = false
  splitQuery.forEach((character: any) => {
   console.log(character)
   console.log(splitQuery.length)
   console.log(splitClubName[i])
   if(i == (splitQuery.length - 1) && character == splitClubName[i]){
     console.log("true")
-    let result = true    
+    result = true    
   }
   else if(character != splitClubName[i]){
     console.log("false")
-    let result = false
+    result = false
   }
   else if( character == splitClubName[i]){
     console.log("loop")
