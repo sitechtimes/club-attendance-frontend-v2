@@ -33,21 +33,23 @@ const clubStore = useClubStore()
 const route = useRoute()
 
 async function getData(clubName:string|undefined, year: string ) {
-  const response = await fetch(`http://localhost:3000/getClubData/#${clubName}/${year}`, {
+  const response = await fetch(`http://localhost:3000/getClubData/${clubName}/${year}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
     },
   })
-  console.log(response)
+  const club = await response.json
+  console.log(club)
 } 
 
 onMounted(() => {
   console.log(JSON.stringify(route.query.name))
   const queryVal = route.query.name
   const queryStr:string|undefined = queryVal?.toString()
+  const newStr: string|undefined = queryStr?.replace(/ /g,'-')
   const year = "2023-2024"
-  getData(queryStr, year)
+  getData(newStr, year)
 });
 
 defineProps({
