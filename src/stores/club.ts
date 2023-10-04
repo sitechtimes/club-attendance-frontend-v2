@@ -28,7 +28,6 @@ export const useClubStore = defineStore("club", {
     clubName: "",
     clubPresident: "",
     user: "",
-    date: "1",
     nextMeeting: "",
   }),
   // persist: {

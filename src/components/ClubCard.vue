@@ -164,12 +164,12 @@ import { onMounted } from "vue";
 import { useClubStore } from "../stores/club";
 
 const clubStore = useClubStore();
-const nextMeeting = "";
-clubStore.nextMeeting = nextMeeting;
+const nextMeeting = clubStore.nextMeeting;
 const props = defineProps({
   name: String,
   nextMeeting: String,
 });
+console.log(nextMeeting);
 const open = ref(false);
 const qrCode = ref(false);
 const changeDate = ref(false);
