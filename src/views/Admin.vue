@@ -68,15 +68,15 @@ const searchFilter = function(club: object, query: any){
   console.log(character)
   console.log(splitQuery.length)
   console.log(splitClubName[i])
-  if(i == (splitQuery.length - 1) && character == splitClubName[i].toLowerCase() || character == splitClubName[i]){
+  if(i == (splitQuery.length - 1) && character.toLowerCase() == splitClubName[i].toLowerCase()){
     console.log("true")
     result = true    
   }
-  else if(character != splitClubName[i].toLowerCase() || character == splitClubName[i]){
+  else if(character.toLowerCase() != splitClubName[i].toLowerCase()){
     console.log("false")
     result = false
   }
-  else if( character == splitClubName[i].toLowerCase() || character == splitClubName[i]){
+  else if( character.toLowerCase() == splitClubName[i].toLowerCase()){
     console.log("loop")
     i++
   }
