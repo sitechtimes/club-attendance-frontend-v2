@@ -4,8 +4,8 @@
       <div class="w-[32%] text-lg font-medium">Administration</div>
       <SearchBar v-model="query" @input="onInput"></SearchBar>
     </div>
-    <div class="w-full h-auto justify-center flex flex-col items-center">
-      <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs" :key="listKey">
+    <div class="w-full h-auto justify-center flex flex-col items-center" >
+      <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs">
         <div
           class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
         >
@@ -27,36 +27,36 @@
 
 <script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
-import { onMounted, onBeforeMount, ref } from "vue";
+import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
 import { useUserStore } from "@/stores/user";
 import { useRouter } from "vue-router";
 import { split } from "postcss/lib/list";
+import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 
 let query = ref()
 const userStore = useUserStore();
 const router = useRouter();
 let searchedClubs = userStore.clubs
-const listKey = ref(0)
+
 function pushToClub() {
   router.push({ path: "/information" });
 }
+
 const onInput = function(){
   if (query.value == ''){
     searchedClubs = userStore.clubs
     console.log("empty")
-    listKey.value += 1
   }
   else if (query.value == undefined){
     searchedClubs = userStore.clubs
     console.log("empty")
-    listKey.value += 1
   }
   else {
     searchedClubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
     console.log(searchedClubs)
-    listKey.value += 1
   }
 } 
+
 const searchFilter = function(club: object, query: any){
  const splitQuery = query.split('')
  const splitClubName = club.clubName.split('')
@@ -84,7 +84,10 @@ const searchFilter = function(club: object, query: any){
  console.log(result)
  return result
 }
-onMounted(() => {
-  userStore.getData();
+
+onBeforeMount(() => {
+userStore.getData();
 });
+onMounted(()=>{
+})
 </script>
