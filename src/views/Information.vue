@@ -39,17 +39,15 @@ async function getData(clubName:string|undefined, year: string ) {
       "Content-Type": "application/json"
     },
   })
-  const club = await response.json
+  const club = await response
   console.log(club)
 } 
 
 onMounted(() => {
-  console.log(JSON.stringify(route.query.name))
   const queryVal = route.query.name
   const queryStr:string|undefined = queryVal?.toString()
-  const newStr: string|undefined = queryStr?.replace(/ /g,'-')
   const year = "2023-2024"
-  getData(newStr, year)
+  getData(queryStr, year)
 });
 
 defineProps({
