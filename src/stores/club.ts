@@ -30,6 +30,23 @@ export const useClubStore = defineStore("club", {
     user: "",
     nextMeeting: "",
   }),
+  async getData(nextMeeting: any) {
+    const response = await fetch("http://localhost:3000/addClubMeeting", {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      body: {
+        nextMeeting: (string = req.body.nextMeeting),
+      },
+    });
+    this.clubs = await response.json();
+    console.log(this.clubs);
+  },
   // persist: {
   //   storage: sessionStorage
   // }

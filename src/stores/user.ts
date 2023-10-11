@@ -19,8 +19,8 @@ export const useUserStore = defineStore("user", {
           window.location.href = res.data.redirectUri;
         });
     },
-    async getData() {
-      const response = await fetch("http://localhost:3000/allClubMeeting", {
+    async getData(clubName) {
+      const response = await fetch("http://localhost:3000/addClubMeeting", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -29,7 +29,9 @@ export const useUserStore = defineStore("user", {
           "Content-Type": "application/json",
         },
         redirect: "follow",
-        body: {},
+        body: {
+          clubName: req.body.clubName;
+        },
       });
       this.clubs = await response.json();
       console.log(this.clubs);
