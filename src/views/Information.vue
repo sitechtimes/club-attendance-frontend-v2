@@ -39,7 +39,7 @@ async function getData(clubName:string|undefined, year: string ) {
       "Content-Type": "application/json"
     },
   })
-  const club = await response
+  const club = await response.json()
   console.log(club)
 } 
 
