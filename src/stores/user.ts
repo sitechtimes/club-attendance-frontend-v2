@@ -19,22 +19,22 @@ export const useUserStore = defineStore("user", {
           window.location.href = res.data.redirectUri;
         });
     },
-    async getData(clubName) {
-      const response = await fetch("http://localhost:3000/addClubMeeting", {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        redirect: "follow",
-        body: {
-          clubName: req.body.clubName;
-        },
-      });
-      this.clubs = await response.json();
-      console.log(this.clubs);
-    },
+    // async getData(clubName) {
+    //   const response = await fetch("http://localhost:3000/addClubMeeting", {
+    //     method: "POST",
+    //     mode: "cors",
+    //     cache: "no-cache",
+    //     credentials: "same-origin",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     redirect: "follow",
+    //     body: {
+    //       clubName: req.body.clubName;
+    //     },
+    //   });
+    //   this.clubs = await response.json();
+    //   console.log(this.clubs);
+    // },
   },
 });
