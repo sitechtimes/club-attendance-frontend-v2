@@ -31,10 +31,8 @@ export const useClubStore = defineStore("club", {
     nextMeeting: "",
   }),
   actions: {
-    async changeData(nextMeeting: any) {
+    async changeData(nextMeeting: any, req: Request, res: Response) {
       const response = await fetch("http://localhost:3000/addClubMeeting", {
-        req: Request,
-        res: Response,
         method: "POST",
         mode: "cors",
         cache: "no-cache",
