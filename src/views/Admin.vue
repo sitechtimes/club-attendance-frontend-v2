@@ -85,9 +85,8 @@ const searchFilter = function(club: object, query: any){
  return result
 }
 
-onBeforeMount(() => {
-userStore.getData();
-});
+
 onMounted(()=>{
+  userStore.getData();
 })
 </script>
