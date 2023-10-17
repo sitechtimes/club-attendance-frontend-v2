@@ -27,6 +27,8 @@ export const useClubStore = defineStore('clubStore', {
   state: () => ({
     clubName: '',
     clubPresident: '',
+    clubAdvisor: '',
+    room: '',
   }),
   // persist: {
   //   storage: sessionStorage
