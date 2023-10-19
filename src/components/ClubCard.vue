@@ -36,7 +36,7 @@
             <div
               class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
             >
-              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="bg-white px-4 pb-4 pt-5 bg-yellow sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <h3
@@ -71,7 +71,7 @@
                 </button>
                 <button
                   type="button"
-                  class="w-full my-1 justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                  class="w-full my-1 justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold bg-red text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                   @click="open = false"
                 >
                   Close
@@ -104,7 +104,7 @@
               </div>
               <button
                 type="button"
-                class="w-full my-1 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-fill sm:h-10"
+                class="w-full my-1 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white bg-red shadow-sm hover:bg-red-500 sm:ml-3 sm:w-fill sm:h-10"
                 @click="
                   qrCode = false;
                   open = true;
@@ -139,7 +139,7 @@
               </div>
               <button
                 type="button"
-                class="w-full my-1 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-fill sm:h-10"
+                class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
                 @click="
                   changeDate = false;
                   open = true;
