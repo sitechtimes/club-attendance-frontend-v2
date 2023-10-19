@@ -44,26 +44,28 @@ import { useUserStore } from "@/stores/user";
 
 const store = useUserStore();
 // token starts as string, make the unstringify the string then use the object
-// const parseCookie = (str) =>
-//   str
-//     .split(";")
-//     .map((v) => v.split("="))
-//     .reduce((acc, v) => {
-//       acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
-//       return acc;
-//     }, {});
+const parseCookie = (str) =>
+   str
+     .split(";")
+     .map((v) => v.split("="))
+     .reduce((acc, v) => {
+       acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
+       return acc;
+}, {});
 
-// function getCookie(name: string) {
-//   const value: any = `; ${document.cookie}`;
-//   const parts: any = value.split(`; ${name}=`);
-//   const cookieString: any = parts.pop().split(";").shift();
-//   if (parts.length === 2) console.log(cookieString);
+function getCookie(name: string) {
+   const value: any = `; ${document.cookie}`;
+   const parts: any = value.split(`; ${name}=`);
+   const cookieString: any = parts.pop().split(";").shift();
+   if (parts.length === 2) console.log(cookieString);
 
-//   const parsedString = parseCookie(cookieString);
-//   console.log(JSON.parse(JSON.stringify(parsedString)));
-// }
+   const parsedString = parseCookie(cookieString);
+  console.log(parsedString);
+}
 
-// onMounted(() => {
-//   getCookie("user_data");
-// });
+onMounted(() => {
+  getCookie("user_data");
+  //let cookies = document.cookie;
+  //console.log(cookies)
+});
 </script>
