@@ -39,15 +39,15 @@
 <script setup lang="ts">
 import Login from "@/components/Login.vue";
 import Calender from "@/components/Calender.vue";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/user";
 
 const store = useUserStore();
 // token starts as string, make the unstringify the string then use the object
 const parseCookie = (str) =>
    str
-     .split(";")
-     .map((v) => v.split("="))
+     .split(';')
+     .map((v) => v.split('='))
      .reduce((acc, v) => {
        acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
        return acc;
@@ -58,9 +58,18 @@ function getCookie(name: string) {
    const parts: any = value.split(`; ${name}=`);
    const cookieString: any = parts.pop().split(";").shift();
    if (parts.length === 2) console.log(cookieString);
-
-   const parsedString = parseCookie(cookieString);
-  console.log(parsedString);
+   console.log(cookieString);
+  const parsedString = parseCookie(cookieString);
+  console.log(parsedString)
+  const userCookies = {
+    uid: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    picture: '',
+    role: '',
+    isAuthenticated: false,
+  }
 }
 
 onMounted(() => {
