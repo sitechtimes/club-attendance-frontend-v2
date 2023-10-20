@@ -30,7 +30,4 @@ export const useClubStore = defineStore('clubStore', {
     clubAdvisor: '',
     room: '',
   }),
-  // persist: {
-  //   storage: sessionStorage
-  // }
 })
