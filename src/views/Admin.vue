@@ -5,7 +5,7 @@
       <SearchBar v-model="query" @input="onInput"></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center" >
-      <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs">
+      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs">
         <div
           class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
         >
@@ -36,7 +36,6 @@ import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 let query = ref()
 const userStore = useUserStore();
 const router = useRouter();
-let searchedClubs = userStore.clubs
 
 function pushToClub() {
   router.push({ path: "/information" });
@@ -44,16 +43,13 @@ function pushToClub() {
 
 const onInput = function(){
   if (query.value == ''){
-    searchedClubs = userStore.clubs
-    console.log("empty")
+    userStore.clubs = userStore.clubs
   }
   else if (query.value == undefined){
-    searchedClubs = userStore.clubs
-    console.log("empty")
+    userStore.clubs = userStore.clubs
   }
   else {
-    searchedClubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
-    console.log(searchedClubs)
+    userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
   }
 } 
 
