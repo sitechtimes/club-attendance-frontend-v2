@@ -43,10 +43,10 @@ function pushToClub() {
 
 const onInput = function(){
   if (query.value == ''){
-    userStore.clubs = userStore.clubs
+    userStore.getData()
   }
   else if (query.value == undefined){
-    userStore.clubs = userStore.clubs
+    userStore.getData()
   }
   else {
     userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
