@@ -53,28 +53,29 @@ const parseCookie = (str) =>
        return acc;
 }, {});
 
+function betterParseCookie(str) {
+ let pairs = str.split(";");
+ let splitPairs = pairs.map((cookie) => cookie.split("="));
+ const cookieObj = splitPairs.reduce((obj, cookie) => {
+   obj[decodeURIComponent(cookie[0].trim())] 
+   = decodeURIComponent(cookie[0].trim());
+   return obj
+ }, {})
+ return cookieObj
+} ;
+
 function getCookie(name: string) {
    const value: any = `; ${document.cookie}`;
    const parts: any = value.split(`; ${name}=`);
    const cookieString: any = parts.pop().split(";").shift();
    if (parts.length === 2) console.log(cookieString);
    console.log(cookieString);
-  const parsedString = parseCookie(cookieString);
-  console.log(parsedString)
-  const userCookies = {
-    uid: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    picture: '',
-    role: '',
-    isAuthenticated: false,
-  }
+  const parsedString = betterParseCookie(cookieString);
+  return parsedString
 }
 
 onMounted(() => {
-  getCookie("user_data");
-  //let cookies = document.cookie;
-  //console.log(cookies)
+  let userCookie = getCookie("user_data");
+  console.log(userCookie)
 });
 </script>
