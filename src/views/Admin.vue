@@ -34,6 +34,7 @@ import { useRouter, useRoute } from "vue-router";
 import { split } from "postcss/lib/list";
 import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 
+let query = ref()
 const userStore = useUserStore();
 const clubStore = useClubStore();
 const router = useRouter();
