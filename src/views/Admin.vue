@@ -27,10 +27,12 @@
 
 <script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
-import { onMounted, onBeforeMount } from "vue";
+import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
 import { useUserStore } from "@/stores/user";
 import { useClubStore } from "@/stores/club";
 import { useRouter, useRoute } from "vue-router";
+import { split } from "postcss/lib/list";
+import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 
 const userStore = useUserStore();
 const clubStore = useClubStore();
@@ -54,7 +56,49 @@ function pushToInfo(clubName: string) {
   //router.push({path: "/information"})
 }
 
+
+const onInput = function(){
+  if (query.value == ''){
+    userStore.clubs = userStore.clubs
+  }
+  else if (query.value == undefined){
+    userStore.clubs = userStore.clubs
+  }
+  else {
+    userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
+  }
+} 
+
+const searchFilter = function(club: object, query: any){
+ const splitQuery = query.split('')
+ const splitClubName = club.clubName.split('')
+ console.log(splitQuery)
+ console.log(splitClubName)
+ let i = 0
+ let result = false
+ splitQuery.forEach((character: any) => {
+  console.log(character)
+  console.log(splitQuery.length)
+  console.log(splitClubName[i])
+  if(i == (splitQuery.length - 1) && character.toLowerCase() == splitClubName[i].toLowerCase()){
+    console.log("true")
+    result = true    
+  }
+  else if(character.toLowerCase() != splitClubName[i].toLowerCase()){
+    console.log("false")
+    result = false
+  }
+  else if( character.toLowerCase() == splitClubName[i].toLowerCase()){
+    console.log("loop")
+    i++
+  }
+ });
+ console.log(result)
+ return result
+}
+
+
 onMounted(() => {
   userStore.getData();
-});
+})
 </script>
