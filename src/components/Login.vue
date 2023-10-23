@@ -15,7 +15,5 @@ const userStore = useUserStore();
 
 async function logIn() {
   await userStore.googleLink();
-  let cookies = document.cookie;
-  console.log(cookies)
 }
 </script>
