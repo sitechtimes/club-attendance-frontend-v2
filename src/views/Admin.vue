@@ -2,7 +2,7 @@
   <section class="w-screen h-screen">
     <div class="w-full h-[15%] border-b-2 justify-center flex items-center">
       <div class="w-[32%] text-lg font-medium">Administration</div>
-      <SearchBar></SearchBar>
+      <SearchBar v-model="query" @input="onInput"></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center">
       <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
