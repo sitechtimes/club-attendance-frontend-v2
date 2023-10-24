@@ -6,15 +6,14 @@
       >
         <div class="lg:pr-8 lg:pt-4">
           <div class="lg:max-w-lg">
-            <p
-              class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-            >
-              Club Attendance
-            </p>
             <h2 class="text-base font-semibold leading-7 text-[#c2b669]">
               Attendance, made faster
             </h2>
-
+            <p
+              class="mt-2 text-3xl font-bold bg-yellow tracking-tight text-gray-900 sm:text-4xl skew-x-12"
+            >
+              Club Attendance
+            </p>
             <p class="mt-6 text-lg leading-8 text-gray-600">
               Club attendance has never been easier! Just scan the QR code
               provided by the club president and login with your school email to
@@ -40,6 +39,7 @@
 <script setup lang="ts">
 import Login from "@/components/Login.vue";
 import Calender from "@/components/Calender.vue";
+import { onMounted } from "vue";
 import { useUserStore } from "@/stores/user";
 // import * as THREE from "three";
 // import BIRDS from vanta.birds.min.js
