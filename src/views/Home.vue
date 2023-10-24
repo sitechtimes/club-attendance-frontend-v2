@@ -39,31 +39,43 @@
 <script setup lang="ts">
 import Login from "@/components/Login.vue";
 import Calender from "@/components/Calender.vue";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/user";
 
 const store = useUserStore();
 // token starts as string, make the unstringify the string then use the object
-// const parseCookie = (str) =>
-//   str
-//     .split(";")
-//     .map((v) => v.split("="))
-//     .reduce((acc, v) => {
-//       acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
-//       return acc;
-//     }, {});
+const parseCookie = (str) =>
+   str
+     .split(';')
+     .map((v) => v.split('='))
+     .reduce((acc, v) => {
+       acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
+       return acc;
+}, {});
 
-// function getCookie(name: string) {
-//   const value: any = `; ${document.cookie}`;
-//   const parts: any = value.split(`; ${name}=`);
-//   const cookieString: any = parts.pop().split(";").shift();
-//   if (parts.length === 2) console.log(cookieString);
+function betterParseCookie(str) {
+ let pairs = str.split(";");
+ let splitPairs = pairs.map((cookie) => cookie.split("="));
+ const cookieObj = splitPairs.reduce((obj, cookie) => {
+   obj[decodeURIComponent(cookie[0].trim())] 
+   = decodeURIComponent(cookie[0].trim());
+   return obj
+ }, {})
+ return cookieObj
+} ;
 
-//   const parsedString = parseCookie(cookieString);
-//   console.log(JSON.parse(JSON.stringify(parsedString)));
-// }
+function getCookie(name: string) {
+   const value: any = `; ${document.cookie}`;
+   const parts: any = value.split(`; ${name}=`);
+   const cookieString: any = parts.pop().split(";").shift();
+   if (parts.length === 2) console.log(cookieString);
+   console.log(cookieString);
+  const parsedString = betterParseCookie(cookieString);
+  return parsedString
+}
 
-// onMounted(() => {
-//   getCookie("user_data");
-// });
+onMounted(() => {
+  let userCookie = getCookie("user_data");
+  console.log(userCookie)
+});
 </script>

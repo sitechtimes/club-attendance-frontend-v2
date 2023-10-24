@@ -24,15 +24,23 @@ const router = createRouter({
       component: () => import('../views/President.vue')
     },
     {
-      path: '/information',
+      path: '/club',
       name: 'information',
-      component: () => import('../views/Information.vue')
+      component: () => import('../views/Information.vue'),
+      meta: {
+        requireClub: true
+      }
     },
     {
       path: '/Calendar',
       name: 'calendar',
       component: () => import('../views/Calendar.vue')
     },
+    {
+      path: '/confirmation',
+      name: 'confirmation',
+      component: () => import('../views/Confirmation.vue')
+    }
   ]
 })
 

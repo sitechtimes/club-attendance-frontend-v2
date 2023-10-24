@@ -4,8 +4,8 @@
       <div class="w-[32%] text-lg font-medium">Administration</div>
       <SearchBar v-model="query" @input="onInput"></SearchBar>
     </div>
-    <div class="w-full h-auto justify-center flex flex-col items-center">
-      <div class="flex flex-col pt-3 w-[80%]" v-for="item in searchedClubs" :key="listKey">
+    <div class="w-full h-auto justify-center flex flex-col items-center" >
+      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
         <div
           class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
         >
@@ -27,36 +27,43 @@
 
 <script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
-import { onMounted, onBeforeMount, ref } from "vue";
+import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
 import { useUserStore } from "@/stores/user";
+import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { split } from "postcss/lib/list";
+import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 
 let query = ref()
 const userStore = useUserStore();
+const clubStore = useClubStore();
 const router = useRouter();
-let searchedClubs = userStore.clubs
-const listKey = ref(0)
-function pushToClub() {
-  router.push({ path: "/information" });
+
+function pushToInfo(clubName: string) {
+  clubStore.clubName = clubName  
+  const clubJSON = JSON.stringify(clubName)
+  console.log(clubStore.clubName, "this is the club Name")
+  console.log(clubJSON, 'this is the club JSON')
+  
+  function routePush() {
+    router.push(`/club/?name=${clubStore.clubName}`)
+  }
+  setTimeout(routePush, 1000)
+
 }
+
 const onInput = function(){
   if (query.value == ''){
-    searchedClubs = userStore.clubs
-    console.log("empty")
-    listKey.value += 1
+    userStore.getData()
   }
   else if (query.value == undefined){
-    searchedClubs = userStore.clubs
-    console.log("empty")
-    listKey.value += 1
+    userStore.getData()
   }
   else {
-    searchedClubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
-    console.log(searchedClubs)
-    listKey.value += 1
+    userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
   }
 } 
+
 const searchFilter = function(club: object, query: any){
  const splitQuery = query.split('')
  const splitClubName = club.clubName.split('')
@@ -84,7 +91,9 @@ const searchFilter = function(club: object, query: any){
  console.log(result)
  return result
 }
-onMounted(() => {
+
+
+onMounted(()=>{
   userStore.getData();
-});
+})
 </script>
