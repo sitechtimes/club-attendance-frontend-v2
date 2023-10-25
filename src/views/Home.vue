@@ -1,6 +1,6 @@
 <template>
   <div
-    class="overflow-hidden py-80 bg-white pt-20 lg:pt-24 bg-yellow -rotate-12"
+    class="overflow-hidden px-28 bg-white pt-20 lg:pt-24 bg-yellow -rotate-12 pl-8"
   >
     <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 skew-x-12">
       <div
