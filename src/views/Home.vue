@@ -67,9 +67,18 @@ function betterParseCookie(str) {
 function parseCookieIII(str){
  let minusJ = str.split('{')[1]
  let minusEnd = minusJ.split('}')[0]
- return minusEnd
+ let pairs = minusEnd.split(',')
+ let splitPairs = pairs.map((element) => element.split(':'));
+ console.log(splitPairs)
+ //let quotesless = splitPairs.map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
+ const cookieOBJ = splitPairs.reduce((obj, cookie) => {
+   obj[decodeURIComponent(cookie[0].trim())] 
+   = decodeURIComponent(cookie[1].trim());
+   return obj
+ }, {})
+ return cookieOBJ
 } ; 
-
+//str.replace(/"([^"]+(?="))"/g, '$1')
 function getCookie(name: string) {
   const value: any = `; ${document.cookie}`;
   const parts: any = value.split(`; ${name}=`);
@@ -78,10 +87,8 @@ function getCookie(name: string) {
   console.log(cookieString);
   let decodedString = decodeURIComponent(cookieString)
   let parsedString = parseCookieIII(decodedString)
-  console.log(decodedString)
   console.log(parsedString)
-  //const parsedString = betterParseCookie(cookieString);
-  //return parsedString
+  return parsedString
 }
 
 onMounted(() => {
