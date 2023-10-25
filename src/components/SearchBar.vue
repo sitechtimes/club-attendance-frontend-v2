@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeMount, ref } from "vue";
 defineProps(['modelValue'])
 defineEmits(['update:modelValue'])
 </script>
