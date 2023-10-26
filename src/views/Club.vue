@@ -3,9 +3,9 @@
     <div
       class="w-full h-[15vh] border-b-2 flex flex-row items-center justify-center"
     >
-      <div class="w-[30%] text-2xl pl-6">clubName</div>
-      <UserIcon class="pl-[48vw] h-[25vh]"></UserIcon>
-      <div class="w-[65%] text-2xl">123</div>
+      <div class="w-[30%] text-2xl pl-6">{{ clubStore.clubName }}</div>
+      <UserIcon class="pl-[48vw] h-[12vh]"></UserIcon>
+      <div class=" text-2xl">{{ clubStore.room }}</div>
     </div>
     <div class="w-full h-[85vh] flex flex-col justify-start items-center pt-3">
       <a
@@ -14,8 +14,8 @@
         class="bg-black h-[7vh] w-[50vh] flex flex-col items-center justify-center rounded-full text-[#fff]"
         >Photo Attendance Link</a
       >
-      <p>Advisor: advisor name</p>
-      <p>President: president name</p>
+      <p>Advisor: {{ clubStore.clubAdvisor }}</p>
+      <p>President: {{ clubStore.clubPresident }}</p>
       <StudentCard></StudentCard>
     </div>
   </div>
@@ -33,21 +33,26 @@ const clubStore = useClubStore()
 const route = useRoute()
 
 async function getData(clubName:string|undefined, year: string ) {
-  const response = await fetch(`http://localhost:3000/getClubData/#${clubName}/${year}`, {
+  const response = await fetch(`http://localhost:3000/getClubData/${clubName}/${year}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
     },
   })
-  console.log(response)
+  const club = await response.json()
+  console.log(club)
+  clubStore.clubName = club.clubName
+  clubStore.clubAdvisor = club.clubAdivsor
+  clubStore.clubPresident = club.clubPresident
+  clubStore.room = club.room
 } 
 
 onMounted(() => {
-  console.log(JSON.stringify(route.query.name))
   const queryVal = route.query.name
   const queryStr:string|undefined = queryVal?.toString()
   const year = "2023-2024"
   getData(queryStr, year)
+
 });
 
 defineProps({

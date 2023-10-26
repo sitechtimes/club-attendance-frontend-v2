@@ -26,8 +26,8 @@ const router = createRouter({
     },
     {
       path: '/club',
-      name: 'information',
-      component: () => import('../views/Information.vue'),
+      name: 'club',
+      component: () => import('../views/Club.vue'),
       meta: {
         requireClub: true
       }
@@ -37,6 +37,11 @@ const router = createRouter({
       name: 'calendar',
       component: () => import('../views/Calendar.vue')
     },
+    {
+      path: '/confirmation',
+      name: 'confirmation',
+      component: () => import('../views/Confirmation.vue')
+    }
   ]
 })
 
