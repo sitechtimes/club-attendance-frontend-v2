@@ -38,7 +38,6 @@ let query = ref()
 const userStore = useUserStore();
 const clubStore = useClubStore();
 const router = useRouter();
-const route = useRoute()
 // function pushToClub() {
 //   router.push({ path: "/information" });
 // }
@@ -53,7 +52,6 @@ function pushToInfo(clubName: string) {
     router.push(`/club/?name=${clubStore.clubName}`)
   }
   setTimeout(routePush, 1000)
-
 }
 
 const onInput = function(){
