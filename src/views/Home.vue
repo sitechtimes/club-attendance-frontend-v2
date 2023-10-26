@@ -37,21 +37,21 @@
 </template>
 
 <script setup lang="ts">
-import Login from "@/components/Login.vue";
-import Calender from "@/components/Calender.vue";
+import Login from "@/components/HomeComponents/Login.vue";
+import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/user";
 
-const store = useUserStore();
+// const userStore = useUserStore();
 // token starts as string, make the unstringify the string then use the object
-const parseCookie = (str) =>
-   str
-     .split(';')
-     .map((v) => v.split('='))
-     .reduce((acc, v) => {
-       acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
-       return acc;
-}, {});
+// const parseCookie = (str) =>
+//    str
+//      .split(';')
+//      .map((v) => v.split('='))
+//      .reduce((acc, v) => {
+//        acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
+//        return acc;
+// }, {});
 
 function betterParseCookie(str) {
  let pairs = str.split(";");
@@ -60,7 +60,7 @@ function betterParseCookie(str) {
    obj[decodeURIComponent(cookie[0].trim())] 
    = decodeURIComponent(cookie[0].trim());
    return obj
- }, {})
+ }, {}) 
  return cookieObj
 } ;
 

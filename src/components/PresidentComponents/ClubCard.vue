@@ -120,7 +120,7 @@
 <script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { ref } from "vue";
-import QrCode from "./QrCode.vue";
+import QrCode from "@/components/ClubComponents/QrCode.vue";
 
 const props = defineProps({
   name: String,

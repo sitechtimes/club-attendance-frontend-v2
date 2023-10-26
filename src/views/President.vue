@@ -14,5 +14,5 @@
 
 
 <script setup lang="ts">
-    import ClubCard from '@/components/ClubCard.vue';
+    import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
 </script>
