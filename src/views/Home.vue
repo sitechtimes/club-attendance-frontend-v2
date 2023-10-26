@@ -41,53 +41,24 @@
 </template>
 
 <script setup lang="ts">
-import Login from "@/components/Login.vue";
-import Calender from "@/components/Calender.vue";
+import Login from "@/components/HomeComponents/Login.vue";
+import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/user";
 // import * as THREE from "three";
 // import BIRDS from vanta.birds.min.js
 // import {onBeforeUnmount, onMounted } from "vue";
 
-// let vantaEffect = null
-
-// onMounted(()=>{
-//  if(loginPageRef.value)
-//  {
-//   vantaEffect = BIRDS({
-//  el:loginPageRef.value,
-//  THREE,mouseControls: true,
-//   touchControls: true,
-//   gyroControls: false,
-//   minHeight: 200.00,
-//   minWidth: 200.00,
-//   scale: 1.00,
-//   scaleMobile: 1.00,
-//   backgroundColor: 0x0,
-//   color1: 0x7d5c2a,
-//   color2: 0xcaa7a7,
-//   wingSpan: 25.00,
-//   speedLimit: 4.00,
-//   separation: 40.00,
-//   alignment: 30.00,
-//   cohesion: 11.00
-// })}
-//   console.log(vantaEffect)
-// })
-
-// onBeforeUnmount(()=>{
-//   if(vantaEffect) vantaEffect.destroy()
-// })
-const store = useUserStore();
+// const userStore = useUserStore();
 // token starts as string, make the unstringify the string then use the object
-const parseCookie = (str) =>
-   str
-     .split(';')
-     .map((v) => v.split('='))
-     .reduce((acc, v) => {
-       acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
-       return acc;
-}, {});
+// const parseCookie = (str) =>
+//    str
+//      .split(';')
+//      .map((v) => v.split('='))
+//      .reduce((acc, v) => {
+//        acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
+//        return acc;
+// }, {});
 
 function betterParseCookie(str) {
  let pairs = str.split(";");
@@ -96,7 +67,7 @@ function betterParseCookie(str) {
    obj[decodeURIComponent(cookie[0].trim())] 
    = decodeURIComponent(cookie[0].trim());
    return obj
- }, {})
+ }, {}) 
  return cookieObj
 } ;
 
