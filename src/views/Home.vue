@@ -1,8 +1,10 @@
 <template>
   <div
-    class="overflow-hidden px-28 bg-white pt-20 lg:pt-24 bg-yellow -rotate-12 pl-8"
+    class="overflow-hidden bg-white pt-20 lg:pt-24 bg-yellow -rotate-12 pl-8"
   >
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 skew-x-12">
+    <div
+      class="mx-auto max-w-7xl skew-x-12 py-100 transform -skew-y-10 -translate-y-120 w-full"
+    >
       <div
         class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
       >
@@ -30,13 +32,13 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="bg-black">
-    <img
-      src="@/assets/sammy.jpg"
-      alt="screenshot"
-      class="w-[28rem] sm:w-[50rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 2xl:w-[70rem] md:-ml-4 lg:-ml-0"
-    />
+    <div class="bg-black w-full">
+      <img
+        src="@/assets/sammy.jpg"
+        alt="screenshot"
+        class="w-[28rem] ml-100 sm:w-[50rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 2xl:w-[70rem] md:-ml-4 lg:-ml-0"
+      />
+    </div>
   </div>
 </template>
 
