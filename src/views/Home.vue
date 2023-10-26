@@ -44,55 +44,32 @@ import { useUserStore } from "@/stores/user";
 
 const store = useUserStore();
 // token starts as string, make the unstringify the string then use the object
-const parseCookie = (str) =>
-   str
-     .split(';')
-     .map((v) => v.split('='))
-     .reduce((acc, v) => {
-       acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[0].trim());
-       return acc;
-}, {});
 
-function betterParseCookie(str) {
- let pairs = str.split(";");
- let splitPairs = pairs.map((cookie) => cookie.split("="));
- const cookieObj = splitPairs.reduce((obj, cookie) => {
-   obj[decodeURIComponent(cookie[0].trim())] 
-   = decodeURIComponent(cookie[0].trim());
-   return obj
- }, {})
- return cookieObj
-} ;
-
-function parseCookieIII(str){
- let minusJ = str.split('{')[1]
- let minusEnd = minusJ.split('}')[0]
- let pairs = minusEnd.split(',')
- let splitPairs = pairs.map((element) => element.split(':'));
- console.log(splitPairs)
- //let quotesless = splitPairs.map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
- const cookieOBJ = splitPairs.reduce((obj, cookie) => {
+function parseGoogleCookie(str){
+ let cookieOBJ = str.split('{')[1]
+ .split('}')[0]
+ .split(',')
+ .map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
+ .map((element) => element.split(':'))
+ .reduce((obj, cookie) => {
    obj[decodeURIComponent(cookie[0].trim())] 
    = decodeURIComponent(cookie[1].trim());
    return obj
  }, {})
  return cookieOBJ
 } ; 
-//str.replace(/"([^"]+(?="))"/g, '$1')
+
 function getCookie(name: string) {
   const value: any = `; ${document.cookie}`;
   const parts: any = value.split(`; ${name}=`);
   const cookieString: any = parts.pop().split(";").shift();
   if (parts.length === 2) console.log(cookieString);
-  console.log(cookieString);
-  let decodedString = decodeURIComponent(cookieString)
-  let parsedString = parseCookieIII(decodedString)
-  console.log(parsedString)
+  let parsedString = parseGoogleCookie(decodeURIComponent(cookieString))
   return parsedString
 }
 
 onMounted(() => {
   let userCookie = getCookie("user_data");
-  //console.log(userCookie)
+  console.log(userCookie)
 }); 
 </script>
