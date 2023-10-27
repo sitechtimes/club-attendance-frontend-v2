@@ -5,7 +5,16 @@ import router from '../router/index'
 
 export const useUserStore = defineStore('user', {
     state: () => ({
-        user:'',
+        user: ref(
+          {uid: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          picture: '',
+          role: '',
+          isAuthenticated: '',
+          }
+        ),
         clubs: null,      
       }),
 

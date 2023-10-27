@@ -25,6 +25,7 @@
             <Login class="" />
             <Calender />
           </div>
+          <div></div>
         </div>
         <img
           src="@/assets/sammy.jpg"
@@ -42,7 +43,7 @@ import Calender from "@/components/Calender.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/user";
 
-const store = useUserStore();
+
 // token starts as string, make the unstringify the string then use the object
 
 function parseGoogleCookie(str){
@@ -64,12 +65,26 @@ function getCookie(name: string) {
   const parts: any = value.split(`; ${name}=`);
   const cookieString: any = parts.pop().split(";").shift();
   if (parts.length === 2) console.log(cookieString);
+  console.log(decodeURIComponent(cookieString))
   let parsedString = parseGoogleCookie(decodeURIComponent(cookieString))
   return parsedString
 }
 
+let loggedIn = false
+
 onMounted(() => {
+  const store = useUserStore();
+  console.log(document.cookie)
+  if (!document.cookie){
+  console.log(
+    "no user data"
+  )
+  } else {
   let userCookie = getCookie("user_data");
   console.log(userCookie)
+  store.user = userCookie
+  console.log(store.user)
+  }
+
 }); 
 </script>
