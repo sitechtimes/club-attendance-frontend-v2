@@ -37,10 +37,6 @@ let query = ref()
 const userStore = useUserStore();
 const router = useRouter();
 
-function pushToClub() {
-  router.push({ path: "/information" });
-}
-
 const onInput = function(){
   if (query.value == ''){
     userStore.getData()
