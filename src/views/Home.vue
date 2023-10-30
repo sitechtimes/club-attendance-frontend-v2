@@ -47,6 +47,7 @@ import { useUserStore } from "@/stores/user";
 // token starts as string, make the unstringify the string then use the object
 
 function parseGoogleCookie(str){
+  console.log(str)
  let cookieOBJ = str.split('{')[1]
  .split('}')[0]
  .split(',')
@@ -74,9 +75,8 @@ onMounted(() => {
   let loggedIn = false
   const store = useUserStore();
   if (!document.cookie){
-  console.log(
-    "no user data"
-  )
+  console.log("no user data")
+  console.log(store.user)
   } else {
   let userCookie = getCookie("user_data");
   store.user = userCookie
