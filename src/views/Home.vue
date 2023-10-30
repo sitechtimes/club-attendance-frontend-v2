@@ -65,26 +65,24 @@ function getCookie(name: string) {
   const parts: any = value.split(`; ${name}=`);
   const cookieString: any = parts.pop().split(";").shift();
   if (parts.length === 2) console.log(cookieString);
-  console.log(decodeURIComponent(cookieString))
   let parsedString = parseGoogleCookie(decodeURIComponent(cookieString))
   return parsedString
 }
 
-let loggedIn = false
 
 onMounted(() => {
+  let loggedIn = false
   const store = useUserStore();
-  console.log(document.cookie)
   if (!document.cookie){
   console.log(
     "no user data"
   )
   } else {
   let userCookie = getCookie("user_data");
-  console.log(userCookie)
   store.user = userCookie
   console.log(store.user)
+  loggedIn = true
+  return loggedIn
   }
-
 }); 
 </script>
