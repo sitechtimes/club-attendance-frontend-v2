@@ -36,7 +36,7 @@
             <div
               class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
             >
-              <div class=" px-4 pb-4 pt-5 bg-gray sm:p-6 sm:pb-4">
+              <div class=" px-4 pb-4 pt-5 bg-[#c2b669] sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <h3
