@@ -160,7 +160,6 @@ import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { ref } from "vue";
 import QrCode from "@/components/ClubComponents/QrCode.vue";
 import ChangeDate from "@/components/ChangeDate.vue";
-import { onMounted } from "vue";
 import { useClubStore } from "@/stores/club";
 
 const clubStore = useClubStore();
