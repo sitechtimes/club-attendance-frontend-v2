@@ -1,5 +1,5 @@
 <template>
-<div 
+<div
 class="bg-black 
 flex 
 w-screen h-screen flex-col justify-end items-center">
@@ -19,4 +19,9 @@ viewBox="0 0 1200 360" fill="none">
 <script setup lang="ts">
 </script>
 <style>
+@keyframes flight{
+ 10% {
+    transform: translate3d(0, 10px, 0);
+ }
+}
 </style>
