@@ -3,6 +3,26 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import router from "../router/index";
 
+export const usePresidentStore = defineStore("president", {
+  state: () => ({
+    selectedClub: "",
+    year: "",
+    nextMeeting: "",
+  }),
+  actions: {
+    async changeNextMeet(selectedClubJSON: object) {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/addClubMeeting`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: selectedClubJSON
+      })
+      console.log(response, 'this is response from the change next meet')
+    }
+  }
+})
+
 export const useUserStore = defineStore("user", {
   state: () => ({
     user: "",
@@ -20,7 +40,7 @@ export const useUserStore = defineStore("user", {
         });
     },
     async getData() {
-      const response = await fetch('http://localhost:3000/getAllClubData', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData`, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",

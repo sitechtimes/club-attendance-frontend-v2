@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import SearchBar from "@/components/Reusables/SearchBar.vue";
 import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { split } from "postcss/lib/list";
@@ -99,3 +99,4 @@ onMounted(()=>{
   userStore.getData();
 })
 </script>
+@/stores/users

@@ -19,3 +19,4 @@ async function logIn() {
   console.log(cookies)
 }
 </script>
+@/stores/users

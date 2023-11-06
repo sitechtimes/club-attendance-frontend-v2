@@ -44,7 +44,7 @@
 import Login from "@/components/HomeComponents/Login.vue";
 import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/stores/users";
 // import * as THREE from "three";
 // import BIRDS from vanta.birds.min.js
 // import {onBeforeUnmount, onMounted } from "vue";
@@ -86,3 +86,4 @@ onMounted(() => {
   console.log(userCookie)
 });
 </script>
+@/stores/users

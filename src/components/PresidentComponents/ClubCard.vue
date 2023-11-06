@@ -2,7 +2,10 @@
   <div class="flex flex-col">
     <div
       class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
-      @click="open = true"
+      @click="function openCard() {
+        setVariables(name)
+        open = true
+      }"
     >
       <img
         src="@/assets/coding.jpeg"
@@ -160,18 +163,26 @@ import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { ref } from "vue";
 import QrCode from "@/components/ClubComponents/QrCode.vue";
 import ChangeDate from "@/components/ChangeDate.vue";
-import { useClubStore } from "@/stores/club";
+import { usePresidentStore } from "@/stores/users";
 
-const clubStore = useClubStore();
-const nextMeeting = clubStore.nextMeeting;
+
+const presidentStore = usePresidentStore();
+const nextMeeting = presidentStore.nextMeeting;
 const props = defineProps({
   name: String,
   nextMeeting: String,
 });
 console.log(nextMeeting);
-const open = ref(false);
+let open = ref(false);
 const qrCode = ref(false);
 const changeDate = ref(false);
+
+function setVariables(name: string) {
+  presidentStore.selectedClub = name
+  const year =  new Date().getFullYear() - 1 + '-' + new Date().getFullYear() 
+  presidentStore.year = year
+}
+
 </script>
 
 <style scoped>

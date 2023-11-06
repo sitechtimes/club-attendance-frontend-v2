@@ -17,7 +17,7 @@ class="p-4 text-[#c2b669] shadow-xl cursor-pointer rounded-md hover:scale-110 ea
 
 <script setup lang="ts">
 import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/stores/users";
 //import { useClubStore } from "@/stores/club";
 const userStore = useUserStore();
 //const clubStore = useClubStore();
@@ -28,4 +28,4 @@ present.value = true
 onMounted(()=>{
 //clubStore.getData();
 })
-</script>
+</script>@/stores/users

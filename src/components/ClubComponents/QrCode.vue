@@ -20,4 +20,4 @@ function test(){
     return `${import.meta.env.VITE_BACKEND_URL}/oauth2`
 }
 
-</script>
+</script>@/stores/users
