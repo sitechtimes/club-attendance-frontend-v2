@@ -4,7 +4,8 @@ class="
 bg-black 
 flex 
 w-screen h-screen flex-col justify-end items-center">
-<div>
+<div
+class="arrow-up">
 
 </div>
 <img
@@ -16,11 +17,12 @@ w-204px h-87px"
 />
 <svg xmlns="http://www.w3.org/2000/svg" 
 class="
-
+trail
 w-1200px h-360px"
-viewBox="0 0 1200 360" fill="none">
-<path d="M600 360H1200L600 0L0 360H600Z" fill="#C2B669"/>
+viewBox="0 0 1200 483" fill="none">
+<path d="M600 483H922.5H1094.5H1200V360L600 0L0 360V483H289H600Z" fill="#C2B669"/>
 </svg>
+
 </div>
 
 </template>
@@ -29,20 +31,36 @@ viewBox="0 0 1200 360" fill="none">
 <style>
 .trail{
  animation-name: expand;
- animation-duration: 2s;
- animation-iteration-count: infinite;
+ animation-duration: 5s;
+ animation-iteration-count: 1;
+}
+.background{
+  animation-name: colorChange;
+  animation-duration: 10s;
+  animation-iteration-count: 1;
+}
+@keyframes colorChange{
+  0%{
+    background-color: black;
+  }
+  50%{
+    background-color: #C2B669;
+  }
+  100%{
+    background-color: black;
+  }
 }
 @keyframes expand{
- 50% {
-    transform: translate3D(0, 100px, 0);
+ 50%{
+  background: black;
+  transform: translate3d(0, -40rem, 0)
  }
 }
 .arrow-up {
   width: 0; 
   height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  
-  border-bottom: 5px solid black;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 50px solid white;
 }
 </style>
