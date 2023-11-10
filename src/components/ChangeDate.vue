@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { usePresidentStore } from "../stores/users";
+import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 
 // console.log(nextMeeting.value);
 const dateInput = ref("");
@@ -22,13 +23,27 @@ const presidentStore = usePresidentStore()
 
 function changeDate() {
   const inputtedDate = dateInput.value
-  console.log(inputtedDate)
+  const inputArr = inputtedDate.split('-')
+  const yearInput:number = Number(inputArr[0])
+  const monthInput:number = Number(inputArr[1])
+  const dayInput:number = Number(inputArr[2])
+  
   const yearToday = new Date().getFullYear()
   const monthToday = new Date().getMonth() + 1
   const dayToday = new Date().getDate()
-  const today = yearToday + '-' + monthToday + '-' + dayToday
-  console.log(today, 'today')
-  console.log(presidentStore.selectedClub, presidentStore.year)
+
+  const nextMeeting = dayToday + monthToday
+  try {
+    if(yearInput >= yearToday && monthInput >= monthToday && dayInput >= dayToday){
+      console.log("allowed")
+    } else {
+      console.log("please put in a valid date")
+    }
+  } catch(error) {
+    console.log(error)
+  }
+
+  // console.log(presidentStore.selectedClub, presidentStore.year)
 }
 // clubStore.ChangeData();
 // const handleSubmit = () => {
