@@ -30,26 +30,12 @@ import { useRoute, useRouter } from 'vue-router'
 const clubStore = useClubStore()
 const route = useRoute()
 
-async function getData(clubName:string|undefined, year: string ) {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getClubData/${clubName}/${year}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    },
-  })
-  const club = await response.json()
-  console.log(club)
-  clubStore.clubName = club.clubName
-  clubStore.clubAdvisor = club.clubAdivsor
-  clubStore.clubPresident = club.clubPresident
-  clubStore.room = club.room
-} 
 
 onMounted(() => {
   const queryVal = route.query.name
   const queryStr:string|undefined = queryVal?.toString()
   const year = "2023-2024"
-  getData(queryStr, year)
+  clubStore.getData(queryStr, year)
 
 });
 
