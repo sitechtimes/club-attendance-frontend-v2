@@ -14,8 +14,8 @@ w-204px h-auto"
 />
 <svg xmlns="http://www.w3.org/2000/svg" 
 class="
-w-1200 
-h-360
+w-100% 
+h-100%
 "
 viewBox="0 0 1200 360" fill="none">
 <path d="M600 483H922.5H1094.5H1200V360L600 0L0 360V483H289H600Z" fill="#C2B669"/>
@@ -28,6 +28,11 @@ viewBox="0 0 1200 360" fill="none">
       repeatCount="1" 
 />
 </svg>
+
+<svg height="100%" width="100%">
+	<polygon points="250,60 100,400 400,400" fill="#C2B669" class="" />
+</svg>
+
 
 </div>
 
@@ -63,7 +68,7 @@ viewBox="0 0 1200 360" fill="none">
 }
 @keyframes expand{
  100%{
-  transform: translate(0px, -360px)
+  transform: translate(0px, -100vh)
  }
 }
 .arrow-up {
