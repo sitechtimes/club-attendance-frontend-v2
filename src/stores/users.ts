@@ -10,7 +10,7 @@ export const usePresidentStore = defineStore("president", {
     nextMeeting: "",
   }),
   actions: {
-    async changeNextMeet(selectedClubJSON: any) {
+    async changeNextMeet(selectedClubJSON: object) {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/addClubMeeting`, {
         method: "POST",
         headers: {

@@ -179,7 +179,9 @@ const changeDate = ref(false);
 
 function setVariables(name: string) {
   presidentStore.selectedClub = name
-  const year =  new Date().getFullYear() - 1 + '-' + new Date().getFullYear() 
+  const thisYear =  new Date().getFullYear() 
+  const nextYear = new Date().getFullYear() + 1
+  const year = thisYear + '-' + nextYear
   presidentStore.year = year
 }
 
