@@ -35,10 +35,8 @@ function changeDate() {
   const nextMeeting:string = monthInput + '/' + dayInput + '/' + yearInput
   try {
     if(yearInput >= yearToday && monthInput >= monthToday && dayInput >= dayToday){
-      const bingbing = `{"year": "${presidentStore.year}", "clubName": "${presidentStore.selectedClub}", "nextMeeting": "${nextMeeting}"}`
-      console.log(JSON.parse(bingbing))
-      presidentStore.changeNextMeet(JSON.parse(bingbing))
-      console.log("allowed")
+      const bingbing = `{"year": "${presidentStore.year}", "clubName": "Anime Club", "nextMeeting": "${nextMeeting}"}`
+      presidentStore.changeNextMeet(bingbing)
     } else {
       console.log("please put in a valid date")
     }
