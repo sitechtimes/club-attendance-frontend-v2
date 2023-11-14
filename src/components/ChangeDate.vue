@@ -1,6 +1,7 @@
 <template>
   <div>
     <vue-changedate>
+      <div v-if="!valid">Please enter a valid date</div>
       <input class="border rounded-md" type="date" placeholder="M" v-model="dateInput" />
       <button
         class="w-full my-1 justify-center rounded-md px-3 bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:ml-14 sm:w-auto"
@@ -20,6 +21,7 @@ import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 // console.log(nextMeeting.value);
 const dateInput = ref("");
 const presidentStore = usePresidentStore()
+let valid = true
 
 function changeDate() {
   const inputtedDate = dateInput.value
@@ -39,6 +41,7 @@ function changeDate() {
       presidentStore.changeNextMeet(bingbing)
     } else {
       console.log("please put in a valid date")
+      let valid = false
     }
   } catch(error) {
     console.log(error)
