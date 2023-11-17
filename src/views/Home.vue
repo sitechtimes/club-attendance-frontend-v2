@@ -1,7 +1,10 @@
 <template>
-  <div
-    class="overflow-hidden bg-white pt-20 lg:pt-24 bg-yellow -rotate-12 pl-8"
-  >
+  <img
+    src="@/assets/logo.png"
+    alt="screenshot"
+    class="w-[10rem] xl:w-[15rem]"
+  />
+  <div class="overflow-hidden bg-white pt-20 lg:pt-24 -rotate-12 pl-8">
     <div class="mx-auto max-w-7xl skew-x-12 transform">
       <div
         class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
