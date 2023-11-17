@@ -6,14 +6,15 @@ bg-black
 flex 
 w-screen h-screen flex-col justify-end items-center overflow-hidden">
 <img src="@/assets/LoadingSeagull.png" alt="Seagull"
-class="seagull
+class="
+seagull
 w-[150px] h-auto"
 />
 <img src="@/assets/SeagullTrail.png" alt="Trail behind seagull"
 class="
 seagull
-h-1/2
-w-full
+h-1/4
+w-screen
 ">
 <div class="
 trail
@@ -31,7 +32,7 @@ h-[1vh]
 <style>
 .seagull{
  animation-name: move;
- animation-duration: 6s;
+ animation-duration: 5s;
  animation-iteration-count: 1;
 }
 .background{
@@ -41,7 +42,7 @@ h-[1vh]
 }
 .trail{
   animation-name: expand;
-  animation-duration: 6s;
+  animation-duration: 5s;
   animation-iteration-count: 1;
 }
 @keyframes colorChange{
@@ -62,12 +63,19 @@ h-[1vh]
 }
 @keyframes expand{
 100%{
-  transform: scale(210);
+  transform: scale(200);
 }
 }
 @keyframes move{
  100%{
   transform: translate(0px, -100vh)
  }
+}
+@keyframes seagullMove{
+  50%{
+    transform: translate(0px, -100vh);
+    visibility: hidden;
+  }
+  
 }
 </style>
