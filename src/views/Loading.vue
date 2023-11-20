@@ -15,6 +15,7 @@ class="
 seagull
 h-1/4
 w-screen
+-mb-[0.02%]
 ">
 <div class="
 trail
@@ -31,19 +32,19 @@ h-[1vh]
 
 <style>
 .seagull{
- animation-name: move;
- animation-duration: 5s;
- animation-iteration-count: 1;
+ animation-name: seagullMove;
+ animation-duration: 10s;
+ animation-iteration-count: infinite;
 }
 .background{
   animation-name: colorChange;
   animation-duration: 10s;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
 }
 .trail{
   animation-name: expand;
-  animation-duration: 5s;
-  animation-iteration-count: 1;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
 }
 @keyframes colorChange{
   0%{
@@ -62,20 +63,28 @@ h-[1vh]
   }
 }
 @keyframes expand{
-100%{
-  transform: scale(200);
+0%{
+  visibility: visible;
 }
+50%{
+  transform: scale(202);
+  visibility: hidden;
 }
-@keyframes move{
- 100%{
-  transform: translate(0px, -100vh)
- }
+75%{
+  transform: translate(0px, 100vh);
+}
 }
 @keyframes seagullMove{
+  0%{
+    visibility: visible;
+  }
   50%{
     transform: translate(0px, -100vh);
     visibility: hidden;
   }
-  
+  75%{
+    transform: translate(0px, 100vh);
+    visibility: hidden;
+  }
 }
 </style>
