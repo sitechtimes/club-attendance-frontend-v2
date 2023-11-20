@@ -15,14 +15,10 @@ class="
 seagull
 h-1/4
 w-screen
--mb-[0.02%]
+-mb-[0.5%]
 ">
-<div class="
-trail
-bg-[#C2B669]
-w-screen
-h-[1vh]
-">
+
+<div class="arrow-up">
 </div>
 </div>
 </template>
@@ -34,17 +30,17 @@ h-[1vh]
 .seagull{
  animation-name: seagullMove;
  animation-duration: 10s;
- animation-iteration-count: infinite;
+ animation-iteration-count: 1;
 }
 .background{
   animation-name: colorChange;
   animation-duration: 10s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 .trail{
   animation-name: expand;
   animation-duration: 10s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 @keyframes colorChange{
   0%{
@@ -87,4 +83,12 @@ h-[1vh]
     visibility: hidden;
   }
 }
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 50rem solid transparent;
+  border-right: 50rem solid transparent;
+  border-bottom: 1vh solid white;
+}
+
 </style>
