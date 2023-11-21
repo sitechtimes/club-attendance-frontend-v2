@@ -52,7 +52,6 @@ h-[1vh]
     background-color: black;
   }
   50%{
-    
     background-color: #C2B669;
   }
   70%{
@@ -71,7 +70,7 @@ h-[1vh]
   visibility: hidden;
 }
 75%{
-  transform: translate(0px, 100vh);
+  transform: translate(0, 100vh);
 }
 }
 @keyframes seagullMove{
@@ -79,11 +78,11 @@ h-[1vh]
     visibility: visible;
   }
   50%{
-    transform: translate(0px, -100vh);
+    transform: translate(0, -100vh);
     visibility: hidden;
   }
   75%{
-    transform: translate(0px, 100vh);
+    transform: translate(0, 100vh);
     visibility: hidden;
   }
 }
