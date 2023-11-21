@@ -51,7 +51,7 @@ h-[1vh]
     animation-timing-function: steps(1, end);
     background-color: black;
   }
-  50%{
+  60%{
     background-color: #C2B669;
   }
   70%{
@@ -65,7 +65,7 @@ h-[1vh]
 0%{
   visibility: visible;
 }
-50%{
+60%{
   transform: scale(202);
   visibility: hidden;
 }
@@ -77,7 +77,7 @@ h-[1vh]
   0%{
     visibility: visible;
   }
-  50%{
+  60%{
     transform: translate(0, -100vh);
     visibility: hidden;
   }
