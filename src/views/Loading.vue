@@ -15,7 +15,7 @@ class="
 seagull
 h-1/4
 w-screen
--mb-[0.02%]
+-mb-[0.2%]
 ">
 <div class="
 trail
