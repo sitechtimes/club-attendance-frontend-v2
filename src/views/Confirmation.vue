@@ -28,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+//anyone can see
 import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
 import { useUserStore } from "@/stores/users";
 //import { useClubStore } from "@/stores/club";

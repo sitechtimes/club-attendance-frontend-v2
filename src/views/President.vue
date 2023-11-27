@@ -15,5 +15,6 @@
 </template>
 
 <script setup lang="ts">
+//only president+admin can see
     import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
 </script>

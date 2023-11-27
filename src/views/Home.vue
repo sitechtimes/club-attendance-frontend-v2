@@ -42,6 +42,7 @@
 </template>
 
 <script setup lang="ts">
+//anyone can see
 import Login from "@/components/HomeComponents/Login.vue";
 import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";

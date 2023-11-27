@@ -28,6 +28,7 @@ h-[1vh]
 </template>
 
 <script setup lang="ts">
+//anyone can see
 </script>
 
 <style>

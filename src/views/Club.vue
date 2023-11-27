@@ -21,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+//admin only 
 // import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
 import { onMounted } from "vue";

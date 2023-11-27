@@ -26,6 +26,7 @@
 </template>
 
 <script setup lang="ts">
+//admin only
 import SearchBar from "@/components/Reusables/SearchBar.vue";
 import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
 import { useUserStore } from "@/stores/users";
