@@ -15,5 +15,12 @@
 </template>
 
 <script setup lang="ts">
-    import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
+  import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
+  import { onMounted } from 'vue'
+  import { useUserStore } from '@/stores/users'
+
+  const userStore = useUserStore()
+onMounted(() => {
+  console.log(userStore.userAuthority, "userAuthority")
+})
 </script>

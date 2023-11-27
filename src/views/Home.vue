@@ -60,6 +60,8 @@ import { useUserStore } from "@/stores/users";
 //        return acc;
 // }, {});
 
+const userStore = useUserStore()
+
 function betterParseCookie(str) {
  let pairs = str.split(";");
  let splitPairs = pairs.map((cookie) => cookie.split("="));
@@ -84,14 +86,7 @@ onMounted(() => {
   let userCookie = getCookie("user_data");
   let arrUserCookie = JSON.parse(Object.keys(userCookie).toString().replace('j:', ''))
   let userRole = arrUserCookie.role
-  console.log(userRole)
-  if(userRole === "Club President") {
-    console.log("usepresidentdstore")
-  } else {
-    const userStore = useUserStore()
-    console.log(userStore.userAuthority)
-    console.log("1")
-  }
+  userStore.userAuthority = userRole
 });
 </script>
 @/stores/users

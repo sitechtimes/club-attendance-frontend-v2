@@ -60,5 +60,8 @@ export const useUserStore = defineStore("user", {
       console.log(this.clubs)
     }
   },
+  persist: {
+    storage: sessionStorage
+  }
 },
 );
