@@ -76,14 +76,22 @@ function getCookie(name: string) {
    const parts: any = value.split(`; ${name}=`);
    const cookieString: any = parts.pop().split(";").shift();
    if (parts.length === 2) console.log(cookieString);
-   console.log(cookieString);
   const parsedString = betterParseCookie(cookieString);
   return parsedString
 }
 
 onMounted(() => {
   let userCookie = getCookie("user_data");
-  console.log(userCookie)
+  let arrUserCookie = JSON.parse(Object.keys(userCookie).toString().replace('j:', ''))
+  let userRole = arrUserCookie.role
+  console.log(userRole)
+  if(userRole === "Club President") {
+    console.log("usepresidentdstore")
+  } else {
+    const userStore = useUserStore()
+    console.log(userStore.userAuthority)
+    console.log("1")
+  }
 });
 </script>
 @/stores/users

@@ -1,7 +1,10 @@
-import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import router from "../router/index";
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 export const usePresidentStore = defineStore("president", {
   state: () => ({
@@ -20,12 +23,16 @@ export const usePresidentStore = defineStore("president", {
       })
       console.log(response, 'this is response from the change next meet')
     }
+  },
+  persist: {
+    storage: sessionStorage
   }
 })
 
 export const useUserStore = defineStore("user", {
   state: () => ({
     user: "",
+    userAuthority: "",
     clubs: null,
   }),
   actions: {
@@ -35,7 +42,6 @@ export const useUserStore = defineStore("user", {
           headers: {},
         })
         .then((res: { data: { redirectUri: string } }) => {
-          console.log(res);
           window.location.href = res.data.redirectUri;
         });
     },
