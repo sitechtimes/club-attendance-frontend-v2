@@ -26,8 +26,8 @@ const router = createRouter({
     },
     {
       path: '/club',
-      name: 'information',
-      component: () => import('../views/Information.vue'),
+      name: 'club',
+      component: () => import('../views/Club.vue'),
       meta: {
         requireClub: true
       }

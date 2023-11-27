@@ -5,7 +5,7 @@
       <SearchBar v-model="query" @input="onInput"></SearchBar>
     </div>
     <div class="w-full h-auto justify-center flex flex-col items-center" >
-      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs">
+      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
         <div
           class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
         >
@@ -26,9 +26,10 @@
 </template>
 
 <script setup lang="ts">
-import SearchBar from "@/components/SearchBar.vue";
+import SearchBar from "@/components/Reusables/SearchBar.vue";
 import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/stores/users";
+import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { split } from "postcss/lib/list";
 import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
@@ -36,6 +37,21 @@ import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 let query = ref()
 const userStore = useUserStore();
 const router = useRouter();
+// function pushToClub() {
+//   router.push({ path: "/information" });
+// }
+
+function pushToInfo(clubName: string) {
+  clubStore.clubName = clubName  
+  const clubJSON = JSON.stringify(clubName)
+  console.log(clubStore.clubName, "this is the club Name")
+  console.log(clubJSON, 'this is the club JSON')
+  
+  function routePush() {
+    router.push(`/club/?name=${clubStore.clubName}`)
+  }
+  setTimeout(routePush, 1000)
+}
 
 const onInput = function(){
   if (query.value == ''){
@@ -82,3 +98,4 @@ onMounted(()=>{
   userStore.getData();
 })
 </script>
+@/stores/users

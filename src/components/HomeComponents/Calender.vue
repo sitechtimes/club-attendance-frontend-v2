@@ -1,11 +1,17 @@
 <template>
   <div class="flex justify-center items-center">
     <div
-      v-if="open == false && close == false" class="box" @click="open = !open">
+      v-if="open == false && close == false"
+      class="box"
+      @click="open = !open"
+    >
       <CalendarDaysIcon />
     </div>
     <div
-      v-else-if="open == true && close == false" class="box-open flex" @click="closeCalender">
+      v-else-if="open == true && close == false"
+      class="box-open flex"
+      @click="closeCalender"
+    >
       <CalendarDaysIcon class="h-[3.75rem]" />
       <img src="@/assets/calender.png" alt="placeholder" />
     </div>

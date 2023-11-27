@@ -5,4 +5,7 @@
   />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps(['modelValue'])
+defineEmits(['update:modelValue'])
+</script>
