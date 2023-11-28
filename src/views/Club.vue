@@ -36,7 +36,6 @@ onMounted(() => {
   const queryStr:string|undefined = queryVal?.toString()
   const year = "2023-2024"
   clubStore.getData(queryStr, year)
-
 });
 
 defineProps({

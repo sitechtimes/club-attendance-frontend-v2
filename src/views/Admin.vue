@@ -45,8 +45,6 @@ const router = useRouter();
 function pushToInfo(clubName: string) {
   clubStore.clubName = clubName  
   const clubJSON = JSON.stringify(clubName)
-  console.log(clubStore.clubName, "this is the club Name")
-  console.log(clubJSON, 'this is the club JSON')
   
   function routePush() {
     router.push(`/club/?name=${clubStore.clubName}`)
@@ -74,23 +72,16 @@ const searchFilter = function(club: object, query: any){
  let i = 0
  let result = false
  splitQuery.forEach((character: any) => {
-  console.log(character)
-  console.log(splitQuery.length)
-  console.log(splitClubName[i])
   if(i == (splitQuery.length - 1) && character.toLowerCase() == splitClubName[i].toLowerCase()){
-    console.log("true")
     result = true    
   }
   else if(character.toLowerCase() != splitClubName[i].toLowerCase()){
-    console.log("false")
     result = false
   }
   else if( character.toLowerCase() == splitClubName[i].toLowerCase()){
-    console.log("loop")
     i++
   }
  });
- console.log(result)
  return result
 }
 
