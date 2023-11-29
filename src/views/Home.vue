@@ -1,9 +1,9 @@
 <template>
   <div 
-  class="w-screen h-screen overflow-hidden">
+  class="w-screen h-screen overflow-hidden flex">
     <div
-    class="py-80 pt-20 lg:pt-24 bg-[#c2b669] 
-    w-[150vw] h-[2vh] origin-bottom -rotate-12 -ms-[20vw]
+    class="bg-[#c2b669] 
+    w-[150vw] h-[50vh] origin-bottom -rotate-[30deg] -ms-[20vw]
     overflow-hidden"
     >
     <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
@@ -11,8 +11,8 @@
         class="mx-auto grid max-w-2xl grid-cols-1 
         gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
       >
-        <div class="lg:pr-8 lg:pt-4 rotate-12 ">
-          <div class="lg:max-w-lg">
+        <div class="lg:pr-8 lg:pt-4 rotate-[30deg]">
+          <div class="lg:max-w-lg ">
             <h2 class="text-base font-semibold leading-7 text-black">
               Attendance, made faster
             </h2>
@@ -44,8 +44,8 @@
       </div>
     </div>
   </div>
-  <div class="py-80 pt-20 lg:pt-24 bg-black 
-    w-[150vw] h-[5vh] -rotate-12 -ms-[20vw]
+  <div class="bg-black 
+    w-[160vw] h-[100vh] -rotate-[30deg] -ms-[20vw]
     overflow-hidden">
   </div>
   </div>
