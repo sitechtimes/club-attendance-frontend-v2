@@ -3,7 +3,7 @@
   class="w-screen h-screen overflow-hidden">
     <div
     class="py-80 pt-20 lg:pt-24 bg-[#c2b669] 
-    w-[150vw] h-[2vh] -rotate-12 -ms-[20vw]
+    w-[150vw] h-[2vh] origin-bottom -rotate-12 -ms-[20vw]
     overflow-hidden"
     >
     <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
@@ -30,14 +30,14 @@
           </div>
           <div class="flex flex-col mt-8">
             <Login class="" />
-            <img
+            <!-- <img
              src="@/assets/sammy.jpg"
              alt="Sammy the Seagull"
              class="rounded-xl shadow-xl
               ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 
               2xl:w-[70rem] md:-ml-4 lg:-ml-0 h-[1vh]"
-             />
-            <Calender />
+             /> -->
+            <!-- <Calender /> -->
           </div>
           <div></div>
         </div>
@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="py-80 pt-20 lg:pt-24 bg-black 
-    w-[150vw] h-[2vh] -rotate-12 -ms-[20vw]
+    w-[150vw] h-[5vh] -rotate-12 -ms-[20vw]
     overflow-hidden">
   </div>
   </div>
