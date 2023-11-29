@@ -21,6 +21,7 @@
 
   const userStore = useUserStore()
 onMounted(() => {
+  const userStore = useUserStore()
   console.log(userStore.userAuthority, "userAuthority")
 })
 </script>

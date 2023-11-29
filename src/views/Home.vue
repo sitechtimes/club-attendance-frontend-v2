@@ -45,6 +45,7 @@ import Login from "@/components/HomeComponents/Login.vue";
 import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
+import { useRouter } from 'vue-router'
 // import * as THREE from "three";
 // import BIRDS from vanta.birds.min.js
 // import {onBeforeUnmount, onMounted } from "vue";
@@ -61,7 +62,11 @@ import { useUserStore } from "@/stores/users";
 // }, {});
 
 const userStore = useUserStore()
-
+const router = useRouter()
+function routePush(route: string) {
+    router.push(`${route}`)
+  }
+  
 function betterParseCookie(str) {
  let pairs = str.split(";");
  let splitPairs = pairs.map((cookie) => cookie.split("="));
@@ -87,6 +92,16 @@ onMounted(() => {
   let arrUserCookie = JSON.parse(Object.keys(userCookie).toString().replace('j:', ''))
   let userRole = arrUserCookie.role
   userStore.userAuthority = userRole
+  if (userRole === "admin") {
+    console.log("user is admin")
+  } else if (userRole === "Club President") {
+    console.log("user is president")
+
+  } else if ( userRole === "user" ) {
+    console.log("user is reg")
+  } else {
+    console.log("user is not authorized")
+  }
 });
 </script>
 @/stores/users
