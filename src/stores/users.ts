@@ -24,14 +24,13 @@ export const usePresidentStore = defineStore("president", {
       console.log(response, 'this is response from the change next meet')
     }
   },
-  persist: {
-    storage: sessionStorage
-  }
+  persist: false
 })
 
 export const useUserStore = defineStore("user", {
   state: () => ({
     user: "",
+    uid: Number,
     userAuthority: "",
     clubs: null,
   }),
@@ -60,8 +59,6 @@ export const useUserStore = defineStore("user", {
       console.log(this.clubs)
     }
   },
-  persist: {
-    storage: sessionStorage
-  }
+  persist: false
 },
 );

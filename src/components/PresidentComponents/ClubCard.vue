@@ -172,7 +172,6 @@ const props = defineProps({
   name: String,
   nextMeeting: String,
 });
-console.log(nextMeeting);
 let open = ref(false);
 const qrCode = ref(false);
 const changeDate = ref(false);

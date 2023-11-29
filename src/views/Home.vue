@@ -91,12 +91,13 @@ onMounted(() => {
   let userCookie = getCookie("user_data");
   let arrUserCookie = JSON.parse(Object.keys(userCookie).toString().replace('j:', ''))
   let userRole = arrUserCookie.role
+  let userUid = arrUserCookie.uid
+  userStore.uid = userUid
   userStore.userAuthority = userRole
   if (userRole === "admin") {
-    console.log("user is admin")
+    routePush("admin")
   } else if (userRole === "Club President") {
-    console.log("user is president")
-
+    routePush("President")
   } else if ( userRole === "user" ) {
     console.log("user is reg")
   } else {
