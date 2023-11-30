@@ -1,10 +1,11 @@
 <template>
   <div 
-  class="w-screen h-screen overflow-hidden flex">
+  class="w-screen h-screen overflow-hidden">
     <div
     class="bg-[#c2b669] 
-    w-[150vw] h-[50vh] origin-bottom -rotate-[30deg] -ms-[20vw]
-    overflow-hidden"
+    w-[2042px] h-[60vh] origin-bottom -rotate-[30deg] -ms-[20vw]
+    overflow-hidden shrink-0
+   mb-[7.17px] mr-[220px] -ml-[220px]"
     >
     <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
       <div
@@ -45,8 +46,9 @@
     </div>
   </div>
   <div class="bg-black 
-    w-[160vw] h-[100vh] -rotate-[30deg] -ms-[20vw]
-    overflow-hidden">
+    w-[calc(100vw+100vh)] h-[70vh] -rotate-[30deg]
+    overflow-hidden shrink-0 
+    -ml-[306px] -mr-[52px] -mt-[193px] -mb-[624px]">
   </div>
   </div>
 </template>
