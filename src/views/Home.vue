@@ -1,18 +1,21 @@
 <template>
   <div 
   class="w-screen h-screen overflow-hidden">
+   <img src="@/assets/SeagullCalendar.png" 
+   alt="A seagull sitting on top of a calendar" 
+   class="w-[240px] mt-[30px] ml-[30px]"
+   >
     <div
     class="bg-[#c2b669] 
-    w-[2042px] h-[60vh] origin-bottom -rotate-[30deg] -ms-[20vw]
-    overflow-hidden shrink-0
-   mb-[7.17px] mr-[220px] -ml-[220px]"
+    w-[150rem] h-[70vh] origin-bottom -rotate-[30deg]
+    overflow-hidden shrink-0 -ml-[35vw] -mt-[20vh]"
     >
     <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
       <div
         class="mx-auto grid max-w-2xl grid-cols-1 
         gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
       >
-        <div class="lg:pr-8 lg:pt-4 rotate-[30deg]">
+        <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[15vw] mt-[5vh]">
           <div class="lg:max-w-lg ">
             <h2 class="text-base font-semibold leading-7 text-black">
               Attendance, made faster
@@ -46,9 +49,9 @@
     </div>
   </div>
   <div class="bg-black 
-    w-[calc(100vw+100vh)] h-[70vh] -rotate-[30deg]
-    overflow-hidden shrink-0 
-    -ml-[306px] -mr-[52px] -mt-[193px] -mb-[624px]">
+    w-[200rem] h-[70vh] -rotate-[30deg]
+    overflow-hidden shrink-0 -ml-[75vw]
+    ">
   </div>
   </div>
 </template>
