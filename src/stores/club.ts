@@ -23,6 +23,7 @@ export const useClubStore = defineStore("club", {
       this.clubName = this.club.clubName
       this.clubAdvisor = this.club.clubAdivsor
       this.clubPresident = this.club.clubPresident
+      this.nextMeeting = this.club.nextMeeting
       this.room = this.club.room
     }
   }

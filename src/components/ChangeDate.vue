@@ -16,11 +16,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { usePresidentStore } from "../stores/users";
-import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
-
+import { useClubStore } from "../stores/club"
 // console.log(nextMeeting.value);
 const dateInput = ref("");
 const presidentStore = usePresidentStore()
+const clubStore = useClubStore()
 let valid = true
 
 function changeDate() {
@@ -37,11 +37,11 @@ function changeDate() {
   const nextMeeting:string = monthInput + '/' + dayInput + '/' + yearInput
   try {
     if(yearInput > yearToday || monthInput > monthToday && yearInput == yearToday || yearInput == yearToday && monthInput == monthToday && dayInput > dayToday){
-      const bingbing = `{"year": "${presidentStore.year}", "clubName": "${presidentStore.selectedClub}", "nextMeeting": "${nextMeeting}"}`
-      presidentStore.changeNextMeet(bingbing)
+      const clubDetails = `{"year": "${presidentStore.year}", "clubName": "${presidentStore.selectedClub}", "nextMeeting": "${nextMeeting}"}`
+      presidentStore.changeNextMeet(clubDetails)
+      clubStore.getData(`${presidentStore.selectedClub}`, `${presidentStore.year}`)
     } else {
       console.log("please put in a valid date")
-      let valid = false
     }
   } catch(error) {
     console.log(error)

@@ -18,7 +18,7 @@
         <div class="text-[#c2b669] text-xl">{{ name }}</div>
         <div class="text-[#c2b669] flex items-center">
           <CalendarDaysIcon class="h-10" />
-          {{ nextMeeting }}
+          {{ clubStore.nextMeeting }}
         </div>
       </div>
     </div>
@@ -160,14 +160,15 @@
 
 <script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import QrCode from "@/components/ClubComponents/QrCode.vue";
 import ChangeDate from "@/components/ChangeDate.vue";
 import { usePresidentStore } from "@/stores/users";
+import { useClubStore } from "@/stores/club"
 
-
+const clubStore = useClubStore()
 const presidentStore = usePresidentStore();
-const nextMeeting = presidentStore.nextMeeting;
+const nextMeeting = clubStore.nextMeeting.toString()
 const props = defineProps({
   name: String,
   nextMeeting: String,
@@ -183,7 +184,10 @@ function setVariables(name: string) {
   const year = thisYear + '-' + nextYear
   presidentStore.year = year
 }
-
+onMounted(() => {
+  const clubStore = useClubStore()
+  clubStore.getData("Anime Club", "2023-2024")  
+})
 </script>
 
 <style scoped>

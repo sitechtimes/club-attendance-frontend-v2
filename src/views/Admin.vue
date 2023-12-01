@@ -54,10 +54,10 @@ function pushToInfo(clubName: string) {
 
 const onInput = function(){
   if (query.value == ''){
-    userStore.getData()
+    userStore.getAllClubData()
   }
   else if (query.value == undefined){
-    userStore.getData()
+    userStore.getAllClubData()
   }
   else {
     userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
@@ -87,7 +87,7 @@ const searchFilter = function(club: object, query: any){
 
 
 onMounted(()=>{
-  userStore.getData();
+  userStore.getAllClubData();
 })
 </script>
 @/stores/users

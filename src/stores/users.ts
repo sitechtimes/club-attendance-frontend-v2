@@ -44,7 +44,7 @@ export const useUserStore = defineStore("user", {
           window.location.href = res.data.redirectUri;
         });
     },
-    async getData() {
+    async getAllClubData() {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData`, {
         method: "GET",
         mode: "cors",
