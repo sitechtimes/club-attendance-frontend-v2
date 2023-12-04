@@ -54,9 +54,14 @@
              /> 
   </div>
   <div class="bg-black 
-    w-[255rem] h-[80vh] -rotate-[30deg]
-    overflow-hidden shrink-0 -ml-[110rem]
-    ">
+  w-[255rem] h-[80vh] -rotate-[30deg]
+  overflow-hidden shrink-0 -ml-[110rem]
+  ">
+   <img
+     src="@/assets/SiTechLogo.png"
+     alt="Staten Island Technical High School Logo"
+     class="h-[30rem] ml-[100rem] -mt-[19rem] rotate-[30deg]"
+   /> 
   </div>
   </div>
 </template>
