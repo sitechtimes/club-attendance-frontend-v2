@@ -7,15 +7,15 @@
    >
     <div
     class="bg-[#c2b669] 
-    w-[150rem] h-[70vh] origin-bottom -rotate-[30deg]
-    overflow-hidden shrink-0 -ml-[35rem] -mt-[15vh]"
+    w-[155rem] h-[70vh] origin-bottom -rotate-[30deg]
+    overflow-hidden shrink-0 -ml-[35rem] -mt-[15vh] border"
     >
     <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
       <div
         class="mx-auto grid max-w-2xl grid-cols-1 
         gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
       >
-        <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[30rem] -mt-[10vh]">
+        <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[15rem] mt-[10vh]">
           <div class="lg:max-w-lg ">
             <h2 class="text-base font-semibold leading-7 text-black">
               Attendance, made faster
@@ -47,10 +47,15 @@
         </div>
       </div>
     </div>
+              <img
+             src="@/assets/CroppedSammy.png"
+             alt="Sammy the Seagull"
+             class="h-[30rem] ml-[100rem] -mt-[19rem] rotate-[30deg]"
+             /> 
   </div>
   <div class="bg-black 
-    w-[260rem] h-[70vh] -rotate-[30deg]
-    overflow-hidden shrink-0 -ml-[90vw]
+    w-[255rem] h-[80vh] -rotate-[30deg]
+    overflow-hidden shrink-0 -ml-[110rem]
     ">
   </div>
   </div>
