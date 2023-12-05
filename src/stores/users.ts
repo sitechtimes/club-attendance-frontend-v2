@@ -56,7 +56,6 @@ export const useUserStore = defineStore("user", {
         redirect: "follow",
       });
       this.clubs = await response.json()
-      console.log(this.clubs)
     }
   },
   persist: false

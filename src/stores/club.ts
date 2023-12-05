@@ -5,7 +5,6 @@ export const useClubStore = defineStore("club", {
     clubName: "",
     clubPresident: "",
     user: "",
-    nextMeeting: "",
     clubAdvisor: '',
     room: '',
     club: ''
@@ -19,11 +18,9 @@ export const useClubStore = defineStore("club", {
         },
       })
       this.club = await response.json()
-      console.log(this.club)
       this.clubName = this.club.clubName
       this.clubAdvisor = this.club.clubAdivsor
       this.clubPresident = this.club.clubPresident
-      this.nextMeeting = this.club.nextMeeting
       this.room = this.club.room
     }
   }

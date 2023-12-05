@@ -18,7 +18,7 @@
         <div class="text-[#c2b669] text-xl">{{ name }}</div>
         <div class="text-[#c2b669] flex items-center">
           <CalendarDaysIcon class="h-10" />
-          {{ clubStore.nextMeeting }}
+          {{ nextMeeting }}
         </div>
       </div>
     </div>
@@ -168,7 +168,6 @@ import { useClubStore } from "@/stores/club"
 
 const clubStore = useClubStore()
 const presidentStore = usePresidentStore();
-const nextMeeting = clubStore.nextMeeting.toString()
 const props = defineProps({
   name: String,
   nextMeeting: String,
