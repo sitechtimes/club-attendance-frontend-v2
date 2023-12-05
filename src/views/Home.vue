@@ -43,7 +43,6 @@
              /> -->
             <!-- <Calender /> -->
           </div>
-          <div></div>
         </div>
       </div>
     </div>
@@ -60,7 +59,7 @@
    <img
      src="@/assets/SiTechLogo.png"
      alt="Staten Island Technical High School Logo"
-     class="h-[30rem] ml-[100rem] -mt-[19rem] rotate-[30deg]"
+     class="h-[20rem] ml-[225rem] mt-[5rem] rotate-[30deg]"
    /> 
   </div>
   </div>
@@ -129,4 +128,3 @@ onMounted(() => {
   }
 }); 
 </script>
-@/stores/users
