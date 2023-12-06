@@ -2,8 +2,7 @@
   <div></div>
   <div class="h-screen">
     <!-- <div class="h-8 bg-[#c2b669]">
-
-        </div> -->
+    </div> -->
     <div
       class="p-6 flex flex-col justify-evenly items-center gap-6 md:flex-row md:flex-wrap"
     >
@@ -17,5 +16,9 @@
 
 <script setup lang="ts">
 //only president+admin can see
-    import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
+import { onMounted, ref } from "vue";
+import { useUserStore } from "@/stores/users";
+import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
+const store = useUserStore();
+console.log(store)
 </script>

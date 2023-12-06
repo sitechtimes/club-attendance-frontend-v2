@@ -90,7 +90,7 @@ import { useUserStore } from "@/stores/users";
 
 function parseGoogleCookie(str){
   console.log(str)
- let cookieOBJ = str.split('{')[1]
+ let cookieObj = str.split('{')[1]
  .split('}')[0]
  .split(',')
  .map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
