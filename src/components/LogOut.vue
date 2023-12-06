@@ -1,7 +1,6 @@
 <template>
   <div
-    class="p-4 shadow-xl cursor-pointer rounded-md hover:scale-110 ease-in-out duration-300 bg-black w-36 h-18 flex justify-evenly items-center"
-    @click="logOut"
+    class="ml-12 p-3 cursor-pointer rounded-md hover:scale-110 ease-in-out duration-300 bg-yellow w-[6%] flex justify-evenly items-center"
   >
     <div>Log Out</div>
   </div>
@@ -9,9 +8,9 @@
 
 <script setup lang="ts">
 // import { useUserStore } from "@/stores/user";
-const userStore = useUserStore();
+/* const userStore = useUserStore();
 
 async function logout() {
   await userStore.googleLink();
-}
+} */
 </script>

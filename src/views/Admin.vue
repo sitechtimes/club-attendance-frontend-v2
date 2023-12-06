@@ -3,8 +3,11 @@
     <div
       class="w-full h-[15%] border-b-2 justify-center flex items-center sticky top-0 bg-black"
     >
-      <div class="w-[10%] text-white text-lg font-medium">Administration</div>
+      <div class="w-[10%] text-white text-lg justify-normal font-medium">
+        Administration
+      </div>
       <SearchBar></SearchBar>
+      <LogOut></LogOut>
     </div>
     <div
       class="w-full h-auto justify-center flex flex-col items-center bg-[#363636]"
@@ -35,6 +38,7 @@
 
 <script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
+import LogOut from "@/components/LogOut.vue";
 import { onMounted, onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/user";
 import { useClubStore } from "@/stores/club";
