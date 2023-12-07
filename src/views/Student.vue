@@ -6,8 +6,8 @@
       </div>
     </div>
     <div>
-      <button class="bg-yellow w-20 h-20 rounded-full" @click="open = true">
-        Hello
+      <button class="bg-yellow w-[4%] rounded-full" @click="open = true">
+        <PlusCircleIcon></PlusCircleIcon>
       </button>
     </div>
     <div
@@ -28,15 +28,16 @@
           class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
         >
           <div
-            class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+            class="relative transform overflow-hidden rounded-lg bg-white w-[50%] text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
           >
-            <div class="bg-white bg-yellow sm:p-6 sm:pb-4 flex justify-center">
+            <div class="bg-yellow sm:p-6 sm:pb-4 flex justify-center">
               <div class="sm:flex sm:items-start">
-                <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <div class="text-center sm:ml-4 sm:mt-0 sm:text-left">
+                  <h1>Next Meetings</h1>
                   <SearchBar class="w-[50%]"></SearchBar>
                   <button
                     type="button"
-                    class="w-full my-1 justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold bg-red text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                    class="justify-center rounded-md bg-red-600 px-3 py-1 text-sm font-semibold bg-red text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                     @click="open = false"
                   >
                     Close
@@ -57,6 +58,7 @@ import { ref } from "vue";
 import { useClubStore } from "../stores/club";
 import SearchBar from "@/components/SearchBar.vue";
 import LogOut from "@/components/LogOut.vue";
+import { PlusCircleIcon } from "@heroicons/vue/24/outline";
 
 const clubStore = useClubStore();
 const nextMeeting = clubStore.nextMeeting;
