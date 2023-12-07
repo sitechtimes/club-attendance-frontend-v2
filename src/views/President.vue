@@ -20,5 +20,5 @@ import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
 const store = useUserStore();
-console.log(store)
+console.log(store.user)
 </script>

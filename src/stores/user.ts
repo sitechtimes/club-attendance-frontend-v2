@@ -12,10 +12,11 @@ export const useUserStore = defineStore('user', {
           email: '',
           picture: '',
           role: '',
-          isAuthenticated: '',
+          isAuthenticated: false,
           }
         ),
-        clubs: null,      
+        clubs: null,
+        testNumber: 0,      
       }),
 
       actions: {
@@ -42,7 +43,7 @@ export const useUserStore = defineStore('user', {
           });
           this.clubs = await response.json()
           console.log(this.clubs)
-        }
+        },
       },
 
 })
