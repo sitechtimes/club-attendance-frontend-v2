@@ -90,15 +90,14 @@ function getCookie(name: string) {
 onMounted(() => {
   let userCookie = getCookie("user_data");
   let arrUserCookie = JSON.parse(Object.keys(userCookie).toString().replace('j:', ''))
-  let userRole = arrUserCookie.role
-  let userUid = arrUserCookie.uid
-  userStore.uid = userUid
-  userStore.userAuthority = userRole
-  if (userRole === "admin") {
+  userStore.userClubData = arrUserCookie.ClubData
+  userStore.uid = arrUserCookie.uid
+  userStore.userAuthority = arrUserCookie.role
+  if (userStore.userAuthority === "admin") {
     routePush("admin")
-  } else if (userRole === "Club President") {
+  } else if (userStore.userAuthority === "Club President") {
     routePush("President")
-  } else if ( userRole === "user" ) {
+  } else if ( userStore.userAuthority === "user" ) {
     console.log("user is reg")
   } else {
     console.log("user is not authorized")

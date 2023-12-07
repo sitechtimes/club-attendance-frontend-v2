@@ -22,6 +22,7 @@
   const userStore = useUserStore()
 onMounted(() => {
   const userStore = useUserStore()
-  
+  console.log(userStore.userClubData.PresidentOf)
+
 })
 </script>
