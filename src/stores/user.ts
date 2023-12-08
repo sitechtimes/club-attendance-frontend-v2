@@ -20,6 +20,9 @@ export const useUserStore = defineStore('user', {
       }),
 
       actions: {
+        coolAction(){
+        console.log(this.testNumber)
+        },
         async googleLink(){
           await axios.get(`${import.meta.env.VITE_BACKEND_URL}/returnRedirectUrl`,{
             headers: {}
