@@ -4,54 +4,28 @@
       <div class="text-black text-5xl font-normal font-['Itim']">
         Next Meeting
       </div>
-    </div>
-    <div class="viewMeetings">
-      <button
-        class="bg-[#FFD700] text-white rounded-full w-[3%] hover:bg-[#c7a802]"
-        @click="open = true"
-      >
-        <p class="message">Click to view other meetings</p>
-        <PlusIcon></PlusIcon>
-      </button>
-    </div>
-    <div
-      class="bg-black w-[255rem] h-[180vh] -rotate-[50deg] overflow-hidden shrink-0 -ml-[50rem]"
-    >
       <LogOut></LogOut>
     </div>
-  </div>
-  <div v-show="open">
     <div
-      class="relative z-10"
-      aria-labelledby="modal-title"
-      role="dialog"
-      aria-modal="true"
+      class="bg-black w-[255rem] h-[180vh] -rotate-[40deg] overflow-hidden shrink-0 -ml-[50rem]"
+    ></div>
+  </div>
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div
+      class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
     >
-      <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div
-          class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
-        >
-          <div
-            class="relative transform overflow-hidden rounded-lg bg-white w-[50%] text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
-          >
-            <div class="bg-yellow sm:p-6 sm:pb-4 flex justify-center">
-              <div class="sm:flex sm:items-start">
-                <div class="text-center sm:ml-4 sm:mt-0 sm:text-left">
-                  <h1>Next Meetings</h1>
-                  <SearchBar class="w-[50%]"></SearchBar>
-                  <button
-                    type="button"
-                    class="justify-center rounded-md bg-red-600 px-3 py-1 text-sm font-semibold bg-red text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                    @click="open = false"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
+      <div
+        class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all w-[50%]"
+      >
+        <div class="bg-[#FFD700] sm:p-4 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="text-center sm:ml-4 sm:mt-0 sm:text-left">
+              <h1>Next Meetings</h1>
+              <SearchBar></SearchBar>
             </div>
-            <div class="bg-gray-50 px-4 py-4 sm:flex sm:px-6"></div>
           </div>
         </div>
+        <div class="bg-gray-50 px-4 py-4 sm:flex sm:px-6"></div>
       </div>
     </div>
   </div>
@@ -71,9 +45,6 @@ const open = ref(false);
 .message {
   visibility: hidden;
   background: yellow;
-}
-.viewMeetings {
-  visibility: hidden;
 }
 
 .viewMeetings:hover .message {
