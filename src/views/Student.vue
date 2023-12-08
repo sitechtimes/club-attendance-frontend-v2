@@ -5,9 +5,13 @@
         Next Meeting
       </div>
     </div>
-    <div>
-      <button class="bg-yellow w-[4%] rounded-full" @click="open = true">
-        <PlusCircleIcon></PlusCircleIcon>
+    <div class="viewMeetings">
+      <button
+        class="bg-[#FFD700] text-white rounded-full w-[3%] hover:bg-[#c7a802]"
+        @click="open = true"
+      >
+        <p class="message">Click to view other meetings</p>
+        <PlusIcon></PlusIcon>
       </button>
     </div>
     <div
@@ -58,10 +62,21 @@ import { ref } from "vue";
 import { useClubStore } from "../stores/club";
 import SearchBar from "@/components/SearchBar.vue";
 import LogOut from "@/components/LogOut.vue";
-import { PlusCircleIcon } from "@heroicons/vue/24/outline";
-
-const clubStore = useClubStore();
-const nextMeeting = clubStore.nextMeeting;
+import { PlusIcon } from "@heroicons/vue/24/outline";
 
 const open = ref(false);
 </script>
+
+<style scoped>
+.message {
+  visibility: hidden;
+  background: yellow;
+}
+.viewMeetings {
+  visibility: hidden;
+}
+
+.viewMeetings:hover .message {
+  visibility: visible;
+}
+</style>
