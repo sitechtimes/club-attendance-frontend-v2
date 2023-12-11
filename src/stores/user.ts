@@ -16,12 +16,15 @@ export const useUserStore = defineStore('user', {
           }
         ),
         clubs: null,
-        testNumber: 0,      
+        test: 0,      
       }),
 
       actions: {
+        increment() {
+          this.test++
+        },
         coolAction(){
-        console.log(this.testNumber)
+        console.log(this.test)
         },
         async googleLink(){
           await axios.get(`${import.meta.env.VITE_BACKEND_URL}/returnRedirectUrl`,{
@@ -48,5 +51,4 @@ export const useUserStore = defineStore('user', {
           console.log(this.clubs)
         },
       },
-
 })
