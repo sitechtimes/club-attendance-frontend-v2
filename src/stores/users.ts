@@ -25,10 +25,22 @@ export const usePresidentStore = defineStore("president", {
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    user: "",
+    user:  ref(
+      {uid: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      picture: '',
+      role: '',
+      isAuthenticated: false,
+      }
+    ),
     clubs: null,
   }),
   actions: {
+    updateUser(userCookie: any) {
+     this.user = userCookie
+    },
     async googleLink() {
       await axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/returnRedirectUrl`, {

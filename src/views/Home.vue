@@ -71,6 +71,7 @@ import Login from "@/components/HomeComponents/Login.vue";
 import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
+let store = useUserStore();
 // import * as THREE from "three";
 // import BIRDS from vanta.birds.min.js
 // import {onBeforeUnmount, onMounted } from "vue";
@@ -88,14 +89,14 @@ import { useUserStore } from "@/stores/users";
 
 // token starts as string, make the unstringify the string then use the object
 
-function parseGoogleCookie(str){
+function parseGoogleCookie(str: string){
   console.log(str)
  let cookieObj = str.split('{')[1]
  .split('}')[0]
  .split(',')
  .map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
  .map((element) => element.split(':'))
- .reduce((obj, cookie) => {
+ .reduce((obj: any, cookie) => {
    obj[decodeURIComponent(cookie[0].trim())] 
    = decodeURIComponent(cookie[1].trim());
    return obj
@@ -115,13 +116,12 @@ function getCookie(name: string) {
 
 onMounted(() => {
   let loggedIn = false
-  const store = useUserStore();
   if (!document.cookie){
   console.log("no user data")
   console.log(store.user)
   } else {
-  let userCookie = getCookie("user_data");
-  store.getData()
+  const userCookie = getCookie("user_data");
+  store.updateUser(userCookie)
   console.log(store.user)
   loggedIn = true
   return loggedIn
