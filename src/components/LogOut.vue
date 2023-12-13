@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ml-12 p-3 cursor-pointer rounded-md hover:scale-110 ease-in-out duration-300 bg-yellow w-[6%] flex justify-evenly items-center"
+    class="p-3 w-[13%] cursor-pointer rounded-md hover:scale-110 ease-in-out duration-300 bg-yellow flex justify-evenly items-center"
   >
     <div>Log Out</div>
   </div>
