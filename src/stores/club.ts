@@ -7,6 +7,7 @@ export const useClubStore = defineStore("club", {
     user: "",
     clubAdvisor: '',
     room: '',
+    nextMeeting: '',
     club: ''
   }),
   actions: {
