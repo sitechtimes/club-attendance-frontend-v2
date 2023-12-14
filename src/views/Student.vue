@@ -23,6 +23,8 @@
           ></div> -->
         <!-- </div> -->
       </div>
+
+      <div class="bg-white w-1/2 h-1/2 mt-50rem"></div>
     </div>
   </div>
 </template>
