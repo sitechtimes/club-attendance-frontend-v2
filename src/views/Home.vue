@@ -42,6 +42,7 @@
               2xl:w-[70rem] md:-ml-4 lg:-ml-0 h-[1vh]"
              /> -->
             <!-- <Calender /> -->
+            <RouterLink to="/president">president</RouterLink> <!-- for testing -->
           </div>
         </div>
       </div>
@@ -103,6 +104,8 @@ function parseGoogleCookie(str: string){
  }, {}) 
  return cookieObj
 } ;
+//function turns google link cookie string into 2 arrays: categories and values
+//2 arrays are then merged into one object with categories as seen in user store
 
 function getCookie(name: string) {
   const value: any = `; ${document.cookie}`;
@@ -110,6 +113,7 @@ function getCookie(name: string) {
   const cookieString: any = parts.pop().split(";").shift();
   if (parts.length === 2) console.log(cookieString);
   let parsedString = parseGoogleCookie(decodeURIComponent(cookieString))
+  parsedString.isAuthenticated = true
   return parsedString
 }
 
@@ -123,6 +127,7 @@ onMounted(() => {
   const userCookie = getCookie("user_data");
   store.updateUser(userCookie)
   console.log(store.user)
+  console.log(store.user.isAuthenticated)
   loggedIn = true
   return loggedIn
   }
