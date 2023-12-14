@@ -1,6 +1,6 @@
 import './assets/main.css'
 
-import { createApp } from 'vue'
+import { createApp, watch } from 'vue'
 import { createPinia } from 'pinia'
 
 import VueQrcode from '@chenfengyuan/vue-qrcode';
@@ -13,6 +13,7 @@ const app = createApp(App);
 app.component(VueQrcode.name, VueQrcode);
 
 app.use(createPinia())
+
 app.use(router)
 
 
