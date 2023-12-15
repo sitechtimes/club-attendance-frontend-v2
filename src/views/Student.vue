@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white w-full h-screen flex justify-center">
-    <div class="w-[calc(50%-5rem)] h-full bg-[#F1F1F1]">
+  <div class="bg-p[#F1F1F1] w-full h-screen flex justify-center">
+    <div class="w-[calc(50%-5rem)] h-full bg-black">
       <div class="h-[8%] flex justify-center items-center">
-        <div class="text-black text-5xl font-normal font-['Itim']">
+        <div class="text-white text-5xl font-normal font-['Itim']">
           Next Meeting
         </div>
         <LogOut class="ml-10"></LogOut>
@@ -36,8 +36,8 @@ import LogOut from "@/components/LogOut.vue";
 
 <style scoped>
 .page {
-  background: black;
-  border-left: 10rem solid #f1f1f1;
+  background: #f1f1f1;
+  border-left: 10rem solid black;
   border-bottom: 58rem solid transparent;
   box-sizing: border-box;
 }
