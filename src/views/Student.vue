@@ -24,7 +24,7 @@
 
     <div class="page w-[calc(50%+5rem)] h-full">
       <div
-        class="bg-[#FFD700] py-[1%] w-full flex justify-center space-x-[5%] text-lg"
+        class="bg-[#FFD700] py-[1%] w-[80%] flex justify-center space-x-[5%] text-lg"
       >
         <h1 class="text-black text-2xl font-['Itim']">Other Meetings</h1>
         <SearchBar></SearchBar>
@@ -36,8 +36,6 @@
           ></div> -->
         <!-- </div> -->
       </div>
-
-      <div class="bg-white w-1/2 h-1/2 mt-50rem"></div>
     </div>
   </div>
 </template>
