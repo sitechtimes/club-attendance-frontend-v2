@@ -7,6 +7,19 @@
         </div>
         <LogOut class="ml-10"></LogOut>
       </div>
+      <div
+        class="p-6 flex flex-col h-[75%] overflow-y-auto justify-evenly items-center gap-6 md:flex-row md:flex-wrap"
+      >
+        <ClubCard name="Coding Club" next-meeting="8/12/2023" />
+        <ClubCard name="Robotics Club" next-meeting="8/12/2023" />
+        <ClubCard name="Swimming Club" next-meeting="8/12/2023" />
+        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
+        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
+        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
+        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
+        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
+        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
+      </div>
     </div>
 
     <div class="page w-[calc(50%+5rem)] h-full">
@@ -32,6 +45,7 @@
 <script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
 import LogOut from "@/components/LogOut.vue";
+import ClubCard from "@/components/ClubCard.vue";
 </script>
 
 <style scoped>
