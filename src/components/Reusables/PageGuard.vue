@@ -1,7 +1,6 @@
 <template>
 <div>
-    <h1>Please Log in to Continue</h1>
-    <Login class="" />
+    <RouterLink to="/">Please Log in to Continue</RouterLink>
 </div>
 </template>
 

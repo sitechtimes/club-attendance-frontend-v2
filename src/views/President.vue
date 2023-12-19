@@ -2,7 +2,7 @@
   <div v-if="!store.user.isAuthenticated">
   <PageGuard/>
   </div>
-  <div v-else-if="store.user.isAuthenticated">
+  <div v-else-if="store.user.isAuthenticated && store.user.role == ">
     <div class="h-screen">
     <!-- <div class="h-8 bg-[#c2b669]">
     </div> -->
