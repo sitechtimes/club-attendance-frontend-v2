@@ -1,8 +1,12 @@
 <template>
   <div v-if="!store.user.isAuthenticated">
-  <PageGuard/>
+  <NotLoggedPageGuard/>
   </div>
-  <div v-else-if="store.user.isAuthenticated && store.user.role == ">
+  <div v-else-if="store.user.role !== 'admin' && store.user.role !== 'president'">
+  <NoPermsPageGuard/>
+  </div>
+  <div v-else-if="store.user.isAuthenticated && 
+  (store.user.role == 'admin' || store.user.role =='president')">
     <div class="h-screen">
     <!-- <div class="h-8 bg-[#c2b669]">
     </div> -->
@@ -26,6 +30,7 @@
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
-import PageGuard from '@/components/Reusables/PageGuard.vue'
+import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
+import NoPermsPageGuard from '@/components/Reusables/NoPermsPageGuard.vue'
 let store = useUserStore();
 </script>
