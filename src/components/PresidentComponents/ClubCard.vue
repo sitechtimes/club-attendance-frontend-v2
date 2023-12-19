@@ -18,7 +18,7 @@
         <div class="text-[#c2b669] text-xl">{{ name }}</div>
         <div class="text-[#c2b669] flex items-center">
           <CalendarDaysIcon class="h-10" />
-          {{ nextMeeting }}
+          {{ clubStore.getData(name, "2023-2024") }}
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@ function setVariables(name: string) {
 }
 onMounted(() => {
   const clubStore = useClubStore()
-  clubStore.getData("Anime Club", "2023-2024")  
+  clubStore.getData("Anime club", "2023-2024")  
 })
 </script>
 

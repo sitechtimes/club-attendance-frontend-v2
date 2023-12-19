@@ -21,7 +21,6 @@ export const usePresidentStore = defineStore("president", {
         },
         body: selectedClubJSON
       })
-      console.log(response, 'this is response from the change next meet')
     }
   },
   persist: false
