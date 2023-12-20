@@ -185,7 +185,7 @@ function setVariables(name: string) {
 }
 onMounted(() => {
   const clubStore = useClubStore()
-  clubStore.getData("Anime club", "2023-2024")  
+  clubStore.getData("Anime Club", "2023-2024")  
 })
 </script>
 

@@ -27,20 +27,15 @@
 
 <script setup lang="ts">
 import SearchBar from "@/components/Reusables/SearchBar.vue";
-import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
+import { ref, onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
-import { split } from "postcss/lib/list";
-import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 
 let query = ref()
 const userStore = useUserStore();
 const clubStore = useClubStore();
 const router = useRouter();
-// function pushToClub() {
-//   router.push({ path: "/information" });
-// }
 
 function pushToInfo(clubName: string) {
   clubStore.clubName = clubName  
@@ -85,9 +80,7 @@ const searchFilter = function(club: object, query: any){
  return result
 }
 
-
-onMounted(()=>{
-  userStore.getAllClubData();
+onBeforeMount(() => {
+  userStore.getAllClubData()
 })
 </script>
-@/stores/users

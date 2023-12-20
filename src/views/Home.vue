@@ -94,6 +94,7 @@ onMounted(() => {
   userStore.uid = arrUserCookie.uid
   userStore.userAuthority = arrUserCookie.role
   if (userStore.userAuthority === "admin") {
+    userStore.getAllClubData()
     routePush("admin")
   } else if (userStore.userAuthority === "Club President") {
     routePush("President")

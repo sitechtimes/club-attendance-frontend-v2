@@ -23,7 +23,6 @@ export const usePresidentStore = defineStore("president", {
       })
     }
   },
-  persist: false
 })
 
 export const useUserStore = defineStore("user", {
@@ -57,6 +56,5 @@ export const useUserStore = defineStore("user", {
       this.clubs = await response.json()
     }
   },
-  persist: false
 },
 );

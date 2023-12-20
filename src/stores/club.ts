@@ -23,6 +23,7 @@ export const useClubStore = defineStore("club", {
       this.clubAdvisor = this.club.clubAdivsor
       this.clubPresident = this.club.clubPresident
       this.room = this.club.room
+      console.log(response.body)
     }
   }
 });
