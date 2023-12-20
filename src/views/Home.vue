@@ -42,7 +42,7 @@
               2xl:w-[70rem] md:-ml-4 lg:-ml-0 h-[1vh]"
              /> -->
             <!-- <Calender /> -->
-            <RouterLink to="/president">president</RouterLink> <!-- for testing -->
+             <!-- for testing -->
           </div>
         </div>
       </div>
