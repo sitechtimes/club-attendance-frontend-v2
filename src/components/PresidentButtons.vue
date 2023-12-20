@@ -113,7 +113,7 @@
             class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
           >
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-              <ChangeDate />
+              <changeImage />
             </div>
             <button
               type="button"
@@ -137,6 +137,7 @@ import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { ref } from "vue";
 import QrCode from "./QrCode.vue";
 import ChangeDate from "./ChangeDate.vue";
+import changeImage from "./changeImage.vue";
 import { onMounted } from "vue";
 import { useClubStore } from "../stores/club";
 
