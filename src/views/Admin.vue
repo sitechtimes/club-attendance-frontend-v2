@@ -1,4 +1,12 @@
 <template>
+  <div v-if="!store.user.isAuthenticated">
+  <NotLoggedPageGuard/>
+  </div>
+  <div v-else-if="store.user.role !== 'admin'">
+  <NoPermsPageGuard/>
+  </div>
+  <div v-else-if="store.user.isAuthenticated && 
+  store.user.role == 'admin' ">
   <section class="w-screen h-screen">
     <div class="w-full h-[15%] border-b-2 justify-center flex items-center">
       <div class="w-[32%] text-lg font-medium">Administration</div>
@@ -23,6 +31,11 @@
       </div>
     </div>
   </section>
+  </div>
+  <div v-else>
+    Error
+  </div>
+  
 </template>
 
 <script setup lang="ts">
@@ -34,6 +47,9 @@ import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { split } from "postcss/lib/list";
 import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
+import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
+import NoPermsPageGuard from '@/components/Reusables/NoPermsPageGuard.vue'
+let store = useUserStore();
 
 let query = ref()
 const userStore = useUserStore();
