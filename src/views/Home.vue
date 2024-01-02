@@ -1,6 +1,12 @@
 <template>
   <div 
   class="w-screen h-screen overflow-hidden">
+  <nav class="bg-black text-white flex h-10 items-center">
+  <RouterLink to="/">Home</RouterLink>
+  <RouterLink to="/president">President</RouterLink>
+  <RouterLink to="/admin">Admin</RouterLink>
+  <RouterLink to="/calendar">Calendar</RouterLink>
+ </nav>
    <img src="@/assets/SeagullCalendar.png" 
    alt="A seagull sitting on top of a calendar" 
    class="w-[240px] mt-[30px] ml-[30px]"
