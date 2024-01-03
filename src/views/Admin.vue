@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import SearchBar from "@/components/Reusables/SearchBar.vue";
-import { ref, onBeforeMount } from "vue";
+import { ref, onMounted } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
@@ -80,7 +80,7 @@ const searchFilter = function(club: object, query: any){
  return result
 }
 
-onBeforeMount(() => {
-  userStore.getAllClubData()
+onMounted(() => {
+  console.log(userStore.clubs)
 })
 </script>

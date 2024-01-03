@@ -18,7 +18,7 @@
         <div class="text-[#c2b669] text-xl">{{ name }}</div>
         <div class="text-[#c2b669] flex items-center">
           <CalendarDaysIcon class="h-10" />
-          {{ clubStore.getData(name, "2023-2024") }}
+          {{ nextMeeting }}
         </div>
       </div>
     </div>
@@ -183,10 +183,6 @@ function setVariables(name: string) {
   const year = thisYear + '-' + nextYear
   presidentStore.year = year
 }
-onMounted(() => {
-  const clubStore = useClubStore()
-  console.log(clubStore.club)
-})
 </script>
 
 <style scoped>

@@ -19,7 +19,6 @@ export const useClubStore = defineStore("club", {
         },
       })
       this.club.push(await response.json())
-      console.log(this.club)
     }
   }
 });

@@ -14,7 +14,7 @@ export const usePresidentStore = defineStore("president", {
   }),
   actions: {
     async changeNextMeet(selectedClubJSON: any) {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/addClubMeeting`, {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/addClubMeeting`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -30,7 +30,7 @@ export const useUserStore = defineStore("user", {
     user: "",
     uid: Number,
     userAuthority: "",
-    userClubData: null
+    userClubData: ""
   }),
   actions: {
     async googleLink() {

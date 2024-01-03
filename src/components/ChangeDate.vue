@@ -35,11 +35,12 @@ function changeDate() {
   const dayToday = new Date().getDate()
 
   const nextMeeting:string = monthInput + '/' + dayInput + '/' + yearInput
+
   try {
     if(yearInput > yearToday || monthInput > monthToday && yearInput == yearToday || yearInput == yearToday && monthInput == monthToday && dayInput > dayToday){
       const clubDetails = `{"year": "${presidentStore.year}", "clubName": "${presidentStore.selectedClub}", "nextMeeting": "${nextMeeting}"}`
-      presidentStore.changeNextMeet(clubDetails)
-      clubStore.getData(`${presidentStore.selectedClub}`, `${presidentStore.year}`)
+      console.log(clubDetails)
+      presidentStore.changeNextMeet(clubDetails)  
     } else {
       console.log("please put in a valid date")
     }
