@@ -1,12 +1,19 @@
 <template>
   <div 
-  class="w-screen h-screen overflow-hidden">
-  <nav class="bg-black text-white flex h-10 items-center">
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/president">President</RouterLink>
-  <RouterLink to="/admin">Admin</RouterLink>
-  <RouterLink to="/calendar">Calendar</RouterLink>
- </nav>
+  class="w-screen h-screen overflow-hidden relative">
+  <div>
+    <nav class="bg-black text-white flex h-[107px] items-center z-10 relative">
+      <RouterLink to="/">
+      <img src="@/assets/SeagullCalendarNT.png" 
+      alt="A seagull sitting on top of a calendar" 
+      class="h-[107px]">
+      </RouterLink>
+      <h1 class="text-white text-[64px] font-['kranky']">Club Attendance</h1>
+      <RouterLink to="/president">President</RouterLink>
+      <RouterLink to="/admin">Admin</RouterLink>
+      <RouterLink to="/calendar">Calendar</RouterLink>
+    </nav>
+  </div>
    <img src="@/assets/SeagullCalendar.png" 
    alt="A seagull sitting on top of a calendar" 
    class="w-[240px] mt-[30px] ml-[30px]"
@@ -59,7 +66,8 @@
              class="h-[30rem] ml-[100rem] -mt-[19rem] rotate-[30deg]"
              /> 
   </div>
-  <div class="bg-black 
+  <div class="
+  bg-black 
   w-[255rem] h-[80vh] -rotate-[30deg]
   overflow-hidden shrink-0 -ml-[110rem]
   ">
