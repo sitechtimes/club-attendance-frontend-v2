@@ -8,7 +8,7 @@ export const useClubStore = defineStore("club", {
     clubAdvisor: '',
     room: '',
     nextMeeting: '',
-    club: ''
+    club: []
   }),
   actions: {
     async getData(clubName: string | undefined, year: string) {
@@ -18,12 +18,8 @@ export const useClubStore = defineStore("club", {
           "Content-Type": "application/json"
         },
       })
-      this.club = await response.json()
-      this.clubName = this.club.clubName
-      this.clubAdvisor = this.club.clubAdivsor
-      this.clubPresident = this.club.clubPresident
-      this.room = this.club.room
-      console.log(response.body)
+      this.club.push(await response.json())
+      console.log(this.club)
     }
   }
 });
