@@ -102,19 +102,14 @@
       role="dialog"
       aria-modal="true"
     >
-      <div
-        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-      ></div>
       <div class="fixed inset-0 z-10 flex justify-center">
         <div
           class="flex w-full items-center justify-center p-4 text-center sm:p-0"
         >
           <div
-            class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+            class="flex flex-col justify-start px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
           >
-            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-              <ChangeImage />
-            </div>
+            <ChangeImage />
             <button
               type="button"
               class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
