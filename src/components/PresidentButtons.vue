@@ -23,7 +23,10 @@
     <button
       type="button"
       class="w-full my-1 justify-center rounded-md px-3 bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:ml-3 sm:w-auto"
-      @click="open = true"
+      @click="
+        open = true;
+        changeImage = true;
+      "
     >
       Change club profile picture
     </button>
@@ -78,7 +81,7 @@
             class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
           >
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-              <ChangeImage />
+              <ChangeDate />
             </div>
             <button
               type="button"
