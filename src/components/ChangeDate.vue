@@ -39,7 +39,6 @@ function changeDate() {
   try {
     if(yearInput > yearToday || monthInput > monthToday && yearInput == yearToday || yearInput == yearToday && monthInput == monthToday && dayInput > dayToday){
       const clubDetails = `{"year": "${presidentStore.year}", "clubName": "${presidentStore.selectedClub}", "nextMeeting": "${nextMeeting}"}`
-      console.log(clubDetails)
       presidentStore.changeNextMeet(clubDetails)  
     } else {
       console.log("please put in a valid date")
