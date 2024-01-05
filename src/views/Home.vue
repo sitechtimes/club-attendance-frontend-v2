@@ -2,16 +2,30 @@
   <div 
   class="w-screen h-screen overflow-hidden relative">
   <div>
-    <nav class="bg-black text-white flex h-[107px] items-center z-10 relative">
+    <nav class="bg-black text-white flex flex-wrap 
+    h-[107px] items-center z-10 relative">
       <RouterLink to="/">
       <img src="@/assets/SeagullCalendarNT.png" 
       alt="A seagull sitting on top of a calendar" 
       class="h-[107px]">
       </RouterLink>
-      <h1 class="text-white text-[64px] font-['kranky']">Club Attendance</h1>
-      <RouterLink to="/president">President</RouterLink>
-      <RouterLink to="/admin">Admin</RouterLink>
-      <RouterLink to="/calendar">Calendar</RouterLink>
+      <h1 
+      class="text-white text-[64px] font-['kranky'] ml-3">
+      Club Attendance</h1>
+      <RouterLink to="/president" 
+      class="font-normal font-['katibeth'] text-[2rem] ml-[5vw]">
+      President</RouterLink>
+      <RouterLink to="/admin" 
+      class="font-normal font-['katibeth'] text-[2rem] ml-[5vw]">
+      Admin</RouterLink>
+      <RouterLink to="/calendar" 
+      class="font-normal font-['katibeth'] text-[2rem] ml-[5vw]">
+      Calendar</RouterLink>
+      <div
+      class="p-4 shadow-xl cursor-pointer rounded-md hover:scale-110 ease-in-out 
+      duration-300 w-36 h-18 flex justify-evenly items-center text-black 
+      bg-[#c2b669] rounded-[30px] font-['Langar'] absolute right-10">
+      Log Out</div>
     </nav>
   </div>
    <img src="@/assets/SeagullCalendar.png" 
