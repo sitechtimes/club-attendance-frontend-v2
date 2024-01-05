@@ -42,6 +42,11 @@ const router = createRouter({
       name: "student",
       component: () => import("../views/Student.vue"),
     },
+    {
+      path: "/ConfirmImage",
+      name: "confirmimage",
+      component: () => import("../views/ConfirmImage.vue"),
+    },
   ],
 });
 

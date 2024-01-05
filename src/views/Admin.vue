@@ -5,7 +5,11 @@
     >
       <div class="w-[8%] text-white text-lg font-medium">Administration</div>
       <SearchBar></SearchBar>
-      <BellIcon class="bg-white" />
+      <!-- <RouterLink to="/confirmimage"> -->
+      <button class="w-[4%]">
+        <BellIcon class="text-white" />
+      </button>
+      <!-- </RouterLink> -->
       <LogOut></LogOut>
     </div>
     <div class="h-auto justify-center flex flex-col items-center bg-[#363636]">
@@ -41,6 +45,7 @@ import { useUserStore } from "@/stores/user";
 import { useClubStore } from "@/stores/club";
 import { useRouter, useRoute } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
+import { RouterLink } from "vue-router";
 
 const userStore = useUserStore();
 const clubStore = useClubStore();
