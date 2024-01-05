@@ -40,7 +40,7 @@ const router = useRouter();
 function pushToInfo(clubName: string) {
   clubStore.clubName = clubName  
   const clubJSON = JSON.stringify(clubName)
-  
+  console.log(clubJSON)
   function routePush() {
     router.push(`/club/?name=${clubStore.clubName}`)
   }
@@ -62,8 +62,8 @@ const onInput = function(){
 const searchFilter = function(club: object, query: any){
  const splitQuery = query.split('')
  const splitClubName = club.clubName.split('')
- console.log(splitQuery)
- console.log(splitClubName)
+//  console.log(splitQuery)
+//  console.log(splitClubName)
  let i = 0
  let result = false
  splitQuery.forEach((character: any) => {
@@ -79,8 +79,4 @@ const searchFilter = function(club: object, query: any){
  });
  return result
 }
-
-onMounted(() => {
-  console.log(userStore.clubs)
-})
 </script>

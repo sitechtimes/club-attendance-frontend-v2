@@ -18,7 +18,13 @@ export const useClubStore = defineStore("club", {
           "Content-Type": "application/json"
         },
       })
-      this.club.push(await response.json())
+      const club = await response.json()
+      //@ts-ignore
+      this.club.push(club)
+      this.clubName = club.clubName
+      this.clubAdvisor = club.clubAdivsor
+      this.clubPresident = club.clubPresident
+      this.room = club.room
     }
   }
 });
