@@ -5,7 +5,7 @@
     >
       <div class="w-[8%] text-white text-lg font-medium">Administration</div>
       <SearchBar></SearchBar>
-      <BellIcon class="bg-white" />
+      <!-- <BellIcon class="bg-white" /> -->
       <LogOut></LogOut>
     </div>
     <div class="h-auto justify-center flex flex-col items-center bg-[#363636]">

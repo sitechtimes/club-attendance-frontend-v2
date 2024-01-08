@@ -96,7 +96,7 @@ onMounted(() => {
   userStore.uid = arrUserCookie.uid
   userStore.userAuthority = arrUserCookie.role
   if (userStore.userAuthority === "admin") {
-    userStore.getAllClubData()
+    userStore.getAllClubData(userStore.uid)
     setTimeout(function push() {routePush("admin")}, 1000)
   } else if (userStore.userAuthority === "Club President") {
     routePush("President")
