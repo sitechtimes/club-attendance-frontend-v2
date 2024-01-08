@@ -1,8 +1,11 @@
 <template>
-  <div
-    class="overflow-hidden py-80 bg-white pt-20 lg:pt-24 bg-yellow -rotate-12"
-  >
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 skew-x-12">
+  <img
+    src="@/assets/logo.png"
+    alt="screenshot"
+    class="w-[10rem] xl:w-[15rem]"
+  />
+  <div class="overflow-hidden bg-white pt-20 lg:pt-24 -rotate-12 pl-8">
+    <div class="mx-auto max-w-7xl skew-x-12 transform">
       <div
         class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
       >
@@ -21,22 +24,21 @@
               provided by the club president and login with your school email to
               log your attendance.
             </p>
-          </div>
-
-          <div class="flex flex-col mt-8">
-            <Login class="" />
-            <Calender />
+            <div class="flex flex-col mt-8">
+              <Login class="" />
+              <Calender />
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="bg-black">
-    <img
-      src="@/assets/sammy.jpg"
-      alt="screenshot"
-      class="w-[28rem] sm:w-[50rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 2xl:w-[70rem] md:-ml-4 lg:-ml-0"
-    />
+    <div class="bg-black">
+      <img
+        src="@/assets/sammy.jpg"
+        alt="screenshot"
+        class="w-[28rem] rotate-12 ml-100 sm:w-[50rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 2xl:w-[70rem] md:-ml-4 lg:-ml-0"
+      />
+    </div>
   </div>
 </template>
 

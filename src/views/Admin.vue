@@ -1,11 +1,19 @@
 <template>
   <section class="w-screen h-screen">
-    <div class="w-full h-[15%] border-b-2 justify-center flex items-center">
-      <div class="w-[32%] text-lg font-medium">Administration</div>
-      <SearchBar v-model="query" @input="onInput"></SearchBar>
+    <div
+      class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black"
+    >
+      <div class="w-[8%] text-white text-lg font-medium">Administration</div>
+      <SearchBar></SearchBar>
+      <BellIcon class="bg-white" />
+      <LogOut></LogOut>
     </div>
-    <div class="w-full h-auto justify-center flex flex-col items-center" >
-      <div class="flex flex-col pt-3 w-[80%]" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
+    <div class="h-auto justify-center flex flex-col items-center bg-[#363636]">
+      <div
+        class="flex flex-col pt-3 w-[80%]"
+        v-for="item in userStore.clubs"
+        @click="pushToInfo(item.clubName)"
+      >
         <div
           class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
         >
@@ -26,11 +34,13 @@
 </template>
 
 <script setup lang="ts">
-import SearchBar from "@/components/Reusables/SearchBar.vue";
-import { ref, onMounted } from "vue";
+import SearchBar from "@/components/SearchBar.vue";
+import LogOut from "@/components/LogOut.vue";
+import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
+import { BellIcon } from "@heroicons/vue/24/solid";
 
 let query = ref()
 const userStore = useUserStore();
@@ -42,7 +52,7 @@ function pushToInfo(clubName: string) {
   const clubJSON = JSON.stringify(clubName)
   console.log(clubJSON)
   function routePush() {
-    router.push(`/club/?name=${clubStore.clubName}`)
+    router.push(`/club/?name=${clubStore.clubName}`);
   }
   setTimeout(routePush, 1000)
 }
