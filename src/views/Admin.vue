@@ -4,7 +4,7 @@
       class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black"
     >
       <div class="w-[8%] text-white text-lg font-medium">Administration</div>
-      <SearchBar v-model="query" @input="onInput"></SearchBar>
+      <SearchBar v-model="query" @input="onInput"/>
       <!-- <BellIcon class="bg-white" /> -->
       <LogOut></LogOut>
     </div>
@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
 import LogOut from "@/components/LogOut.vue";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
@@ -59,10 +59,10 @@ function pushToInfo(clubName: string) {
 
 const onInput = function(){
   if (query.value == ''){
-    userStore.getAllClubData()
+    userStore.getAllClubData(userStore.uid)
   }
   else if (query.value == undefined){
-    userStore.getAllClubData()
+    userStore.getAllClubData(userStore.uid)
   }
   else {
     userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
