@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import SearchBar from "@/components/SearchBar.vue";
+import SearchBar from "@/components/Reusables/SearchBar.vue";
 import LogOut from "@/components/LogOut.vue";
 import { ref } from "vue";
 import { useUserStore } from "@/stores/users";
@@ -57,23 +57,9 @@ function pushToInfo(clubName: string) {
   setTimeout(routePush, 1000)
 }
 
-const onInput = function(){
-  if (query.value == ''){
-    userStore.getAllClubData(userStore.uid)
-  }
-  else if (query.value == undefined){
-    userStore.getAllClubData(userStore.uid)
-  }
-  else {
-    userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
-  }
-} 
-
 const searchFilter = function(club: object, query: any){
  const splitQuery = query.split('')
  const splitClubName = club.clubName.split('')
-//  console.log(splitQuery)
-//  console.log(splitClubName)
  let i = 0
  let result = false
  splitQuery.forEach((character: any) => {
@@ -89,4 +75,16 @@ const searchFilter = function(club: object, query: any){
  });
  return result
 }
+
+const onInput = function(){
+  if (query.value == ''){
+    userStore.getAllClubData(userStore.uid)
+  }
+  else if (query.value == undefined){
+    userStore.getAllClubData(userStore.uid)
+  }
+  else {
+    userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
+  }
+} 
 </script>
