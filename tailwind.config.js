@@ -25,6 +25,8 @@ module.exports = {
     fontFamily: {
       sans: ["Graphik", "sans-serif"],
       serif: ["Merriweather", "serif"],
+      kranky: ["Kranky", "serif"],
+      katibeh: ["Katibeh", "serif"],
     },
     extend: {
       spacing: {
