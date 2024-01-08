@@ -7,6 +7,8 @@ export const useUserStore = defineStore("user", {
   state: () => ({
     user: "",
     clubs: null,
+    uuid: "",
+    year: "",
   }),
   actions: {
     async googleLink() {
