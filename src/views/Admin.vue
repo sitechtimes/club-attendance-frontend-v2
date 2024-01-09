@@ -26,13 +26,11 @@
 </template>
 
 <script setup lang="ts">
-import SearchBar from "@/components/SearchBar.vue";
-import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
-import { useUserStore } from "@/stores/user";
+import SearchBar from "@/components/Reusables/SearchBar.vue";
+import { ref, onMounted } from "vue";
+import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
-import { split } from "postcss/lib/list";
-import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 
 let query = ref()
 const userStore = useUserStore();
@@ -42,22 +40,19 @@ const router = useRouter();
 function pushToInfo(clubName: string) {
   clubStore.clubName = clubName  
   const clubJSON = JSON.stringify(clubName)
-  console.log(clubStore.clubName, "this is the club Name")
-  console.log(clubJSON, 'this is the club JSON')
-  
+  console.log(clubJSON)
   function routePush() {
     router.push(`/club/?name=${clubStore.clubName}`)
   }
   setTimeout(routePush, 1000)
-
 }
 
 const onInput = function(){
   if (query.value == ''){
-    userStore.getData()
+    userStore.getAllClubData()
   }
   else if (query.value == undefined){
-    userStore.getData()
+    userStore.getAllClubData()
   }
   else {
     userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
@@ -67,33 +62,21 @@ const onInput = function(){
 const searchFilter = function(club: object, query: any){
  const splitQuery = query.split('')
  const splitClubName = club.clubName.split('')
- console.log(splitQuery)
- console.log(splitClubName)
+//  console.log(splitQuery)
+//  console.log(splitClubName)
  let i = 0
  let result = false
  splitQuery.forEach((character: any) => {
-  console.log(character)
-  console.log(splitQuery.length)
-  console.log(splitClubName[i])
   if(i == (splitQuery.length - 1) && character.toLowerCase() == splitClubName[i].toLowerCase()){
-    console.log("true")
     result = true    
   }
   else if(character.toLowerCase() != splitClubName[i].toLowerCase()){
-    console.log("false")
     result = false
   }
   else if( character.toLowerCase() == splitClubName[i].toLowerCase()){
-    console.log("loop")
     i++
   }
  });
- console.log(result)
  return result
 }
-
-
-onMounted(()=>{
-  userStore.getData();
-})
 </script>

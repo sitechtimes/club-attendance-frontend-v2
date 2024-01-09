@@ -16,7 +16,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/Home.vue')
+      component: () => import('../views/Home.vue'),
+      props: true
     },
     {
       path: '/president',
@@ -25,8 +26,8 @@ const router = createRouter({
     },
     {
       path: '/club',
-      name: 'information',
-      component: () => import('../views/Information.vue'),
+      name: 'club',
+      component: () => import('../views/Club.vue'),
       meta: {
         requireClub: true
       }
@@ -44,4 +45,5 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach
 export default router

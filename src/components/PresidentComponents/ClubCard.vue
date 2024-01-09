@@ -2,7 +2,10 @@
   <div class="flex flex-col">
     <div
       class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
-      @click="open = true"
+      @click="function openCard() {
+        setVariables(name)
+        open = true
+      }"
     >
       <img
         src="@/assets/coding.jpeg"
@@ -36,7 +39,7 @@
             <div
               class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
             >
-              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class=" px-4 pb-4 pt-5 bg-[#c2b669] sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <h3
@@ -59,16 +62,19 @@
                 >
                   Generate QR Code
                 </button>
-
                 <button
                   type="button"
                   class="w-full my-1 justify-center rounded-md px-3 bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:ml-3 sm:w-auto"
+                  @click="
+                    changeDate = true;
+                    open = false;
+                  "
                 >
                   Add/Change meeting date
                 </button>
                 <button
                   type="button"
-                  class="w-full my-1 justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                  class="w-full my-1 justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold bg-red text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                   @click="open = false"
                 >
                   Close
@@ -101,9 +107,44 @@
               </div>
               <button
                 type="button"
-                class="w-full my-1 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-fill sm:h-10"
+                class="w-full my-1 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white bg-red shadow-sm hover:bg-red-500 sm:ml-3 sm:w-fill sm:h-10"
                 @click="
                   qrCode = false;
+                  open = true;
+                "
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-show="changeDate">
+      <div
+        class="relative z-10"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        ></div>
+        <div class="fixed inset-0 z-10 flex justify-center">
+          <div
+            class="flex w-full items-center justify-center p-4 text-center sm:p-0"
+          >
+            <div
+              class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+            >
+              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <ChangeDate />
+              </div>
+              <button
+                type="button"
+                class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
+                @click="
+                  changeDate = false;
                   open = true;
                 "
               >
@@ -119,16 +160,36 @@
 
 <script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
-import { ref } from "vue";
-import QrCode from "./QrCode.vue";
+import { onMounted, ref } from "vue";
+import QrCode from "@/components/ClubComponents/QrCode.vue";
+import ChangeDate from "@/components/ChangeDate.vue";
+import { usePresidentStore } from "@/stores/users";
+import { useClubStore } from "@/stores/club"
 
+const clubStore = useClubStore()
+const presidentStore = usePresidentStore();
 const props = defineProps({
   name: String,
   nextMeeting: String,
 });
-
-const open = ref(false);
+let open = ref(false);
 const qrCode = ref(false);
+const changeDate = ref(false);
+
+function setVariables(name: string) {
+  presidentStore.selectedClub = name
+  if(new Date().getMonth() + 1 <= 7) {
+    let thisYear = new Date().getFullYear() - 1
+    let nextYear = new Date().getFullYear()
+    let yearVar = thisYear + '-' + nextYear
+    presidentStore.year = yearVar
+  } else {
+    let thisYear = new Date().getFullYear()
+    let nextYear = new Date().getFullYear() + 1
+    let yearVar = thisYear + '-' + nextYear
+    presidentStore.year = yearVar
+  }
+}
 </script>
 
 <style scoped>

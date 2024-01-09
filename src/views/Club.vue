@@ -16,43 +16,26 @@
       >
       <p>Advisor: {{ clubStore.clubAdvisor }}</p>
       <p>President: {{ clubStore.clubPresident }}</p>
-      <StudentCard></StudentCard>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import StudentCard from "@/components/StudentCard.vue";
+// import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
 import { onMounted } from "vue";
 import { useClubStore } from '../stores/club'
 import { useRoute, useRouter } from 'vue-router'
-import axios from "axios";
 
 const clubStore = useClubStore()
 const route = useRoute()
 
-async function getData(clubName:string|undefined, year: string ) {
-  const response = await fetch(`http://localhost:3000/getClubData/${clubName}/${year}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    },
-  })
-  const club = await response.json()
-  console.log(club)
-  clubStore.clubName = club.clubName
-  clubStore.clubAdvisor = club.clubAdivsor
-  clubStore.clubPresident = club.clubPresident
-  clubStore.room = club.room
-} 
 
 onMounted(() => {
   const queryVal = route.query.name
   const queryStr:string|undefined = queryVal?.toString()
   const year = "2023-2024"
-  getData(queryStr, year)
-
+  clubStore.getData(queryStr, year)
 });
 
 defineProps({
