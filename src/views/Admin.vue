@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import SearchBar from "@/components/Reusables/SearchBar.vue";
-import LogOut from "@/components/LogOut.vue";
+import LogOut from "@/components/Reusables/LogOut.vue";
 import { ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";

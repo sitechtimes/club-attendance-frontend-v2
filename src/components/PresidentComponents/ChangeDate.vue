@@ -15,8 +15,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { usePresidentStore } from "../stores/users";
-import { useClubStore } from "../stores/club"
+import { usePresidentStore } from "@/stores/users";
+import { useClubStore } from "@/stores/club"
 import { useRouter } from 'vue-router'
 // console.log(nextMeeting.value);
 const dateInput = ref("");
