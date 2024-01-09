@@ -1,40 +1,14 @@
 <template>
   <div 
   class="w-screen h-screen overflow-hidden relative">
-  <div>
-    <nav class="bg-black text-white flex flex-wrap
-    h-[107px] items-center z-10 relative overflow-hidden">
-      <RouterLink to="/">
-      <img src="@/assets/SeagullCalendarNT.png" 
-      alt="A seagull sitting on top of a calendar" 
-      class="h-[107px]">
-      </RouterLink>
-      <h1 
-      class="text-white text-[64px] font-kranky ml-3">
-      Club Attendance</h1>
-      <RouterLink to="/president" 
-      class="font-normal font-katibeh text-[2rem] ml-[3vw]">
-      President</RouterLink>
-      <RouterLink to="/admin" 
-      class="font-normal font-katibeh text-[2rem] ml-[3vw]">
-      Admin</RouterLink>
-      <RouterLink to="/calendar" 
-      class="font-normal font-katibeh text-[2rem] ml-[3vw]">
-      Calendar</RouterLink>
-      <div
-      class="p-4 shadow-xl cursor-pointer rounded-md hover:scale-110 ease-in-out 
-      duration-300 w-36 h-18 flex justify-evenly items-center text-black 
-      bg-[#c2b669] rounded-[30px] font-Katibeh absolute right-10">
-      Log Out</div>
-    </nav>
-  </div>
+   <Navbar></Navbar>
    <img src="@/assets/SeagullCalendar.png" 
    alt="A seagull sitting on top of a calendar" 
    class="w-[240px] mt-[30px] ml-[30px]"
    >
     <div
     class="bg-[#c2b669] 
-    w-[155rem] h-[70vh] origin-bottom -rotate-[30deg]
+    w-[160rem] h-[45rem] origin-bottom -rotate-[30deg]
     overflow-hidden shrink-0 -ml-[35rem] -mt-[15vh] border"
     >
     <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
@@ -42,7 +16,7 @@
         class="mx-auto grid max-w-2xl grid-cols-1 
         gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
       >
-        <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[15rem] mt-[10vh]">
+        <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[15rem] mt-[9vh]">
           <div class="lg:max-w-lg ">
             <h2 class="text-base font-semibold leading-7 text-black">
               Attendance, made faster
@@ -77,12 +51,12 @@
               <img
              src="@/assets/CroppedSammy.png"
              alt="Sammy the Seagull"
-             class="h-[30rem] ml-[100rem] -mt-[19rem] rotate-[30deg]"
+             class="h-[30rem] ml-[103rem] -mt-[19rem] rotate-[30deg]"
              /> 
   </div>
   <div class="
   bg-black 
-  w-[255rem] h-[80vh] -rotate-[30deg]
+  w-[255rem] h-[45rem] -rotate-[30deg]
   overflow-hidden shrink-0 -ml-[110rem]
   ">
    <img
@@ -96,6 +70,7 @@
 
 <script setup lang="ts">
 //anyone can see
+import Navbar from "@/components/Reusables/Navbar.vue";
 import Login from "@/components/HomeComponents/Login.vue";
 import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
