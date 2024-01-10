@@ -11,9 +11,9 @@
       class="text-white text-[64px] font-kranky ml-3">
       Club Attendance</h1>
       <div class="absolute right-[15rem]">
-        <RouterLink to="/" 
+        <RouterLink to="/confirmation" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
-        Student</RouterLink>
+        Student</RouterLink> <!-- currently routed to confirmation for testing -->
         <RouterLink to="/president" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         President</RouterLink>
@@ -21,7 +21,7 @@
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         Admin</RouterLink>
         <RouterLink to="/calendar" 
-        class="font-normal font-katibeh text-[2rem] ">
+        class="font-normal font-katibeh text-[2rem]">
         Calendar</RouterLink>
       </div>
       <div
