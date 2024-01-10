@@ -31,7 +31,8 @@ export const useUserStore = defineStore("user", {
     user: "",
     uid: Number,
     userAuthority: "",
-    userClubData: ""
+    userClubData: "",
+    clubs: []
   }),
   actions: {
     async googleLink() {
