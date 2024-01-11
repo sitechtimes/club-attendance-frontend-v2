@@ -38,8 +38,8 @@ export const useUserStore = defineStore("user", {
     clubs: null,
   }),
   actions: {
-    updateUser(userCookie: any) {
-     this.user = userCookie
+    updateUser(decodedCookie: any) {
+     this.user = decodedCookie
     },
     async googleLink() {
       await axios
@@ -64,6 +64,11 @@ export const useUserStore = defineStore("user", {
       });
       this.clubs = await response.json()
       console.log(this.clubs)
+    },
+    async updateAttendance(){
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/updateAttendance`, {
+        
+      });
     }
   },
 },
