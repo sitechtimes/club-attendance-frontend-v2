@@ -32,7 +32,8 @@ export const useUserStore = defineStore("user", {
     uid: Number,
     userAuthority: "",
     userClubData: "",
-    clubs: []
+    clubs: [],
+    allClubs: [],
   }),
   actions: {
     async googleLink() {
@@ -56,6 +57,7 @@ export const useUserStore = defineStore("user", {
         redirect: "follow",
       });
       this.clubs = await response.json()
+      this.allClubs = this.clubs
     }
   },
 },

@@ -70,13 +70,15 @@ const searchFilter = function(club: object, query: any){
 
 const onInput = function(){
   if (query.value == ''){
-    userStore.getAllClubData(userStore.uid)
+    userStore.clubs = userStore.allClubs
+    // userStore.getAllClubData(userStore.uid)
   }
   else if (query.value == undefined){
-    userStore.getAllClubData(userStore.uid)
+    userStore.clubs = userStore.allClubs
+    // userStore.getAllClubData(userStore.uid)
   }
   else {
-    userStore.clubs = userStore.clubs.filter((item: object) => searchFilter(item, query.value)) 
+    userStore.clubs = userStore.allClubs.filter((item: object) => searchFilter(item, query.value)) 
   }
 } 
 </script>
