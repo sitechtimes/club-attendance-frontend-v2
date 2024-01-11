@@ -22,25 +22,6 @@ export const useUserStore = defineStore("user", {
           window.location.href = res.data.redirectUri;
         });
     },
-    async approveImage(nextMeeting: any, req: Request, res: Response) {
-      const request = await fetch("http://localhost:3000//uploadImage", {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        redirect: "follow",
-        body: {
-          uuid: this.clubs.uuid,
-          year: this.clubs.year,
-          clubName: this.clubs.clubName,
-        },
-      });
-      // this.clubs = await response.json();
-      // console.log(this.clubs);
-      console.log(request);
-    },
+    async approveImage() {},
   },
 });
