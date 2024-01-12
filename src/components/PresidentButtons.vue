@@ -115,7 +115,7 @@
             <ChangeImage />
             <button
               type="button"
-              class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
+              class="w-full rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
               @click="
                 changeImage = false;
                 open = true;

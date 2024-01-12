@@ -27,16 +27,21 @@
 const imageURL = null;
 </script> -->
 <template>
-  <div>
+  <div class="flex flex-col justify-center w-[80%]">
+    <input ref="fileInput" type="file" @input="pickFile" />
     <div
-      class="imagePreviewWrapper"
+      class="imagePreviewWrapper w-full"
       :style="{ 'background-image': `url(${previewImage})` }"
       @click="selectImage"
     >
       <img :src="{ previewImage }" />
     </div>
-
-    <input ref="fileInput" type="file" @input="pickFile" />
+    <button
+      class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
+      type="submit"
+    >
+      Import Club Image
+    </button>
   </div>
 </template>
 
@@ -69,11 +74,8 @@ export default {
 
 <style>
 .imagePreviewWrapper {
-  width: 250px;
   height: 250px;
-  display: block;
   cursor: pointer;
-  margin: 0 auto 30px;
   background-size: cover;
   background-position: center center;
 }

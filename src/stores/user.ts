@@ -7,7 +7,7 @@ export const useUserStore = defineStore("user", {
   state: () => ({
     user: "",
     clubs: null,
-    uuid: "",
+    uuid: Number,
     year: "",
     clubName: "",
   }),
@@ -22,6 +22,15 @@ export const useUserStore = defineStore("user", {
           window.location.href = res.data.redirectUri;
         });
     },
-    async approveImage() {},
+    async uploadImage() {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/uploadImage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: 
+    })
+      console.log(response)
+    }
   },
 });
