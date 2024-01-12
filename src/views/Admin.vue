@@ -4,13 +4,14 @@
       <div class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10">
         <div class="w-[8%] text-white text-lg font-medium ">Administration</div>
         <SearchBar v-model="query" @input="onInput"/>
-        <!-- <BellIcon class="bg-white" /> -->
+        <BellIcon class="h-[40%] bg-white" />
         <LogOut></LogOut>
       </div>
       <div class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap">
-        <div class="flex flex-col pt-3 w-[30%]" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
-          <div class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer">
-            <div class="bg-black w-full flex flex-col items-center justify-center rounded-[15px] h-[4.5rem]">
+        <div class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
+          <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px] rounded-t-[20px]"/>
+          <div class="box flex flex-col items-end ">
+            <div class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]">
               <div class="w-full flex flex-row items-center justify-center">
                 <div class="text-[#c2b669] text-xl">{{ item.clubName }}</div>
               </div>
