@@ -27,7 +27,7 @@
 const imageURL = null;
 </script> -->
 <template>
-  <div class="flex flex-col justify-center w-[80%]">
+  <form class="form flex flex-col justify-center w-[80%]">
     <input ref="fileInput" type="file" @input="pickFile" />
     <div
       class="imagePreviewWrapper w-full"
@@ -42,10 +42,15 @@ const imageURL = null;
     >
       Import Club Image
     </button>
-  </div>
+  </form>
 </template>
 
 <script>
+import { usePresidentStore } from "@/stores/users";
+const presidentStore = usePresidentStore();
+
+form.addeventListener(){"cli"}
+
 export default {
   data() {
     return {
