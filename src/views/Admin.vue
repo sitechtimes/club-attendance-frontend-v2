@@ -4,9 +4,10 @@
       <div class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10">
         <div class="w-[8%] text-white text-lg font-medium ">Administration</div>
         <SearchBar v-model="query" @input="onInput"/>
-        <BellIcon class="h-[40%] bg-white" />
+        <BellIcon class="h-[40%] fill-white hover:scale-110 ease-in-out duration-500 cursor-pointer"/>
         <LogOut></LogOut>
-      </div>
+      </div>   
+      <ClubImageWindow/>
       <div class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap">
         <div class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
           <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px] rounded-t-[20px]"/>
@@ -29,6 +30,7 @@
 <script setup lang="ts">
 import SearchBar from "@/components/Reusables/SearchBar.vue";
 import LogOut from "@/components/Reusables/LogOut.vue";
+import ClubImageWindow from "@/components/AdminComponents/ClubImageWindow.vue"
 import { ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";

@@ -7,13 +7,10 @@
         open = true
       }"
     >
-      <img
-        src="@/assets/coding.jpeg"
-        alt="coding"
-        class="h-[228px] rounded-t-[20px]"
+      <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px] rounded-t-[20px]"
       />
       <div
-        class="bg-white w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
+        class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
       >
         <div class="text-[#c2b669] text-xl">{{ name }}</div>
         <div class="text-[#c2b669] flex items-center">
