@@ -1,5 +1,10 @@
 <template>
-<div class="overflow-hidden bg-white pt-20 lg:pt-24">
+<div v-if="!userStore.user.isAuthenticated">
+<NotLoggedPageGuard/>
+</div>
+<div v-else>
+    <Navbar></Navbar>
+    <div class="overflow-hidden bg-white pt-20 lg:pt-24">
     <div v-if="!present"
     class = "flex flex-col items-center justify-center">
         <h1 
@@ -25,20 +30,40 @@
         <p>Error</p>
     </div>
 </div>
+</div>
 </template>
 
 <script setup lang="ts">
 //anyone can see
+import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
 import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
 import { useUserStore } from "@/stores/users";
+import Navbar from "@/components/Reusables/Navbar.vue";
 //import { useClubStore } from "@/stores/club";
 const userStore = useUserStore();
 //const clubStore = useClubStore();
 let present = ref(false)
+let attendanceData = {
+  club_name: "",
+  uuid: "",
+  first_name: "",
+  last_name: "",
+  email: "",
+  position: "",
+  grade: null,
+  off_class: null,
+  num_attendance: null,
+};
 const logAttendance = function(){
 present.value = true 
+attendanceData.club_name = "3D Printing Club"
+attendanceData.uuid = userStore.user.uid
+attendanceData.first_name = userStore.user.firstName
 }
+defineProps({
+  clubName: String,
+});
 onMounted(()=>{
 //clubStore.getData();
 })
-</script>@/stores/users
+</script>
