@@ -46,10 +46,10 @@ const imageURL = null;
 </template>
 
 <script>
-import { usePresidentStore } from "@/stores/users";
-const presidentStore = usePresidentStore();
+// import { usePresidentStore } from "@/stores/users";
+// const presidentStore = usePresidentStore();
 
-form.addeventListener(){"cli"}
+// form.addeventListener(){"cli"};
 
 export default {
   data() {

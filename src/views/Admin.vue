@@ -5,10 +5,7 @@
     >
       <div class="w-[8%] text-white text-lg font-medium">Administration</div>
       <SearchBar></SearchBar>
-      <button
-        class="w-[4%] text-white"
-        @click="router.push({ path: '/confirmimage' }) & this.$router.reload()"
-      >
+      <button class="w-[4%] text-white" @click="changeRoute()">
         dfsfsdf
         <BellIcon class="text-white" />
       </button>
@@ -51,6 +48,7 @@ import { useClubStore } from "@/stores/club";
 import { useRouter, useRoute } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
 import { RouterLink } from "vue-router";
+import ConfirmImage from "./ConfirmImage.vue";
 
 const userStore = useUserStore();
 const clubStore = useClubStore();
@@ -59,6 +57,10 @@ const route = useRoute();
 // function pushToClub() {
 //   router.push({ path: "/information" });
 // }
+function changeRoute() {
+  location.reload();
+  router.push({ path: "/confirmimage" });
+}
 
 function pushToInfo(clubName: string) {
   clubStore.clubName = clubName;

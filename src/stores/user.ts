@@ -20,9 +20,9 @@ export const usePresidentStore = defineStore("president", {
           },
           body: club_img,
         }
-      );
-      .then(res => res.json())
-      .then(data => console.log(data))
+      )
+        .then((res) => res.json())
+        .then((data) => console.log(data));
     },
   },
 });
