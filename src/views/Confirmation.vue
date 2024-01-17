@@ -59,6 +59,7 @@ present.value = true
 attendanceData.club_name = "3D Printing Club"
 attendanceData.uuid = userStore.user.uid
 attendanceData.first_name = userStore.user.firstName
+userStore.updateAttendance(attendanceData)
 }
 defineProps({
   clubName: String,

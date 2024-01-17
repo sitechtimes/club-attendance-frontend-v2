@@ -73,6 +73,7 @@ export const useUserStore = defineStore("user", {
       },
       body: attendanceData,
       });
+      console.log("Attendance Logged")
     }
   },
 },
