@@ -42,31 +42,30 @@ import Navbar from "@/components/Reusables/Navbar.vue";
 //import { useClubStore } from "@/stores/club";
 const userStore = useUserStore();
 //const clubStore = useClubStore();
-let present = ref(false)
-let attendanceData = {
-  club_name: "",
-  uuid: "",
-  first_name: "",
-  last_name: "",
-  email: "",
-  position: "",
-  grade: null,
-  off_class: null,
-  num_attendance: null,
-};
+let present = ref(false);
+
 const logAttendance = function(){
 present.value = true 
-attendanceData.club_name = "3D Printing Club"
-attendanceData.uuid = userStore.user.uid
-attendanceData.first_name = userStore.user.firstName
-attendanceData.last_name = userStore.user.lastName
-attendanceData.email = userStore.user.email
-attendanceData.position = userStore.user.role
-userStore.updateAttendance(attendanceData)
-}
+const attendanceDataJSON = `{
+  "year": "2024-2025",
+  "club_name": "3D Printing Club",
+  "uuid": userStore.user.uid,
+  "first_name": userStore.user.firstName,
+  "last_name": userStore.user.lastName,
+  "email": userStore.user.email,
+  "position": userStore.user.role,
+  "grade": 12,
+  "off_class": "24a",
+  "num_attendance": 1,
+}`
+console.log(attendanceDataJSON)
+userStore.updateAttendance(attendanceDataJSON)
+};
+
 defineProps({
   clubName: String,
 });
+
 onMounted(()=>{
 //clubStore.getData();
 })
