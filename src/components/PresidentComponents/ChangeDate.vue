@@ -46,6 +46,7 @@ function changeDate() {
       const clubDetails = `{"year": "${presidentStore.year}", "clubName": "${presidentStore.selectedClub}", "nextMeeting": "${nextMeeting}"}`
       presidentStore.changeNextMeet(clubDetails)  
       clubStore.club = []
+      console.log(clubDetails)
       setTimeout( () => routePush("/") , 100 )
     } else {
       console.log("please put in a valid date")

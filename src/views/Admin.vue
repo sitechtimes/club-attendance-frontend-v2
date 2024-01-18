@@ -7,7 +7,9 @@
         <BellIcon class="h-[40%] fill-white hover:scale-110 ease-in-out duration-500 cursor-pointer"/>
         <LogOut></LogOut>
       </div>   
-      <ClubImageWindow/>
+        <div class="flex h-[100%] w-screen absolute justify-center p-20">
+          <ClubImageWindow/>
+        </div>
       <div class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap">
         <div class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
           <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px] rounded-t-[20px]"/>
