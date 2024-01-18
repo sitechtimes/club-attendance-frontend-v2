@@ -30,7 +30,7 @@ const imageURL = null;
   <form class="form flex flex-col justify-center w-[80%]">
     <input ref="fileInput" type="file" @input="pickFile" />
     <div
-      class="imagePreviewWrapper w-full"
+      class="imagePreviewWrapper"
       :style="{ 'background-image': `url(${previewImage})` }"
       @click="selectImage"
     >
@@ -39,6 +39,7 @@ const imageURL = null;
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
       type="submit"
+      @click="uploadTodos"
     >
       Import Club Image
     </button>
@@ -79,6 +80,7 @@ export default {
 
 <style>
 .imagePreviewWrapper {
+  width: 100%;
   height: 250px;
   cursor: pointer;
   background-size: cover;
