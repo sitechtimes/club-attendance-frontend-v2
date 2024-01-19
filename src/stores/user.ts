@@ -10,19 +10,35 @@ export const usePresidentStore = defineStore("president", {
     clubName: "",
   }),
   actions: {
-    async uploadImage() {
-      const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/uploadImage`,
-        {
-          method: "POST",
+    // async uploadImage() {
+    //   const response = await fetch(
+    //     `${import.meta.env.VITE_BACKEND_URL}/uploadImage`,
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: club_img,
+    //     }
+    //   )
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data));
+    // },
+    async uploadTodos(context, file) {
+      console.log([...file]);
+      axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/uploadImage`, file, {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
-          body: club_img,
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+        })
+        .then((response) => {
+          console.log(response.data);
+          context.commit("importTodos", response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
     },
   },
 });

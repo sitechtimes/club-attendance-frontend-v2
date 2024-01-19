@@ -137,12 +137,8 @@ import QrCode from "./QrCode.vue";
 import ChangeDate from "./ChangeDate.vue";
 import ChangeImage from "./ChangeImage.vue";
 import { onMounted } from "vue";
-import { useClubStore } from "../stores/club";
 
-const clubStore = useClubStore();
-const nextMeeting = clubStore.nextMeeting;
 const props = defineProps({});
-console.log(nextMeeting);
 const open = ref(false);
 const qrCode = ref(false);
 const changeImage = ref(false);

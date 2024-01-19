@@ -28,7 +28,12 @@ const imageURL = null;
 </script> -->
 <template>
   <form class="form flex flex-col justify-center w-[80%]">
-    <input ref="fileInput" type="file" @input="pickFile" />
+    <input
+      ref="fileInput"
+      type="file"
+      @input="pickFile"
+      @change="selectedFile($event)"
+    />
     <div
       class="imagePreviewWrapper"
       :style="{ 'background-image': `url(${previewImage})` }"
