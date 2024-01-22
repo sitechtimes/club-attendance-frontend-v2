@@ -46,7 +46,7 @@ let present = ref(false);
 
 const logAttendance = function(){
 present.value = true 
-const attendanceDataJSON = `{
+const attendanceDataJSON = '{
   "year": "2024-2025",
   "club_name": "3D Printing Club",
   "uuid": userStore.user.uid,
@@ -57,7 +57,7 @@ const attendanceDataJSON = `{
   "grade": 12,
   "off_class": "24a",
   "num_attendance": 1,
-}`
+}'
 console.log(attendanceDataJSON)
 userStore.updateAttendance(attendanceDataJSON)
 };
