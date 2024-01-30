@@ -24,10 +24,12 @@ export const usePresidentStore = defineStore("president", {
     //     .then((res) => res.json())
     //     .then((data) => console.log(data));
     // },
-    async uploadTodos(context, file) {
-      console.log([...file]);
-      axios
-        .post(`${import.meta.env.VITE_BACKEND_URL}/uploadImage`, file, {
+    async uploadImage(file) {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      await axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/uploadImage`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
