@@ -46,18 +46,18 @@ let present = ref(false);
 
 const logAttendance = function(){
 present.value = true 
-const attendanceDataJSON = '{
-  "year": "2024-2025",
-  "club_name": "3D Printing Club",
-  "uuid": userStore.user.uid,
-  "first_name": userStore.user.firstName,
-  "last_name": userStore.user.lastName,
-  "email": userStore.user.email,
-  "position": userStore.user.role,
-  "grade": 12,
-  "off_class": "24a",
-  "num_attendance": 1,
-}'
+const attendanceDataJSON = `{
+  year: "2024-2025",
+  club_name: "3D Printing Club",
+  uuid: ${userStore.user.uid},
+  first_name: ${userStore.user.firstName},
+  last_name: ${userStore.user.lastName},
+  email: ${userStore.user.email},
+  position: ${userStore.user.role},
+  grade: 12,
+  off_class: "24a",
+  num_attendance: 1,
+}`;
 console.log(attendanceDataJSON)
 userStore.updateAttendance(attendanceDataJSON)
 };

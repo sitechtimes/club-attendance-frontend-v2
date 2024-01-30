@@ -1,6 +1,6 @@
 <template>
 <div>
-    <nav class="bg-black text-white flex flex-wrap
+    <nav class="bg-black text-white flex flex-nowrap
     h-[107px] items-center z-10 relative overflow-hidden">
       <RouterLink to="/">
       <img src="@/assets/SeagullCalendarNT.png" 
@@ -8,12 +8,12 @@
       class="h-[107px]">
       </RouterLink>
       <h1 
-      class="text-white text-[64px] font-kranky ml-3">
+      class="text-white text-[64px] font-kranky">
       Club Attendance</h1>
-      <div class="absolute right-[15rem]">
+      <div class="absolute right-[2rem]">
         <RouterLink to="/confirmation" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
-        Student</RouterLink> <!-- currently routed to confirmation for testing -->
+        Student</RouterLink> <!-- currently routed to confirmation for testing, in future confirmation will be reached via qr code-->
         <RouterLink to="/president" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         President</RouterLink>
@@ -23,12 +23,14 @@
         <RouterLink to="/calendar" 
         class="font-normal font-katibeh text-[2rem]">
         Calendar</RouterLink>
+        <button
+          class="p-4 shadow-xl cursor-pointer rounded-md font-Katibeh
+          hover:scale-110 ease-in-out duration-300 w-36 h-18 flex 
+          justify-evenly items-center text-black bg-[#c2b669] rounded-[2rem]
+          inline-flex">
+          Log Out
+        </button>
       </div>
-      <div
-      class="p-4 shadow-xl cursor-pointer rounded-md hover:scale-110 ease-in-out 
-      duration-300 w-36 h-18 flex justify-evenly items-center text-black 
-      bg-[#c2b669] rounded-[2rem] font-Katibeh absolute right-[2.5rem]">
-      Log Out</div>
     </nav>
 </div>
 </template>
