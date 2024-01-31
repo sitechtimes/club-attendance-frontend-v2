@@ -8,9 +8,9 @@
       class="h-[107px]">
       </RouterLink>
       <h1 
-      class="text-white text-[64px] font-kranky">
+      class="text-white text-[64px] font-kranky ml-3">
       Club Attendance</h1>
-      <div class="absolute right-[2rem]">
+      <div class="absolute right-[1rem]">
         <RouterLink to="/confirmation" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         Student</RouterLink> <!-- currently routed to confirmation for testing, in future confirmation will be reached via qr code-->
@@ -27,7 +27,7 @@
           class="p-4 shadow-xl cursor-pointer rounded-md font-Katibeh
           hover:scale-110 ease-in-out duration-300 w-36 h-18 flex 
           justify-evenly items-center text-black bg-[#c2b669] rounded-[2rem]
-          inline-flex">
+          inline-flex ml-[1rem]">
           Log Out
         </button>
       </div>

@@ -71,7 +71,7 @@ export const useUserStore = defineStore("user", {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.parse(attendanceJSON),
+      body: JSON.stringify(attendanceJSON),
       });
       console.log(response, "this is what attendance has been logged as")
     }
