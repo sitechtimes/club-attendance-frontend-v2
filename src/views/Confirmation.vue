@@ -58,8 +58,7 @@ const attendanceDataJSON = {
   off_class: "24a",
   num_attendance: 1,
 };
-console.log(JSON.stringify(attendanceDataJSON))
-userStore.updateAttendance(attendanceDataJSON)
+userStore.updateAttendance(JSON.stringify(attendanceDataJSON))
 };
 
 defineProps({
