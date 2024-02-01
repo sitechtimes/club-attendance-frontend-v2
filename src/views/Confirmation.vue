@@ -56,7 +56,7 @@ const attendanceDataJSON = {
   position: userStore.user.role,
   grade: 12,
   off_class: "24a",
-  num_attendance: 1,
+  num_attendance: 5,
 };
 userStore.updateAttendance(JSON.stringify(attendanceDataJSON))
 };

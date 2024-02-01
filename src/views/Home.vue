@@ -94,7 +94,6 @@ let store = useUserStore();
 // token starts as string, make the unstringify the string then use the object
 
 function parseGoogleCookie(str: string){
-  console.log(str)
  let cookieObj = str.split('{')[1]
  .split('}')[0]
  .split(',')
