@@ -28,12 +28,7 @@ const imageURL = null;
 </script> -->
 <template>
   <form class="form flex flex-col justify-center w-[80%]">
-    <input
-      ref="fileInput"
-      type="file"
-      @input="pickFile"
-      @change="selectedFile($event)"
-    />
+    <input ref="fileInput" type="file" @input="pickFile" />
     <div
       class="imagePreviewWrapper"
       :style="{ 'background-image': `url(${previewImage})` }"
@@ -44,7 +39,7 @@ const imageURL = null;
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
       type="submit"
-      @click="uploadTodos"
+      @click="presidentStore.uploadImage"
     >
       Import Club Image
     </button>
@@ -52,11 +47,8 @@ const imageURL = null;
 </template>
 
 <script>
-import { usePresidentStore } from "@/stores/users";
-// const presidentStore = usePresidentStore();
-
-// form.addeventListener(){"cli"};
-
+import { usePresidentStore } from "../stores/user";
+import axios from "axios";
 const presidentStore = usePresidentStore();
 
 export default {
