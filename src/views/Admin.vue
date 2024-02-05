@@ -6,9 +6,24 @@
         <SearchBar v-model="query" @input="onInput"/>
         <BellIcon class="h-[40%] fill-white hover:scale-110 ease-in-out duration-500 cursor-pointer"/>
         <LogOut></LogOut>
-        
+        <div class="p-3 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 bg-yellow flex justify-evenly items-center" @click="function openCard() {open = true}">
+        <div>Upload Image</div>
+        </div>
       </div>   
-          <!-- <ClubImageWindow/> -->
+          <div v-show="open">
+            <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+              <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div class="fixed inset-0 z-10 overflow-y-auto">
+                  <div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all w-screen h-screen">
+                      <div class=" px-4 pb-4 pt-5 bg-[#c2b669] sm:p-6 sm:pb-4 flex flex-row-reverse">
+                        <div class="py-3 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center" @click="function closecard() {open = false}">close</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
       <div class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap">
         <div class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer" v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
           <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px] rounded-t-[20px]"/>
@@ -39,6 +54,7 @@ import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
 
 let query = ref()
+let open = ref(false);
 const userStore = useUserStore();
 const clubStore = useClubStore();
 const router = useRouter();
