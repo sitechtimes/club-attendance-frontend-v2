@@ -7,7 +7,7 @@
    class="w-[240px] mt-[30px] ml-[30px]"
    >
     <div
-    class="bg-[#c2b669] 
+    class="bg-gold 
     w-[160rem] h-[45rem] origin-bottom -rotate-[30deg]
     overflow-hidden shrink-0 -ml-[35rem] -mt-[15vh] border"
     >

@@ -66,6 +66,7 @@ export const useUserStore = defineStore("user", {
       console.log(this.clubs)
     },
     async updateAttendance(attendanceJSON: any){
+      console.log(attendanceJSON)
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/updateAttendance`, {
       method: "PATCH",
       headers: {

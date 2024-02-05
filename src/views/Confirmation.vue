@@ -14,7 +14,7 @@
         <div
         class="flex flex-col mt-8">
             <button 
-            class="p-4 text-[#c2b669] shadow-xl cursor-pointer rounded-md hover:scale-110 ease-in-out duration-300 bg-black w-36 h-18 flex justify-evenly items-center"
+            class="p-4 text-gold shadow-xl cursor-pointer rounded-md hover:scale-110 ease-in-out duration-300 bg-black w-36 h-18 flex justify-evenly items-center"
             @click="logAttendance">
              Click Here
             </button>
@@ -56,7 +56,7 @@ const attendanceDataJSON = {
   position: userStore.user.role,
   grade: 12,
   off_class: "24a",
-  num_attendance: 5,
+  num_attendance: 1,
 };
 userStore.updateAttendance(JSON.stringify(attendanceDataJSON))
 };
