@@ -10,20 +10,6 @@ export const usePresidentStore = defineStore("president", {
     clubName: "",
   }),
   actions: {
-    // async uploadImage() {
-    //   const response = await fetch(
-    //     `${import.meta.env.VITE_BACKEND_URL}/uploadImage`,
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: club_img,
-    //     }
-    //   )
-    //     .then((res) => res.json())
-    //     .then((data) => console.log(data));
-    // },
     async uploadImage(file) {
       const formData = new FormData();
       formData.append("image", file);

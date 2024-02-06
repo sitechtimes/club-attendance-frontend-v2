@@ -25,6 +25,7 @@ const api = mande("http://localhost:3000/getAllClubData");
 
 export const useClubStore = defineStore("club", {
   state: () => ({
+    fileUpload: true,
     clubName: "",
     clubPresident: "",
     user: "",

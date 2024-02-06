@@ -39,7 +39,7 @@ const imageURL = null;
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
       type="submit"
-      @click="presidentStore.uploadImage"
+      @click="presidentStore.uploadImage()"
     >
       Import Club Image
     </button>
@@ -48,7 +48,6 @@ const imageURL = null;
 
 <script>
 import { usePresidentStore } from "../stores/user";
-import axios from "axios";
 const presidentStore = usePresidentStore();
 
 export default {
