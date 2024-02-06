@@ -15,7 +15,7 @@ export const usePresidentStore = defineStore("president", {
       formData.append("image", file);
 
       await axios
-        .post(`${import.meta.env.VITE_BACKEND_URL}/uploadImage`, formData, {
+        .post("http://localhost:3000uploadImage", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
