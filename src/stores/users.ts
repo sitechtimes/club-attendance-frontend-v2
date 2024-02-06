@@ -45,8 +45,8 @@ export const useUserStore = defineStore("user", {
           window.location.href = res.data.redirectUri;
         });
     },
-    async getAllClubData(uuid: number) {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData/${uuid}`, {
+    async getAllClubData(uuid: any) {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData/2024-2025/${uuid}`, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
@@ -56,7 +56,7 @@ export const useUserStore = defineStore("user", {
         },
         redirect: "follow",
       });
-      console.log(response.json())
+      console.log(uuid)
     }
   },
 },
