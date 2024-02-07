@@ -1,7 +1,6 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import router from "../router/index";
 
 export const usePresidentStore = defineStore("president", {
   state: () => ({
@@ -20,12 +19,12 @@ export const usePresidentStore = defineStore("president", {
             "Content-Type": "multipart/form-data",
           },
         })
-        .then((response) => {
-          console.log(response.data);
-          context.commit("importTodos", response.data);
+        .then((res) => {
+          console.log(res.data);
+          context.commit("importTodos", res.data);
         })
         .catch((error) => {
-          console.log(error.response.data);
+          console.log(error.res.data);
         });
     },
   },

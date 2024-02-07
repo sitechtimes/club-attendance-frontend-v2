@@ -39,47 +39,47 @@ const imageURL = null;
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
       type="submit"
-      @click="uploadImage()"
+      @click="presidentStore.uploadImage()"
     >
       Import Club Image
     </button>
   </form>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref } from "vue";
 import { usePresidentStore } from "../stores/user";
 const presidentStore = usePresidentStore();
 
-function uploadImage() {
-  const formData = new FormData();
-  formData.append("image", this.previewImage);
-  presidentStore.uploadImage(formData);
-}
+// export default {
+//   setup() {
+//     const previewImage = ref(null);
 
-export default {
-  data() {
-    return {
-      previewImage: null,
-    };
-  },
-  methods: {
-    selectImage() {
-      this.$refs.fileInput.click();
-    },
-    pickFile() {
-      let input = this.$refs.fileInput;
-      let file = input.files;
-      if (file && file[0]) {
-        let reader = new FileReader();
-        reader.onload = (e) => {
-          this.previewImage = e.target.result;
-        };
-        reader.readAsDataURL(file[0]);
-        this.$emit("input", file[0]);
-      }
-    },
-  },
-};
+//     const selectImage = () => {
+//       this.$refs.fileInput.click();
+//     };
+
+//     const pickFile = () => {
+//       let input = this.$refs.fileInput;
+//       let file = input.files;
+//       if (file && file[0]) {
+//         let reader = new FileReader();
+//         reader.onload = (e) => {
+//           previewImage.value = e.target.result;
+//         };
+//         reader.readAsDataURL(file[0]);
+//         this.$emit("input", file[0]);
+//       }
+//     };
+
+//     return {
+//       presidentStore,
+//       previewImage,
+//       selectImage,
+//       pickFile,
+//     };
+//   },
+// };
 </script>
 
 <style>
