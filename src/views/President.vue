@@ -2,11 +2,11 @@
   <div v-if="!store.user.isAuthenticated">
   <NotLoggedPageGuard/>
   </div>
-  <div v-else-if="store.user.role !== 'admin' && store.user.role !== 'president'">
+  <div v-else-if="store.user.role !== 'Admin' && store.user.role !== 'president'">
   <NoPermsPageGuard/>
   </div>
   <div v-else-if="store.user.isAuthenticated && 
-  (store.user.role == 'admin' || store.user.role =='president')">
+  (store.user.role == 'Admin' || store.user.role =='president')">
     <div class="h-screen">
     <!-- <div class="h-8 bg-[#c2b669]">
     </div> -->

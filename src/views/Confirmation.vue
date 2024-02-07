@@ -46,12 +46,12 @@ let present = ref(false);
 
 const logAttendance = function(){
     present.value = true 
-    const attendanceDataJSON = {
+    const attendanceData = {
         year: "2024-2025",
         clubName: "3D Printing Club",
         uuid: userStore.user.uid,
     };
-    userStore.updateAttendance(JSON.stringify(attendanceDataJSON))
+    userStore.updateAttendance(attendanceData)
 };
 
 defineProps({

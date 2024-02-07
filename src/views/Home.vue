@@ -127,6 +127,7 @@ onMounted(() => {
   console.log(store.user)
   } else {
   const userCookie = getCookie("user_data");
+  console.log(userCookie)
   store.updateUser(userCookie)
   loggedIn = true
   return loggedIn
