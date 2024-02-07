@@ -69,12 +69,9 @@ export const useUserStore = defineStore("user", {
       console.log(attendanceJSON)
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/updateAttendance`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: attendanceJSON,
       });
-      console.log(response, "this is what attendance has been logged as")
+      console.log(await response.json(), "this is what attendance has been logged as")
     }
   },
 },
