@@ -68,9 +68,17 @@ export const useUserStore = defineStore("user", {
     async updateAttendance(attendanceJSON: any){
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/updateAttendance`, {
       method: "PATCH",
-      body: attendanceJSON,
-      });
-      console.log(await response)
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+       "Content-Type": "aaplication/json"
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify(attendanceJSON),
+      });   
+      console.log(response.json())
     }
   },
 },

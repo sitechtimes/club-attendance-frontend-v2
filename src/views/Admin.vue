@@ -2,11 +2,11 @@
   <div v-if="!store.user.isAuthenticated">
   <NotLoggedPageGuard/>
   </div>
-  <div v-else-if="store.user.role !== 'Admin'">
+  <div v-else-if="store.user.role !== 'user'">
   <NoPermsPageGuard/>
   </div>
   <div v-else-if="store.user.isAuthenticated && 
-  store.user.role == 'Admin' ">
+  store.user.role == 'user' ">
   <section class="w-screen h-screen">
     <div class="w-full h-[15%] border-b-2 justify-center flex items-center">
       <div class="w-[32%] text-lg font-medium">Administration</div>
