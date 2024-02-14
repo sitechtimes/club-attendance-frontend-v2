@@ -34,6 +34,7 @@ export const useUserStore = defineStore("user", {
     userClubData: "",
     clubs: [],
     allClubs: [],
+    unapprovedImages: [],
   }),
   actions: {
     async googleLink() {
@@ -56,7 +57,13 @@ export const useUserStore = defineStore("user", {
         },
         redirect: "follow",
       });
-      console.log(uuid)
+      this.clubs = await response.json()
+      this.allClubs = this.clubs
+    },
+    async getUnapprovedClubs(uuid: any) {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getUnapprovedImages/${uuid}`)
+      this.unapprovedImages = await response.json()
+      console.log(this.unapprovedImages)
     }
   },
 },

@@ -98,6 +98,7 @@ onMounted(() => {
 
   if (userStore.userAuthority === "Admin") {
     userStore.getAllClubData(userStore.uid)
+    userStore.getUnapprovedClubs(userStore.uid)
     setTimeout(function push() {routePush("admin")}, 1000)
   } else if (userStore.userAuthority === "Club President") {
     routePush("President")

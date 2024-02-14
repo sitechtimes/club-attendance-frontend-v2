@@ -21,6 +21,12 @@
                         close
                         </div>
                       </div>
+                      <div class="flex flex-row justify-evenly h-100vh">
+                      <div v-for="image in userStore.unapprovedImages" class="flex flex-col w-[30%]">
+                        <img :src=image.link class="h-[228px] rounded-t-[20px]" >
+                        <h2> {{ image.name }}</h2>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -48,7 +54,6 @@
 <script setup lang="ts">
 import SearchBar from "@/components/Reusables/SearchBar.vue";
 import LogOut from "@/components/Reusables/LogOut.vue";
-import ClubImageWindow from "@/components/AdminComponents/ClubImageWindow.vue"
 import { ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
