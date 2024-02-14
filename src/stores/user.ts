@@ -21,7 +21,7 @@ export const usePresidentStore = defineStore("president", {
         })
         .then((res) => {
           console.log(res.data);
-          context.commit("importTodos", res.data);
+          this.commit("importTodos", res.data);
         })
         .catch((error) => {
           console.log(error.res.data);

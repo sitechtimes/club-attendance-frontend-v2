@@ -6,7 +6,7 @@
       :style="{ 'background-image': `url(${previewImage})` }"
       @click="selectImage"
     >
-      <img :src="{ previewImage }" />
+      <!-- <img :src="{ previewImage }" /> -->
     </div>
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { usePresidentStore } from "../stores/user";
 const presidentStore = usePresidentStore();
 
