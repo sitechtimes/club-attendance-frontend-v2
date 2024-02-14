@@ -48,8 +48,8 @@ const logAttendance = function(){
     present.value = true 
     const attendanceData = {
         year: "2024-2025",
-        clubName: "3D Printing Club",
         uuid: userStore.user.uid,
+        clubName: "3D Printing Club",
     };
     userStore.updateAttendance(attendanceData)
 };
