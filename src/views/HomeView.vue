@@ -72,7 +72,7 @@
 //anyone can see
 import Navbar from "@/components/Reusables/Navbar.vue";
 import Login from "@/components/HomeComponents/Login.vue";
-import Calender from "@/components/HomeComponents/Calender.vue";
+// import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useRouter } from 'vue-router'

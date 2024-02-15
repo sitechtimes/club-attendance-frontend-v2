@@ -1,8 +1,6 @@
 <template>
 <div
-class="
-background
-bg-black 
+class="background bg-black 
 flex 
 w-screen h-screen flex-col justify-end items-center overflow-hidden">
 <img src="@/assets/LoadingSeagull.png" alt="Seagull"

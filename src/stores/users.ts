@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { ref } from 'vue'
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
