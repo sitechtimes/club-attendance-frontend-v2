@@ -21,10 +21,13 @@ module.exports = {
       "gray-light": "#d3dce6",
       black: "#000000",
       white: "#ffffff",
+      gold: "#c2b669",
     },
     fontFamily: {
       sans: ["Graphik", "sans-serif"],
       serif: ["Merriweather", "serif"],
+      kranky: ["Kranky", "serif"],
+      katibeh: ["Katibeh", "serif"],
     },
     extend: {
       spacing: {

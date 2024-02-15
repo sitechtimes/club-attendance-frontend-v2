@@ -1,4 +1,14 @@
 <template>
+
+<div v-if="!store.user.isAuthenticated">
+  <NotLoggedPageGuard/>
+  </div>
+  <div v-else-if="store.user.role !== 'admin'">
+  <NoPermsPageGuard/>
+  </div>
+  <div v-else-if="store.user.isAuthenticated && 
+  store.user.role == 'admin' ">
+
   <div class="w-screen h-auto flex flex-col">
     <div
       class="w-full h-[15vh] border-b-2 flex flex-row items-center justify-center"
@@ -18,14 +28,24 @@
       <p>President: {{ clubStore.clubPresident }}</p>
     </div>
   </div>
+  
+  </div>
+  <div v-else>
+    Error
+  </div>
 </template>
 
 <script setup lang="ts">
+//admin only 
 // import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
 import { onMounted } from "vue";
 import { useClubStore } from '../stores/club'
 import { useRoute, useRouter } from 'vue-router'
+import { useUserStore } from "@/stores/users";
+import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
+import NoPermsPageGuard from '@/components/Reusables/NoPermsPageGuard.vue'
+let store = useUserStore();
 
 const clubStore = useClubStore()
 const route = useRoute()
