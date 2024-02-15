@@ -29,9 +29,7 @@ export const usePresidentStore = defineStore("president", {
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    uid: Number,
-    userAuthority: "",
-    userClubData: "",
+    userClubData: {},
     clubs: [],
     allClubs: [],
     unapprovedImages: [],
