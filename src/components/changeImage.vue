@@ -1,6 +1,12 @@
 <template>
   <form class="form flex flex-col justify-center w-[80%]">
-    <input ref="fileInput" type="file" @input="pickFile" />
+    <input
+      id="image"
+      v-on:change="onFileChange"
+      type="file"
+      @input="pickFile"
+    />
+    <!-- <input ref="fileInput" type="file" @input="pickFile" /> -->
     <div
       class="imagePreviewWrapper"
       :style="{ 'background-image': `url(${previewImage})` }"
@@ -11,7 +17,7 @@
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
       type="submit"
-      @click="presidentStore.uploadImage()"
+      @click="selectImage()"
     >
       Import Club Image
     </button>
@@ -19,8 +25,25 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { usePresidentStore } from "../stores/user";
 const presidentStore = usePresidentStore();
+const pickFile = ref("");
+
+function onFileChange(e) {
+  var files = e.target.files || e.dataTransfer.files;
+  if (!files.length) return;
+  this.createImage(files[0]);
+}
+
+function selectImage() {
+  try {
+    const input = document.querySelector("input[type=file]");
+    presidentStore.uploadImage();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // export default {
 //   setup() {
