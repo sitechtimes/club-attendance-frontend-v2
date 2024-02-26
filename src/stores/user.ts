@@ -7,6 +7,7 @@ export const usePresidentStore = defineStore("president", {
     uuid: Number,
     year: "",
     clubName: "",
+    image: "",
   }),
   actions: {
     async uploadImage(file) {

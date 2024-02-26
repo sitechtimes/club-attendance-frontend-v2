@@ -30,16 +30,20 @@ import { usePresidentStore } from "../stores/user";
 const presidentStore = usePresidentStore();
 const pickFile = ref("");
 
-function onFileChange(e) {
-  var files = e.target.files || e.dataTransfer.files;
+function onFileChange(this: any, e: Event) {
+  var files =
+    (e.target as HTMLInputElement).files ||
+    (e.dataTransfer as DataTransfer).files;
   if (!files.length) return;
   this.createImage(files[0]);
 }
 
 function selectImage() {
   try {
-    const input = document.querySelector("input[type=file]");
-    presidentStore.uploadImage();
+    const input = document.querySelector("input[type=file].value");
+    const image: string = input.files[0];
+    const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
+    presidentStore.uploadImage(inputImg);
   } catch (error) {
     console.log(error);
   }
