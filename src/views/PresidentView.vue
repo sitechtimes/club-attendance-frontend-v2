@@ -14,6 +14,6 @@ import { useClubStore } from '@/stores/club'
 const clubStore = useClubStore()
 const userStore = useUserStore()
 userStore.user.ClubData.PresidentOf.forEach((club: string) => {
-  clubStore.getData(club, "2023-2024")
+  clubStore.getData(club, "2024-2025")
 });
 </script>
