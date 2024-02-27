@@ -39,10 +39,13 @@
       
       </button>
       </div>
-      <!-- club select -->
-      
     </div>
   </nav>
+
+<div class="bg-gray w-1/6 h-1/6">
+
+</div>
+
  <!-- club div -->
   <!-- <div class="flex flex-col">
     <div
@@ -68,7 +71,7 @@
       </div>
     </div> -->
     <!-- modal -->
-    <div v-show="open">
+    <!-- <div v-show="open">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
@@ -130,9 +133,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- modal QR code  -->
-    <div v-show="qrCode">
+    <!-- <div v-show="qrCode">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
@@ -166,9 +169,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- modal date change  -->
-    <div v-show="changeDate">
+    <!-- <div v-show="changeDate">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
@@ -202,11 +205,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { onMounted, ref } from "vue";
 import QrCode from "@/components/ClubComponents/QrCode.vue";
@@ -249,4 +252,4 @@ function setVariables(name: string) {
   box-shadow: 30px 30px 30px #cccccc, 0 0 0 #ffffff, 0 0 0 #cccccc inset,
     2px 2px 2px #ffffff inset;
 }
-</style>
+</style> -->
