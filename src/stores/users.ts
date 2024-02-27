@@ -65,20 +65,13 @@ export const useUserStore = defineStore("user", {
       this.clubs = await response.json()
       console.log(this.clubs)
     },
-    async updateAttendance(attendanceJSON: any){
+    //@ts-ignore
+    async updateAttendance(attendanceJSON){
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/updateAttendance`, {
       method: "PATCH",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-       "Content-Type": "aaplication/json"
-      },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
-      body: JSON.stringify(attendanceJSON),
+      body: attendanceJSON
       });   
-      console.log(response.json())
+      return await response.json()
     }
   },
 },

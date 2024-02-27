@@ -44,14 +44,15 @@ const userStore = useUserStore();
 //const clubStore = useClubStore();
 let present = ref(false);
 
-const logAttendance = function(){
+async function logAttendance(){
     present.value = true 
     const attendanceData = {
         year: "2024-2025",
-        clubName: "3D Printing Club",
-        uuid: userStore.user.uid,
+        clubName: "Anime Club",
+        uuid: `${userStore.user.uid}`,
     };
-    userStore.updateAttendance(attendanceData)
+    console.log(attendanceData)
+    console.log(userStore.updateAttendance(attendanceData))
 };
 
 defineProps({
