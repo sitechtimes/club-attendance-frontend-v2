@@ -20,9 +20,9 @@ export const usePresidentStore = defineStore("president", {
         headers: {
           "Content-Type": "application/json"
         },
-        body: selectedClubJSON
+        body: JSON.stringify(selectedClubJSON)
       })
-      console.log(response)
+      console.log(response, "asdasd")
     }
   },
 })
