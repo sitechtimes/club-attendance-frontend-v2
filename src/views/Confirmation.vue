@@ -48,8 +48,8 @@ async function logAttendance(){
     present.value = true 
     const attendanceData = {
         year: "2024-2025",
-        clubName: "Anime Club",
-        uuid: `${userStore.user.uid}`,
+        uuid: userStore.user.uid,
+        clubName: "3D Printing Club",
     };
     console.log(attendanceData)
     console.log(userStore.updateAttendance(attendanceData))

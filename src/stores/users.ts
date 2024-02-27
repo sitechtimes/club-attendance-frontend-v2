@@ -25,21 +25,22 @@ export const usePresidentStore = defineStore("president", {
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    user:  ref(
-      {uid: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      picture: '',
-      role: '',
-      isAuthenticated: false,
+    user: ref(
+      {
+        uid: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        picture: '',
+        role: '',
+        isAuthenticated: false,
       }
     ),
     clubs: null,
   }),
   actions: {
     updateUser(decodedCookie: any) {
-     this.user = decodedCookie
+      this.user = decodedCookie
     },
     async googleLink() {
       await axios
@@ -65,13 +66,24 @@ export const useUserStore = defineStore("user", {
       this.clubs = await response.json()
       console.log(this.clubs)
     },
-    //@ts-ignore
-    async updateAttendance(attendanceJSON){
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/updateAttendance`, {
-      method: "PATCH",
-      body: attendanceJSON
-      });   
-      return await response.json()
+    async updateAttendance(attendanceJSON: any) {
+      console.log(JSON.stringify(attendanceJSON))
+      try {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/updateAttendance`, {
+          method: "PATCH",
+          cache: "force-cache",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          redirect: "follow",
+          referrerPolicy: "no-referrer",
+          body: JSON.stringify(attendanceJSON),
+        })
+        console.log(response.json())
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
 },
