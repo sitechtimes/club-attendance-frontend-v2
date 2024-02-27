@@ -60,8 +60,10 @@ import Login from "@/components/HomeComponents/Login.vue";
 // import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
+import { useClubStore } from "@/stores/club"
 import { useRouter } from 'vue-router'
 let store = useUserStore();
+let clubStore = useClubStore()
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -69,42 +71,41 @@ function routePush(route: string) {
   router.push(`${route}`)
 }
 
-function parseGoogleCookie(str: string) {
-  let cookieObj = str.split('{')[1]
-    .split('}')[0]
-    .split(',')
-    .map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
-    .map((element) => element.split(':'))
-    .reduce((obj: any, cookie) => {
-      obj[decodeURIComponent(cookie[0].trim())]
-        = decodeURIComponent(cookie[1].trim());
-      return obj
-    }, {})
-  return cookieObj
-};
+// function parseGoogleCookie(str: string) {
+//   let cookieObj = str.split('{')[1]
+//     .split('}')[0]
+//     .split(',')
+//     .map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
+//     .map((element) => element.split(':'))
+//     .reduce((obj: any, cookie) => {
+//       obj[decodeURIComponent(cookie[0].trim())]
+//         = decodeURIComponent(cookie[1].trim());
+//       return obj
+//     }, {})
+//   return cookieObj
+// };
 //function turns google link cookie string into 2 arrays: categories and values
 //2 arrays are then merged into one object with categories as seen in user store
 
 function getCookie(name: string) {
   const b = RegExp(name + "=[^;]+").exec(document.cookie)
   const a = decodeURIComponent(!!b ? b.toString().replace(/^[^=]+./, "") : "")
-  console.log(JSON.parse(a.replace("j:", "")))
+  const c = JSON.parse(a.replace("j:", ""))
+  return c
 
-
-  const value: any = `; ${document.cookie}`;
-  const parts: any = value.split(`; ${name}=`);
-  const cookieString: any = parts.pop().split(";").shift();
-  if (parts.length === 2) console.log(cookieString);
-  let parsedString = parseGoogleCookie(decodeURIComponent(cookieString))
-  parsedString.isAuthenticated = true
-  return parsedString
+  // const value: any = `; ${document.cookie}`;
+  // const parts: any = value.split(`; ${name}=`);
+  // const cookieString: any = parts.pop().split(";").shift();
+  // if (parts.length === 2) console.log(cookieString);
+  // let parsedString = parseGoogleCookie(decodeURIComponent(cookieString))
+  // parsedString.isAuthenticated = true
+  // return parsedString
 }
 
 onMounted(() => {
   let loggedIn = false
   if (!document.cookie) {
     console.log("no user data")
-    console.log(store.user)
   } else {
     const userCookie = getCookie("user_data");
     store.updateUser(userCookie)
@@ -115,8 +116,7 @@ onMounted(() => {
       userStore.getUnapprovedClubs(userStore.user.uid)
       setTimeout(function push() { routePush("admin") }, 1000)
     } else if (userStore.user.role === "Club President") {
-      // routePush("president")
-      console.log(userStore.user)
+      routePush("president")
     } else if (userStore.user.role === "user") {
       console.log("user is reg")
     } else {

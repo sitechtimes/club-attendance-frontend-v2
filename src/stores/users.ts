@@ -42,7 +42,10 @@ export const useUserStore = defineStore("user", {
         picture: '',
         role: '',
         isAuthenticated: false,
-        ClubData: []
+        ClubData: ref({
+          PresidentOf: [],
+          MemberOf: []
+        })
       }
     ),
   }),
