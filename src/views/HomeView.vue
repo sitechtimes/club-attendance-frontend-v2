@@ -86,6 +86,11 @@ function parseGoogleCookie(str: string) {
 //2 arrays are then merged into one object with categories as seen in user store
 
 function getCookie(name: string) {
+  const b = RegExp(name + "=[^;]+").exec(document.cookie)
+  const a = decodeURIComponent(!!b ? b.toString().replace(/^[^=]+./, "") : "")
+  console.log(JSON.parse(a.replace("j:", "")))
+
+
   const value: any = `; ${document.cookie}`;
   const parts: any = value.split(`; ${name}=`);
   const cookieString: any = parts.pop().split(";").shift();

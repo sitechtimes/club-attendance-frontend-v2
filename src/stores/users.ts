@@ -42,6 +42,7 @@ export const useUserStore = defineStore("user", {
         picture: '',
         role: '',
         isAuthenticated: false,
+        ClubData: []
       }
     ),
   }),
