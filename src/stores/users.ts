@@ -79,7 +79,6 @@ export const useUserStore = defineStore("user", {
     async getUnapprovedClubs(uuid: any) {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getUnapprovedImages/${uuid}`)
       this.unapprovedImages = await response.json()
-      console.log(this.unapprovedImages)
     },
     async updateAttendance(attendanceJSON: any) {
       console.log(JSON.stringify(attendanceJSON))
