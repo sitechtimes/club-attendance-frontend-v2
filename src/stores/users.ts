@@ -31,6 +31,7 @@ export const useUserStore = defineStore("user", {
   state: () => ({
     userClubData: {},
     clubs: [],
+    clubMembers: [],
     allClubs: [],
     unapprovedImages: [],
     user: ref(
@@ -61,6 +62,12 @@ export const useUserStore = defineStore("user", {
         .then((res: { data: { redirectUri: string } }) => {
           window.location.href = res.data.redirectUri;
         });
+    },
+    async getClubMembers(clubName: any, year: any, uuid: any) {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getClubMembers/${clubName}/${year}/${uuid}`, {
+        method: "GET"
+      })
+      this.clubMembers = await response.json()
     },
     async getAllClubData(uuid: any) {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData/2024-2025/${uuid}`, {
