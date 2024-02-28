@@ -36,7 +36,8 @@ function selectImage() {
     // const input = document.querySelector("input[type=file].value");
     const input = fileInput.value;
     const image: File | null = input.files ? input.files[0] : null;
-    const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
+    // const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
+    const inputImg = `{"image": "${presidentStore.image}"}`;
     presidentStore.uploadImage(inputImg);
   } catch (error) {
     console.log(error);
