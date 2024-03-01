@@ -44,6 +44,10 @@ const userStore = useUserStore();
 //const clubStore = useClubStore();
 let present = ref(false);
 
+const club = {
+    template: '<div>Confirmation {{ $route.params.club }}</div>'
+}
+
 async function logAttendance(){
     present.value = true 
     const attendanceData = {
@@ -60,6 +64,7 @@ defineProps({
 });
 
 onMounted(()=>{
+console.log(club)
 //clubStore.getData();
 })
 </script>

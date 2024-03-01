@@ -50,7 +50,7 @@ import { ComputerDesktopIcon } from "@heroicons/vue/24/solid";
 import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
 import NoPermsPageGuard from '@/components/Reusables/NoPermsPageGuard.vue'
 let store = useUserStore();
-
+let clubStore = useClubStore();
 let query = ref()
 const userStore = useUserStore();
 const router = useRouter();

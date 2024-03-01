@@ -76,6 +76,7 @@ import Calender from "@/components/HomeComponents/Calender.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
 let store = useUserStore();
+// defunct code
 // import * as THREE from "three";
 // import BIRDS from vanta.birds.min.js
 // import {onBeforeUnmount, onMounted } from "vue";
@@ -125,6 +126,9 @@ onMounted(() => {
   if (!document.cookie){
   console.log("no user data")
   console.log(store.user)
+  //for testing 
+  store.user.role = 'user';
+  store.user.isAuthenticated = true;
   } else {
   const userCookie = getCookie("user_data");
   store.updateUser(userCookie)
