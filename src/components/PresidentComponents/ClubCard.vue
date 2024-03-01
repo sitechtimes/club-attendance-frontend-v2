@@ -40,10 +40,11 @@
       </button>
       </div>
     </div>
+
   </nav>
 
-<div class="bg-gray w-1/6 h-1/6">
-
+  <div class="bg-gray w-1/6 h-1/2">
+<a href=""> hi </a>
 </div>
 
  <!-- club div -->
