@@ -27,8 +27,8 @@ const fileInput = ref("");
 function onFileChange(this: any, e: Event) {
   const target = e.target as HTMLInputElement;
   const files = target.files || (e as DragEvent).dataTransfer?.files;
-  if (!files?.length) return;
-  this.createImage(files[0]);
+  // if (!files?.length) return;
+  // this.createImage(files[0]);
 }
 
 function selectImage() {

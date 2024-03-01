@@ -10,9 +10,9 @@ export const usePresidentStore = defineStore("president", {
     image: "",
   }),
   actions: {
-    async uploadImage(file) {
+    async uploadImage(res: any) {
       const formData = new FormData();
-      formData.append("image", file);
+      formData.append("image", res.data, res.data.name);
 
       await axios
         .post("http://localhost:3000uploadImage", formData, {
@@ -22,7 +22,7 @@ export const usePresidentStore = defineStore("president", {
         })
         .then((res) => {
           console.log(res.data);
-          this.commit("importTodos", res.data);
+          // this.commit("importTodos", res.data);
         })
         .catch((error) => {
           console.log(error.res.data);
