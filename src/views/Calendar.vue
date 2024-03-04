@@ -7,5 +7,5 @@
 </template>
 
 <script setup lang="ts">
-import Calendar from "@/components/Calender.vue";
+import Calendar from "@/components/HomeComponents/Calender.vue";
 </script>

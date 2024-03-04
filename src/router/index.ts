@@ -11,23 +11,23 @@ const router = createRouter({
     {
       path: "/admin",
       name: "admin",
-      component: () => import("../views/Admin.vue"),
+      component: () => import("../views/AdminView.vue"),
     },
     {
       path: "/",
       name: "home",
-      component: () => import("../views/Home.vue"),
+      component: () => import("../views/HomeView.vue"),
       props: true,
     },
     {
       path: "/president",
       name: "president",
-      component: () => import("../views/President.vue"),
+      component: () => import("../views/PresidentView.vue"),
     },
     {
-      path: "/club",
-      name: "information",
-      component: () => import("../views/Information.vue"),
+      path: '/club',
+      name: 'club',
+      component: () => import('../views/ClubView.vue'),
       meta: {
         requireClub: true,
       },
@@ -38,9 +38,19 @@ const router = createRouter({
       component: () => import("../views/Calendar.vue"),
     },
     {
-      path: "/Student",
+      path: '/loading',
+      name: 'loading',
+      component: () => import('../views/Loading.vue')
+    },
+    {
+      path: '/confirmation',
+      name: 'confirmation',
+      component: () => import('../views/ConfirmationView.vue')
+    },
+    {
+      path: "/student",
       name: "student",
-      component: () => import("../views/Student.vue"),
+      component: () => import("../views/StudentView.vue"),
     },
     {
       path: "/ConfirmImage",

@@ -133,10 +133,11 @@
 <script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { ref } from "vue";
-import QrCode from "./QrCode.vue";
+import QrCode from "@/components/ClubComponents/QrCode.vue";
 import ChangeDate from "./ChangeDate.vue";
 import ChangeImage from "./ChangeImage.vue";
 import { onMounted } from "vue";
+import { useClubStore } from "@/stores/club";
 
 const props = defineProps({});
 const open = ref(false);
