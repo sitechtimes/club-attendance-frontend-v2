@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-gray w-full h-1/6">
-    <img src="./assets/testimg.png" alt="">
-    <a href=""> hi </a>
+  <div>
+  <div class="bg-gray w-full h-1/6"></div> 
+  <img src="./assets/testimg.png" alt="">
   </div>
 
  <!-- club div -->
