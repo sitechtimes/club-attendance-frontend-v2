@@ -9,7 +9,7 @@
     class = "flex flex-col items-center justify-center">
         <h1 
         class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-         Please Confirm Your Attendance
+         Please Confirm Your Attendance to {{ $route.params.club }}
         </h1>
         <div
         class="flex flex-col mt-8">
@@ -39,14 +39,11 @@ import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
 import { onMounted, onBeforeMount, ref, computed, watch } from "vue";
 import { useUserStore } from "@/stores/users";
 import Navbar from "@/components/Reusables/Navbar.vue";
+import { useRouter, useRoute } from 'vue-router'
 //import { useClubStore } from "@/stores/club";
 const userStore = useUserStore();
 //const clubStore = useClubStore();
 let present = ref(false);
-
-const club = {
-    template: '<div>Confirmation {{ $route.params.club }}</div>'
-}
 
 async function logAttendance(){
     present.value = true 
@@ -64,7 +61,7 @@ defineProps({
 });
 
 onMounted(()=>{
-console.log(club)
+
 //clubStore.getData();
 })
 </script>

@@ -11,7 +11,7 @@
       class="text-white text-[64px] font-kranky ml-3">
       Club Attendance</h1>
       <div class="absolute right-[1rem]">
-        <RouterLink to="/confirmation/anime" 
+        <RouterLink to="/confirmation/3D Printing Club" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         Student</RouterLink> <!-- currently routed to confirmation for testing, in future confirmation will be reached via qr code-->
         <RouterLink to="/president" 
