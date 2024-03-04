@@ -1,7 +1,11 @@
-import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import router from "../router/index";
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { ref } from 'vue'
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 export const usePresidentStore = defineStore("president", {
   state: () => ({
@@ -16,15 +20,20 @@ export const usePresidentStore = defineStore("president", {
         headers: {
           "Content-Type": "application/json"
         },
-        body: selectedClubJSON
+        body: JSON.stringify(selectedClubJSON)
       })
-      console.log(response, 'this is response from the change next meet')
+      console.log(response, "asdasd")
     }
-  }
+  },
 })
 
 export const useUserStore = defineStore("user", {
   state: () => ({
+    userClubData: {},
+    clubs: [],
+    clubMembers: [],
+    allClubs: [],
+    unapprovedImages: [],
     user: ref(
       {
         uid: '',
@@ -34,9 +43,12 @@ export const useUserStore = defineStore("user", {
         picture: '',
         role: '',
         isAuthenticated: false,
+        ClubData: ref({
+          PresidentOf: [],
+          MemberOf: []
+        })
       }
     ),
-    clubs: null,
   }),
   actions: {
     updateUser(decodedCookie: any) {
@@ -48,12 +60,17 @@ export const useUserStore = defineStore("user", {
           headers: {},
         })
         .then((res: { data: { redirectUri: string } }) => {
-          console.log(res);
           window.location.href = res.data.redirectUri;
         });
     },
-    async getData() {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData`, {
+    async getClubMembers(clubName: any, year: any, uuid: any) {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getClubMembers/${clubName}/${year}/${uuid}`, {
+        method: "GET"
+      })
+      this.clubMembers = await response.json()
+    },
+    async getAllClubData(uuid: any) {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData/2024-2025/${uuid}`, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
@@ -64,7 +81,11 @@ export const useUserStore = defineStore("user", {
         redirect: "follow",
       });
       this.clubs = await response.json()
-      console.log(this.clubs)
+      this.allClubs = this.clubs
+    },
+    async getUnapprovedClubs(uuid: any) {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getUnapprovedImages/${uuid}`)
+      this.unapprovedImages = await response.json()
     },
     async updateAttendance(attendanceJSON: any) {
       console.log(JSON.stringify(attendanceJSON))

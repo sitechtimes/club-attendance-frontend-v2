@@ -1,19 +1,14 @@
 import { defineStore } from "pinia";
 
-import { mande } from "mande";
-import axios from "axios";
-
-// const api = mande("http://localhost:3000/getAllClubData");
-
 export const useClubStore = defineStore("club", {
   state: () => ({
     clubName: "",
     clubPresident: "",
     user: "",
-    nextMeeting: "",
     clubAdvisor: '',
     room: '',
-    club: ''
+    nextMeeting: '',
+    club: []
   }),
   actions: {
     async getData(clubName: string | undefined, year: string) {
@@ -23,12 +18,12 @@ export const useClubStore = defineStore("club", {
           "Content-Type": "application/json"
         },
       })
-      this.club = await response.json()
-      console.log(this.club)
-      this.clubName = this.club.clubName
-      this.clubAdvisor = this.club.clubAdivsor
-      this.clubPresident = this.club.clubPresident
-      this.room = this.club.room
+      const club = await response.json()
+      this.club.push(club)
+      this.clubName = club.clubName
+      this.clubAdvisor = club.clubAdivsor
+      this.clubPresident = club.clubPresident
+      this.room = club.room
     }
   }
 });

@@ -1,15 +1,14 @@
 <template>
-<div>
+  <div>
     <nav class="bg-black text-white flex flex-nowrap
     h-[107px] items-center z-10 relative overflow-hidden">
       <RouterLink to="/">
-      <img src="@/assets/SeagullCalendarNT.png" 
+        <!-- <img src="@/assets/SeagullCalendarNT.png" 
       alt="A seagull sitting on top of a calendar" 
-      class="h-[107px]">
+      class="h-[107px]"> -->
       </RouterLink>
-      <h1 
-      class="text-white text-[64px] font-kranky ml-3">
-      Club Attendance</h1>
+      <h1 class="text-white text-[64px] font-kranky ml-3">
+        Club Attendance</h1>
       <div class="absolute right-[1rem]">
         <RouterLink to="/confirmation/3D Printing Club" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
@@ -32,7 +31,7 @@
         </button>
       </div>
     </nav>
-</div>
+  </div>
 </template>
     
 <script setup lang="ts">
