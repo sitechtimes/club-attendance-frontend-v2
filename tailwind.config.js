@@ -15,16 +15,19 @@ module.exports = {
       pink: "#ff49db",
       orange: "#ff7849",
       green: "#13ce66",
-      yellow: "#c2b669",
+      yellow: " #c2b669",
       "gray-dark": "#273444",
       gray: "#8492a6",
       "gray-light": "#d3dce6",
       black: "#000000",
       white: "#ffffff",
+      gold: "#c2b669",
     },
     fontFamily: {
       sans: ["Graphik", "sans-serif"],
       serif: ["Merriweather", "serif"],
+      kranky: ["Kranky", "serif"],
+      katibeh: ["Katibeh", "serif"],
     },
     extend: {
       spacing: {

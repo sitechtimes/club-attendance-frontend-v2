@@ -19,7 +19,6 @@ export const useClubStore = defineStore("club", {
         },
       })
       const club = await response.json()
-      //@ts-ignore
       this.club.push(club)
       this.clubName = club.clubName
       this.clubAdvisor = club.clubAdivsor
