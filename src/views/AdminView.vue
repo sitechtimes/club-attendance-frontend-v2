@@ -3,7 +3,8 @@
     <section class="w-100% h-screen">
       <div class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10">
         <div class="w-[8%] text-white text-lg font-medium ">Administration</div>
-        <SearchBar v-model="query" @input="onInput" />
+        <input class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2 " placeholder="Search" v-model="query"
+          @input="onInput" />
         <BellIcon class="h-[40%] fill-white hover:scale-110 ease-in-out duration-500 cursor-pointer" />
         <LogOut></LogOut>
         <div
@@ -27,7 +28,7 @@
                   </div>
                 </div>
                 <div class="flex flex-row justify-evenly h-100vh">
-                  <div v-for="image in userStore.unapprovedImages" class="flex flex-col w-[30%]">
+                  <div v-for=" image  in  userStore.unapprovedImages " class="flex flex-col w-[30%]">
                     <img :src=image.link class="h-[228px] rounded-t-[20px]">
                     <h2> {{ image.name }}</h2>
                   </div>
@@ -40,7 +41,7 @@
       <div
         class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap">
         <div class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
-          v-for="item in userStore.clubs" @click="pushToInfo(item.clubName)">
+          v-for=" item  in  userStore.clubs " @click="pushToInfo(item.clubName)">
           <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px] rounded-t-[20px]" />
           <div class="box flex flex-col items-end ">
             <div class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]">
@@ -59,25 +60,23 @@
 </template>
 
 <script setup lang="ts">
-import SearchBar from "@/components/Reusables/SearchBar.vue";
 import LogOut from "@/components/Reusables/LogOut.vue";
 import { ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
-import { BellIcon } from "@heroicons/vue/24/solid";
+import { BellIcon, UsersIcon } from "@heroicons/vue/24/solid";
 
-let query = ref()
+const query = ref('')
 let open = ref(false);
 const userStore = useUserStore();
 const clubStore = useClubStore();
 const router = useRouter();
 
 function pushToInfo(clubName: string) {
-  console.log(userStore.clubs)
   clubStore.clubName = clubName
-  const clubJSON = JSON.stringify(clubName)
-  console.log(clubJSON)
+  const year = "2024-2025"
+  userStore.getClubMembers(clubName, year, userStore.user.uid)
   function routePush() {
     router.push(`/club/?name=${clubStore.clubName}`);
   }
@@ -104,11 +103,13 @@ const searchFilter = function (club: object, query: any) {
 }
 
 const onInput = function () {
+  // console.log(userStore.clubs, "this is clubs")
+  // console.log(userStore.allClubs, "this is allClubs")
   if (query.value == '') {
     userStore.clubs = userStore.allClubs
     // userStore.getAllClubData(userStore.uid)
   }
-  else if (query.value == undefined) {
+  else if (query == undefined) {
     userStore.clubs = userStore.allClubs
     // userStore.getAllClubData(userStore.uid)
   }
