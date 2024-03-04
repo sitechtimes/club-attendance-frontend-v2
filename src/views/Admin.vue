@@ -1,7 +1,7 @@
 <template>
   <section class="w-screen h-screen">
     <div
-      class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black"
+      class="h-[13%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black"
     >
       <div class="w-[8%] text-white text-lg font-medium">Administration</div>
       <SearchBar></SearchBar>
