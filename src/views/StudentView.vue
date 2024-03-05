@@ -25,7 +25,7 @@
         <div class="text-black text-5xl font-normal font-['Itim']">
           Next Meeting
         </div>
-        <LogOut class="ml-10 w-[20%]"></LogOut>
+        <LogOut class="ml-10 w-1/4"></LogOut>
 
         <!-- <div
           class="flex min-h-full justify-end p-4 text-center sm:items-center sm:p-0"
