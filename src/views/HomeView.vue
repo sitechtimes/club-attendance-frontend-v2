@@ -61,12 +61,13 @@ import Login from "@/components/HomeComponents/Login.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 let store = useUserStore();
 let clubStore = useClubStore()
 
 const userStore = useUserStore()
 const router = useRouter()
+const route = useRoute()
 function routePush(route: string) {
   router.push(`${route}`)
 }
@@ -109,6 +110,8 @@ onMounted(() => {
   } else {
     const userCookie = getCookie("user_data");
     store.updateUser(userCookie)
+    store.userClubData = route.params.club
+    console.log(store.userClubData)
     loggedIn = true
 
     if (userStore.user.role === "Admin") {

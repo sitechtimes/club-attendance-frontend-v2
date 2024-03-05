@@ -44,24 +44,20 @@ import { useRouter, useRoute } from 'vue-router'
 const userStore = useUserStore();
 //const clubStore = useClubStore();
 let present = ref(false);
-
+const route = useRoute()
 async function logAttendance(){
     present.value = true 
     const attendanceData = {
         year: "2024-2025",
         uuid: userStore.user.uid,
-        clubName: "3D Printing Club",
+        clubName: route.params.club,
     };
-    console.log(attendanceData)
-    console.log(userStore.updateAttendance(attendanceData))
+    userStore.updateAttendance(attendanceData)
 };
 
 defineProps({
-  clubName: String,
 });
 
 onMounted(()=>{
-
-//clubStore.getData();
 })
 </script>
