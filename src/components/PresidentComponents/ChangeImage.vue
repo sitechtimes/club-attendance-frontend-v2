@@ -1,11 +1,7 @@
 <template>
   <form class="form flex flex-col justify-center w-[80%]">
     <input id="image" v-on:change="onFileChange" type="file" ref="fileInput" />
-    <div
-      class="imagePreviewWrapper"
-      :style="{ 'background-image': `url(${previewImage})` }"
-      @click="selectImage"
-    >
+    <div class="imagePreviewWrapper" @click="selectImage">
       <!-- <img :src="{ previewImage }" /> -->
     </div>
     <button
@@ -20,7 +16,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { usePresidentStore } from "../stores/user";
+import { usePresidentStore } from "@/stores/user";
 const presidentStore = usePresidentStore();
 const fileInput = ref("");
 
@@ -36,8 +32,8 @@ function selectImage() {
     // const input = document.querySelector("input[type=file].value");
     const input = fileInput.value;
     const image: File | null = input.files ? input.files[0] : null;
-    // const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
-    const inputImg = `{"image": "${presidentStore.image}"}`;
+    const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
+    // const inputImg = `{"image": "${presidentStore.image}"}`;
     presidentStore.uploadImage(inputImg);
   } catch (error) {
     console.log(error);

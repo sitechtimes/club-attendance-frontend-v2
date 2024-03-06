@@ -8,6 +8,12 @@
       <div
         class="p-6 flex flex-col h-[75%] overflow-y-auto justify-evenly items-center gap-6 md:flex-row md:flex-wrap"
       >
+        <ClubCard
+          v-for="club in clubStore.club"
+          :key="club.id"
+          :name="club.clubName"
+          :nextMeeting="club.nextMeeting"
+        />
         <!-- <ClubCard name="Coding Club" next-meeting="8/12/2023" />
         <ClubCard name="Robotics Club" next-meeting="8/12/2023" />
         <ClubCard name="Swimming Club" next-meeting="8/12/2023" />
@@ -42,7 +48,11 @@
 <script setup lang="ts">
 import SearchBar from "@/components/Reusables/SearchBar.vue";
 import LogOut from "@/components/Reusables/LogOut.vue";
-import ClubCard from "@/components/PresidentComponents/ClubCard.vue";
+
+const props = defineProps{
+  name: string,
+  nextMeeting: String,
+};
 </script>
 
 <style scoped>
