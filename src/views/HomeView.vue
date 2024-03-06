@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen h-screen overflow-hidden relative">
-    <Navbar></Navbar>
+    <Navbar :club="store.currentClub"></Navbar>
     <img src="@/assets/SeagullCalendar.png" alt="A seagull sitting on top of a calendar"
       class="w-[240px] mt-[30px] ml-[30px]">
     <div class="bg-gold 
@@ -109,11 +109,9 @@ onMounted(() => {
     console.log("no user data")
   } else {
     const userCookie = getCookie("user_data");
-    store.updateUser(userCookie)
-    store.userClubData = route.params.club
-    console.log(store.userClubData)
+    store.updateUser(userCookie, route.params.club)
+    console.log(store.currentClub)
     loggedIn = true
-
     if (userStore.user.role === "Admin") {
       userStore.getAllClubData(userStore.user.uid)
       userStore.getUnapprovedClubs(userStore.user.uid)

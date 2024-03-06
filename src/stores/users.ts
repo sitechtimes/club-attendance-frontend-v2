@@ -29,6 +29,7 @@ export const usePresidentStore = defineStore("president", {
 
 export const useUserStore = defineStore("user", {
   state: () => ({
+    currentClub: ref(''),
     userClubData: {},
     clubs: [],
     clubMembers: [],
@@ -51,8 +52,9 @@ export const useUserStore = defineStore("user", {
     ),
   }),
   actions: {
-    updateUser(decodedCookie: any) {
+    updateUser(decodedCookie: any, clubURL: any) {
       this.user = decodedCookie
+      this.currentClub = clubURL
     },
     async googleLink() {
       await axios
