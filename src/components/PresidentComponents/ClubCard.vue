@@ -1,8 +1,12 @@
 <template>
-  <div>
-  <div class="bg-gray w-full h-1/6"></div> 
-  <img src="./assets/testimg.png" alt="">
-  </div>
+  <div class="bg-gray w-full h-1/4 p-8">
+    <div class="text-white font-bold text-xl grid justify-items-center grid-row-3 grid-flow-col gap-4 w-1/6 h-auto py-4">
+    <img class="row-span-3" src="@/assets/testimg.png" alt="">
+    <a class="col-span-2 py-4"> Model Rockets Club</a>
+    <a class="row-span-2 py-4">Edwin Wright</a>   
+    </div>  
+  </div>  
+</template>
 
  <!-- club div -->
   <!-- <div class="flex flex-col">
@@ -13,10 +17,7 @@
         open = true
       }"
     >
-      <img
-        src="@/assets/coding.jpeg"
-        alt="coding"
-        class="h-[228px] rounded-t-[20px]"
+      <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px] rounded-t-[20px]"
       />
       <div
         class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
@@ -40,12 +41,8 @@
           class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
         ></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
-          <div
-            class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
-          >
-            <div
-              class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
-            >
+          <div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
               <div class=" px-4 pb-4 pt-5 bg-[#c2b669] sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -164,13 +161,13 @@
         </div>
       </div>
     </div> -->
-</template>
+<!-- </template> -->
 
 <!-- <script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { onMounted, ref } from "vue";
 import QrCode from "@/components/ClubComponents/QrCode.vue";
-import ChangeDate from "@/components/ChangeDate.vue";
+import ChangeDate from "./ChangeDate.vue";
 import { usePresidentStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
 
