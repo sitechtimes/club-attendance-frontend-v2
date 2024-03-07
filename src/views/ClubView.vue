@@ -22,7 +22,8 @@
         <p>President: {{ clubStore.clubPresident }}</p>
       </div>
     </div>
-
+    <div v-for="student in store.clubMembers">{{ student["First Name"] }} {{ student["Last Name"] }} {{
+      student["Position"] }} {{ student["# of Attendances"] }}</div>
   </div>
   <div v-else>
     Error
@@ -40,7 +41,6 @@ import { useUserStore } from "@/stores/users";
 import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
 import NoPermsPageGuard from '@/components/Reusables/NoPermsPageGuard.vue'
 let store = useUserStore();
-
 const clubStore = useClubStore()
 const route = useRoute()
 
