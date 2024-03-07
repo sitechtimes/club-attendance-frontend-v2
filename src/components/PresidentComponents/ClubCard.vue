@@ -1,11 +1,31 @@
 <template>
-  <div class="bg-gray w-full h-1/4 p-8">
-    <div class="text-white font-bold text-xl grid justify-items-center grid-row-3 grid-flow-col gap-4 w-1/6 h-auto py-4">
-    <img class="row-span-3" src="@/assets/testimg.png" alt="">
-    <a class="col-span-2 py-4"> Model Rockets Club</a>
-    <a class="row-span-2 py-4">Edwin Wright</a>   
+  <div>
+  <div class="bg-gray w-full h-1/4">
+    <div class="mx-60 text-white font-bold text-xl grid justify-items-center grid-row-3 grid-flow-col gap-4 w-1/6 h-auto py-6">
+    <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="">
+    <a class="my-8 col-span-2"> Model Rockets Club</a>
+    <a class="row-span-2">Edwin Wright</a>   
     </div>  
   </div>  
+
+  <div class="text-white bg-black w-1/6 h-screen">
+    <a class=""> MENU </a>
+  <div class="bg-gray h-full py-4 my-16">
+    
+    <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
+      <a> change club picture </a>
+    </button>
+    <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
+      <a> change club picture </a>
+    </button>
+    <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
+      <a> change club picture </a>
+    </button>
+
+  </div>
+</div>
+
+</div>
 </template>
 
  <!-- club div -->
