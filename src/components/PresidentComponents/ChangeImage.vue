@@ -1,13 +1,12 @@
 <template>
-  <form class="form flex flex-col justify-center w-[80%]">
+  <form
+    class="form flex flex-col justify-center w-[80%]"
+    @submit.prevent="selectImage"
+  >
     <input id="image" v-on:change="onFileChange" type="file" ref="fileInput" />
-    <div class="imagePreviewWrapper" @click="selectImage">
-      <!-- <img :src="{ previewImage }" /> -->
-    </div>
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
       type="submit"
-      @click="selectImage()"
     >
       Import Club Image
     </button>
@@ -16,7 +15,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { usePresidentStore } from "@/stores/user";
+import { usePresidentStore } from "@/stores/users";
 const presidentStore = usePresidentStore();
 const fileInput = ref("");
 
@@ -34,7 +33,8 @@ function selectImage() {
     const image: File | null = input.files ? input.files[0] : null;
     const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
     // const inputImg = `{"image": "${presidentStore.image}"}`;
-    presidentStore.uploadImage(inputImg);
+    console.log(inputImg);
+    // presidentStore.uploadImage(inputImg);
   } catch (error) {
     console.log(error);
   }
