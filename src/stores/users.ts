@@ -54,7 +54,13 @@ export const useUserStore = defineStore("user", {
   actions: {
     updateUser(decodedCookie: any, clubURL: any) {
       this.user = decodedCookie
-      this.currentClub = clubURL
+      if (clubURL !== ""){
+        this.currentClub = clubURL
+        console.log("yes current club")
+      }
+      else{
+       console.log("no current club")
+      }     
     },
     async googleLink() {
       await axios
