@@ -3,7 +3,12 @@
     class="form flex flex-col justify-center w-[80%]"
     @submit.prevent="selectImage"
   >
-    <input id="image" v-on:change="onFileChange" type="file" ref="fileInput" />
+    <input
+      id="image"
+      v-on:change="onFileChange($event)"
+      type="file"
+      ref="fileInput"
+    />
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
       type="submit"
@@ -19,27 +24,30 @@ import { usePresidentStore } from "@/stores/users";
 const presidentStore = usePresidentStore();
 const fileInput = ref("");
 
-function onFileChange(this: any, e: Event) {
-  const target = e.target as HTMLInputElement;
-  const files = target.files || (e as DragEvent).dataTransfer?.files;
-  // if (!files?.length) return;
-  // this.createImage(files[0]);
+// function onFileChange(this: any, e: Event) {
+//   const target = e.target as HTMLInputElement;
+//   const files = target.files || (e as DragEvent).dataTransfer?.files;
+// if (!files?.length) return;
+// this.createImage(files[0]);
+// }
+function onFileChange(this: any, event) {
+  console.log(event);
+  this.file = event.target.files[0];
+  return this.file;
 }
-
 function selectImage() {
   try {
     // const input = document.querySelector("input[type=file].value");
-    const input = fileInput.value;
+    const input = this.file;
     const image: File | null = input.files ? input.files[0] : null;
     const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
     // const inputImg = `{"image": "${presidentStore.image}"}`;
     console.log(inputImg);
-    // presidentStore.uploadImage(inputImg);
+    presidentStore.uploadImage(inputImg);
   } catch (error) {
     console.log(error);
   }
 }
-
 // export default {
 //   setup() {
 //     const previewImage = ref(null);

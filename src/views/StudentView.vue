@@ -8,7 +8,7 @@
       <div
         class="p-6 flex flex-col h-[75%] overflow-y-auto justify-evenly items-center gap-6 md:flex-row md:flex-wrap"
       >
-        <ClubCard
+        <StudentCard
           v-for="club in clubStore.club"
           :key="club.id"
           :name="club.clubName"
@@ -48,11 +48,7 @@
 <script setup lang="ts">
 import SearchBar from "@/components/Reusables/SearchBar.vue";
 import LogOut from "@/components/Reusables/LogOut.vue";
-
-const props = defineProps{
-  name: string,
-  nextMeeting: String,
-};
+import StudentCard from "@/components/ClubComponents/StudentCard.vue";
 </script>
 
 <style scoped>
