@@ -8,7 +8,9 @@
     </div>  
   </div>  
 
-  <div class="text-white bg-black w-1/6 h-screen">
+  <div class="w-screen h-screen flex flex-row">
+
+<div class="w-1/6 text-white bg-black h-screen">
     <a class=""> MENU </a>
   <div class="bg-gray h-full py-4 my-16">
     
@@ -21,12 +23,23 @@
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
       <a> change club picture </a>
     </button>
-
   </div>
+  </div>
+
+  <div class="p-24">
+    <PresidentTable/>
+  </div>
+
 </div>
+
+
 
 </div>
 </template>
+
+<script setup lang="ts">
+  import PresidentTable from '@/components/PresidentComponents/PresidentTable.vue';
+</script>
 
  <!-- club div -->
   <!-- <div class="flex flex-col">
