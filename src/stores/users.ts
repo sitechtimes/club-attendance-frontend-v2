@@ -28,7 +28,11 @@ export const usePresidentStore = defineStore("president", {
 })
 
 export const useUserStore = defineStore("user", {
-  state: () => ({
+
+  state: () => {
+    if (localStorage.getItem("user"))
+      return JSON.parse(localStorage.getItem("user")!);
+    return {
     currentClub: ref(''),
     userClubData: {},
     clubs: [],
@@ -50,7 +54,9 @@ export const useUserStore = defineStore("user", {
         })
       }
     ),
-  }),
+    };
+  },
+  
   actions: {
     updateUser(decodedCookie: any, clubURL: any) {
       this.user = decodedCookie
