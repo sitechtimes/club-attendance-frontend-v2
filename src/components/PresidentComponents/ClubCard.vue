@@ -8,11 +8,7 @@
     </div>  
   </div>    
 
-  <div class="w-screen h-screen flex flex-row">
-
-<div class="w-1/6 text-white bg-black h-screen">
-    <a class=""> MENU </a>
-  <div class="bg-gray h-full py-4 my-16">
+<div class="w-screen h-screen flex flex-row">
     
     <div class="flex flex-col px-10">
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
@@ -34,9 +30,13 @@
 
 </div>
 
+<div class="w-1/6 text-white bg-black h-screen">
+  <a class="flex flex-col justify-center items-center"> MENU </a>
+<div class="bg-gray h-full py-4 my-16">
+
+</div>  
 
 
-</div>
 </template>
 
 <script setup lang="ts">
