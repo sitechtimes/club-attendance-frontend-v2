@@ -1,12 +1,12 @@
 <template>
   <div>
   <div class="bg-gray w-full h-1/4">
-    <div class="mx-60 text-white font-bold text-xl grid justify-items-center grid-row-3 grid-flow-col gap-4 w-1/6 h-auto py-6">
+    <div class="mx-60 text-white font-bold text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 h-auto py-6">
     <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="">
     <a class="my-8 col-span-2"> Model Rockets Club</a>
     <a class="row-span-2">Edwin Wright</a>   
     </div>  
-  </div>  
+  </div>    
 
   <div class="w-screen h-screen flex flex-row">
 
@@ -14,6 +14,7 @@
     <a class=""> MENU </a>
   <div class="bg-gray h-full py-4 my-16">
     
+    <div class="flex flex-col px-10">
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
       <a> change club picture </a>
     </button>
@@ -23,6 +24,7 @@
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
       <a> change club picture </a>
     </button>
+    </div>
   </div>
   </div>
 

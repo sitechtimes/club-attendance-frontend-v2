@@ -1,8 +1,8 @@
 <template> 
 
-    <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <div class="relative overflow-x-auto bg-black">
+        <table class="w-full text-sm text-left rtl:text-right text-white dark:text-gray">
+            <thead class="text-xs uppercase bg-black dark:text-gray">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         Product name
@@ -19,8 +19,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-gold border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
                         Apple MacBook Pro 17"
                     </th>
                     <td class="px-6 py-4">
@@ -33,8 +33,8 @@
                         $2999
                     </td>
                 </tr>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-gold border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
                         Microsoft Surface Pro
                     </th>
                     <td class="px-6 py-4">
@@ -47,8 +47,8 @@
                         $1999
                     </td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-gold">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
                         Magic Mouse 2
                     </th>
                     <td class="px-6 py-4">
