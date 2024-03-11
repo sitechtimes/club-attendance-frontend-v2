@@ -29,7 +29,7 @@ export const usePresidentStore = defineStore("president", {
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    currentClub: ref(''),
+    currentClub: JSON.parse(localStorage.getItem("currentClub")) || "",
     userClubData: {},
     clubs: [],
     clubMembers: [],
@@ -52,14 +52,20 @@ export const useUserStore = defineStore("user", {
     ),
   }),
   actions: {
+    persistClub(){
+     localStorage.setItem("currentClub", JSON.stringify(this.currentClub));
+    },
     updateUser(decodedCookie: any, clubURL: any) {
       this.user = decodedCookie
       if (clubURL !== ""){
         this.currentClub = clubURL
         console.log("yes current club")
+        this.persistClub();
+        console.log(JSON.stringify(this.currentClub))
       }
       else{
        console.log("no current club")
+       console.log(JSON.stringify(this.currentClub))
       }     
     },
     async googleLink() {
