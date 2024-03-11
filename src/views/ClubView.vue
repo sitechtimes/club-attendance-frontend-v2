@@ -10,7 +10,8 @@
     <div class="w-screen h-auto flex flex-col">
       <div class="w-full h-[15vh] border-b-2 flex flex-row items-center justify-center">
         <div class="w-[30%] text-2xl pl-6">{{ clubStore.clubName }}</div>
-        <UserIcon class="pl-[48vw] h-[12vh]"></UserIcon>
+        <RouterLink to="/admin" class="font-normal text-[2rem] mr-[3rem]">Admin</RouterLink>
+        <UserIcon class="pl-[40vw] h-[12vh]"></UserIcon>
         <div class=" text-2xl">{{ clubStore.room }}</div>
       </div>
       <div class="w-full flex flex-col justify-start items-center pt-3">
