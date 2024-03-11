@@ -13,7 +13,7 @@ export const usePresidentStore = defineStore("president", {
     year: "",
     nextMeeting: "",
     image: "",
-    selectedImage: new FormData()
+    selectedImage: new FormData(),
   }),
   actions: {
     async changeNextMeet(selectedClubJSON: any) {
@@ -87,7 +87,8 @@ export const useUserStore = defineStore("user", {
     },
     async getClubMembers(clubName: any, year: any, uuid: any) {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL
+        `${
+          import.meta.env.VITE_BACKEND_URL
         }/getClubMembers/${clubName}/${year}/${uuid}`,
         {
           method: "GET",
