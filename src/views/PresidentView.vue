@@ -14,12 +14,12 @@ import Navbar from "@/components/Reusables/Navbar.vue";
 import errorScreen from "@/components/Reusables/NoPermsPageGuard.vue";
 import { useUserStore } from '@/stores/users'
 import { useClubStore } from '@/stores/club'
-import { onBeforeMount } from 'vue'
+import { onMounted } from 'vue'
 
 const clubStore = useClubStore()
 const userStore = useUserStore()
 
-onBeforeMount(() => {
+onMounted(() => {
   clubStore.club = []
   userStore.user.ClubData.PresidentOf.forEach((club: string) => {
     clubStore.getData(club, "2024-2025")

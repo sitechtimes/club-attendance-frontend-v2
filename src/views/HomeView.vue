@@ -126,15 +126,17 @@ onBeforeMount(() => {
     userStore.user.isAuthenticated = true
     console.log(userStore.user.role)
     if (userStore.user.role === "Admin") {
+      userStore.getAllClubData(userStore.user.uid)
       userStore.getUnapprovedClubs(userStore.user.uid)
-      // setTimeout(function push() { routePush("admin") }, 1000)
-    } else if (userStore.user.role === "Club President") {
-      // routePush("president")
-    } else if (userStore.user.role === "User") {
-      console.log("user is reg")
-    } else {
-      console.log("user is not authorized")
+      setTimeout(function push() { routePush("admin") }, 1000)
     }
+    //  else if (userStore.user.role === "Club President") {
+    //   // routePush("president")
+    // } else if (userStore.user.role === "User") {
+    //   console.log("user is reg")
+    // } else {
+    //   console.log("user is not authorized")
+    // }
   }
 });
 </script>

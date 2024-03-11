@@ -69,7 +69,6 @@ export const useUserStore = defineStore("user", {
         method: "GET"
       })
       this.clubMembers = await response.json()
-      console.log(this.clubMembers)
     },
     async getAllClubData(uuid: any) {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData/2024-2025/${uuid}`, {
