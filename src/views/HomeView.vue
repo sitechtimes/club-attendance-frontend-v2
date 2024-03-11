@@ -10,7 +10,7 @@
         <div class="mx-auto grid max-w-2xl grid-cols-1 
         gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[15rem] mt-[9vh]">
-            <div class="lg:max-w-lg ">
+            <div v-if="!userStore.loggedIn" class="lg:max-w-lg ">
               <h2 class="text-base font-semibold leading-7 text-black">
                 Attendance, made faster
               </h2>
@@ -24,8 +24,22 @@
                 log your attendance.
               </p>
             </div>
+            <div v-if="userStore.loggedIn" class="lg:max-w-lg ">
+              <h2 class="text-base font-semibold leading-7 text-black">
+                Attendance, made faster
+              </h2>
+              <p class="mt-2 text-3xl font-bold tracking-tight 
+              text-gray-900 sm:text-4xl">
+                Welcome, {{ userStore.user.firstName }} {{ userStore.user.lastName }}
+              </p>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Club attendance has never been easier! Just scan the QR code
+                provided by the club president and login with your school email to
+                log your attendance.
+              </p>
+            </div>
             <div class="flex flex-col mt-8">
-              <Login class="" />
+              <Login v-if="!userStore.loggedIn" class="" />
               <!-- <img
              src="@/assets/sammy.jpg"
              alt="Sammy the Seagull"
@@ -58,12 +72,12 @@
 import Navbar from "@/components/Reusables/Navbar.vue";
 import Login from "@/components/HomeComponents/Login.vue";
 // import Calender from "@/components/HomeComponents/Calender.vue";
-import { onMounted, ref } from "vue";
+import { onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
 import { useRouter } from 'vue-router'
 let store = useUserStore();
-let clubStore = useClubStore()
+// let clubStore = useClubStore()
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -102,27 +116,25 @@ function getCookie(name: string) {
   // return parsedString
 }
 
-onMounted(() => {
-  let loggedIn = false
+onBeforeMount(() => {
   if (!document.cookie) {
     console.log("no user data")
   } else {
     const userCookie = getCookie("user_data");
     store.updateUser(userCookie)
-    loggedIn = true
-
+    userStore.loggedIn = true
+    userStore.user.isAuthenticated = true
+    console.log(userStore.user.role)
     if (userStore.user.role === "Admin") {
-      userStore.getAllClubData(userStore.user.uid)
       userStore.getUnapprovedClubs(userStore.user.uid)
-      setTimeout(function push() { routePush("admin") }, 1000)
+      // setTimeout(function push() { routePush("admin") }, 1000)
     } else if (userStore.user.role === "Club President") {
-      routePush("president")
-    } else if (userStore.user.role === "user") {
+      // routePush("president")
+    } else if (userStore.user.role === "User") {
       console.log("user is reg")
     } else {
       console.log("user is not authorized")
     }
-    return loggedIn
   }
 });
 </script>

@@ -1,7 +1,8 @@
 <template>
-  <div class="h-screen">
+  <errorScreen v-if="userStore.user.role !== 'Club President'" />
+  <div v-if="userStore.user.role == 'Club President'" class="h-screen">
+    <Navbar></Navbar>
     <div class="p-6 flex flex-col justify-evenly items-center gap-6 md:flex-row md:flex-wrap">
-      <!-- <ClubCard v-for="club in userStore.userClubData.PresidentOf" :name="club" /> -->
       <ClubCard v-for="club in clubStore.club" :name="club.clubName" :nextMeeting="club.nextMeeting" />
     </div>
   </div>
@@ -9,11 +10,20 @@
 
 <script setup lang="ts">
 import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
+import Navbar from "@/components/Reusables/Navbar.vue";
+import errorScreen from "@/components/Reusables/NoPermsPageGuard.vue";
 import { useUserStore } from '@/stores/users'
 import { useClubStore } from '@/stores/club'
+import { onBeforeMount } from 'vue'
+
 const clubStore = useClubStore()
 const userStore = useUserStore()
-userStore.user.ClubData.PresidentOf.forEach((club: string) => {
-  clubStore.getData(club, "2024-2025")
-});
+
+onBeforeMount(() => {
+  clubStore.club = []
+  userStore.user.ClubData.PresidentOf.forEach((club: string) => {
+    clubStore.getData(club, "2024-2025")
+  });
+})
+
 </script>
