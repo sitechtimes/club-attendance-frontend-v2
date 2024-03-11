@@ -13,6 +13,7 @@ export const usePresidentStore = defineStore("president", {
     year: "",
     nextMeeting: "",
     image: "",
+    selectedImage: new FormData()
   }),
   actions: {
     async changeNextMeet(selectedClubJSON: any) {
@@ -33,7 +34,7 @@ export const usePresidentStore = defineStore("president", {
       formData.append("image", res.data, res.data.name);
 
       await axios
-        .post("http://localhost:3000uploadImage", formData, {
+        .post("http://localhost:3000/uploadImage", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -86,8 +87,7 @@ export const useUserStore = defineStore("user", {
     },
     async getClubMembers(clubName: any, year: any, uuid: any) {
       const response = await fetch(
-        `${
-          import.meta.env.VITE_BACKEND_URL
+        `${import.meta.env.VITE_BACKEND_URL
         }/getClubMembers/${clubName}/${year}/${uuid}`,
         {
           method: "GET",

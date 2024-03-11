@@ -1,18 +1,9 @@
 <template>
-  <form
-    class="form flex flex-col justify-center w-[80%]"
-    @submit.prevent="selectImage"
-  >
-    <input
-      id="image"
-      v-on:change="onFileChange($event)"
-      type="file"
-      ref="fileInput"
-    />
+  <form class="form flex flex-col justify-center w-[80%]" @submit.prevent="selectImage">
+    <input id="image" v-on:change="onFileChange($event)" type="file" ref="fileInput" />
     <button
       class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
-      type="submit"
-    >
+      type="submit">
       Import Club Image
     </button>
   </form>
@@ -30,20 +21,23 @@ const fileInput = ref("");
 // if (!files?.length) return;
 // this.createImage(files[0]);
 // }
-function onFileChange(this: any, event) {
-  console.log(event);
-  this.file = event.target.files[0];
-  return this.file;
+
+function onFileChange(this: any, event: any) {
+  // presidentStore.selectedImage is a formData 
+  // append the file into the formData 
+  // also append a uuid and clubName 
+  presidentStore.selectedImage.append("image", event.target.files[0], "image.jpg");
 }
+
 function selectImage() {
   try {
-    // const input = document.querySelector("input[type=file].value");
-    const input = this.file;
+    // set input to the formData 
+    // then send the formData to the backend via the route
+    const input = presidentStore.selectedImage;
     const image: File | null = input.files ? input.files[0] : null;
     const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
-    // const inputImg = `{"image": "${presidentStore.image}"}`;
-    console.log(inputImg);
-    presidentStore.uploadImage(inputImg);
+
+    // presidentStore.uploadImage(inputImg);
   } catch (error) {
     console.log(error);
   }
