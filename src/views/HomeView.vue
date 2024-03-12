@@ -123,7 +123,11 @@ onMounted(() => {
     } else {
       console.log("user is not authorized")
     }
-    return loggedIn
   }
+  if (route.params.club == "" && store.currentClub != "") {
+    console.log("redirect should be redirecting")
+    router.push(`/confirmation/${store.currentClub}`)
+  }
+return loggedIn
 });
 </script>
