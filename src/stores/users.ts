@@ -13,6 +13,7 @@ export const usePresidentStore = defineStore("president", {
     year: "",
     nextMeeting: "",
     image: "",
+    uuid: "",
     selectedImage: new FormData(),
   }),
   actions: {

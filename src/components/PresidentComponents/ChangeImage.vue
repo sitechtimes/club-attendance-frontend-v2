@@ -21,6 +21,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { usePresidentStore } from "@/stores/users";
+import { useUserStore } from "@/stores/users";
+import { useClubStore } from "@/stores/club";
 const presidentStore = usePresidentStore();
 const fileInput = ref("");
 
@@ -35,7 +37,6 @@ function onFileChange(this: any, event: any) {
   // presidentStore.selectedImage is a formData
   // append the file into the formData
   // also append a uuid and clubName
-  presidentStore.selectedImage.append("uuid", presidentStore.);
   presidentStore.selectedImage.append(
     "image",
     event.target.files[0],
