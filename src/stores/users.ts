@@ -34,14 +34,14 @@ export const usePresidentStore = defineStore("president", {
       const formData = new FormData();
       formData.append("image", res.data, res.data.name);
 
-      await axios
+      let response = await axios
         .post("http://localhost:3000/uploadImage", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
         .then((res) => {
-          console.log(res.data);
+          console.log(response.data);
           // this.commit("importTodos", res.data);
         })
         .catch((error) => {

@@ -37,11 +37,17 @@ function onFileChange(this: any, event: any) {
   // presidentStore.selectedImage is a formData
   // append the file into the formData
   // also append a uuid and clubName
-  presidentStore.selectedImage.append(
-    "image",
-    event.target.files[0],
-    "image.jpg"
-  );
+  try {
+    presidentStore.selectedImage.append("clubName", "Art Club");
+    presidentStore.selectedImage.append("uuid", presidentStore.uuid);
+    presidentStore.selectedImage.append(
+      "image",
+      event.target.files[0],
+      "image.jpg"
+    );
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function selectImage() {
@@ -51,7 +57,7 @@ function selectImage() {
     const input = presidentStore.selectedImage;
     const image: File | null = input.files ? input.files[0] : null;
     const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
-    presidentStore.uploadImage(inputImg);
+    // presidentStore.uploadImage(inputImg);
     // presidentStore.uploadImage(inputImg);
   } catch (error) {
     console.log(error);
