@@ -75,7 +75,7 @@ import Login from "@/components/HomeComponents/Login.vue";
 import { onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 let store = useUserStore();
 // let clubStore = useClubStore()
 
@@ -85,21 +85,7 @@ function routePush(route: string) {
   router.push(`${route}`)
 }
 
-// function parseGoogleCookie(str: string) {
-//   let cookieObj = str.split('{')[1]
-//     .split('}')[0]
-//     .split(',')
-//     .map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
-//     .map((element) => element.split(':'))
-//     .reduce((obj: any, cookie) => {
-//       obj[decodeURIComponent(cookie[0].trim())]
-//         = decodeURIComponent(cookie[1].trim());
-//       return obj
-//     }, {})
-//   return cookieObj
-// };
-//function turns google link cookie string into 2 arrays: categories and values
-//2 arrays are then merged into one object with categories as seen in user store
+const route = useRoute()
 
 function getCookie(name: string) {
   const b = RegExp(name + "=[^;]+").exec(document.cookie)
@@ -117,6 +103,11 @@ function getCookie(name: string) {
 }
 
 onBeforeMount(() => {
+  const queryVal = route.query.club
+  const queryStr: string | undefined = queryVal?.toString()
+  userStore.qrCodeClub = queryStr
+  console.log(userStore.qrCodeClub)
+
   if (!document.cookie) {
     console.log("no user data")
   } else {

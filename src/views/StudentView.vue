@@ -7,25 +7,12 @@
         </div>
         <LogOut class="ml-10"></LogOut>
       </div>
-      <div
-        class="p-6 flex flex-col h-[75%] overflow-y-auto justify-evenly items-center gap-6 md:flex-row md:flex-wrap"
-      >
-        <!-- <ClubCard name="Coding Club" next-meeting="8/12/2023" />
-        <ClubCard name="Robotics Club" next-meeting="8/12/2023" />
-        <ClubCard name="Swimming Club" next-meeting="8/12/2023" />
-        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
-        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
-        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
-        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
-        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" />
-        <ClubCard name="Table Tennis Club" next-meeting="8/12/2023" /> -->
+      <div class="p-6 flex flex-col h-[75%] overflow-y-auto justify-evenly items-center gap-6 md:flex-row md:flex-wrap">
       </div>
     </div>
 
     <div class="page w-[calc(50%+5rem)] h-full">
-      <div
-        class="bg-[#FFD700] py-[1%] w-[80%] flex justify-center space-x-[5%] text-lg"
-      >
+      <div class="bg-[#FFD700] py-[1%] w-[80%] flex justify-center space-x-[5%] text-lg">
         <h1 class="text-black text-2xl font-['Itim']">Other Meetings</h1>
         <SearchBar></SearchBar>
         <!-- <div

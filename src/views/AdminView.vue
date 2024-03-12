@@ -15,7 +15,7 @@
         <div
           class="p-3 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 bg-yellow flex justify-evenly items-center"
           @click="function openCard() { open = true }">
-          <div>Upload Image</div>
+          <div>Check Images</div>
         </div>
       </div>
       <div v-show="open">

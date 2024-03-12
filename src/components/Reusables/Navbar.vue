@@ -10,7 +10,7 @@
       <h1 class="text-white text-[64px] font-kranky ml-3">
         Club Attendance</h1>
       <div class="absolute right-[1rem]">
-        <RouterLink to="/confirmation" class="font-normal font-katibeh text-[2rem] mr-[3rem]">
+        <RouterLink v-if="userStore.loggedIn" to="/confirmation" class="font-normal font-katibeh text-[2rem] mr-[3rem]">
           Student</RouterLink>
         <!-- currently routed to confirmation for testing, in future confirmation will be reached via qr code-->
         <RouterLink v-if="userStore.user.role == 'Club President'" to="/president"
