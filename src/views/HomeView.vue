@@ -89,28 +89,26 @@ const route = useRoute()
 
 function getCookie(name: string) {
   const b = RegExp(name + "=[^;]+").exec(document.cookie)
-  const a = decodeURIComponent(!!b ? b.toString().replace(/^[^=]+./, "") : "")
+  const a = decodeURIComponent(!!b[0] ? b[0].toString().replace(/^[^=]+./, "") : "")
   const c = JSON.parse(a.replace("j:", ""))
   return c
-
-  // const value: any = `; ${document.cookie}`;
-  // const parts: any = value.split(`; ${name}=`);
-  // const cookieString: any = parts.pop().split(";").shift();
-  // if (parts.length === 2) console.log(cookieString);
-  // let parsedString = parseGoogleCookie(decodeURIComponent(cookieString))
-  // parsedString.isAuthenticated = true
-  // return parsedString
 }
 
 onBeforeMount(() => {
-  const queryVal = route.query.club
-  const queryStr: string | undefined = queryVal?.toString()
-  userStore.qrCodeClub = queryStr
-  console.log(userStore.qrCodeClub)
+
+
 
   if (!document.cookie) {
     console.log("no user data")
+    const queryVal = route.query.club
+    const queryStr: string | undefined = queryVal?.toString()
+    if (queryStr !== undefined) {
+      document.cookie = `qrCodeClub=${queryStr}`
+    }
   } else {
+    const qrCodeClub = document.cookie.split(";")
+    userStore.qrCodeClub = qrCodeClub[0].toString().split("=")[1].replace("_", ' ')
+
     const userCookie = getCookie("user_data");
     store.updateUser(userCookie)
     userStore.loggedIn = true
