@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="overscroll-none">
   <div class="bg-gray w-full h-1/4">
     <div class="mx-60 text-white font-bold text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 h-auto py-6">
     <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="">
@@ -8,7 +8,10 @@
     </div>  
   </div>    
 
-<div class="w-screen h-screen flex flex-row">
+<div class="flex flex-row">
+  <div class="w-1/6 text-white bg-black">
+    <a class="flex flex-col justify-center items-center"> MENU </a>
+  <div class="bg-gray h-full py-4 my-16">
     
     <div class="flex flex-col px-10">
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
@@ -30,9 +33,6 @@
 
 </div>
 
-<div class="w-1/6 text-white bg-black h-screen">
-  <a class="flex flex-col justify-center items-center"> MENU </a>
-<div class="bg-gray h-full py-4 my-16">
 
 </div>  
 
