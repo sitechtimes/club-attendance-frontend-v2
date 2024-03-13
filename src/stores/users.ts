@@ -56,7 +56,9 @@ export const useUserStore = defineStore("user", {
      localStorage.setItem("currentClub", JSON.stringify(this.currentClub));
     },
     updateUser(decodedCookie: any, clubURL: any) {
-      this.user = decodedCookie
+      if (decodedCookie !== null){
+        this.user = decodedCookie
+      }  
       if (clubURL !== ""){
         this.currentClub = clubURL
         console.log("yes current club")

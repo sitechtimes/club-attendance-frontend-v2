@@ -107,8 +107,10 @@ onMounted(() => {
   let loggedIn = false
   if (!document.cookie) {
     console.log("no user data")
+    store.updateUser(null, route.params.club)
   } else {
     const userCookie = getCookie("user_data");
+    console.log(route.params.club)
     store.updateUser(userCookie, route.params.club)
     console.log(store.currentClub)
     loggedIn = true
@@ -125,9 +127,11 @@ onMounted(() => {
     }
   }
   if (route.params.club == "" && store.currentClub != "") {
+    console.log(store.currentClub)
     console.log("redirect should be redirecting")
     router.push(`/confirmation/${store.currentClub}`)
   }
 return loggedIn
 });
+
 </script>

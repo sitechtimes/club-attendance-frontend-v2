@@ -53,6 +53,7 @@ async function logAttendance(){
         clubName: route.params.club,
     };
     userStore.updateAttendance(attendanceData)
+    localStorage.removeItem("currentClub")
 };
 
 defineProps({
