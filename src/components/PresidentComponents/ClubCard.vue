@@ -1,6 +1,6 @@
 <template>
-  <div class="overscroll-none">
-  <div class="bg-gray w-full h-1/4">
+  <div class="overscroll-none h-full">
+  <div class="bg-gray w-full">
     <div class="mx-60 text-white font-bold text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 h-auto py-6">
     <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="">
     <a class="my-8 col-span-2"> Model Rockets Club</a>
@@ -9,11 +9,13 @@
   </div>    
 
 <div class="flex flex-row">
-  <div class="w-1/6 text-white bg-black">
-    <a class="flex flex-col justify-center items-center"> MENU </a>
-  <div class="bg-gray h-full py-4 my-16">
+
+  <div class="flex flex-col w-1/6 text-white bg-black">
+
+    <a class="justify-center items-center h-24 text-center"> MENU </a>
     
-    <div class="flex flex-col px-10">
+    <div class="flex flex-col px-10 bg-gray py-4 h-full">
+
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
       <a> change club picture </a>
     </button>
@@ -23,8 +25,9 @@
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
       <a> change club picture </a>
     </button>
+    
     </div>
-  </div>
+
   </div>
 
   <div class="p-24">
