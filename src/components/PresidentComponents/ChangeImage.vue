@@ -37,17 +37,14 @@ function onFileChange(this: any, event: any) {
   // presidentStore.selectedImage is a formData
   // append the file into the formData
   // also append a uuid and clubName
-  try {
-    presidentStore.selectedImage.append("clubName", "Art Club");
-    presidentStore.selectedImage.append("uuid", presidentStore.uuid);
-    presidentStore.selectedImage.append(
-      "image",
-      event.target.files[0],
-      "image.jpg"
-    );
-  } catch (error) {
-    console.log(error);
-  }
+  presidentStore.selectedImage = new FormData();
+  presidentStore.selectedImage.append("clubName", "Art Club");
+  presidentStore.selectedImage.append("uuid", presidentStore.uuid);
+  presidentStore.selectedImage.append(
+    "image",
+    event.target.files[0],
+    "image.jpg"
+  );
 }
 
 function selectImage() {
