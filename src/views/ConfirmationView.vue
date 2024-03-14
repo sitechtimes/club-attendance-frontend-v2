@@ -9,7 +9,7 @@
     class = "flex flex-col items-center justify-center">
         <h1 
         class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-         Please Confirm Your Attendance to {{ $route.params.club }}
+         Please Confirm Your Attendance to {{ $route.query.club }}
         </h1>
         <div
         class="flex flex-col mt-8">
@@ -50,7 +50,7 @@ async function logAttendance(){
     const attendanceData = {
         year: "2024-2025",
         uuid: userStore.user.uid,
-        clubName: route.params.club,
+        clubName: route.query.club,
     };
     userStore.updateAttendance(attendanceData)
     localStorage.removeItem("currentClub")

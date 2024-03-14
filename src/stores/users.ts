@@ -29,7 +29,7 @@ export const usePresidentStore = defineStore("president", {
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    currentClub: JSON.parse(localStorage.getItem("currentClub")) || "",
+    currentClub: JSON.parse(localStorage.getItem("currentClub")!) || "",
     userClubData: {},
     clubs: [],
     clubMembers: [],

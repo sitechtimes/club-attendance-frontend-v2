@@ -105,13 +105,14 @@ function getCookie(name: string) {
 
 onMounted(() => {
   let loggedIn = false
+  console.log(route.query.club)
   if (!document.cookie) {
     console.log("no user data")
-    store.updateUser(null, route.params.club)
+    store.updateUser(null, route.query.club)
   } else {
     const userCookie = getCookie("user_data");
-    console.log(route.params.club)
-    store.updateUser(userCookie, route.params.club)
+    console.log(route.query.club)
+    store.updateUser(userCookie, route.query.club)
     console.log(store.currentClub)
     loggedIn = true
     if (userStore.user.role === "Admin") {
@@ -126,7 +127,7 @@ onMounted(() => {
       console.log("user is not authorized")
     }
   }
-  if (route.params.club == "" && store.currentClub != "") {
+  if (route.query.club == "" && store.currentClub != "") {
     console.log(store.currentClub)
     console.log("redirect should be redirecting")
     router.push(`/confirmation/${store.currentClub}`)

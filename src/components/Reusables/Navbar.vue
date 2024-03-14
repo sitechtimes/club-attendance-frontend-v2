@@ -7,10 +7,10 @@
       alt="A seagull sitting on top of a calendar" 
       class="h-[107px]"> -->
       </RouterLink>
-      <h1 class="text-white text-[64px] font-kranky ml-3  sm:invisible xl:visible">
+      <h1 class="text-white text-[64px] font-kranky ml-3 invisible xl:visible">
         Club Attendance</h1>
       <div class="absolute right-[1rem]">
-        <RouterLink :to="`/confirmation/${props.club}`" 
+        <RouterLink :to="`/confirmation/?club=${props.club}`" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         Confirmation</RouterLink> 
         <RouterLink to='/club' 
