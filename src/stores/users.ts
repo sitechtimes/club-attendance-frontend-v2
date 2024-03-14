@@ -33,23 +33,36 @@ export const usePresidentStore = defineStore("president", {
       console.log(response, "asdasd");
     },
     async uploadImage(res: any) {
-      const formData = new FormData();
+      const formData = this.selectedImage;
       formData.append("image", res.data, res.data.name);
 
-      let response = await axios
+      await axios
         .post("http://localhost:3000/uploadImage", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
-        .then((res) => {
+        .then((response) => {
           console.log(response.data);
-          // this.commit("importTodos", res.data);
+          // this.commit("importTodos", response.data);
         })
         .catch((error) => {
-          console.log(error.res.data);
+          console.log(error.response.data);
         });
     },
+    // filesChange(fileList) {
+    //   const formData = new FormData();
+    //   if (!fileList.length) return;
+    //   for (var i = 0; i < fileList.length; i++) {
+    //     let file = fileList[i];
+    //     // Here we create unique key 'files[i]' in our response dict
+    //     formData.append("files[" + i + "]", file);
+    //   }
+    //   this.save(formData);
+    // },
+    // save(formData: FormData) {
+    //   // Add your save logic here
+    // },
   },
 });
 
