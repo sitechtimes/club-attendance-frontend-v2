@@ -1,24 +1,103 @@
 <template>
-  <div class="">
-    <!-- <button
-      class="w-full my-1 justify-center rounded-md px-3 bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:ml-14 sm:w-auto"
-      @click="clubStore.changeData()"
-    >
-      Import Image
-    </button> -->
-    <!-- <label for="file-input"> -->
-    <img src="https://placehold.it/" />
-    <!-- </label> -->
-    <input id="file-input" type="file" />
-
+  <form
+    class="form flex flex-col justify-center w-[80%]"
+    @submit.prevent="selectImage"
+  >
+    <input
+      id="image"
+      v-on:change="onFileChange($event)"
+      type="file"
+      ref="fileInput"
+    />
     <button
-      class="w-full my-1 justify-center rounded-md px-3 bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:ml-14 sm:w-auto"
+      class="my-2 justify-center rounded-md bg-black hover:bg-slate-900 text-[#c2b669] py-2 text-sm font-semibold shadow-sm sm:w-auto"
+      type="submit"
     >
-      Import Image
+      Submit Club Image
     </button>
-  </div>
+  </form>
 </template>
 
 <script setup lang="ts">
-// import ArrowDownTrayIcon from "@/components/ArrowDownTrayIcon";
+import { ref } from "vue";
+import { usePresidentStore } from "@/stores/users";
+import { useUserStore } from "@/stores/users";
+import { useClubStore } from "@/stores/club";
+const presidentStore = usePresidentStore();
+const fileInput = ref("");
+
+// function onFileChange(this: any, e: Event) {
+//   const target = e.target as HTMLInputElement;
+//   const files = target.files || (e as DragEvent).dataTransfer?.files;
+// if (!files?.length) return;
+// this.createImage(files[0]);
+// }
+
+function onFileChange(this: any, event: any) {
+  // presidentStore.selectedImage is a formData
+  // append the file into the formData
+  // also append a uuid and clubName
+  presidentStore.selectedImage = new FormData();
+  presidentStore.selectedImage.append("clubName", "Art Club");
+  presidentStore.selectedImage.append("uuid", "100231622882297228860");
+  presidentStore.selectedImage.append(
+    "image",
+    event.target.files[0],
+    "image.jpg"
+  );
+  console.log(presidentStore.selectedImage);
+}
+
+function selectImage() {
+  try {
+    // set input to the formData
+    // then send the formData to the backend via the route
+    // const input = presidentStore.selectedImage;
+    // const image: File | null = input.files ? input.files[0] : null;
+    // const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
+    presidentStore.uploadImage();
+    // presidentStore.uploadImage(inputImg);
+  } catch (error) {
+    console.log(error);
+  }
+}
+// export default {
+//   setup() {
+//     const previewImage = ref(null);
+
+//     const selectImage = () => {
+//       this.$refs.fileInput.click();
+//     };
+
+//     const pickFile = () => {
+//       let input = this.$refs.fileInput;
+//       let file = input.files;
+//       if (file && file[0]) {
+//         let reader = new FileReader();
+//         reader.onload = (e) => {
+//           previewImage.value = e.target.result;
+//         };
+//         reader.readAsDataURL(file[0]);
+//         this.$emit("input", file[0]);
+//       }
+//     };
+
+//     return {
+//       presidentStore,
+//       previewImage,
+//       selectImage,
+//       pickFile,
+//     };
+//   },
+// };
 </script>
+
+<style>
+.imagePreviewWrapper {
+  width: 100%;
+  height: 250px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center center;
+}
+</style>
