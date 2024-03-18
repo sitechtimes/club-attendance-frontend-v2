@@ -59,7 +59,7 @@ export const useUserStore = defineStore("user", {
       if (decodedCookie !== null){
         this.user = decodedCookie
       }  
-      if (clubURL !== ""){
+      if (clubURL !== null){
         this.currentClub = clubURL
         console.log("yes current club")
         this.persistClub();
