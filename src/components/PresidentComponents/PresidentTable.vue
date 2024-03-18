@@ -1,6 +1,6 @@
 <template> 
 
-    <div class="relative overflow-x-auto bg-black">
+    <div class="relative overflow-x-auto overflow-y:auto bg-black">
         <table class="w-full text-sm text-left rtl:text-right text-white dark:text-gray">
             <thead class="text-xs uppercase bg-black dark:text-gray">
                 <tr>

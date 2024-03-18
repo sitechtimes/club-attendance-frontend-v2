@@ -1,5 +1,5 @@
 <template>
-  <div class="overscroll-none h-full">
+  <div class="h-full">
   <div class="bg-gray w-full">
     <div class="mx-60 text-white font-bold text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 h-auto py-6">
     <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="">
@@ -8,22 +8,29 @@
     </div>  
   </div>    
 
-<div class="flex flex-row">
+<div class="flex flex-row h-screen">
 
   <div class="flex flex-col w-1/6 text-white bg-black">
 
-    <a class="justify-center items-center h-24 text-center"> MENU </a>
+    <a class="justify-center items-center h-20 text-center"> MENU </a>
     
     <div class="flex flex-col px-10 bg-gray py-4 h-full">
 
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
-      <a> change club picture </a>
+      <a> Change Club Picture </a>
+    </button>
+    <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5"  
+    @click="
+    changeDate = false;
+    open = true;
+  "
+  type="button"
+  >
+      <a> Edit Meeting Date </a>
+      <ChangeDate />
     </button>
     <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
-      <a> change club picture </a>
-    </button>
-    <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
-      <a> change club picture </a>
+      <a> Generate QR Code </a>
     </button>
     
     </div>
@@ -41,10 +48,6 @@
 
 
 </template>
-
-<script setup lang="ts">
-  import PresidentTable from '@/components/PresidentComponents/PresidentTable.vue';
-</script>
 
  <!-- club div -->
   <!-- <div class="flex flex-col">
@@ -201,13 +204,14 @@
     </div> -->
 <!-- </template> -->
 
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { onMounted, ref } from "vue";
 import QrCode from "@/components/ClubComponents/QrCode.vue";
 import ChangeDate from "./ChangeDate.vue";
 import { usePresidentStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
+import PresidentTable from '@/components/PresidentComponents/PresidentTable.vue';
 
 const clubStore = useClubStore()
 const presidentStore = usePresidentStore();
@@ -235,7 +239,7 @@ function setVariables(name: string) {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .box {
   border-radius: 20px;
   width: 300px;
