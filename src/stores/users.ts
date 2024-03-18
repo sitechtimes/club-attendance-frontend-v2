@@ -32,10 +32,8 @@ export const usePresidentStore = defineStore("president", {
       );
       console.log(response, "asdasd");
     },
-    async uploadImage(res: any) {
+    async uploadImage() {
       const formData = this.selectedImage;
-      formData.append("image", res.data, res.data.name);
-
       await axios
         .post("http://localhost:3000/uploadImage", formData, {
           headers: {
