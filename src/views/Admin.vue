@@ -6,7 +6,6 @@
       <div class="w-[8%] text-white text-lg font-medium">Administration</div>
       <SearchBar></SearchBar>
       <button class="w-[4%] text-white" @click="changeRoute()">
-        dfsfsdf
         <BellIcon class="text-white" />
       </button>
       <!-- <RouterLink to="/confirmimage">

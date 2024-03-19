@@ -66,9 +66,8 @@ export const usePresidentStore = defineStore("president", {
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    qrCodeClub: '',
+    qrCodeClub: "",
     loggedIn: false,
-    image: "",
     userClubData: {},
     clubs: [],
     clubMembers: [],
@@ -113,30 +112,12 @@ export const useUserStore = defineStore("user", {
       this.clubMembers = await response.json();
     },
     async getAllClubData(uuid: any) {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData/2024-2025/${uuid}`, {
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        redirect: "follow",
-      });
-      this.clubs = await response.json()
-      this.allClubs = this.clubs
-    },
-    async getUnapprovedClubs(uuid: any) {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getUnapprovedImages/${uuid}`)
-      this.unapprovedImages = await response.json()
-      console.log(this.unapprovedImages)
-    },
-    async updateAttendance(attendanceJSON: any) {
-      console.log(JSON.stringify(attendanceJSON))
-      try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/updateAttendance`, {
-          method: "PATCH",
-          cache: "force-cache",
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/getAllClubData/2024-2025/${uuid}`,
+        {
+          method: "GET",
+          mode: "cors",
+          cache: "no-cache",
           credentials: "same-origin",
           headers: {
             "Content-Type": "application/json",
@@ -152,6 +133,7 @@ export const useUserStore = defineStore("user", {
         `${import.meta.env.VITE_BACKEND_URL}/getUnapprovedImages/${uuid}`
       );
       this.unapprovedImages = await response.json();
+      console.log(this.unapprovedImages);
     },
     async updateAttendance(attendanceJSON: any) {
       console.log(JSON.stringify(attendanceJSON));
