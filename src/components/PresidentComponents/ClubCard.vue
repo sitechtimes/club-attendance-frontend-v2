@@ -1,56 +1,52 @@
 <template>
   <div class="h-full">
-  <div class="bg-gray w-full">
-    <div class="mx-60 text-white font-bold text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 h-auto py-6">
-    <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="">
-    <a class="my-8 col-span-2"> Model Rockets Club</a>
-    <a class="row-span-2">Edwin Wright</a>   
-    </div>  
-  </div>    
-
-<div class="flex flex-row h-screen">
-
-  <div class="flex flex-col w-1/6 text-white bg-black">
-
-    <a class="justify-center items-center h-20 text-center"> MENU </a>
-    
-    <div class="flex flex-col px-10 bg-gray py-4 h-full">
-
-    <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
-      <a> Change Club Picture </a>
-    </button>
-    <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5"  
-    @click="
-    changeDate = false;
-    open = true;
-  "
-  type="button"
-  >
-      <a> Edit Meeting Date </a>
-      <ChangeDate />
-    </button>
-    <button class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5">
-      <a> Generate QR Code </a>
-    </button>
-    
+    <div class="bg-gray w-full">
+      <div
+        class="mx-60 text-white font-bold text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 py-6"
+      >
+        <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="" />
+        <a class="my-8 col-span-2"> Model Rockets Club</a>
+        <a class="row-span-2">Edwin Wright</a>
+      </div>
     </div>
 
+    <div class="flex flex-row">
+      <div class="flex flex-col w-1/6 text-white bg-black h-[42.5rem]">
+        <a class="justify-center items-center h-20 text-center"> MENU </a>
+
+        <div class="flex flex-col px-10 bg-gray py-4 h-full">
+          <button
+            class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5"
+          >
+            <a> Change Club Picture </a>
+          </button>
+          <button
+            class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5"
+            @click="
+              changeDate = false;
+              open = true;
+            "
+            type="button"
+          >
+            <a> Edit Meeting Date </a>
+            <!-- <ChangeDate /> -->
+          </button>
+          <button
+            class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5"
+          >
+            <a> Generate QR Code </a>
+          </button>
+        </div>
+      </div>
+      <div class="p-24 w-[100rem] overflow-x-auto">
+        <PresidentTable />
+      </div>
+    </div>
   </div>
-
-  <div class="p-24">
-    <PresidentTable/>
-  </div>
-
-</div>
-
-
-</div>  
-
-
 </template>
 
- <!-- club div -->
-  <!-- <div class="flex flex-col">
+<!-- club div -->
+<!-- <div class="flex flex-col">
     <div
       class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
       @click="function openCard() {
@@ -70,8 +66,8 @@
         </div>
       </div>
     </div> -->
-    <!-- modal -->
-    <!-- <div v-show="open">
+<!-- modal -->
+<!-- <div v-show="open">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
@@ -130,8 +126,8 @@
         </div>
       </div>
     </div> -->
-    <!-- modal QR code  -->
-    <!-- <div v-show="qrCode">
+<!-- modal QR code  -->
+<!-- <div v-show="qrCode">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
@@ -166,8 +162,8 @@
         </div>
       </div>
     </div> -->
-    <!-- modal date change  -->
-    <!-- <div v-show="changeDate">
+<!-- modal date change  -->
+<!-- <div v-show="changeDate">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
@@ -210,10 +206,10 @@ import { onMounted, ref } from "vue";
 import QrCode from "@/components/ClubComponents/QrCode.vue";
 import ChangeDate from "./ChangeDate.vue";
 import { usePresidentStore } from "@/stores/users";
-import { useClubStore } from "@/stores/club"
-import PresidentTable from '@/components/PresidentComponents/PresidentTable.vue';
+import { useClubStore } from "@/stores/club";
+import PresidentTable from "@/components/PresidentComponents/PresidentTable.vue";
 
-const clubStore = useClubStore()
+const clubStore = useClubStore();
 const presidentStore = usePresidentStore();
 const props = defineProps({
   name: String,
@@ -224,17 +220,17 @@ const qrCode = ref(false);
 const changeDate = ref(false);
 
 function setVariables(name: string) {
-  presidentStore.selectedClub = name
-  if(new Date().getMonth() + 1 <= 7) {
-    let thisYear = new Date().getFullYear() - 1
-    let nextYear = new Date().getFullYear()
-    let yearVar = thisYear + '-' + nextYear
-    presidentStore.year = yearVar
+  presidentStore.selectedClub = name;
+  if (new Date().getMonth() + 1 <= 7) {
+    let thisYear = new Date().getFullYear() - 1;
+    let nextYear = new Date().getFullYear();
+    let yearVar = thisYear + "-" + nextYear;
+    presidentStore.year = yearVar;
   } else {
-    let thisYear = new Date().getFullYear()
-    let nextYear = new Date().getFullYear() + 1
-    let yearVar = thisYear + '-' + nextYear
-    presidentStore.year = yearVar
+    let thisYear = new Date().getFullYear();
+    let nextYear = new Date().getFullYear() + 1;
+    let yearVar = thisYear + "-" + nextYear;
+    presidentStore.year = yearVar;
   }
 }
 </script>
