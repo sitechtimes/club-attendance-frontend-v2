@@ -26,13 +26,6 @@ import { useClubStore } from "@/stores/club";
 const presidentStore = usePresidentStore();
 const fileInput = ref("");
 
-// function onFileChange(this: any, e: Event) {
-//   const target = e.target as HTMLInputElement;
-//   const files = target.files || (e as DragEvent).dataTransfer?.files;
-// if (!files?.length) return;
-// this.createImage(files[0]);
-// }
-
 function onFileChange(this: any, event: any) {
   // presidentStore.selectedImage is a formData
   // append the file into the formData
@@ -50,46 +43,11 @@ function onFileChange(this: any, event: any) {
 
 function selectImage() {
   try {
-    // set input to the formData
-    // then send the formData to the backend via the route
-    // const input = presidentStore.selectedImage;
-    // const image: File | null = input.files ? input.files[0] : null;
-    // const inputImg = `{"year": "${presidentStore.year}", "clubName": "Art Club", "image": "${presidentStore.image}"}`;
     presidentStore.uploadImage();
-    // presidentStore.uploadImage(inputImg);
   } catch (error) {
     console.log(error);
   }
 }
-// export default {
-//   setup() {
-//     const previewImage = ref(null);
-
-//     const selectImage = () => {
-//       this.$refs.fileInput.click();
-//     };
-
-//     const pickFile = () => {
-//       let input = this.$refs.fileInput;
-//       let file = input.files;
-//       if (file && file[0]) {
-//         let reader = new FileReader();
-//         reader.onload = (e) => {
-//           previewImage.value = e.target.result;
-//         };
-//         reader.readAsDataURL(file[0]);
-//         this.$emit("input", file[0]);
-//       }
-//     };
-
-//     return {
-//       presidentStore,
-//       previewImage,
-//       selectImage,
-//       pickFile,
-//     };
-//   },
-// };
 </script>
 
 <style>

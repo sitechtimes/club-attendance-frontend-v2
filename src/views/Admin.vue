@@ -5,12 +5,6 @@
     >
       <div class="w-[8%] text-white text-lg font-medium">Administration</div>
       <SearchBar></SearchBar>
-      <button class="w-[4%] text-white" @click="changeRoute()">
-        <BellIcon class="text-white" />
-      </button>
-      <!-- <RouterLink to="/confirmimage">
-        <button class="bg-white">Confirmimage</button>
-      </RouterLink> -->
       <LogOut></LogOut>
     </div>
     <div class="h-auto justify-center flex flex-col items-center bg-[#363636]">
@@ -45,7 +39,6 @@ import { onMounted, onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/user";
 import { useClubStore } from "@/stores/club";
 import { useRouter, useRoute } from "vue-router";
-import { BellIcon } from "@heroicons/vue/24/solid";
 import { RouterLink } from "vue-router";
 import ConfirmImage from "./ConfirmImage.vue";
 
