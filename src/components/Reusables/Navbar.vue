@@ -10,7 +10,7 @@
       <h1 class="text-white text-[64px] font-kranky ml-3 invisible nav:visible">
         Club Attendance</h1>
       <div class="absolute right-[1rem] m-2">
-        <RouterLink :to="`/confirmation/?club=${props.club}`" 
+        <RouterLink :to="`/confirmation`" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         Confirmation</RouterLink> 
         <RouterLink to='/club' 
