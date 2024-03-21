@@ -48,14 +48,28 @@
                   class="px-4 pb-4 pt-5 bg-[#c2b669] sm:p-6 sm:pb-4 flex flex-row-reverse"
                 >
                   <div
-                    class="py-3 px-12 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center"
-                    @click="
-                      function closecard() {
-                        open = false;
-                      }
-                    "
+                    class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
                   >
-                    close
+                    <div>
+                      <div class="w-[8%] text-white text-lg font-medium">
+                        Administration
+                      </div>
+                      <input
+                        class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
+                        placeholder="Search"
+                        v-model="query"
+                      />
+                    </div>
+                    <div
+                      class="py-3 px-12 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center"
+                      @click="
+                        function closecard() {
+                          open = false;
+                        }
+                      "
+                    >
+                      close
+                    </div>
                   </div>
                 </div>
                 <div class="flex flex-row justify-evenly h-100vh">
