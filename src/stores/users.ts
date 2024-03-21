@@ -58,6 +58,7 @@ export const useUserStore = defineStore("user", {
     updateUser(decodedCookie: any, clubURL: any) {
       if (decodedCookie !== null){
         this.user = decodedCookie
+        this.user.isAuthenticated = true
       }  
       if (clubURL !== null){
         this.currentClub = clubURL

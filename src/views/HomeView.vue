@@ -114,6 +114,7 @@ onMounted(() => {
     }  
   } else {
     const userCookie = getCookie("user_data");
+    console.log(userCookie)
     if (route.query.club == undefined) {
     store.updateUser(userCookie, null)
     } else {
@@ -134,12 +135,10 @@ onMounted(() => {
   }
   console.log(route.query.club)
   console.log(store.currentClub)
-  console.log(userStore.user.role)
-  if (route.query.club == undefined && store.currentClub != null && userStore.user.role != '') {
+  console.log(userStore.user.isAuthenticated)
+  if (route.query.club == undefined && store.currentClub != null && userStore.user.isAuthenticated) {
     console.log("redirect should be redirecting")
     router.push(`/confirmation/?club=${store.currentClub}`)
-  } else {
-    console.log("praise the omnisiah")
   }
 return loggedIn
 });

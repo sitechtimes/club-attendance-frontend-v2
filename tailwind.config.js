@@ -6,7 +6,7 @@ module.exports = {
       sm: "480px",
       md: "768px",
       lg: "976px",
-      nav: "1350",
+      nav: "1365px",
       xl: "1440px",
     },
     colors: {
