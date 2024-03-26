@@ -45,52 +45,75 @@
                 class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all w-screen h-screen"
               >
                 <div
-                  class="px-4 pb-4 pt-5 bg-[#c2b669] sm:p-6 sm:pb-4 flex flex-row-reverse"
+                  class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
                 >
+                  <div class="w-[8%] text-white text-lg font-medium">
+                    Administration
+                  </div>
+                  <input
+                    class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
+                    placeholder="Search"
+                    v-model="query"
+                  />
+
                   <div
-                    class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
+                    class="py-3 px-12 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center"
+                    @click="
+                      function closecard() {
+                        open = false;
+                      }
+                    "
                   >
-                    <div>
-                      <div class="w-[8%] text-white text-lg font-medium">
-                        Administration
-                      </div>
-                      <input
-                        class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
-                        placeholder="Search"
-                        v-model="query"
-                      />
-                    </div>
-                    <div
-                      class="py-3 px-12 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center"
-                      @click="
-                        function closecard() {
-                          open = false;
-                        }
-                      "
-                    >
-                      close
-                    </div>
+                    close
                   </div>
                 </div>
-                <div
-                  class="flex flex-row justify-evenly h-100vh"
-                  @click="
-                    approveImage = true;
-                    open = false;
-                  "
-                >
+                <div class="flex flex-row justify-evenly h-100vh">
                   >
                   <div
                     v-for="image in userStore.unapprovedImages"
-                    class="flex flex-col w-[30%]"
+                    :key="image.id"
+                    class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
+                    @click="approveImage = true"
                   >
                     <img
                       :src="image.thumbnailLink"
                       class="h-[228px] rounded-t-[20px]"
                     />
-                    <h2>{{ image.name }}</h2>
+                    <h2 class="text-[#c2b669] text-xl">{{ image.name }}</h2>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="approveImage === false">
+        <div
+          class="relative z-10"
+          aria-labelledby="modal-title"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          ></div>
+          <div class="fixed inset-0 z-10 flex justify-center">
+            <div
+              class="flex w-full items-center justify-center p-4 text-center sm:p-0"
+            >
+              <div
+                class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+              >
+                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                  <approveImage />
+                </div>
+                <button
+                  type="button"
+                  class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
+                  @click="approveImage = false"
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
@@ -102,6 +125,7 @@
         <div
           class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
           v-for="item in userStore.clubs"
+          :key="item.clubName"
           @click="pushToInfo(item.clubName)"
         >
           <img
@@ -127,41 +151,6 @@
       </div>
     </section>
   </div>
-  <div v-show="approveImage">
-    <div
-      class="relative z-10"
-      aria-labelledby="modal-title"
-      role="dialog"
-      aria-modal="true"
-    >
-      <div
-        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-      ></div>
-      <div class="fixed inset-0 z-10 flex justify-center">
-        <div
-          class="flex w-full items-center justify-center p-4 text-center sm:p-0"
-        >
-          <div
-            class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
-          >
-            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-              <approveImage />
-            </div>
-            <button
-              type="button"
-              class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
-              @click="
-                approveImage = false;
-                open = true;
-              "
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -171,7 +160,7 @@ import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
-import approveImage from "@components/AdminComponents/approveImage.vue";
+import approveImage from "@/components/AdminComponents/approveImage.vue";
 
 const query = ref("");
 let open = ref(false);
