@@ -21,15 +21,24 @@
         <p>Advisor: {{ clubStore.clubAdvisor }}</p>
         <p>President: {{ clubStore.clubPresident }}</p>
       </div>
-      <div class="w-full flex flex-col justify-start items-center pt-3">
-        First Name | Last Name | Position | # of Attendances
-        <div v-for="student in store.clubMembers">
-          {{ student["First Name"] }}
-          {{ student["Last Name"] }}
-          {{ student["Position"] }}
-          {{ student["# of Attendances"] }}
-        </div>
-      </div>
+<table class="table-auto border-collapse border border-slate-400 w-[80vw] m-auto">
+  <thead>
+    <tr>
+      <th class="border border-slate-300">First Name</th>
+      <th class="border border-slate-300">Last Name</th>
+      <th class="border border-slate-300">Position</th>
+      <th class="border border-slate-300">Number of Attendences</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="student in store.clubMembers">
+      <td class="border border-slate-300 text-center">{{ student["First Name"] }}</td>
+      <td class="border border-slate-300 text-center">{{ student["Last Name"] }}</td>
+      <td class="border border-slate-300 text-center">{{ student["Position"] }}</td>
+      <td class="border border-slate-300 text-center">{{ student["# of Attendances"] }}</td>
+    </tr>
+  </tbody>
+</table>
     </div>
   </div>
   <div v-else>
