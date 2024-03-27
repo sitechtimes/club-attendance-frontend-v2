@@ -72,7 +72,7 @@
 import Navbar from "@/components/Reusables/Navbar.vue";
 import Login from "@/components/HomeComponents/Login.vue";
 // import Calender from "@/components/HomeComponents/Calender.vue";
-import { onBeforeMount } from "vue";
+import { onBeforeMount, onMounted } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
 import { useRouter, useRoute } from 'vue-router'
@@ -94,38 +94,33 @@ function getCookie(name: string) {
   return c
 }
 
-onBeforeMount(() => {
+onMounted(() => {
+  console.log(route.query.code)
 
+})
 
+// onBeforeMount(() => {
+//   if (!document.cookie) {
+//     console.log("no user data")
+//     const queryVal = route.query.club
+//     const queryStr: string | undefined = queryVal?.toString()
+//     if (queryStr !== undefined) {
+//       document.cookie = `qrCodeClub=${queryStr}`
+//     }
+//   } else {
+//     const qrCodeClub = document.cookie.split(";")
+//     userStore.qrCodeClub = qrCodeClub[0].toString().split("=")[1].replace("_", ' ')
 
-  if (!document.cookie) {
-    console.log("no user data")
-    const queryVal = route.query.club
-    const queryStr: string | undefined = queryVal?.toString()
-    if (queryStr !== undefined) {
-      document.cookie = `qrCodeClub=${queryStr}`
-    }
-  } else {
-    const qrCodeClub = document.cookie.split(";")
-    userStore.qrCodeClub = qrCodeClub[0].toString().split("=")[1].replace("_", ' ')
-
-    const userCookie = getCookie("user_data");
-    store.updateUser(userCookie)
-    userStore.loggedIn = true
-    userStore.user.isAuthenticated = true
-    console.log(userStore.user.role)
-    if (userStore.user.role === "Admin") {
-      userStore.getAllClubData(userStore.user.uid)
-      userStore.getUnapprovedClubs(userStore.user.uid)
-      setTimeout(function push() { routePush("admin") }, 1000)
-    }
-    //  else if (userStore.user.role === "Club President") {
-    //   // routePush("president")
-    // } else if (userStore.user.role === "User") {
-    //   console.log("user is reg")
-    // } else {
-    //   console.log("user is not authorized")
-    // }
-  }
-});
+//     const userCookie = getCookie("user_data");
+//     store.updateUser(userCookie)
+//     userStore.loggedIn = true
+//     userStore.user.isAuthenticated = true
+//     console.log(userStore.user.role)
+//     if (userStore.user.role === "Admin") {
+//       userStore.getAllClubData(userStore.user.uid)
+//       userStore.getUnapprovedClubs(userStore.user.uid)
+//       setTimeout(function push() { routePush("admin") }, 1000)
+//     }
+//   }
+// });
 </script>

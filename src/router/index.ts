@@ -12,7 +12,6 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: () => import("../views/HomeView.vue"),
-      props: true,
     },
     {
       path: "/president",
