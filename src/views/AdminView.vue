@@ -67,53 +67,36 @@
                     close
                   </div>
                 </div>
-                <div class="flex flex-row justify-evenly h-100vh">
+                <div
+                  class="flex flex-row justify-evenly h-[50rem] bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+                >
                   >
                   <div
                     v-for="image in userStore.unapprovedImages"
                     :key="image.id"
-                    class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
-                    @click="approveImage = true"
+                    class="flex flex-col w-[29%]"
                   >
                     <img
                       :src="image.thumbnailLink"
                       class="h-[228px] rounded-t-[20px]"
                     />
-                    <h2 class="text-[#c2b669] text-xl">{{ image.name }}</h2>
+                    <div
+                      class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
+                    >
+                      <div
+                        class="w-full flex flex-row items-center justify-center"
+                      >
+                        <h2 class="text-[#c2b669] text-2xl">
+                          {{ image.name }}
+                        </h2>
+                      </div>
+                      <div class="flex flex-row justify-between w-[29%]">
+                        <button class="text-white">Approve</button>
+                        <button class="text-white bg-red">Reject</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-show="approveImage === false">
-        <div
-          class="relative z-10"
-          aria-labelledby="modal-title"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-          ></div>
-          <div class="fixed inset-0 z-10 flex justify-center">
-            <div
-              class="flex w-full items-center justify-center p-4 text-center sm:p-0"
-            >
-              <div
-                class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
-              >
-                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                  <approveImage />
-                </div>
-                <button
-                  type="button"
-                  class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
-                  @click="approveImage = false"
-                >
-                  Close
-                </button>
               </div>
             </div>
           </div>
@@ -160,7 +143,6 @@ import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
-import approveImage from "@/components/AdminComponents/approveImage.vue";
 
 const query = ref("");
 let open = ref(false);
