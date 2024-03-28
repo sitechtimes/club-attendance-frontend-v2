@@ -10,7 +10,7 @@ export const useClubStore = defineStore("club", {
     nextMeeting: '',
     club: [ref({
       clubName: "",
-      nextMeeting: ""
+      nextMeeting: "",
     })]
   }),
   actions: {
