@@ -15,7 +15,7 @@ const userStore = useUserStore();
 async function logIn() {
   // await userStore.googleLink();
   try {
-    window.location.href = 'http://localhost:8000/o/authorize/?response_type=code&client_id=xzCx3rgs07o8C0uvil1hhkaXejsbE370aBci2Bb4&redirect_uri=http%3A%2F%2Flocalhost%3A5173&code_challenge=yJaxHcB8M4d_dj7ApOPFNLIkPV2Bk8N82tnl-PaGLDk&code_challenge_method=S256'
+    window.location.href = 'http://localhost:8000/o/authorize/?response_type=code&client_id=xzCx3rgs07o8C0uvil1hhkaXejsbE370aBci2Bb4&redirect_uri=http%3A%2F%2Flocalhost%3A5173&code_challenge=yJaxHcB8M4d_dj7ApOPFNLIkPV2Bk8N82tnl-PaGLDk&code_challenge_method=plain'
   } catch (error) {
     console.log(error)
   }
