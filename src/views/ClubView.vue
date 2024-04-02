@@ -9,7 +9,7 @@
     store.user.role == 'Admin'">
     
     <div class="w-screen h-auto flex flex-col">
-      <div class="w-full h-[30vh] border-b-2 flex flex-row ">
+      <div class="w-full h-[30vh] flex flex-row ">
        <div>
         <img
              src="@/assets/sammy.jpg"
@@ -18,10 +18,12 @@
         />
         <!-- club photo placeholder -->
         </div>
-        <div class="w-[30%] h-[2.5rem] text-2xl pl-6 border-[0.15rem] ">{{ clubStore.clubName }}</div>
-        <RouterLink to="/admin" class="font-normal text-[2rem]  h-[3rem] border-[0.15rem]">Admin</RouterLink>
-        <UserIcon class="h-[8vh]"></UserIcon>
+        <div class="w-[30%] h-[2.5rem] text-2xl border-black p-1 pb-[2.5rem]
+        pl-6 border-b-[0.15rem] text-gold text-clip">{{ clubStore.clubName }}</div>
+        <UserIcon class="h-[8vh]  border-l-[0.15rem] border-b-[0.15rem]"></UserIcon>
         <div class=" text-2xl ">{{ clubStore.room }}</div>
+        <RouterLink to="/admin" class="font-normal text-[2rem] \
+        p-1 h-[3rem] border-[0.15rem]">Admin</RouterLink>
       </div>
       <div class="w-full flex flex-col justify-start items-center pt-3">
         <a href="https://www.youtube.com/watch?v=RbhVgdDoY3Q" target="_blank"
@@ -30,7 +32,7 @@
         <p>Advisor: {{ clubStore.clubAdvisor }}</p>
         <p>President: {{ clubStore.clubPresident }}</p>
       </div>
-       <table class="table-auto border-collapse border border-slate-400 w-[80vw] m-auto">
+       <table class="table-auto border-collapse border border-slate-400 w-[80vw] m-auto overflow-auto">
   <thead>
     <tr>
       <th class="border border-slate-300">Name</th>
