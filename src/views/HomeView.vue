@@ -94,26 +94,26 @@ function getCookie(name: string) {
   return c
 }
 
-async function ssoThingy(ssoObject: Object) {
+async function ssoThingy(ssoObject: any) {
   const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/ssoAuth`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: JSON.stringify(ssoObject)
+    body: ssoObject
   })
   console.log(response)
 }
 
 onMounted(() => {
-  console.log(route.query.code)
-  const thiny = {
-    "grant_type": "authorization_code",
-    "code": route.query.code,
-    "redirct_uri": "http://localhost:3000/newRedirect",
-    "code_verifier": "yJaxHcB8M4d_dj7ApOPFNLIkPV2Bk8N82tnl-PaGLDk"
-  }
-  ssoThingy(thiny)
+  const string = route.query.code?.toString()
+
+  let formBody = new URLSearchParams();
+  formBody.append("grant_type", "authorization_code");
+  formBody.append("code", string!);
+  formBody.append("redirect_uri", "http://localhost:5173");
+
+  ssoThingy(formBody)
 })
 
 // onBeforeMount(() => {
