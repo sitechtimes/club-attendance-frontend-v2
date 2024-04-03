@@ -7,15 +7,14 @@
       <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
       <!-- hamburger menu -->
-      <div> 
-    <button  @click="show = !show" class=" burger mr-10 inline-flex gap-x-1.5" type="button">
+      <div id="demo"> 
+    <button v-on:click="show = !show">
       <img src="@/assets/menu.png" alt="" class="w-10">
     </button>
+    <Transition  name="fade"> 
+       <p v-if="show">hello</p>
+    </Transition>
     </div>
-
-  <Transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95"/>
-   
-  
 
 <!-- logout button -->
       <button type="button" class="text-black bg-yellow hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log Out
@@ -32,18 +31,26 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import { Transition } from 'vue'
 
-var show = false;
+import { Vue } from 'vue';
+
+interface DemoData {
+  show: boolean;
+}
+
+new Vue ({
+  el: '#demo',
+  data: {
+    show: true
+  } as DemoData
+});
+
 </script>
 
 <style scoped>
-.burger-enter-active,
-.burger-leave-active {
-  opacity: 1; 
-  transition: opacity 0.5s ease;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
 }
-
-.burger-enter-from,
-.burger-leave-to {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 </style>
