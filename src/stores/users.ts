@@ -12,11 +12,9 @@ export const usePresidentStore = defineStore("president", {
     selectedClub: "",
     year: "",
     nextMeeting: "",
-    // data: ref({
     image: "",
     uuid: "",
     selectedImage: new FormData(),
-    // }),
   }),
   actions: {
     async changeNextMeet(selectedClubJSON: any) {

@@ -67,8 +67,9 @@
                     close
                   </div>
                 </div>
-                <div
-                  class="flex flex-row justify-evenly h-[50rem] bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+                <form
+                  class="flex flex-row justify-evenly h-[50rem] overflow-y-scroll bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+                  @submit.prevent="approveImage"
                 >
                   >
                   <div
@@ -91,12 +92,14 @@
                         </h2>
                       </div>
                       <div class="flex flex-row justify-between w-[29%]">
-                        <button class="text-white">Approve</button>
+                        <button class="text-white" type="submit">
+                          Approve
+                        </button>
                         <button class="text-white bg-red">Reject</button>
                       </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -143,6 +146,8 @@ import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
+import { usePresidentStore } from "@/stores/users";
+const presidentStore = usePresidentStore();
 
 const query = ref("");
 let open = ref(false);
@@ -156,6 +161,29 @@ function pushToInfo(clubName: string) {
   const year = "2024-2025";
   userStore.getClubMembers(clubName, year, userStore.user.uid);
   setTimeout(() => routePush(`/club/?name=${clubStore.clubName}`), 1000);
+}
+
+function onFileChange(this: any, event: any) {
+  // presidentStore.selectedImage is a formData
+  // append the file into the formData
+  // also append a uuid and clubName
+  presidentStore.selectedImage = new FormData();
+  presidentStore.selectedImage.append("clubName", "Art Club");
+  presidentStore.selectedImage.append("uuid", "100231622882297228860");
+  presidentStore.selectedImage.append(
+    "image",
+    event.target.files[0],
+    "image.jpg"
+  );
+  console.log(presidentStore.selectedImage);
+}
+
+function selectImage() {
+  try {
+    presidentStore.uploadImage();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function routePush(route: string) {
