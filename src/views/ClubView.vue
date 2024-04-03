@@ -9,7 +9,7 @@
     store.user.role == 'Admin'">
     
     <div class="w-screen h-auto flex flex-col">
-      <div class="w-full h-[30vh] flex flex-row ">
+      <div class="w-full h-[30vh] flex flex-row border-b-[0.15rem]">
        <div>
         <img
              src="@/assets/sammy.jpg"
@@ -18,12 +18,13 @@
         />
         <!-- club photo placeholder -->
         </div>
-        <div class="w-[30%] h-[2.5rem] text-2xl border-black p-1 pb-[2.5rem]
-        pl-6 border-b-[0.15rem] text-gold text-clip">{{ clubStore.clubName }}</div>
+        <div class="w-[30%] h-[5vh] text-2xl border-black p-1
+        pb-[2.5rem] pl-6 border-b-[0.15rem] text-gold text-clip
+        text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)]">{{ clubStore.clubName }}</div>
         <UserIcon class="h-[8vh]  border-l-[0.15rem] border-b-[0.15rem]"></UserIcon>
-        <div class=" text-2xl ">{{ clubStore.room }}</div>
-        <RouterLink to="/admin" class="font-normal text-[2rem] \
-        p-1 h-[3rem] border-[0.15rem]">Admin</RouterLink>
+        <div class=" text-2xl border-b-[0.15rem] h-[8vh]"> Room {{ clubStore.room }}</div>
+        <RouterLink to="/admin" class="font-normal text-[2rem] 
+        p-1 h-[8vh] border-b-[0.15rem] flex flex-row-reverse">Admin</RouterLink>
       </div>
       <div class="w-full flex flex-col justify-start items-center pt-3">
         <a href="https://www.youtube.com/watch?v=RbhVgdDoY3Q" target="_blank"
@@ -35,18 +36,18 @@
        <table class="table-auto border-collapse border border-slate-400 w-[80vw] m-auto overflow-auto">
   <thead>
     <tr>
-      <th class="border border-slate-300">Name</th>
-      <th class="border border-slate-300">Position</th>
-      <th class="border border-slate-300">Number of Attendences</th>
-      <th class="border border-slate-300">Email</th>
+      <th class="border border-slate-300 border-2">Name</th>
+      <th class="border border-slate-300 border-2">Position</th>
+      <th class="border border-slate-300 border-2">Number of Attendences</th>
+      <th class="border border-slate-300 border-2">Email</th>
     </tr>
   </thead>
   <tbody>
     <tr v-for="student in store.clubMembers">
-      <td class="border border-slate-300 text-center">{{ student["First Name"] }} {{ student["Last Name"] }}</td>
-      <td class="border border-slate-300 text-center">{{ student["Position"] }}</td>
-      <td class="border border-slate-300 text-center">{{ student["# of Attendances"] }}</td>
-      <td class="border border-slate-300 text-center">{{ student["Email"] }}</td>
+      <td class="border border-slate-300 text-center border-2">{{ student["First Name"] }} {{ student["Last Name"] }}</td>
+      <td class="border border-slate-300 text-center border-2">{{ student["Position"] }}</td>
+      <td class="border border-slate-300 text-center border-2">{{ student["# of Attendances"] }}</td>
+      <td class="border border-slate-300 text-center border-2">{{ student["Email"] }}</td>
     </tr>
   </tbody>
        </table>
