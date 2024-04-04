@@ -9,7 +9,7 @@
     store.user.role == 'Admin'">
     
     <div class="w-screen h-auto flex flex-col">
-      <div class="w-full h-[30vh] flex flex-row border-b-[0.15rem]">
+      <div class="w-full h-[30vh] flex flex-row border-b-[0.15rem] overflow-hidden">
        <div>
         <img
              src="@/assets/sammy.jpg"
@@ -82,6 +82,28 @@ onMounted(() => {
   console.log(clubStore.club)
   console.log(store.clubMembers)
 });
+
+function logOut() {
+  document.cookie.split(";").forEach(
+    function (c) {
+      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+  store.loggedIn = false
+  store.user = {
+    uid: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    picture: '',
+    role: '',
+    isAuthenticated: false,
+    ClubData: ({
+      PresidentOf: [],
+      MemberOf: []
+    })
+  }
+  routePush('/')
+}
 
 defineProps({
   clubName: String,
