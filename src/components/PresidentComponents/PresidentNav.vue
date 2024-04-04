@@ -8,11 +8,11 @@
 
       <!-- hamburger menu -->
       <div id="demo"> 
-    <button v-on:click="show = !show">
+    <button @click="show = !show">
       <img src="@/assets/menu.png" alt="" class="w-10">
     </button>
     <Transition  name="fade"> 
-       <p v-if="show">hello</p>
+       <p v-if="show" class="text-white">hello</p>
     </Transition>
     </div>
 
@@ -29,28 +29,21 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-import { Transition } from 'vue'
+import { Transition, Vue} from 'vue'
 
-import { Vue } from 'vue';
-
-interface DemoData {
-  show: boolean;
-}
-
-new Vue ({
-  el: '#demo',
-  data: {
-    show: true
-  } as DemoData
-});
+import { ref } from 'vue'
+const show = ref(true)
 
 </script>
 
 <style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
