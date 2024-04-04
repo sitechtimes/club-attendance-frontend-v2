@@ -157,3 +157,32 @@ export const useUserStore = defineStore("user", {
     },
   },
 });
+
+export const useAdminStore = defineStore("admin", {
+  state: () => ({
+    selectedClub: "",
+    year: "",
+    nextMeeting: "",
+    image: "",
+    uuid: "",
+    verifyImage: new FormData(),
+  }),
+  actions: {
+    async approveImage() {
+      const formData = this.verifyImage;
+      await axios
+        .patch("http://localhost:3000/approveImage", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          // this.commit("importTodos", response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    },
+  },
+});

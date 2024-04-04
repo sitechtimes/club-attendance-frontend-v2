@@ -69,7 +69,7 @@
                 </div>
                 <form
                   class="flex flex-row justify-evenly h-[50rem] overflow-y-scroll bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
-                  @submit.prevent="approveImage"
+                  @submit.prevent="verifyImage"
                 >
                   >
                   <div
@@ -146,8 +146,8 @@ import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
-import { usePresidentStore } from "@/stores/users";
-const presidentStore = usePresidentStore();
+import { useAdminStore } from "@/stores/users";
+const adminStore = useAdminStore();
 
 const query = ref("");
 let open = ref(false);
@@ -167,20 +167,15 @@ function onFileChange(this: any, event: any) {
   // presidentStore.selectedImage is a formData
   // append the file into the formData
   // also append a uuid and clubName
-  presidentStore.selectedImage = new FormData();
-  presidentStore.selectedImage.append("clubName", "Art Club");
-  presidentStore.selectedImage.append("uuid", "100231622882297228860");
-  presidentStore.selectedImage.append(
-    "image",
-    event.target.files[0],
-    "image.jpg"
-  );
-  console.log(presidentStore.selectedImage);
+  adminStore.verifyImage = new FormData();
+  adminStore.verifyImage.append("clubName", "Art Club");
+  adminStore.verifyImage.append("image", event.target.files[0], "image.jpg");
+  console.log(adminStore.verifyImage);
 }
 
-function selectImage() {
+function verifyImage() {
   try {
-    presidentStore.uploadImage();
+    adminStore.approveImage();
   } catch (error) {
     console.log(error);
   }
