@@ -94,10 +94,11 @@ function getCookie(name: string) {
   return c
 }
 
-async function ssoThingy(ssoObject: any) {
+async function ssoThingy(ssoObject: any, encodedString: any) {
   const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/ssoAuth`, {
     method: "POST",
     headers: {
+      "Authorization": `Basic ${encodedString}`,
       "Content-Type": "application/x-www-form-urlencoded"
     },
     body: ssoObject
@@ -108,12 +109,20 @@ async function ssoThingy(ssoObject: any) {
 onMounted(() => {
   const string = route.query.code?.toString()
 
-  let formBody = new URLSearchParams();
-  formBody.append("grant_type", "authorization_code");
-  formBody.append("code", string!);
-  formBody.append("redirect_uri", "http://localhost:5173");
+  let thingy = new URLSearchParams()
 
-  ssoThingy(formBody)
+  thingy.append("redirect_uri", "http://localhost:8000/o/token")
+  thingy.append("code", `${string}`)
+  thingy.append("grant_type", "authorization_code")
+
+  // "redirct_uri": "http://localhost:3000/newRedirect",
+  // "code": `${string}`,
+  // "grant_type": "authorization_code",
+
+  const daString = `${import.meta.env.OAUTH_CLIENT_ID}:${import.meta.env.OAUTH_CLIENT_SECRET}`
+  const encodedDaString = btoa(daString)
+
+  ssoThingy(thingy, encodedDaString)
 })
 
 // onBeforeMount(() => {
