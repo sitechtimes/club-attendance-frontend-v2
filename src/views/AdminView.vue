@@ -68,10 +68,9 @@
                   </div>
                 </div>
                 <form
-                  class="flex flex-row justify-evenly h-[50rem] overflow-y-scroll bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+                  class="flex flex-row justify-evenly h-[50rem] bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
                   @submit.prevent="verifyImage"
                 >
-                  >
                   <div
                     v-for="image in userStore.unapprovedImages"
                     :key="image.id"
