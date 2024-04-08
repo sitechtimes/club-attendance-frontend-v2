@@ -94,16 +94,16 @@ function getCookie(name: string) {
   return c
 }
 
-async function ssoThingy(ssoObject: any, encodedString: any) {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/ssoAuth`, {
+async function ssoThingy(ssoObject: any) {
+  const response = await fetch(`http://localhost:8000/o/token/`, {
     method: "POST",
     headers: {
-      "Authorization": `Basic ${encodedString}`,
+      "Authorization": `Basic Q2FTUDRKOEo4bml2VENEVHFlTTgwQkRKeVJJY3BKRmprbzJmNmpHNzpFbE53TGpzWk1sQzRSM2t4YVRiTDhySlBqd0QwR3VTbkZDVWFBVGZKNlo4RGpsQkU3RTNaYm5ibmNQaFM3eVh6dlBuNUd4Vm55c0ljbnZyUkJDT1FOYzJNQU43MHpnUG40SEJnaElVZXBDYW8wdWdUUVJ4S3VNQ0tRcWFUYWRsQg==`,
       "Content-Type": "application/x-www-form-urlencoded"
     },
     body: ssoObject
   })
-  console.log(response)
+  console.log(response.json())
 }
 
 onMounted(() => {
@@ -111,7 +111,7 @@ onMounted(() => {
 
   let thingy = new URLSearchParams()
 
-  thingy.append("redirect_uri", "http://localhost:8000/o/token")
+  thingy.append("redirect_uri", "http://localhost:5173")
   thingy.append("code", `${string}`)
   thingy.append("grant_type", "authorization_code")
 
@@ -119,10 +119,12 @@ onMounted(() => {
   // "code": `${string}`,
   // "grant_type": "authorization_code",
 
-  const daString = `${import.meta.env.OAUTH_CLIENT_ID}:${import.meta.env.OAUTH_CLIENT_SECRET}`
-  const encodedDaString = btoa(daString)
+  // const daString = `${import.meta.env.OAUTH_CLIENT_ID}:${import.meta.env.OAUTH_CLIENT_SECRET}`
+  // const encodedDaString = btoa(daString)
 
-  ssoThingy(thingy, encodedDaString)
+  if (string) {
+    ssoThingy(thingy)
+  }
 })
 
 // onBeforeMount(() => {
