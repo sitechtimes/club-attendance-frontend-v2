@@ -79,6 +79,7 @@
                     <img
                       :src="image.thumbnailLink"
                       class="h-[228px] rounded-t-[20px]"
+                      @change="onFileChange"
                     />
                     <div
                       class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
@@ -167,8 +168,9 @@ function onFileChange(this: any, event: any) {
   // append the file into the formData
   // also append a uuid and clubName
   adminStore.verifyImage = new FormData();
-  adminStore.verifyImage.append("clubName", "Art Club");
-  adminStore.verifyImage.append("image", event.target.files[0], "image.jpg");
+  adminStore.verifyImage.append("uuid", "116015436799734947995");
+  adminStore.verifyImage.append("clubName", "Anime Club");
+  adminStore.verifyImage.append("image", this.image.thumbnailLink, "image.jpg");
   console.log(adminStore.verifyImage);
 }
 
