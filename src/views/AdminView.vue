@@ -92,7 +92,11 @@
                         </h2>
                       </div>
                       <div class="flex flex-row justify-between w-[29%]">
-                        <button class="text-white" type="submit">
+                        <button
+                          class="text-white"
+                          type="submit"
+                          @class="checkImage"
+                        >
                           Approve
                         </button>
                         <button class="text-white bg-red">Reject</button>
@@ -148,7 +152,6 @@ import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
 import { useAdminStore } from "@/stores/users";
 const adminStore = useAdminStore();
-
 const query = ref("");
 let open = ref(false);
 const userStore = useUserStore();
@@ -163,6 +166,10 @@ function pushToInfo(clubName: string) {
   setTimeout(() => routePush(`/club/?name=${clubStore.clubName}`), 1000);
 }
 
+userStore.unapprovedImages.forEach((image: any) => {
+  console.log(image.thumbnailLink);
+});
+
 function onFileChange(this: any, event: any) {
   // presidentStore.selectedImage is a formData
   // append the file into the formData
@@ -171,12 +178,15 @@ function onFileChange(this: any, event: any) {
   adminStore.verifyImage.append("uuid", "116015436799734947995");
   adminStore.verifyImage.append("clubName", "Anime Club");
   adminStore.verifyImage.append("image", this.image.thumbnailLink, "image.jpg");
+  adminStore.image = this.image.thumbnailLink;
+
   console.log(adminStore.verifyImage);
 }
 
 function verifyImage() {
   try {
-    adminStore.approveImage();
+    console.log(adminStore.image);
+    // adminStore.approveImage();
   } catch (error) {
     console.log(error);
   }
