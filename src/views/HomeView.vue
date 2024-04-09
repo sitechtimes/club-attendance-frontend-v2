@@ -106,6 +106,19 @@ async function ssoThingy(ssoObject: any) {
   console.log(response.json())
 }
 
+async function ssoThangy(ssoObject: any) {
+  console.log(ssoObject)
+  const response = await fetch(`http://localhost:3000/ssoAuth`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    mode: "cors",
+    body: JSON.stringify(ssoObject)
+  })
+  console.log(response.json())
+}
+
 onMounted(() => {
   const string = route.query.code?.toString()
 
@@ -115,6 +128,9 @@ onMounted(() => {
   thingy.append("code", `${string}`)
   thingy.append("grant_type", "authorization_code")
 
+  const stringObj = {
+    code: string
+  }
   // "redirct_uri": "http://localhost:3000/newRedirect",
   // "code": `${string}`,
   // "grant_type": "authorization_code",
@@ -123,7 +139,8 @@ onMounted(() => {
   // const encodedDaString = btoa(daString)
 
   if (string) {
-    ssoThingy(thingy)
+    // ssoThingy(thingy)
+    ssoThangy(stringObj)
   }
 })
 
