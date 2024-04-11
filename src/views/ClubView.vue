@@ -33,14 +33,13 @@
           <div>Advisor: {{ clubStore.clubAdvisor }}</div>
           <div>President: {{ clubStore.clubPresident }}</div>
         </div>
-
-       </div>
-      </div>
-      </div>
-      <div class="w-full flex flex-col justify-start items-center pt-3">
+        <div class="w-full flex flex-col justify-start items-center pt-3">
         <a href="https://www.youtube.com/watch?v=RbhVgdDoY3Q" target="_blank"
           class="bg-black h-[7vh] w-[50vh] flex flex-col items-center justify-center rounded-full text-[#fff]">Photo
           Attendance Link</a>
+      </div> 
+       </div>
+      </div>
       </div>
        <table class="table-auto border-collapse border border-slate-400 w-[80vw] m-auto overflow-auto">
   <thead>
