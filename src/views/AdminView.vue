@@ -174,11 +174,11 @@ function onFileChange(this: any, event: any) {
   // presidentStore.selectedImage is a formData
   // append the file into the formData
   // also append a uuid and clubName
+  adminStore.image = this.image.thumbnailLink;
   adminStore.verifyImage = new FormData();
   adminStore.verifyImage.append("uuid", "116015436799734947995");
   adminStore.verifyImage.append("clubName", "Anime Club");
   adminStore.verifyImage.append("image", this.image.thumbnailLink, "image.jpg");
-  adminStore.image = this.image.thumbnailLink;
 
   console.log(adminStore.verifyImage);
 }
