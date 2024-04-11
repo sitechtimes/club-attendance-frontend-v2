@@ -165,24 +165,18 @@ export const useAdminStore = defineStore("admin", {
     nextMeeting: "",
     image: "",
     uuid: "",
-    verifyImage: new FormData(),
+    verifyImage: new URLSearchParams(),
   }),
   actions: {
     async approveImage() {
       const formData = this.verifyImage;
-      await axios
-        .patch("http://localhost:3000/approveImage", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-          // this.commit("importTodos", response.data);
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
+      const response = await fetch("http://localhost:3000/approveImage", {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData,
+      });
+      console.log(await response.json());
     },
   },
 });

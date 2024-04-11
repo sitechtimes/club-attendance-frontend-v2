@@ -75,7 +75,6 @@
                     v-for="image in userStore.unapprovedImages"
                     :key="image.id"
                     class="flex flex-col w-[29%]"
-                    @click="checkImage"
                   >
                     <img
                       :src="image.thumbnailLink"
@@ -93,7 +92,11 @@
                         </h2>
                       </div>
                       <div class="flex flex-row justify-between w-[29%]">
-                        <button class="text-white" type="submit">
+                        <button
+                          class="text-white"
+                          type="submit"
+                          @click="checkImage(image)"
+                        >
                           Approve
                         </button>
                         <button class="text-white bg-red">Reject</button>
@@ -162,26 +165,25 @@ function pushToInfo(clubName: string) {
   userStore.getClubMembers(clubName, year, userStore.user.uid);
   setTimeout(() => routePush(`/club/?name=${clubStore.clubName}`), 1000);
 }
-function checkImage() {
+function checkImage(image: any) {
   console.log(image.thumbnailLink);
 }
 
-function onFileChange(this: any, event: any) {
+function onFileChange(image: any) {
   // presidentStore.selectedImage is a formData
   // append the file into the formData
   // also append a uuid and clubName
-  adminStore.image = this.image.thumbnailLink;
   adminStore.verifyImage = new FormData();
   adminStore.verifyImage.append("uuid", "116015436799734947995");
   adminStore.verifyImage.append("clubName", "Anime Club");
-  adminStore.verifyImage.append("image", this.image.thumbnailLink, "image.jpg");
+  adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
 
   console.log(adminStore.verifyImage);
 }
 
 function verifyImage() {
   try {
-    // adminStore.approveImage();
+    adminStore.approveImage();
   } catch (error) {
     console.log(error);
   }
