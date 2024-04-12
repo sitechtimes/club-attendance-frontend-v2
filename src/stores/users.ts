@@ -165,18 +165,27 @@ export const useAdminStore = defineStore("admin", {
     nextMeeting: "",
     image: "",
     uuid: "",
-    verifyImage: new URLSearchParams(),
+    verifyImage: new FormData(),
   }),
+
   actions: {
     async approveImage() {
       const formData = this.verifyImage;
-      const response = await fetch("http://localhost:3000/approveImage", {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formData,
-      });
-      console.log(await response.json());
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/approveImage`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData,
+          }
+        );
+        console.log(response.json());
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 });
