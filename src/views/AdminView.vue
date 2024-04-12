@@ -92,11 +92,7 @@
                         </h2>
                       </div>
                       <div class="flex flex-row justify-between w-[29%]">
-                        <button
-                          class="text-white"
-                          type="submit"
-                          @click="checkImage(image)"
-                        >
+                        <button class="text-white" type="submit">
                           Approve
                         </button>
                         <button class="text-white bg-red">Reject</button>
@@ -165,24 +161,30 @@ function pushToInfo(clubName: string) {
   userStore.getClubMembers(clubName, year, userStore.user.uid);
   setTimeout(() => routePush(`/club/?name=${clubStore.clubName}`), 1000);
 }
-function checkImage(image: any) {
-  console.log(image.thumbnailLink);
-}
+// function checkImage(image: any) {
+//   console.log(image.thumbnailLink);
+// }
 
-function onFileChange(image: any) {
-  // presidentStore.selectedImage is a formData
-  // append the file into the formData
-  // also append a uuid and clubName
-  adminStore.verifyImage = new FormData();
-  adminStore.verifyImage.append("uuid", "116015436799734947995");
-  adminStore.verifyImage.append("clubName", "Anime Club");
-  adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
+// function onFileChange(image: any) {
+//   // presidentStore.selectedImage is a formData
+//   // append the file into the formData
+//   // also append a uuid and clubName
+//   adminStore.verifyImage = new FormData();
+//   adminStore.verifyImage.append("uuid", "116015436799734947995");
+//   adminStore.verifyImage.append("clubName", "Anime Club");
+//   adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
 
-  console.log(adminStore.verifyImage);
-}
+//   console.log(adminStore.verifyImage);
+// }
 
-function verifyImage() {
+function verifyImage(image: any) {
   try {
+    adminStore.verifyImage = new FormData();
+    adminStore.verifyImage.append("uuid", "116015436799734947995");
+    adminStore.verifyImage.append("clubName", "Anime Club");
+    adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
+
+    console.log(adminStore.verifyImage);
     adminStore.approveImage();
   } catch (error) {
     console.log(error);
