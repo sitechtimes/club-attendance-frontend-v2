@@ -1,7 +1,7 @@
 <template> 
-
+<div class="p-10 bg-black h-auto rounded-lg">
     <div class="relative overflow-x-auto overflow-y:auto bg-black">
-        <table class="w-full text-sm text-left rtl:text-right text-white dark:text-gray">
+        <table class="w-full text-sm text-left rtl:text-right text-black">
             <thead class="text-xs uppercase bg-black dark:text-gray">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -64,7 +64,7 @@
             </tbody>
         </table>
     </div>
-    
+</div>
 </template>
 
 <script> 

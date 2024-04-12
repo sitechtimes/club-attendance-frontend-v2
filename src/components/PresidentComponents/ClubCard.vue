@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-gray w-full">
+    <div class="bg-dark-gray w-full">
       <div
         class="mx-60 text-white font-bold text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 py-6"
       >
@@ -11,19 +11,19 @@
     </div>
   </div>
   <div class="flex flex-row">
-    <div class="flex flex-col w-1/6 text-white bg-black h-[40.5rem]">
-      <a class="justify-center items-center h-20 text-center"> MENU </a>
+    <div class="flex flex-col w-1/6 text-white bg-dark-gray h-[40.5rem]">
+      <a class="bg-black justify-center items-center h-20 text-center"> MENU </a>
 
-      <div class="flex flex-col px-10 bg-gray py-4 h-full">
+      <div class="flex flex-col px-10 bg-dark-gray363636 py-4 h-full">
         <button
-          class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5"
+          class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
         >
           <a> Change Club Picture </a>
         </button>
 
         <button
           type="button"
-          class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5"
+          class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
           @click="
             changeDate = true;
             open = true;
@@ -32,7 +32,7 @@
           <a>Edit meeting date</a>
         </button>
         <button
-          class="text-white bg-gray-dark font-medium rounded-lg text-sm px-10 py-4 mb-5"
+          class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
         >
           <a> Generate QR Code </a>
         </button>
