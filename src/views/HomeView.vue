@@ -94,19 +94,7 @@ function getCookie(name: string) {
   return c
 }
 
-async function ssoThingy(ssoObject: any) {
-  const response = await fetch(`http://localhost:8000/o/token/`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Basic Q2FTUDRKOEo4bml2VENEVHFlTTgwQkRKeVJJY3BKRmprbzJmNmpHNzpFbE53TGpzWk1sQzRSM2t4YVRiTDhySlBqd0QwR3VTbkZDVWFBVGZKNlo4RGpsQkU3RTNaYm5ibmNQaFM3eVh6dlBuNUd4Vm55c0ljbnZyUkJDT1FOYzJNQU43MHpnUG40SEJnaElVZXBDYW8wdWdUUVJ4S3VNQ0tRcWFUYWRsQg==`,
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: ssoObject
-  })
-  console.log(response.json())
-}
-
-async function ssoThangy(ssoObject: any) {
+async function verifyAuth(ssoObject: any) {
   console.log(ssoObject)
   const response = await fetch(`http://localhost:3000/ssoAuth`, {
     method: "POST",
@@ -122,25 +110,13 @@ async function ssoThangy(ssoObject: any) {
 onMounted(() => {
   const string = route.query.code?.toString()
 
-  let thingy = new URLSearchParams()
-
-  thingy.append("redirect_uri", "http://localhost:5173")
-  thingy.append("code", `${string}`)
-  thingy.append("grant_type", "authorization_code")
-
   const stringObj = {
     code: string
   }
-  // "redirct_uri": "http://localhost:3000/newRedirect",
-  // "code": `${string}`,
-  // "grant_type": "authorization_code",
-
-  // const daString = `${import.meta.env.OAUTH_CLIENT_ID}:${import.meta.env.OAUTH_CLIENT_SECRET}`
-  // const encodedDaString = btoa(daString)
 
   if (string) {
     // ssoThingy(thingy)
-    ssoThangy(stringObj)
+    verifyAuth(stringObj)
   }
 })
 
