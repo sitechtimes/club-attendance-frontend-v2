@@ -20,28 +20,28 @@
       </div>
       <div class="flex flex-col">
         <div class="flex flex-row">
-         <div class="w-[30vw] h-[10vh] text-2xl border-black p-1
-         pb-[2.5rem] pl-6 border-b-[0.15rem] text-gold text-clip
-         text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)]">{{ clubStore.clubName }}</div>
+         <div class="w-[30vw] h-[10vh] text-5xl border-black p-3
+         font-katibeh border-b-[0.15rem] text-gold text-clip
+         text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)] ">{{ clubStore.clubName }}</div>
          <UserIcon class="h-[12vh]  border-l-[0.15rem] border-b-[0.15rem]"></UserIcon>
          <div class=" text-2xl border-b-[0.15rem] h-[12vh]"> Room {{ clubStore.room }}</div>
         <RouterLink to="/admin" class="font-normal text-[2rem] 
         w-[10vw] p-1 h-[12vh] border-b-[0.15rem] flex flex-row-reverse">Admin</RouterLink>
        </div>
        <div class="flex flex-row">
-        <div class="flex-col w-[30vw] pl-6">
+        <div class="flex-col w-[45vw] font-katibeh pl-6 p-3 text-3xl">
           <div>Advisor: {{ clubStore.clubAdvisor }}</div>
           <div>President: {{ clubStore.clubPresident }}</div>
         </div>
-        <div class="w-full flex flex-col justify-start items-center pt-3">
+        <div class="w-full flex flex-col justify-start items-center pt-8">
         <a href="https://www.youtube.com/watch?v=RbhVgdDoY3Q" target="_blank"
-          class="bg-black h-[7vh] w-[50vh] flex flex-col items-center justify-center rounded-full text-[#fff]">Photo
+          class="bg-gold h-[7vh] w-[50vh] flex flex-col border-2 items-center justify-center rounded-full text-black">Club
           Attendance Link</a>
       </div> 
        </div>
       </div>
       </div>
-       <table class="table-auto border-collapse border border-slate-400 w-[80vw] m-auto overflow-auto">
+       <table class="table-auto border-collapse border border-slate-400 w-[80vw] mt-3 m-auto overflow-auto">
   <thead>
     <tr>
       <th class="border border-slate-300 border-2">Name</th>
