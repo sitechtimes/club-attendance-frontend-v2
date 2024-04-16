@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="font-['sans']">
     <div class="bg-dark-gray w-full">
       <div
-        class="mx-60 text-white font-bold text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 py-6"
+        class="mx-60 text-white text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 py-6"
       >
         <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="" />
         <a class="my-8 col-span-2"> Model Rockets Club</a>
@@ -10,9 +10,12 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-row">
-    <div class="flex flex-col w-1/6 text-white bg-dark-gray h-[40.5rem]">
-      <a class="bg-black justify-center items-center h-20 text-center"> MENU </a>
+  <div class="flex flex-row font-['sans']">
+    <div class="flex flex-col w-1/6 text-white h-[40.5rem] bg-dark-gray m-0">
+      <div class="flex justify-center h-20 bg-black items-center text-2xl"> 
+        <h1>Menu</h1>
+      </div>
+     
 
       <div class="flex flex-col px-10 bg-dark-gray363636 py-4 h-full">
         <button

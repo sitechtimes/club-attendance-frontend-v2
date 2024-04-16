@@ -1,7 +1,7 @@
 <template>
-    <nav class="bg-black dark:bg-dark-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+    <nav class="bg-black dark:bg-dark-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 font-['sans']">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Club Attendance
+      <span class="self-center text-2xl whitespace-nowrap text-white">Club Attendance
       </span>
       <!-- log out button -->
       <div class=" flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -18,7 +18,7 @@
             <!-- hamburger menu -->
             <div id="demo" class="mt-0"> 
               <Transition v-if="show" name="fade"> 
-                <div v-if="show" class="absolute round-lg h-auto w-10 bg-white m-10">
+                <div v-if="show" class="absolute round-lg h-auto w-20 bg-white m-10">
                 <ul> 
                   <li class="hamburger-item hover:bg-sky-white">
                   club 1</li>
