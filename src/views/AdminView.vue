@@ -165,30 +165,21 @@ function pushToInfo(clubName: string) {
 //   console.log(image.thumbnailLink);
 // }
 
-// function onFileChange(image: any) {
-//   // presidentStore.selectedImage is a formData
-//   // append the file into the formData
-//   // also append a uuid and clubName
-//   adminStore.verifyImage = new FormData();
-//   adminStore.verifyImage.append("uuid", "116015436799734947995");
-//   adminStore.verifyImage.append("clubName", "Anime Club");
-//   adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
+function onFileChange(image: any) {
+  // presidentStore.selectedImage is a formData
+  // append the file into the formData
+  // also append a uuid and clubName
+  console.log(image.thumbnailLink);
+  adminStore.verifyImage = new FormData();
+  adminStore.verifyImage.append("uuid", "116015436799734947995");
+  adminStore.verifyImage.append("clubName", "Anime Club");
+  adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
 
-//   console.log(adminStore.verifyImage);
-// }
+  console.log(adminStore.verifyImage);
+}
 
-function verifyImage(image: any) {
-  try {
-    adminStore.verifyImage = new FormData();
-    adminStore.verifyImage.append("uuid", "116015436799734947995");
-    adminStore.verifyImage.append("clubName", "Anime Club");
-    adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
-
-    console.log(adminStore.verifyImage);
-    adminStore.approveImage();
-  } catch (error) {
-    console.log(error);
-  }
+function verifyImage() {
+  adminStore.approveImage();
 }
 
 function routePush(route: string) {

@@ -172,17 +172,14 @@ export const useAdminStore = defineStore("admin", {
     async approveImage() {
       const formData = this.verifyImage;
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/approveImage`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: formData,
-          }
-        );
-        console.log(response.json());
+        const response = await fetch("http://localhost:3000/approveImage", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: formData,
+        });
+        console.log(response);
       } catch (error) {
         console.log(error);
       }
