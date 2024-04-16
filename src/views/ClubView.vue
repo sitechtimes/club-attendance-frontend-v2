@@ -24,9 +24,11 @@
          font-katibeh border-b-[0.15rem] text-gold text-clip
          text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)] ">{{ clubStore.clubName }}</div>
          <UserIcon class="h-[12vh]  border-l-[0.15rem] border-b-[0.15rem]"></UserIcon>
+         <div class=" text-2xl border-b-[0.15rem] h-[12vh]"> # of members: </div>
          <div class=" text-2xl border-b-[0.15rem] h-[12vh]"> Room {{ clubStore.room }}</div>
-        <RouterLink to="/admin" class="font-normal text-[2rem] 
-        w-[10vw] p-1 h-[12vh] border-b-[0.15rem] flex flex-row-reverse">Admin</RouterLink>
+         <div class="absolute right-0 border-b-[0.15rem] h-[12vh] pl-[40vw]">
+          <RouterLink to="/admin" class="font-normal text-[2rem] mr-3">Admin</RouterLink>
+         </div>
        </div>
        <div class="flex flex-row">
         <div class="flex-col w-[45vw] font-katibeh pl-6 p-3 text-3xl">
