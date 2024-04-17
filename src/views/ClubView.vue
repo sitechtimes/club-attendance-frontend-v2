@@ -24,10 +24,10 @@
          font-katibeh border-b-[0.15rem] text-gold text-clip
          text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)] ">{{ clubStore.clubName }}</div>
          <UserIcon class="h-[12vh]  border-l-[0.15rem] border-b-[0.15rem]"></UserIcon>
-         <div class=" text-2xl border-b-[0.15rem] h-[12vh]"> # of members: </div>
-         <div class=" text-2xl border-b-[0.15rem] h-[12vh]"> Room {{ clubStore.room }}</div>
+         <div class=" text-2xl border-b-[0.15rem] h-[12vh] content-center"> # of members: {{ numberOfMembers }}</div>
+         <div class=" text-2xl border-b-[0.15rem] h-[12vh] ml-20 content-center"> Room {{ clubStore.room }}</div>
          <div class="absolute right-0 border-b-[0.15rem] h-[12vh] pl-[40vw]">
-          <RouterLink to="/admin" class="font-normal text-[2rem] mr-3">Admin</RouterLink>
+          <RouterLink to="/admin" class="font-normal text-[2rem] mr-3 pt-2">Admin</RouterLink>
          </div>
        </div>
        <div class="flex flex-row">
@@ -72,23 +72,32 @@
 //admin only 
 // import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useClubStore } from '../stores/club'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from "@/stores/users";
 import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
 import NoPermsPageGuard from '@/components/Reusables/NoPermsPageGuard.vue'
+//import LogOut from '@/components/Reusables/LogOut.vue'
 let store = useUserStore();
 const clubStore = useClubStore()
 const route = useRoute()
+let numberOfMembers = ref(0)
 
+function getUsers(userArray: any){
+  let n= 0
+    userArray.forEach((student: any) => {
+      n = n+1
+    });
+  return n
+}
 
 onMounted(() => {
   const queryVal = route.query.name
   const queryStr: string | undefined = queryVal?.toString()
   const year = "2024-2025"
   clubStore.getData(queryStr, year)
-
+  numberOfMembers.value = getUsers(store.clubMembers);
   console.log(clubStore.club)
   console.log(store.clubMembers)
 });
@@ -112,7 +121,7 @@ function logOut() {
       MemberOf: []
     })
   }
-  routePush('/')
+  //routePush('/')
 }
 
 defineProps({
