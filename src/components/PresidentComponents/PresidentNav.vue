@@ -18,7 +18,7 @@
             <!-- hamburger menu -->
             <div id="demo" class="mt-0"> 
               <Transition v-if="show" name="fade"> 
-                <div v-if="show" class="absolute round-lg h-auto w-20 bg-white m-10">
+                <div v-if="show" class="absolute rounded h-auto w-20 bg-white m-10">
                 <ul> 
                   <li class="hamburger-item hover:bg-sky-white">
                   club 1</li>

@@ -28,7 +28,6 @@ userStore.user.ClubData.PresidentOf.forEach((club: string) => {
 
 <script setup lang="ts">
   import ClubCard from '@/components/PresidentComponents/ClubCard.vue';
-
   import PresidentNav from '@/components/PresidentComponents/PresidentNav.vue';
   import { useUserStore } from '@/stores/users'
   import { useClubStore } from '@/stores/club'
