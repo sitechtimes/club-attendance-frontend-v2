@@ -179,6 +179,7 @@ function onFileChange(image: any) {
 }
 
 function verifyImage() {
+  console.log(userStore.user.role);
   adminStore.approveImage();
 }
 

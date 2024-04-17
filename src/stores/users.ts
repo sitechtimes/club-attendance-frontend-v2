@@ -163,23 +163,55 @@ export const useAdminStore = defineStore("admin", {
     selectedClub: "",
     year: "",
     nextMeeting: "",
+    userClubData: {},
+    clubs: [],
+    clubMembers: [],
+    allClubs: [],
+    unapprovedImages: [],
+    user: ref({
+      uid: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      picture: "",
+      role: "",
+      isAuthenticated: false,
+      ClubData: ref({
+        PresidentOf: [],
+        MemberOf: [],
+      }),
+    }),
     image: "",
     uuid: "",
     verifyImage: new FormData(),
   }),
-
   actions: {
+    updateUser(decodedCookie: any) {
+      this.user = decodedCookie;
+    },
+    async googleLink() {
+      await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/returnRedirectUrl`, {
+          headers: {},
+        })
+        .then((res: { data: { redirectUri: string } }) => {
+          window.location.href = res.data.redirectUri;
+        });
+    },
     async approveImage() {
       const formData = this.verifyImage;
       try {
-        const response = await fetch("http://localhost:3000/approveImage", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData,
-        });
-        console.log(response);
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/approveImage`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData,
+          }
+        );
+        console.log(response.json());
       } catch (error) {
         console.log(error);
       }
