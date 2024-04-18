@@ -20,16 +20,8 @@
               <Transition v-if="show" name="fade"> 
                 <div v-if="show" class="absolute rounded h-auto w-20 bg-white m-10">
                 <ul> 
-                  <li class="hamburger-item hover:bg-sky-white">
-                  club 1</li>
-                </ul>
-                <ul> 
-                  <li class="hamburger-item hover:bg-sky-white">
-                  club 2</li>
-                </ul>
-                <ul> 
-                  <li class="hamburger-item hover:bg-sky-white">
-                  club 3</li>
+                  <li v-for="club in clubStore.club" class="hamburger-item hover:bg-sky-white">
+                  {{club.PresidentOf}}</li>
                 </ul>
                 </div>
               </Transition>
@@ -48,6 +40,16 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import { Transition, Vue} from 'vue'
 import { ref } from 'vue'
+import { useUserStore } from '@/stores/users'
+import { useClubStore } from '@/stores/club'
+
+  const clubStore = useClubStore()
+  const userStore = useUserStore()
+  // userStore.userClubData.PresidentOf.forEach((club: string) => {
+  //   clubStore.getData(club, "2023-2024")
+  // });
+
+  console.log(userStore.userClubData.PresidentOf, "asd")
 
 const show = ref(true)
 
