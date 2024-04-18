@@ -166,7 +166,7 @@ function pushToInfo(clubName: string) {
 // }
 
 function onFileChange(image: any) {
-  // presidentStore.selectedImage is a formData
+  // adminStore.selectedImage is a formData
   // append the file into the formData
   // also append a uuid and clubName
   console.log(image.thumbnailLink);
