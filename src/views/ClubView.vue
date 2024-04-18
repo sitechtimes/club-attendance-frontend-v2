@@ -72,7 +72,7 @@
 //admin only 
 // import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useClubStore } from '../stores/club'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from "@/stores/users";
@@ -97,7 +97,6 @@ onMounted(() => {
   const queryStr: string | undefined = queryVal?.toString()
   const year = "2024-2025"
   clubStore.getData(queryStr, year)
-  numberOfMembers.value = getUsers(store.clubMembers);
   console.log(clubStore.club)
   console.log(store.clubMembers)
 });
@@ -123,6 +122,10 @@ function logOut() {
   }
   //routePush('/')
 }
+watch(store.clubMembers, (clubMembers)=>{
+  console.log("wowee this is running")
+  numberOfMembers.value = getUsers(clubMembers);
+})
 
 defineProps({
   clubName: String,
