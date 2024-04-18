@@ -1,16 +1,21 @@
 <template>
-  <div class="bg-[#363636]">
+  <errorScreen v-if="userStore.user.role !== 'Admin'" />
+  <div v-if="userStore.user.role == 'Admin'" class="bg-[#363636]">
     <section class="w-100% h-screen">
       <div class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10">
         <div class="w-[8%] text-white text-lg font-medium ">Administration</div>
-        <input class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2 " placeholder="Search" v-model="query"
-          @input="onInput" />
+        <input class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2 " placeholder="Search"
+          v-model="query" @input="onInput" />
         <BellIcon class="h-[40%] fill-white hover:scale-110 ease-in-out duration-500 cursor-pointer" />
-        <LogOut></LogOut>
+        <div
+          class="p-3 w-[6%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 bg-yellow flex justify-evenly items-center"
+          @click="logOut">
+          <div>Log Out</div>
+        </div>
         <div
           class="p-3 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 bg-yellow flex justify-evenly items-center"
           @click="function openCard() { open = true }">
-          <div>Upload Image</div>
+          <div>Check Images</div>
         </div>
       </div>
       <div v-show="open">
@@ -29,7 +34,7 @@
                 </div>
                 <div class="flex flex-row justify-evenly h-100vh">
                   <div v-for=" image  in  userStore.unapprovedImages " class="flex flex-col w-[30%]">
-                    <img :src=image.link class="h-[228px] rounded-t-[20px]">
+                    <img :src=image.thumbnailLink class="h-[228px] rounded-t-[20px]">
                     <h2> {{ image.name }}</h2>
                   </div>
                 </div>
@@ -60,12 +65,12 @@
 </template>
 
 <script setup lang="ts">
-import LogOut from "@/components/Reusables/LogOut.vue";
-import { ref } from "vue";
+import errorScreen from "@/components/Reusables/NoPermsPageGuard.vue";
+import { ref, onMounted } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
-import { BellIcon, UsersIcon } from "@heroicons/vue/24/solid";
+import { BellIcon } from "@heroicons/vue/24/solid";
 
 const query = ref('')
 let open = ref(false);
@@ -75,12 +80,36 @@ const router = useRouter();
 
 function pushToInfo(clubName: string) {
   clubStore.clubName = clubName
+  console.log(clubName)
   const year = "2024-2025"
   userStore.getClubMembers(clubName, year, userStore.user.uid)
-  function routePush() {
-    router.push(`/club/?name=${clubStore.clubName}`);
+  setTimeout(() => routePush(`/club/?name=${clubStore.clubName}`), 1000)
+}
+
+function routePush(route: string) {
+  router.push(`${route}`)
+}
+
+function logOut() {
+  document.cookie.split(";").forEach(
+    function (c) {
+      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+  userStore.loggedIn = false
+  userStore.user = {
+    uid: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    picture: '',
+    role: '',
+    isAuthenticated: false,
+    ClubData: ({
+      PresidentOf: [],
+      MemberOf: []
+    })
   }
-  setTimeout(routePush, 1000)
+  routePush('/')
 }
 
 const searchFilter = function (club: object, query: any) {
@@ -116,5 +145,11 @@ const onInput = function () {
   else {
     userStore.clubs = userStore.allClubs.filter((item: object) => searchFilter(item, query.value))
   }
-} 
+}
+
+onMounted(() => {
+  if (userStore.clubs = []) {
+    userStore.getAllClubData(userStore.user.uid)
+  }
+})
 </script>

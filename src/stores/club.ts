@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-
+import { ref } from 'vue'
 export const useClubStore = defineStore("club", {
   state: () => ({
     clubName: "",
@@ -8,7 +8,10 @@ export const useClubStore = defineStore("club", {
     clubAdvisor: '',
     room: '',
     nextMeeting: '',
-    club: []
+    club: [ref({
+      clubName: "",
+      nextMeeting: "",
+    })]
   }),
   actions: {
     async getData(clubName: string | undefined, year: string) {

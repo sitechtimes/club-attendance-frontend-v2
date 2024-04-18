@@ -10,7 +10,7 @@
         <div class="mx-auto grid max-w-2xl grid-cols-1 
         gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[15rem] mt-[9vh]">
-            <div class="lg:max-w-lg ">
+            <div v-if="!userStore.loggedIn" class="lg:max-w-lg ">
               <h2 class="text-base font-semibold leading-7 text-black">
                 Attendance, made faster
               </h2>
@@ -24,8 +24,22 @@
                 log your attendance.
               </p>
             </div>
+            <div v-if="userStore.loggedIn" class="lg:max-w-lg ">
+              <h2 class="text-base font-semibold leading-7 text-black">
+                Attendance, made faster
+              </h2>
+              <p class="mt-2 text-3xl font-bold tracking-tight 
+              text-gray-900 sm:text-4xl">
+                Welcome, {{ userStore.user.firstName }} {{ userStore.user.lastName }}
+              </p>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Club attendance has never been easier! Just scan the QR code
+                provided by the club president and login with your school email to
+                log your attendance.
+              </p>
+            </div>
             <div class="flex flex-col mt-8">
-              <Login class="" />
+              <Login v-if="!userStore.loggedIn" class="" />
               <!-- <img
              src="@/assets/sammy.jpg"
              alt="Sammy the Seagull"
@@ -58,12 +72,12 @@
 import Navbar from "@/components/Reusables/Navbar.vue";
 import Login from "@/components/HomeComponents/Login.vue";
 // import Calender from "@/components/HomeComponents/Calender.vue";
-import { onMounted, ref } from "vue";
+import { onBeforeMount } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 let store = useUserStore();
-let clubStore = useClubStore()
+// let clubStore = useClubStore()
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -71,58 +85,47 @@ function routePush(route: string) {
   router.push(`${route}`)
 }
 
-// function parseGoogleCookie(str: string) {
-//   let cookieObj = str.split('{')[1]
-//     .split('}')[0]
-//     .split(',')
-//     .map((element) => element.replace(/"([^"]+(?="))"/g, '$1'))
-//     .map((element) => element.split(':'))
-//     .reduce((obj: any, cookie) => {
-//       obj[decodeURIComponent(cookie[0].trim())]
-//         = decodeURIComponent(cookie[1].trim());
-//       return obj
-//     }, {})
-//   return cookieObj
-// };
-//function turns google link cookie string into 2 arrays: categories and values
-//2 arrays are then merged into one object with categories as seen in user store
+const route = useRoute()
 
 function getCookie(name: string) {
   const b = RegExp(name + "=[^;]+").exec(document.cookie)
-  const a = decodeURIComponent(!!b ? b.toString().replace(/^[^=]+./, "") : "")
+  const a = decodeURIComponent(!!b[0] ? b[0].toString().replace(/^[^=]+./, "") : "")
   const c = JSON.parse(a.replace("j:", ""))
   return c
-
-  // const value: any = `; ${document.cookie}`;
-  // const parts: any = value.split(`; ${name}=`);
-  // const cookieString: any = parts.pop().split(";").shift();
-  // if (parts.length === 2) console.log(cookieString);
-  // let parsedString = parseGoogleCookie(decodeURIComponent(cookieString))
-  // parsedString.isAuthenticated = true
-  // return parsedString
 }
 
-onMounted(() => {
-  let loggedIn = false
+onBeforeMount(() => {
+
+
+
   if (!document.cookie) {
     console.log("no user data")
+    const queryVal = route.query.club
+    const queryStr: string | undefined = queryVal?.toString()
+    if (queryStr !== undefined) {
+      document.cookie = `qrCodeClub=${queryStr}`
+    }
   } else {
+    const qrCodeClub = document.cookie.split(";")
+    userStore.qrCodeClub = qrCodeClub[0].toString().split("=")[1].replace("_", ' ')
+
     const userCookie = getCookie("user_data");
     store.updateUser(userCookie)
-    loggedIn = true
-
+    userStore.loggedIn = true
+    userStore.user.isAuthenticated = true
+    console.log(userStore.user.role)
     if (userStore.user.role === "Admin") {
       userStore.getAllClubData(userStore.user.uid)
       userStore.getUnapprovedClubs(userStore.user.uid)
       setTimeout(function push() { routePush("admin") }, 1000)
-    } else if (userStore.user.role === "Club President") {
-      routePush("president")
-    } else if (userStore.user.role === "user") {
-      console.log("user is reg")
-    } else {
-      console.log("user is not authorized")
     }
-    return loggedIn
+    //  else if (userStore.user.role === "Club President") {
+    //   // routePush("president")
+    // } else if (userStore.user.role === "User") {
+    //   console.log("user is reg")
+    // } else {
+    //   console.log("user is not authorized")
+    // }
   }
 });
 </script>

@@ -29,6 +29,8 @@ export const usePresidentStore = defineStore("president", {
 
 export const useUserStore = defineStore("user", {
   state: () => ({
+    qrCodeClub: '',
+    loggedIn: false,
     userClubData: {},
     clubs: [],
     clubMembers: [],
@@ -86,6 +88,7 @@ export const useUserStore = defineStore("user", {
     async getUnapprovedClubs(uuid: any) {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getUnapprovedImages/${uuid}`)
       this.unapprovedImages = await response.json()
+      console.log(this.unapprovedImages)
     },
     async updateAttendance(attendanceJSON: any) {
       console.log(JSON.stringify(attendanceJSON))
