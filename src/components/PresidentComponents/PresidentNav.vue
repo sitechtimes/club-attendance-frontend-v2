@@ -21,7 +21,7 @@
                 <div v-if="show" class="absolute rounded h-auto w-20 bg-white m-10">
                 <ul> 
                   <li v-for="club in clubStore.club" class="hamburger-item hover:bg-sky-white">
-                  {{club.PresidentOf}}</li>
+                  {{club.clubName}}</li>
                 </ul>
                 </div>
               </Transition>
@@ -48,9 +48,14 @@ import { useClubStore } from '@/stores/club'
   // userStore.userClubData.PresidentOf.forEach((club: string) => {
   //   clubStore.getData(club, "2023-2024")
   // });
-
-  console.log(userStore.userClubData.PresidentOf, "asd")
-
+  console.log(userStore.user)
+  console.log(userStore.userClubData.PresidentOf)
+  console.log("mounted")
+  clubStore.club = []
+  userStore.user.ClubData.PresidentOf.forEach((club: string) => {
+    clubStore.getData(club, "2024-2025")
+  });
+  console.log(clubStore.club)
 const show = ref(true)
 
 </script>

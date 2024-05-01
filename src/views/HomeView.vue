@@ -114,6 +114,7 @@ onBeforeMount(() => {
     userStore.loggedIn = true
     userStore.user.isAuthenticated = true
     console.log(userStore.user.role)
+    console.log(userStore.user)
     if (userStore.user.role === "Admin") {
       userStore.getAllClubData(userStore.user.uid)
       userStore.getUnapprovedClubs(userStore.user.uid)
