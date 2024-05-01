@@ -95,7 +95,12 @@
                         <button class="text-white" type="submit">
                           Approve
                         </button>
-                        <button class="text-white bg-red">Reject</button>
+                        <button
+                          class="text-white bg-red"
+                          @click="console.log(image.id)"
+                        >
+                          Reject
+                        </button>
                       </div>
                     </div>
                   </div>

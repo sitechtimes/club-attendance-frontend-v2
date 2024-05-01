@@ -191,9 +191,7 @@ export const useAdminStore = defineStore("admin", {
           `${import.meta.env.VITE_BACKEND_URL}/unapprovedImage`,
           {
             method: "PATCH",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
+            body: imageId,
           }
         );
         console.log(response.json());
