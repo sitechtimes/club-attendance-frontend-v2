@@ -13,10 +13,10 @@
         <RouterLink v-if="userStore.loggedIn" to="/confirmation" class="font-normal font-katibeh text-[2rem] mr-[3rem]">
           Student</RouterLink>
         <!-- currently routed to confirmation for testing, in future confirmation will be reached via qr code-->
-        <RouterLink v-if="userStore.user.role == 'Club President'" to="/president"
+        <RouterLink v-if="userStore.user['Client Authority'] == 'Club President'" to="/president"
           class="font-normal font-katibeh text-[2rem] mr-[3rem]">
           President</RouterLink>
-        <RouterLink v-if="userStore.user.role == 'Admin'" to="/admin"
+        <RouterLink v-if="userStore.user['Client Authority'] == 'Admin'" to="/admin"
           class="font-normal font-katibeh text-[2rem] mr-[3rem]">
           Admin</RouterLink>
         <!-- <RouterLink to="/calendar" class="font-normal font-katibeh text-[2rem]">

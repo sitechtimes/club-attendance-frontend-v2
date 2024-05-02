@@ -39,13 +39,13 @@ export const useUserStore = defineStore("user", {
     user: ref(
       {
         uid: '',
-        firstName: '',
-        lastName: '',
-        email: '',
+        "First Name": '',
+        "Last Name": '',
+        Email: '',
         picture: '',
-        role: '',
+        "Client Authority": '',
         isAuthenticated: false,
-        ClubData: ref({
+        "Club Data": ref({
           PresidentOf: [],
           MemberOf: []
         })
@@ -55,6 +55,7 @@ export const useUserStore = defineStore("user", {
   actions: {
     updateUser(decodedCookie: any) {
       this.user = decodedCookie
+      console.log(this.user)
     },
     async googleLink() {
       await axios

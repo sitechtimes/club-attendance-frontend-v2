@@ -30,7 +30,7 @@
               </h2>
               <p class="mt-2 text-3xl font-bold tracking-tight 
               text-gray-900 sm:text-4xl">
-                Welcome, {{ userStore.user.firstName }} {{ userStore.user.lastName }}
+                Welcome, {{ userStore.user["First Name"] }} {{ userStore.user["Last Name"] }}
               </p>
               <p class="mt-6 text-lg leading-8 text-gray-600">
                 Club attendance has never been easier! Just scan the QR code
@@ -40,15 +40,6 @@
             </div>
             <div class="flex flex-col mt-8">
               <Login v-if="!userStore.loggedIn" class="" />
-              <!-- <img
-             src="@/assets/sammy.jpg"
-             alt="Sammy the Seagull"
-             class="rounded-xl shadow-xl
-              ring-1 ring-gray-400/10 lg:w-[45rem] xl:w-[50rem] 
-              2xl:w-[70rem] md:-ml-4 lg:-ml-0 h-[1vh]"
-             /> -->
-              <!-- <Calender /> -->
-              <!-- for testing -->
             </div>
           </div>
         </div>
@@ -71,13 +62,11 @@
 //anyone can see
 import Navbar from "@/components/Reusables/Navbar.vue";
 import Login from "@/components/HomeComponents/Login.vue";
-// import Calender from "@/components/HomeComponents/Calender.vue";
 import { onBeforeMount, onMounted } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
 import { useRouter, useRoute } from 'vue-router'
 let store = useUserStore();
-// let clubStore = useClubStore()
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -95,19 +84,18 @@ function getCookie(name: string) {
 }
 
 async function verifyAuth(ssoObject: any) {
-  console.log(ssoObject)
   const response = await fetch(`http://localhost:3000/ssoAuth`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     mode: "cors",
     body: JSON.stringify(ssoObject)
   })
-  console.log(response.json())
 }
 
-onMounted(() => {
+onBeforeMount(() => {
   const string = route.query.code?.toString()
 
   const stringObj = {
@@ -117,31 +105,34 @@ onMounted(() => {
   if (string) {
     // ssoThingy(thingy)
     verifyAuth(stringObj)
+    const userDataCookie = document.cookie.split('; ').filter(function (c) { return /user_data=/.test(c) }).toString()
+    console.log(userDataCookie)
+    if (!userDataCookie) {
+      console.log("no user data")
+      const queryVal = route.query.club
+      const queryStr: string | undefined = queryVal?.toString()
+      if (queryStr !== undefined) {
+        document.cookie = `qrCodeClub=${queryStr}`
+      }
+    } else {
+      const qrCodeClub = document.cookie.split(";")
+      userStore.qrCodeClub = qrCodeClub[0].toString().split("=")[1].replace("_", ' ')
+
+      const userCookie = getCookie("user_data");
+      store.updateUser(userCookie)
+      userStore.loggedIn = true
+      userStore.user.isAuthenticated = true
+
+      console.log(userStore.user, userStore.user["First Name"], userStore.user["Last Name"])
+      if (userStore.user["Client Authority"] === "Admin") {
+        userStore.getAllClubData(userStore.user.uid)
+        userStore.getUnapprovedClubs(userStore.user.uid)
+        setTimeout(function push() { routePush("admin") }, 1000)
+      }
+    }
   }
-})
+}
+)
 
-// onBeforeMount(() => {
-//   if (!document.cookie) {
-//     console.log("no user data")
-//     const queryVal = route.query.club
-//     const queryStr: string | undefined = queryVal?.toString()
-//     if (queryStr !== undefined) {
-//       document.cookie = `qrCodeClub=${queryStr}`
-//     }
-//   } else {
-//     const qrCodeClub = document.cookie.split(";")
-//     userStore.qrCodeClub = qrCodeClub[0].toString().split("=")[1].replace("_", ' ')
 
-//     const userCookie = getCookie("user_data");
-//     store.updateUser(userCookie)
-//     userStore.loggedIn = true
-//     userStore.user.isAuthenticated = true
-//     console.log(userStore.user.role)
-//     if (userStore.user.role === "Admin") {
-//       userStore.getAllClubData(userStore.user.uid)
-//       userStore.getUnapprovedClubs(userStore.user.uid)
-//       setTimeout(function push() { routePush("admin") }, 1000)
-//     }
-//   }
-// });
 </script>
