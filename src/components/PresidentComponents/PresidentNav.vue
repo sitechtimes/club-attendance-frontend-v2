@@ -11,17 +11,18 @@
       </button>
 
         <Menu as="div" class="relative"> 
-      <MenuButton @click="show = !show" class="top-6vw text-black bg-yellow hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <MenuButton @click="show = !show" class="top-6vw text-black bg-yellow hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">
         <img src="@/assets/menu.png" alt="" class="w-6">
       </MenuButton>
 
             <!-- hamburger menu -->
             <div id="demo" class="mt-0"> 
               <Transition v-if="show" name="fade"> 
-                <div v-if="show" class="absolute rounded h-auto w-20 bg-white m-10">
-                <ul> 
-                  <li v-for="club in clubStore.club" class="hamburger-item hover:bg-sky-white">
+                <div v-if="show" class="max-m-{10} grow flex absolute rounded h-auto bg-black m-5">
+                <ul class="p-5"> 
+                  <li v-for="club in clubStore.club" class="hamburger-item hover:bg-sky-white text-white">
                   {{club.clubName}}</li>
+                  <div></div>
                 </ul>
                 </div>
               </Transition>
