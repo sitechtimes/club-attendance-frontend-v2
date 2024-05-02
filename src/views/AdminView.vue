@@ -69,7 +69,7 @@
                 </div>
                 <form
                   class="flex flex-row justify-evenly h-[50rem] bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
-                  @submit.prevent="verifyImage"
+                  @submit.prevent="editImage"
                 >
                   <div
                     v-for="image in userStore.unapprovedImages"
@@ -92,7 +92,11 @@
                         </h2>
                       </div>
                       <div class="flex flex-row justify-between w-[29%]">
-                        <button class="text-white" type="submit">
+                        <button
+                          class="text-white"
+                          type="submit"
+                          @click="approve = true"
+                        >
                           Approve
                         </button>
                         <button
@@ -175,18 +179,24 @@ function onFileChange(image: any) {
   // append the file into the formData
   // also append a uuid and clubName
   console.log(image.thumbnailLink);
-  adminStore.verifyImage = new FormData();
-  adminStore.verifyImage.append("uuid", "116015436799734947995");
-  adminStore.verifyImage.append("clubName", "Anime Club");
-  adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
+  adminStore.editImage = new FormData();
+  adminStore.editImage.append("uuid", "116015436799734947995");
+  adminStore.editImage.append("clubName", "Anime Club");
+  adminStore.editImage.append("image", image.thumbnailLink, "image.jpg");
 
-  console.log(adminStore.verifyImage);
-}
+  console.log(adminStore.editImage);
+// function unapprovedImages() {
+//   adminStore.unapproveImage();
+// }
 
-function verifyImage() {
-  console.log(userStore.user.role);
+function editImage() {
+if (approve == true) {
   adminStore.approveImage();
 }
+else if (approve === false) {
+  adminStore.unapproveImage();
+}
+};
 
 function routePush(route: string) {
   router.push(`${route}`);

@@ -164,11 +164,11 @@ export const useAdminStore = defineStore("admin", {
     year: "",
     image: "",
     uuid: "",
-    verifyImage: new FormData(),
+    editImage: new FormData(),
   }),
   actions: {
     async approveImage() {
-      const formData = this.verifyImage;
+      const formData = this.editImage;
       try {
         const response = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/approveImage`,
@@ -191,7 +191,13 @@ export const useAdminStore = defineStore("admin", {
           `${import.meta.env.VITE_BACKEND_URL}/unapprovedImage`,
           {
             method: "PATCH",
-            body: imageId,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              clubName: this.selectedClub,
+              year: this.year,
+              uuid: this.uuid,
+              image: this.image,
+            }),
           }
         );
         console.log(response.json());
