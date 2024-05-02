@@ -162,13 +162,16 @@ export const useAdminStore = defineStore("admin", {
   state: () => ({
     selectedClub: "",
     year: "",
+    nextMeeting: "",
+    userClubData: {},
+    unapprovedImages: [],
     image: "",
     uuid: "",
-    editImage: new FormData(),
+    verifyImage: new FormData(),
   }),
   actions: {
     async approveImage() {
-      const formData = this.editImage;
+      const formData = this.verifyImage;
       try {
         const response = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/approveImage`,
@@ -180,7 +183,8 @@ export const useAdminStore = defineStore("admin", {
             body: formData,
           }
         );
-        console.log(response.json());
+        // console.log(response.json());
+        console.log(this.verifyImage);
       } catch (error) {
         console.log(error);
       }

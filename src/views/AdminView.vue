@@ -69,7 +69,7 @@
                 </div>
                 <form
                   class="flex flex-row justify-evenly h-[50rem] bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
-                  @submit.prevent="editImage"
+                  @submit.prevent="verifyImage"
                 >
                   <div
                     v-for="image in userStore.unapprovedImages"
@@ -92,11 +92,7 @@
                         </h2>
                       </div>
                       <div class="flex flex-row justify-between w-[29%]">
-                        <button
-                          class="text-white"
-                          type="submit"
-                          @click="approve = true"
-                        >
+                        <button class="text-white" type="submit">
                           Approve
                         </button>
                         <button
@@ -175,28 +171,29 @@ function pushToInfo(clubName: string) {
 // }
 
 function onFileChange(image: any) {
-  // adminStore.selectedImage is a formData
+  // presidentStore.selectedImage is a formData
   // append the file into the formData
   // also append a uuid and clubName
   console.log(image.thumbnailLink);
-  adminStore.editImage = new FormData();
-  adminStore.editImage.append("uuid", "116015436799734947995");
-  adminStore.editImage.append("clubName", "Anime Club");
-  adminStore.editImage.append("image", image.thumbnailLink, "image.jpg");
+  // adminStore.verifyImage = new FormData();
+  const verifyImage = new FormData();
 
-  console.log(adminStore.editImage);
-// function unapprovedImages() {
-//   adminStore.unapproveImage();
-// }
-
-function editImage() {
-if (approve == true) {
+  verifyImage.append("uuid", "116015436799734947995");
+  verifyImage.append("clubName", "Anime Club");
+  verifyImage.append("year", "2024-2025");
+  verifyImage.append("image", image.thumbnailLink, "image.jpg");
+  // adminStore.verifyImage.append("uuid", "116015436799734947995");
+  // adminStore.verifyImage.append("clubName", "Anime Club");
+  // adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
+  adminStore.verifyImage = verifyImage;
+  console.log(adminStore.verifyImage);
+  // function unapprovedImages() {
+  //   adminStore.unapproveImage();
+  // }
+}
+function verifyImage() {
   adminStore.approveImage();
 }
-else if (approve === false) {
-  adminStore.unapproveImage();
-}
-};
 
 function routePush(route: string) {
   router.push(`${route}`);
