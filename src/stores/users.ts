@@ -170,25 +170,25 @@ export const useAdminStore = defineStore("admin", {
     verifyImage: new FormData(),
   }),
   actions: {
-    async approveImage() {
-      const formData = this.verifyImage;
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/approveImage`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: formData,
-          }
-        );
-        // console.log(response.json());
-        console.log(this.verifyImage);
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    // async approveImage() {
+    //   const formData = this.verifyImage;
+    //   try {
+    //     const response = await fetch(
+    //       `${import.meta.env.VITE_BACKEND_URL}/approveImage`,
+    //       {
+    //         method: "PATCH",
+    //         headers: {
+    //           "Content-Type": "application/x-www-form-urlencoded",
+    //         },
+    //         body: formData,
+    //       }
+    //     );
+    //     // console.log(response.json());
+    //     console.log(this.verifyImage);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // },
     async unapproveImage() {
       try {
         const response = await fetch(

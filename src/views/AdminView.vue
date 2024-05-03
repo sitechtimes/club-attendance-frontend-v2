@@ -170,30 +170,28 @@ function pushToInfo(clubName: string) {
 //   console.log(image.thumbnailLink);
 // }
 
-function onFileChange(image: any) {
-  // presidentStore.selectedImage is a formData
+async function onFileChange(image: any) {
+  // presidentStore.selected
+  // Image is a formData
   // append the file into the formData
   // also append a uuid and clubName
   console.log(image.thumbnailLink);
   // adminStore.verifyImage = new FormData();
+
   const verifyImage = new FormData();
 
   verifyImage.append("uuid", "116015436799734947995");
   verifyImage.append("clubName", "Anime Club");
   verifyImage.append("year", "2024-2025");
   verifyImage.append("image", image.thumbnailLink, "image.jpg");
-  // adminStore.verifyImage.append("uuid", "116015436799734947995");
-  // adminStore.verifyImage.append("clubName", "Anime Club");
-  // adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
   adminStore.verifyImage = verifyImage;
   console.log(adminStore.verifyImage);
   // function unapprovedImages() {
   //   adminStore.unapproveImage();
   // }
 }
-function verifyImage() {
-  adminStore.approveImage();
-}
+let options = { method: "POST", body: verifyImage };
+fetch("http://localhost:3000//approveImage", options);
 
 function routePush(route: string) {
   router.push(`${route}`);
