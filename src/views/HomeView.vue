@@ -102,38 +102,52 @@ onBeforeMount(() => {
     code: string
   }
 
-  if (string) {
-    // ssoThingy(thingy)
-    verifyAuth(stringObj)
-    const userDataCookie = document.cookie.split('; ').filter(function (c) { return /user_data=/.test(c) }).toString()
-    console.log(userDataCookie)
-    if (!userDataCookie) {
-      console.log("no user data")
-      const queryVal = route.query.club
-      const queryStr: string | undefined = queryVal?.toString()
-      if (queryStr !== undefined) {
-        document.cookie = `qrCodeClub=${queryStr}`
+  if (document.cookie.split('; ').filter(function (c) { return /user_data=/.test(c) }).toString()) {
+    const userCookie = getCookie("user_data");
+
+    store.updateUser(userCookie)
+    userStore.loggedIn = true
+    userStore.user.isAuthenticated = true
+
+    console.log(userStore.user, userStore.user["First Name"], userStore.user["Last Name"])
+    if (userStore.user["Client Authority"] === "Admin") {
+      userStore.getAllClubData(userStore.user.uid)
+      userStore.getUnapprovedClubs(userStore.user.uid)
+      setTimeout(function push() { routePush("admin") }, 1000)
+    }
+  } else {
+    if (string) {
+      verifyAuth(stringObj)
+      const userDataCookie = document.cookie.split('; ').filter(function (c) { return /user_data=/.test(c) }).toString()
+      if (!userDataCookie) {
+        console.log("no user data")
+        const queryVal = route.query.club
+        const queryStr: string | undefined = queryVal?.toString()
+        if (queryStr !== undefined) {
+          document.cookie = `qrCodeClub=${queryStr}`
+        }
+      } else {
+        // const qrCodeClub = document.cookie.split(";")
+        // userStore.qrCodeClub = qrCodeClub[0].toString().split("=")[1].replace("_", ' ')
+        // console.log(userStore.qrCodeClub, "adfsad")
+
+        const userCookie = getCookie("user_data");
+
+        store.updateUser(userCookie)
+        userStore.loggedIn = true
+        userStore.user.isAuthenticated = true
+
+        console.log(userStore.user, userStore.user["First Name"], userStore.user["Last Name"])
+        if (userStore.user["Client Authority"] === "Admin") {
+          userStore.getAllClubData(userStore.user.uid)
+          userStore.getUnapprovedClubs(userStore.user.uid)
+          setTimeout(function push() { routePush("admin") }, 1000)
+        }
       }
     } else {
-      const qrCodeClub = document.cookie.split(";")
-      userStore.qrCodeClub = qrCodeClub[0].toString().split("=")[1].replace("_", ' ')
-
-      const userCookie = getCookie("user_data");
-      store.updateUser(userCookie)
-      userStore.loggedIn = true
-      userStore.user.isAuthenticated = true
-
-      console.log(userStore.user, userStore.user["First Name"], userStore.user["Last Name"])
-      if (userStore.user["Client Authority"] === "Admin") {
-        userStore.getAllClubData(userStore.user.uid)
-        userStore.getUnapprovedClubs(userStore.user.uid)
-        setTimeout(function push() { routePush("admin") }, 1000)
-      }
+      console.log("you're cooked")
     }
   }
-  // else if(userStore = ab) {
-
-  // }
 }
 )
 
