@@ -180,11 +180,13 @@ export const useAdminStore = defineStore("admin", {
     //         headers: {
     //           "Content-Type": "application/x-www-form-urlencoded",
     //         },
-    //         body: formData,
+    //         body: JSON.stringify({
+    //           verifyImage: formData,
+    //         }),
     //       }
     //     );
-    //     // console.log(response.json());
     //     console.log(this.verifyImage);
+    //     // console.log(this.verifyImage);
     //   } catch (error) {
     //     console.log(error);
     //   }

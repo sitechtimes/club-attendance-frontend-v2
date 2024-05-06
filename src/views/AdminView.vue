@@ -170,28 +170,34 @@ function pushToInfo(clubName: string) {
 //   console.log(image.thumbnailLink);
 // }
 
-async function onFileChange(image: any) {
-  // presidentStore.selected
+async function onFileChange(this: any, image: any) {
   // Image is a formData
   // append the file into the formData
   // also append a uuid and clubName
-  console.log(image.thumbnailLink);
+  // console.log(image.thumbnailLink);
   // adminStore.verifyImage = new FormData();
-
-  const verifyImage = new FormData();
-
+  // // const verifyImage = new FormData();
+  // adminStore.verifyImage.append("uuid", "111474565936715092038");
+  // adminStore.verifyImage.append("clubName", "Anime Club");
+  // adminStore.verifyImage.append("year", "2024-2025");
+  // adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
+  // console.log(adminStore.verifyImage);
+  // adminStore.verifyImage = verifyImage;
+  console.log(this.image.thumbnailLink);
+  let verifyImage = new FormData();
+  let response = await fetch("http://localhost:3000/approveImage");
+  let data = await response.json();
+  verifyImage.append("data", JSON.stringify(data));
   verifyImage.append("uuid", "116015436799734947995");
   verifyImage.append("clubName", "Anime Club");
   verifyImage.append("year", "2024-2025");
-  verifyImage.append("image", image.thumbnailLink, "image.jpg");
-  adminStore.verifyImage = verifyImage;
-  console.log(adminStore.verifyImage);
-  // function unapprovedImages() {
-  //   adminStore.unapproveImage();
-  // }
+  verifyImage.append("image", this.image.thumbnailLink, "image.jpg");
+  console.log(verifyImage);
 }
-let options = { method: "POST", body: verifyImage };
-fetch("http://localhost:3000//approveImage", options);
+
+function verifyImage() {
+  console.log(onFileChange());
+}
 
 function routePush(route: string) {
   router.push(`${route}`);
