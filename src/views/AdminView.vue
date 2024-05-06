@@ -67,9 +67,8 @@
                     close
                   </div>
                 </div>
-                <form
+                <div
                   class="flex flex-row justify-evenly h-[50rem] bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
-                  @submit.prevent="verifyImage"
                 >
                   <div
                     v-for="image in userStore.unapprovedImages"
@@ -92,19 +91,14 @@
                         </h2>
                       </div>
                       <div class="flex flex-row justify-between w-[29%]">
-                        <button class="text-white" type="submit">
+                        <button class="text-white" @click="verifyImage()">
                           Approve
                         </button>
-                        <button
-                          class="text-white bg-red"
-                          @click="console.log(image.id)"
-                        >
-                          Reject
-                        </button>
+                        <button class="text-white bg-red">Reject</button>
                       </div>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
@@ -151,8 +145,6 @@ import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
-import { useAdminStore } from "@/stores/users";
-const adminStore = useAdminStore();
 const query = ref("");
 let open = ref(false);
 const userStore = useUserStore();
@@ -166,33 +158,19 @@ function pushToInfo(clubName: string) {
   userStore.getClubMembers(clubName, year, userStore.user.uid);
   setTimeout(() => routePush(`/club/?name=${clubStore.clubName}`), 1000);
 }
-// function checkImage(image: any) {
-//   console.log(image.thumbnailLink);
-// }
 
-async function onFileChange(this: any, image: any) {
-  // Image is a formData
-  // append the file into the formData
-  // also append a uuid and clubName
-  // console.log(image.thumbnailLink);
-  // adminStore.verifyImage = new FormData();
-  // // const verifyImage = new FormData();
-  // adminStore.verifyImage.append("uuid", "111474565936715092038");
-  // adminStore.verifyImage.append("clubName", "Anime Club");
-  // adminStore.verifyImage.append("year", "2024-2025");
-  // adminStore.verifyImage.append("image", image.thumbnailLink, "image.jpg");
-  // console.log(adminStore.verifyImage);
-  // adminStore.verifyImage = verifyImage;
-  console.log(this.image.thumbnailLink);
+async function onFileChange() {
   let verifyImage = new FormData();
-  let response = await fetch("http://localhost:3000/approveImage");
-  let data = await response.json();
-  verifyImage.append("data", JSON.stringify(data));
   verifyImage.append("uuid", "116015436799734947995");
   verifyImage.append("clubName", "Anime Club");
   verifyImage.append("year", "2024-2025");
-  verifyImage.append("image", this.image.thumbnailLink, "image.jpg");
-  console.log(verifyImage);
+  let response = await fetch("http://localhost:3000/approveImage", {
+    method: "PATCH",
+    mode: "cors",
+    body: verifyImage,
+  });
+  let data = await response.json();
+  console.log(data);
 }
 
 function verifyImage() {
