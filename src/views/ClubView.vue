@@ -84,7 +84,7 @@ const clubStore = useClubStore()
 const route = useRoute()
 let numberOfMembers = ref(0)
 
-function getUsers(userArray: any){
+function getUserCount(userArray: any){
   let n= 0
     userArray.forEach((student: any) => {
       n = n+1
@@ -124,7 +124,7 @@ function logOut() {
 }
 watch(store.clubMembers, (clubMembers)=>{
   console.log("wowee this is running")
-  numberOfMembers.value = getUsers(clubMembers);
+  numberOfMembers.value = getUserCount(clubMembers);
 })
 
 defineProps({
