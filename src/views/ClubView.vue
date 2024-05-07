@@ -25,19 +25,20 @@
          text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)] ">{{ clubStore.clubName }}</div>
          <UserIcon class="h-[12vh]  border-l-[0.15rem] border-b-[0.15rem]"></UserIcon>
          <div class=" text-2xl border-b-[0.15rem] h-[12vh] content-center"> # of members: {{ numberOfMembers }}</div>
-         <div class=" text-2xl border-b-[0.15rem] h-[12vh] ml-20 content-center"> Room {{ clubStore.room }}</div>
-         <div class="absolute right-0 border-b-[0.15rem] h-[12vh] pl-[40vw]">
-          <RouterLink to="/admin" class="font-normal text-[2rem] mr-3 pt-2">Admin</RouterLink>
+         <div class=" text-2xl border-b-[0.15rem] border-r-[0.15rem] pr-[2rem] h-[12vh] ml-20 content-center"> Room {{ clubStore.room }}</div>
+         <div class="absolute right-0 border-b-[0.15rem] h-[12vh] pl-[40vw] flex flex-col">
+          <RouterLink to="/admin" class="font-normal text-[2rem]  pt-2">Admin</RouterLink>
+          <LogOut class=""></LogOut>
          </div>
        </div>
        <div class="flex flex-row">
-        <div class="flex-col w-[45vw] font-katibeh pl-6 p-3 text-3xl">
+        <div class="flex-col w-[60vw] font-katibeh pl-6 pb-[50rem] p-3 text-3xl border-r-[0.15rem]">
           <div>Advisor: {{ clubStore.clubAdvisor }}</div>
           <div>President: {{ clubStore.clubPresident }}</div>
         </div>
         <div class="w-full flex flex-col justify-start items-center pt-8">
         <a href="https://www.youtube.com/watch?v=RbhVgdDoY3Q" target="_blank"
-          class="bg-gold h-[7vh] w-[50vh] flex flex-col border-2 items-center justify-center rounded-full text-black">Club
+          class="bg-gold h-[7vh] w-[35vh] flex flex-col border-2 items-center justify-center rounded-full text-black">Club
           Attendance Link</a>
       </div> 
        </div>
@@ -78,7 +79,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from "@/stores/users";
 import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
 import NoPermsPageGuard from '@/components/Reusables/NoPermsPageGuard.vue'
-//import LogOut from '@/components/Reusables/LogOut.vue'
+import LogOut from '@/components/Reusables/LogOut.vue'
 let store = useUserStore();
 const clubStore = useClubStore()
 const route = useRoute()
