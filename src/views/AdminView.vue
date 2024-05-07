@@ -94,7 +94,12 @@
                         <button class="text-white" @click="verifyImage()">
                           Approve
                         </button>
-                        <button class="text-white bg-red">Reject</button>
+                        <button
+                          class="text-white bg-red"
+                          @click="rejectImage()"
+                        >
+                          Reject
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -175,6 +180,23 @@ async function onFileChange() {
 
 function verifyImage() {
   console.log(onFileChange());
+}
+
+async function offFileChange() {
+  let rejectImage = new FormData();
+  rejectImage.append("uuid", "116015436799734947995");
+  rejectImage.append("imageId", "this.image.id");
+  let response = await fetch("http://localhost:3000/unapproveImage", {
+    method: "PATCH",
+    mode: "cors",
+    body: rejectImage,
+  });
+  let data = await response.json();
+  console.log(data);
+}
+
+function rejectImage() {
+  console.log(offFileChange());
 }
 
 function routePush(route: string) {
