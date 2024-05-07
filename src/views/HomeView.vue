@@ -65,7 +65,7 @@ import Login from "@/components/HomeComponents/Login.vue";
 import { onBeforeMount, onMounted } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute, loadRouteLocation } from 'vue-router'
 let store = useUserStore();
 
 const userStore = useUserStore()
@@ -120,7 +120,7 @@ onBeforeMount(() => {
       verifyAuth(stringObj)
       const userDataCookie = document.cookie.split('; ').filter(function (c) { return /user_data=/.test(c) }).toString()
       if (!userDataCookie) {
-        console.log("no user data")
+        console.log(document.cookie)
         const queryVal = route.query.club
         const queryStr: string | undefined = queryVal?.toString()
         if (queryStr !== undefined) {
