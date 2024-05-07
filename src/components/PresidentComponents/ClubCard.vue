@@ -5,7 +5,7 @@
         class="mx-60 text-white text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 py-6"
       >
         <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="" />
-        <a class="my-8 col-span-2"> Model Rockets Club</a>
+        <a class="my-8 col-span-2"> {{ selectedClub }}</a>
         <a class="row-span-2">Edwin Wright</a>
       </div>
     </div>
@@ -144,7 +144,7 @@
                 >
                   Add/Change meeting date
                 </button>
-                <button
+                <buttons
                   type="button"
                   class="w-full my-1 justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold bg-red text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                   @click="open = false"
