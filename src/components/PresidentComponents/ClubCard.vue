@@ -5,7 +5,7 @@
         class="mx-60 text-white text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 py-6"
       >
         <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="" />
-        <a class="my-8 col-span-2"> {{ selectedClub }}</a>
+        <a class="my-8 col-span-2"> {{ presidentStore.selectedClub.clubName }}</a>
         <a class="row-span-2">Edwin Wright</a>
       </div>
     </div>

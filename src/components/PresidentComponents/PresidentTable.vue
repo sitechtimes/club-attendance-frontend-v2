@@ -18,7 +18,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody v-for="member in clubMembers.club">
                 <tr class="bg-gold border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
                         Apple MacBook Pro 17"
@@ -31,34 +31,6 @@
                     </td>
                     <td class="px-6 py-4">
                         $2999
-                    </td>
-                </tr>
-                <tr class="bg-gold border-b">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
-                        Microsoft Surface Pro
-                    </th>
-                    <td class="px-6 py-4">
-                        White
-                    </td>
-                    <td class="px-6 py-4">
-                        Laptop PC
-                    </td>
-                    <td class="px-6 py-4">
-                        $1999
-                    </td>
-                </tr>
-                <tr class="bg-gold">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
-                        Magic Mouse 2
-                    </th>
-                    <td class="px-6 py-4">
-                        Black
-                    </td>
-                    <td class="px-6 py-4">
-                        Accessories
-                    </td>
-                    <td class="px-6 py-4">
-                        $99
                     </td>
                 </tr>
             </tbody>
