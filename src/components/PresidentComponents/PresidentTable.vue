@@ -21,7 +21,7 @@
             <tbody v-for="member in clubMembers.club">
                 <tr class="bg-gold border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
-                        Apple MacBook Pro 17"
+                        {{member}}
                     </th>
                     <td class="px-6 py-4">
                         Silver
@@ -39,6 +39,13 @@
 </div>
 </template>
 
-<script> 
+<script setup>
+import { useUserStore, usePresidentStore } from "@/stores/users";
+import { useClubStore } from "@/stores/club";
+
+const userStore = useUserStore();
+const presidentStore = usePresidentStore()
+
+console.log(userStore.userClubData)
 
 </script>
