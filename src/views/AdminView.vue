@@ -96,7 +96,7 @@
                         </button>
                         <button
                           class="text-white bg-red"
-                          @click="rejectImage()"
+                          @click="rejectImage(image.id)"
                         >
                           Reject
                         </button>
@@ -167,7 +167,7 @@ function pushToInfo(clubName: string) {
 async function onFileChange() {
   let verifyImage = new FormData();
   verifyImage.append("uuid", "116015436799734947995");
-  verifyImage.append("clubName", "Anime Club");
+  verifyImage.append("clubName", "Art Club");
   verifyImage.append("year", "2024-2025");
   let response = await fetch("http://localhost:3000/approveImage", {
     method: "PATCH",
@@ -182,10 +182,10 @@ function verifyImage() {
   console.log(onFileChange());
 }
 
-async function offFileChange() {
+async function offFileChange(this: any) {
   let rejectImage = new FormData();
   rejectImage.append("uuid", "116015436799734947995");
-  rejectImage.append("imageId", "this.image.id");
+  rejectImage.append("imageId", `${this}`);
   let response = await fetch("http://localhost:3000/unapproveImage", {
     method: "PATCH",
     mode: "cors",
