@@ -8,13 +8,13 @@
   <div v-else-if="store.user.isAuthenticated &&
     store.user.role == 'Admin'"> 
     <div class="w-screen h-auto flex flex-col">
-      <div class="w-full h-[30vh] flex flex-row 
+      <div class="w-[150vw] h-[30vh] flex flex-row 
       border-b-[0.15rem] overflow-hidden">
       <div>
          <img
              src="@/assets/sammy.jpg"
              alt="Sammy the Seagull"
-             class="w-[300px] h-[30vh]"
+             class="w-[20vw] h-[30vh]"
          />
         <!-- club photo placeholder -->
       </div>
@@ -22,11 +22,17 @@
         <div class="flex flex-row">
          <div class="w-[30vw] h-[10vh] text-5xl border-black p-3
          font-katibeh border-b-[0.15rem] text-gold text-clip
-         text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)] ">{{ clubStore.clubName }}</div>
-         <UserIcon class="h-[12vh]  border-l-[0.15rem] border-b-[0.15rem]"></UserIcon>
-         <div class=" text-2xl border-b-[0.15rem] h-[12vh] content-center"> # of members: {{ numberOfMembers }}</div>
-         <div class=" text-2xl border-b-[0.15rem] border-r-[0.15rem] pr-[2rem] h-[12vh] ml-20 content-center"> Room {{ clubStore.room }}</div>
-         <div class="absolute right-0 border-b-[0.15rem] h-[12vh] pl-[40vw] flex flex-col">
+         text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)] overflow-hidden">{{ clubStore.clubName }}</div>
+         <div class="flex flex-row w-[30vw] overflow-hidden
+          border-b-[0.15rem]  border-l-[0.15rem] border-r-[0.15rem] h-[12vh]">
+         <UserIcon class="h-[12vh]"></UserIcon>
+         <div class=" text-2xl
+         h-[12vh] content-center"> # of members: {{ numberOfMembers }}</div>
+         <div class=" text-2xl 
+          pr-[2rem] h-[12vh] ml-20 content-center"> Room {{ clubStore.room }}</div>
+         </div>
+         <div class=" border-b-[0.15rem] overflow-hidden
+         h-[12vh]  flex flex-row items-center w-[20vw] justify-center">
           <RouterLink to="/admin" class="font-normal text-[2rem]  pt-2">Admin</RouterLink>
           <LogOut class=""></LogOut>
          </div>
