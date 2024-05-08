@@ -65,11 +65,12 @@ export const useUserStore = defineStore("user", {
           window.location.href = res.data.redirectUri;
         });
     },
-    async getClubMembers(clubName: any, year: any, uuid: any) {
+    async getClubMembers(clubName: string, year: string, uuid: string) {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getClubMembers/${clubName}/${year}/${uuid}`, {
         method: "GET"
       })
       this.clubMembers = await response.json()
+      console.log(this.clubMembers, "dsfadsfasd")
     },
     async getAllClubData(uuid: any) {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getAllClubData/2024-2025/${uuid}`, {

@@ -74,10 +74,12 @@ userStore.user.ClubData.PresidentOf.forEach((club: string) => {
 });
 console.log(clubStore.club);
 const show = ref(true);
+const year = new Date().getFullYear()
 
 function dookie(club: any) {
   presidentStore.selectedClub = club
   console.log(presidentStore.selectedClub, "asd");
+  userStore.getClubMembers(presidentStore.selectedClub.clubName,`${year}-${year+1}`, userStore.user.uid)
 }
 
 </script>

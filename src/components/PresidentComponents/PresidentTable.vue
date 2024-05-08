@@ -1,5 +1,6 @@
 <template> 
 <div class="p-10 bg-black h-auto rounded-lg font-['Itim']">
+    <div></div>
     <div class="relative overflow-x-auto overflow-y:auto bg-black">
         <table class="w-full text-sm text-left rtl:text-right text-black">
             <thead class="text-xs uppercase bg-black text-white">
@@ -18,19 +19,19 @@
                     </th>
                 </tr>
             </thead>
-            <tbody v-for="member in clubMembers.club">
-                <tr class="bg-gold border-b">
+            <tbody>
+                <tr class="bg-gold border-b" v-for="member in userStore.clubMembers">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
-                        {{member}}
+                        {{member['First Name']}} {{ member['Last Name'] }}
                     </th>
                     <td class="px-6 py-4">
-                        Silver
+                        {{ member.UID }}
                     </td>
                     <td class="px-6 py-4">
-                        Laptop
+                        {{ member.Email }}
                     </td>
                     <td class="px-6 py-4">
-                        $2999
+                        {{ member.Position }}
                     </td>
                 </tr>
             </tbody>
@@ -40,12 +41,7 @@
 </template>
 
 <script setup>
-import { useUserStore, usePresidentStore } from "@/stores/users";
-import { useClubStore } from "@/stores/club";
-
-const userStore = useUserStore();
-const presidentStore = usePresidentStore()
-
-console.log(userStore.userClubData)
+import { useUserStore, usePresidentStore } from "@/stores/users"
+const userStore = useUserStore(); 
 
 </script>
