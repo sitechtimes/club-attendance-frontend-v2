@@ -183,13 +183,10 @@ function verifyImage() {
 }
 
 async function offFileChange(this: any) {
-  let rejectImage = new FormData();
-  rejectImage.append("uuid", "116015436799734947995");
-  rejectImage.append("imageId", `${this}`);
   let response = await fetch("http://localhost:3000/unapproveImage", {
     method: "PATCH",
     mode: "cors",
-    body: rejectImage,
+    body: JSON.stringify({ uuid: "116015436799734947995" }),
   });
   let data = await response.json();
   console.log(data);
