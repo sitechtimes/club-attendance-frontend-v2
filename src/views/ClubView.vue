@@ -22,7 +22,9 @@
         <div class="flex flex-row">
          <div class="w-[30vw] h-[10vh] text-5xl border-black p-3
          font-katibeh border-b-[0.15rem] text-gold text-clip
-         text-drop-shadow-[0_1.2px_1.2px_rgba(0,0,0)] overflow-hidden">{{ clubStore.clubName }}</div>
+          overflow-hidden">
+          <div class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1)]">{{ clubStore.clubName }}</div> 
+        </div>
          <div class="flex flex-row w-[30vw] overflow-hidden
           border-b-[0.15rem]  border-l-[0.15rem] border-r-[0.15rem] h-[12vh]">
          <UserIcon class="h-[12vh]"></UserIcon>
@@ -33,18 +35,21 @@
          </div>
          <div class=" border-b-[0.15rem] overflow-hidden
          h-[12vh]  flex flex-row items-center w-[20vw] justify-center">
-          <RouterLink to="/admin" class="font-normal text-[2rem]  pt-2">Admin</RouterLink>
+          <RouterLink to="/admin" class="font-normal text-[2rem]  
+          \pt-2">Admin</RouterLink>
           <LogOut class=""></LogOut>
          </div>
        </div>
        <div class="flex flex-row">
-        <div class="flex-col w-[60vw] font-katibeh pl-6 pb-[50rem] p-3 text-3xl border-r-[0.15rem]">
+        <div class="flex-col w-[60vw] font-katibeh pl-6 pb-[50rem] 
+        p-3 text-3xl border-r-[0.15rem]">
           <div>Advisor: {{ clubStore.clubAdvisor }}</div>
           <div>President: {{ clubStore.clubPresident }}</div>
         </div>
         <div class="w-full flex flex-col justify-start items-center pt-8">
         <a href="https://www.youtube.com/watch?v=RbhVgdDoY3Q" target="_blank"
-          class="bg-gold h-[7vh] w-[35vh] flex flex-col border-2 items-center justify-center rounded-full text-black">Club
+          class="bg-gold h-[7vh] w-[35vh] flex flex-col border-2 items-center 
+          justify-center rounded-full text-black">Club
           Attendance Link</a>
       </div> 
        </div>
@@ -61,10 +66,14 @@
   </thead>
   <tbody>
     <tr v-for="student in store.clubMembers">
-      <td class="border border-slate-300 text-center border-2">{{ student["First Name"] }} {{ student["Last Name"] }}</td>
-      <td class="border border-slate-300 text-center border-2">{{ student["Position"] }}</td>
-      <td class="border border-slate-300 text-center border-2">{{ student["# of Attendances"] }}</td>
-      <td class="border border-slate-300 text-center border-2">{{ student["Email"] }}</td>
+      <td class="border border-slate-300 text-center border-2">
+        {{ student["First Name"] }} {{ student["Last Name"] }}</td>
+      <td class="border border-slate-300 text-center border-2">
+        {{ student["Position"] }}</td>
+      <td class="border border-slate-300 text-center border-2">
+        {{ student["# of Attendances"] }}</td>
+      <td class="border border-slate-300 text-center border-2">
+        {{ student["Email"] }}</td>
     </tr>
   </tbody>
        </table>
@@ -129,9 +138,9 @@ function logOut() {
   }
   //routePush('/')
 }
-watch(store.clubMembers, (clubMembers)=>{
+watch(store.clubMembers, (newValue)=>{
   console.log("wowee this is running")
-  numberOfMembers.value = getUserCount(clubMembers);
+  numberOfMembers.value = getUserCount(newValue);
 })
 
 defineProps({
