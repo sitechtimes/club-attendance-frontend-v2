@@ -29,7 +29,7 @@
           border-b-[0.15rem]  border-l-[0.15rem] border-r-[0.15rem] h-[12vh]">
          <UserIcon class="h-[12vh]"></UserIcon>
          <div class=" text-2xl
-         h-[12vh] content-center"> # of members: {{ numberOfMembers }}</div>
+         h-[12vh] content-center"> # of members: {{ store.clubMembers.length }}</div>
          <div class=" text-2xl 
           pr-[2rem] h-[12vh] ml-20 content-center"> Room {{ clubStore.room }}</div>
          </div>
@@ -37,7 +37,7 @@
          h-[12vh]  flex flex-row items-center w-[20vw] justify-center">
           <RouterLink to="/admin" class="font-normal text-[2rem]  
           \pt-2">Admin</RouterLink>
-          <LogOut class=""></LogOut>
+          <LogOut class="ml-[1rem]"></LogOut>
          </div>
        </div>
        <div class="flex flex-row">
@@ -113,8 +113,7 @@ onMounted(() => {
   const queryStr: string | undefined = queryVal?.toString()
   const year = "2024-2025"
   clubStore.getData(queryStr, year)
-  console.log(clubStore.club)
-  console.log(store.clubMembers)
+  store.getClubMembers(queryStr, year, store.user.uid)
 });
 
 function logOut() {
@@ -138,10 +137,6 @@ function logOut() {
   }
   //routePush('/')
 }
-watch(store.clubMembers, (newValue)=>{
-  console.log("wowee this is running")
-  numberOfMembers.value = getUserCount(newValue);
-})
 
 defineProps({
   clubName: String,

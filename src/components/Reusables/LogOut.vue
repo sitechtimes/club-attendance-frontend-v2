@@ -2,7 +2,7 @@
  <button v-if="userStore.loggedIn" class="p-4 shadow-xl cursor-pointer rounded-md font-Katibeh
    hover:scale-110 ease-in-out duration-300 w-36 h-18 flex 
    justify-evenly items-center text-black bg-gold rounded-[2rem]
-   inline-flex ml-[1rem]" @click="logOut">
+   inline-flex" @click="logOut">
       Log Out
   </button>
 </template>
