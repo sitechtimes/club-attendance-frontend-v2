@@ -182,12 +182,11 @@ function verifyImage() {
   console.log(onFileChange());
 }
 
-async function offFileChange(this: any) {
-  let rejectImage = new FormData();
+async function offFileChange(image: any) {
+  let rejectImage = new URLSearchParams();
   rejectImage.append("uuid", "116015436799734947995");
-  rejectImage.append("clubName", "Anime Club");
-  rejectImage.append("year", "2024-2025");
-  rejectImage.append("imageId", "1156_pnm0pkKTMOw4pmSDwTrznamgFn0n");
+  rejectImage.append("imageId", `${image}`);
+  console.log(image);
   let response = await fetch("http://localhost:3000/unapproveImage", {
     method: "PATCH",
     mode: "cors",
@@ -197,8 +196,8 @@ async function offFileChange(this: any) {
   console.log(data);
 }
 
-function rejectImage() {
-  console.log(offFileChange());
+function rejectImage(image: any) {
+  console.log(offFileChange(image));
 }
 
 function routePush(route: string) {
