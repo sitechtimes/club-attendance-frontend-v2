@@ -183,10 +183,15 @@ function verifyImage() {
 }
 
 async function offFileChange(this: any) {
+  let rejectImage = new FormData();
+  rejectImage.append("uuid", "116015436799734947995");
+  rejectImage.append("clubName", "Anime Club");
+  rejectImage.append("year", "2024-2025");
+  rejectImage.append("imageId", "1156_pnm0pkKTMOw4pmSDwTrznamgFn0n");
   let response = await fetch("http://localhost:3000/unapproveImage", {
     method: "PATCH",
     mode: "cors",
-    body: JSON.stringify({ uuid: "116015436799734947995" }),
+    body: rejectImage,
   });
   let data = await response.json();
   console.log(data);
