@@ -7,7 +7,7 @@
   </div>
   <div v-else-if="store.user.isAuthenticated &&
     store.user.role == 'Admin'"> 
-    <div class="w-screen h-auto flex flex-col">
+    <div class="w-screen h-auto flex flex-col overflow-hidden">
       <div class="w-[150vw] h-[30vh] flex flex-row 
       border-b-[0.15rem] overflow-hidden">
       <div>
@@ -21,7 +21,7 @@
       <div class="flex flex-col">
         <div class="flex flex-row">
          <div class="w-[30vw] h-[10vh] text-5xl border-black p-3
-         font-katibeh border-b-[0.15rem] text-gold text-clip
+         font-katibeh border-b-[0.15rem] text-[#D3B304] text-clip
           overflow-hidden">
           <div class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1)]">{{ clubStore.clubName }}</div> 
         </div>
@@ -47,8 +47,8 @@
           <div>President: {{ clubStore.clubPresident }}</div>
         </div>
         <div class="w-full flex flex-col justify-start items-center pt-8">
-        <a href="https://www.youtube.com/watch?v=RbhVgdDoY3Q" target="_blank"
-          class="bg-gold h-[7vh] w-[35vh] flex flex-col border-2 items-center 
+        <a :href= "clubStore.clubSpreadsheet" target="_blank"
+          class="bg-[#FFD700] h-[7vh] w-[35vh] flex flex-col border-2 items-center 
           justify-center rounded-full text-black">Club
           Attendance Link</a>
       </div> 
@@ -114,29 +114,8 @@ onMounted(() => {
   const year = "2024-2025"
   clubStore.getData(queryStr, year)
   store.getClubMembers(queryStr, year, store.user.uid)
+  console.log(clubStore.clubSpreadsheet)
 });
-
-function logOut() {
-  document.cookie.split(";").forEach(
-    function (c) {
-      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-    });
-  store.loggedIn = false
-  store.user = {
-    uid: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    picture: '',
-    role: '',
-    isAuthenticated: false,
-    ClubData: ({
-      PresidentOf: [],
-      MemberOf: []
-    })
-  }
-  //routePush('/')
-}
 
 defineProps({
   clubName: String,
