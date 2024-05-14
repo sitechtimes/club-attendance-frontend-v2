@@ -36,7 +36,7 @@
                   <li
                     v-for="club in clubStore.club"
                     @click="dookie(club)"
-                    class="hover:text-gray hamburger-item hover:bg-sky-white text-white"
+                    class="hover:text-gray hamburger-item hover:bg-sky-white text-white p-1  w-32"
                   >
                     {{ club.clubName }}
                   </li>

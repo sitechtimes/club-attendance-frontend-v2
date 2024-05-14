@@ -6,7 +6,7 @@
       >
         <img class="my-8 row-span-3" src="@/assets/testimg.png" alt="" />
         <a class="my-8 col-span-2"> {{ presidentStore.selectedClub.clubName }}</a>
-        <a class="row-span-2">Edwin Wright</a>
+        <a class="row-span-2">{{ name  }}</a>
       </div>
     </div>
   </div>
