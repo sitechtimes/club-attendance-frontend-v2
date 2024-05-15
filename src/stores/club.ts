@@ -9,6 +9,7 @@ export const useClubStore = defineStore("club", {
     room: '',
     nextMeeting: '',
     clubSpreadsheet: '',
+    thumbnailLink: '',
     club: [ref({
       clubName: "",
       nextMeeting: "",
@@ -29,6 +30,7 @@ export const useClubStore = defineStore("club", {
       this.clubPresident = club.clubPresident
       this.room = club.room
       this.clubSpreadsheet = club.clubSpreadsheet
+      this.thumbnailLink = club.thumbnailLink
     }
   }
 });

@@ -11,9 +11,16 @@
       <div class="w-[150vw] h-[30vh] flex flex-row 
       border-b-[0.15rem] overflow-hidden">
       <div>
-         <img
-             src="@/assets/sammy.jpg"
+         <img v-if="clubStore.thumbnailLink == '' 
+             || clubStore.thumbnailLink == null 
+             || clubStore.thumbnailLink == undefined"
+             src="@/assets/SITHSLogo.jpg"
              alt="Sammy the Seagull"
+             class="w-[20vw] h-[30vh]"
+         />
+         <img v-else-if="clubStore.thumbnailLink !== '' || null"
+             :src=  clubStore.thumbnailLink 
+             alt="Club Logo"
              class="w-[20vw] h-[30vh]"
          />
         <!-- club photo placeholder -->
@@ -114,7 +121,7 @@ onMounted(() => {
   const year = "2024-2025"
   clubStore.getData(queryStr, year)
   store.getClubMembers(queryStr, year, store.user.uid)
-  console.log(clubStore.clubSpreadsheet)
+  console.log(clubStore.thumbnailLink)
 });
 
 defineProps({
