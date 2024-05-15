@@ -27,7 +27,7 @@
           <div>Log Out</div>
         </div>
       </div>
-      <div v-show="open">
+      <div v-show="open" class="overflow-y-auto h-full">
         <div
           class="relative z-10"
           aria-labelledby="modal-title"
@@ -37,7 +37,7 @@
           <div
             class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
           ></div>
-          <div class="fixed inset-0 z-10 overflow-y-auto">
+          <div class="fixed inset-0 z-10">
             <div
               class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
             >
@@ -181,23 +181,18 @@ async function onFileChange() {
 function verifyImage() {
   console.log(onFileChange());
 }
-
-async function offFileChange(image: any) {
+async function rejectImage(image: any) {
   let rejectImage = new URLSearchParams();
   rejectImage.append("uuid", "116015436799734947995");
   rejectImage.append("imageId", image.id);
   const response = await fetch("http://localhost:3000/unapproveImage", {
     method: "PATCH",
     mode: "cors",
-    body: rejectImage,
+    body: JSON.stringify(rejectImage),
   });
   const data = await response.json();
   console.log(data);
-}
-
-function rejectImage(image: any) {
-  const formData = new FormData();
-  offFileChange(formData);
+  console.log(image.id);
 }
 
 function routePush(route: string) {
