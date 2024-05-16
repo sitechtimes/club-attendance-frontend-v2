@@ -4,11 +4,12 @@
 </div>
 <div v-else>
     <div class="w-[100vw] h-[100vh] overflow-hidden flex justify-center items-center">   
-    <div class="overflow-hidden bg-white pt-20 lg:pt-24">
-    <div v-if="!present"
+    <div class="w-[75vw] h-[70vh] bg-[#D8C377] rounded-4xl border-[1.5vw]">
+        <div v-if="!present"
     class = "flex flex-col items-center justify-center">
         <h1 
-        class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        class="text-3xl font-bold tracking-tight 
+        text-gray-900 sm:text-4xl">
          Please Confirm Your Attendance to {{ $route.query.club }}
         </h1>
         <div
@@ -29,9 +30,9 @@
     <div v-else>
         <p>Error</p>
     </div>
+    </div>
    </div>
  </div>
-</div>
 </template>
 
 <script setup lang="ts">
