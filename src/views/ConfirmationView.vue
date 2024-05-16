@@ -3,12 +3,12 @@
 <NotLoggedPageGuard/>
 </div>
 <div v-else>
-    <Navbar></Navbar>
+    <div class="w-[100vw] h-[100vh] overflow-hidden flex justify-center items-center">   
     <div class="overflow-hidden bg-white pt-20 lg:pt-24">
     <div v-if="!present"
     class = "flex flex-col items-center justify-center">
         <h1 
-        class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
          Please Confirm Your Attendance to {{ $route.query.club }}
         </h1>
         <div
@@ -29,7 +29,8 @@
     <div v-else>
         <p>Error</p>
     </div>
-</div>
+   </div>
+ </div>
 </div>
 </template>
 
