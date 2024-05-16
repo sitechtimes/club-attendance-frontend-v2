@@ -66,10 +66,15 @@ export const useUserStore = defineStore("user", {
         });
     },
     async getClubMembers(clubName: string, year: string, uuid: string) {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getClubMembers/${clubName}/${year}/${uuid}`, {
-        method: "GET"
-      })
-      this.clubMembers = await response.json()
+      try {
+        
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/getClubMembers/${clubName}/${year}/${uuid}`, {
+          method: "GET"
+        })
+        this.clubMembers = await response.json()
+      } catch (error) {
+        console.log(error)
+      }
       console.log(this.clubMembers, "dsfadsfasd")
     },
     async getAllClubData(uuid: any) {
