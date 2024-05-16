@@ -3,12 +3,9 @@
     <nav class="bg-black text-white flex flex-nowrap
     h-[107px] items-center z-10 relative overflow-hidden">
       <RouterLink to="/">
-        <!-- <img src="@/assets/SeagullCalendarNT.png" 
-      alt="A seagull sitting on top of a calendar" 
-      class="h-[107px]"> -->
-      </RouterLink>
-      <h1 class="text-white text-[64px] font-kranky ml-3">
+        <h1 class="text-white text-[64px] font-kranky ml-3">
         Club Attendance</h1>
+      </RouterLink>
       <div class="absolute right-[1rem]">
         <RouterLink v-if="userStore.loggedIn" to="/confirmation" class="font-normal font-katibeh text-[2rem] mr-[3rem]">
           Student</RouterLink>
