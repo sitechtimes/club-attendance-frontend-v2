@@ -200,7 +200,6 @@ async function rejectImage(image: any) {
   });
   const data = await response.json();
   console.log(data);
-  console.log(image.id);
 }
 
 function routePush(route: string) {
