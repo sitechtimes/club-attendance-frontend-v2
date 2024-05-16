@@ -182,17 +182,19 @@ function verifyImage() {
   console.log(onFileChange());
 }
 async function rejectImage(image: any) {
-  let rejectImage = new URLSearchParams();
-  rejectImage.append("uuid", "116015436799734947995");
-  rejectImage.append("imageId", image.id);
+  // let rejectImage = new URLSearchParams();
+  // rejectImage.append("uuid", "116015436799734947995");
+  // rejectImage.append("imageId", image.id);
   const response = await fetch("http://localhost:3000/unapproveImage", {
     method: "PATCH",
     mode: "cors",
-    body: JSON.stringify(rejectImage),
+    body: JSON.stringify({
+      uuid: 116015436799734947995,
+      imageId: image.id,
+    }),
   });
   const data = await response.json();
   console.log(data);
-  console.log(image.id);
 }
 
 function routePush(route: string) {
