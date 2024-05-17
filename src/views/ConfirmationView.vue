@@ -6,16 +6,18 @@
     <div class="w-[100vw] h-[100vh] overflow-hidden flex justify-center items-center">   
     <div class="w-[75vw] h-[70vh] bg-[#D8C377] rounded-4xl border-[1.5vw]">
         <div v-if="!present"
-    class = "flex flex-col items-center justify-center">
+    class = "flex flex-col">
         <h1 
         class="text-3xl font-bold tracking-tight 
-        text-gray-900 sm:text-4xl">
+        text-gray-900 sm:text-4xl place-self-center">
          Please Confirm Your Attendance to {{ $route.query.club }}
         </h1>
         <div
-        class="flex flex-col mt-8">
+        class="mt-8 place-self-center">
             <button 
-            class="p-4 text-gold shadow-xl cursor-pointer rounded-md hover:scale-110 ease-in-out duration-300 bg-black w-36 h-18 flex justify-evenly items-center"
+            class="p-4 text-gold shadow-xl cursor-pointer rounded-md 
+            hover:scale-110 ease-in-out duration-300 bg-black 
+             w-36 h-18 flex justify-evenly items-center"
             @click="logAttendance">
              Click Here
             </button>
