@@ -96,7 +96,7 @@
                         </button>
                         <button
                           class="text-white bg-red"
-                          @click="console.log(image.id)"
+                          @click="rejectImage()"
                         >
                           Reject
                         </button>
@@ -181,18 +181,22 @@ async function onFileChange() {
 function verifyImage() {
   console.log(onFileChange());
 }
-async function rejectImage(item: any) {
-  // let rejectImage = new URLSearchParams();
+async function rejectImage(image: any) {
+  let rejectImage = {
+    uuid: "116015436799734947995",
+    imageId: image.id,
+  };
   // rejectImage.append("uuid", "116015436799734947995");
   // rejectImage.append("imageId", image.id);
+  console.log(JSON.stringify(rejectImage));
   const response = await fetch("http://localhost:3000/unapproveImage", {
     method: "PATCH",
-    mode: "cors",
-    body: JSON.stringify({
-      year: "2024-2025",
-      uuid: 116015436799734947995,
-      imageId: item.id,
-    }),
+    cache: "force-cache",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+    body: JSON.stringify(rejectImage),
   });
   const data = await response.json();
   console.log(data);
