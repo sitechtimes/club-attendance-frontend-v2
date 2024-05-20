@@ -6,16 +6,16 @@
             <thead class="text-xs uppercase bg-black text-white">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Product name
+                        Student Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Color
+                        OSIS
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Category
+                        Email
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Price
+                        Position
                     </th>
                 </tr>
             </thead>

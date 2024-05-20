@@ -9,14 +9,14 @@
         >Club Attendance
       </span>
       <!-- log out button -->
-      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+
+      <div class="pr-20 lg:pr-0 flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <button
           type="button"
-          class="mx-20 text-black fixed bg-yellow hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="mx-20 text-black fixed bg-yellow hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2 px-10 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Log Out
         </button>
-
         <Menu as="div" class="relative">
           <MenuButton
             @click="show = !show"
