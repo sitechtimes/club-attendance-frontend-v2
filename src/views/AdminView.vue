@@ -96,7 +96,7 @@
                         </button>
                         <button
                           class="text-white bg-red"
-                          @click="rejectImage(image)"
+                          @click="console.log(image.id)"
                         >
                           Reject
                         </button>
@@ -113,7 +113,7 @@
         class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
       >
         <div
-          class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
+          class="flex flex-col pt-3 w-[29%] transform skew-x-6 hover:scale-105 ease-in-out duration-500 cursor-pointer"
           v-for="item in userStore.clubs"
           :key="item.clubName"
           @click="pushToInfo(item.clubName)"
@@ -123,7 +123,7 @@
             alt="coding"
             class="h-[228px] rounded-t-[20px]"
           />
-          <div class="box flex flex-col items-end">
+          <div class="box flex flex-col items-end transform -skew-x-6">
             <div
               class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
             >
@@ -181,7 +181,7 @@ async function onFileChange() {
 function verifyImage() {
   console.log(onFileChange());
 }
-async function rejectImage(image: any) {
+async function rejectImage(item: any) {
   // let rejectImage = new URLSearchParams();
   // rejectImage.append("uuid", "116015436799734947995");
   // rejectImage.append("imageId", image.id);
@@ -189,8 +189,9 @@ async function rejectImage(image: any) {
     method: "PATCH",
     mode: "cors",
     body: JSON.stringify({
+      year: "2024-2025",
       uuid: 116015436799734947995,
-      imageId: image.id,
+      imageId: item.id,
     }),
   });
   const data = await response.json();
