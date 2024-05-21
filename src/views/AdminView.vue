@@ -34,15 +34,12 @@
           role="dialog"
           aria-modal="true"
         >
-          <div
-            class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-          ></div>
           <div class="fixed inset-0 z-10">
             <div
               class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
             >
               <div
-                class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all w-screen h-screen"
+                class="relative transform overflow-hidden bg-[#363636] text-left shadow-xl transition-all w-screen h-screen"
               >
                 <div
                   class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
@@ -54,6 +51,7 @@
                     class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
                     placeholder="Search"
                     v-model="query"
+                    @input="onInput"
                   />
 
                   <div
@@ -68,7 +66,7 @@
                   </div>
                 </div>
                 <div
-                  class="flex flex-row justify-evenly h-[50rem] bg-[#363636] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+                  class="flex flex-row justify-evenly h-[50rem] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
                 >
                   <div
                     v-for="image in userStore.unapprovedImages"
@@ -96,7 +94,7 @@
                         </button>
                         <button
                           class="text-white bg-red"
-                          @click="rejectImage()"
+                          @click="rejectImage(image)"
                         >
                           Reject
                         </button>
@@ -183,6 +181,7 @@ function verifyImage() {
 }
 async function rejectImage(image: any) {
   let rejectImage = {
+    year: "2024-2025",
     uuid: "116015436799734947995",
     imageId: image.id,
   };
