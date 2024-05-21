@@ -2,11 +2,11 @@
   <div class="font-['sans']">
     <div class="bg-dark-gray w-full">
       <div
-        class=" mx-28 lg:mx-60 text-white text-xl grid justify-items-center mt-10 grid-flow-col gap-2 w-1/6 py-6"
+        class="mx-28 lg:mx-60 text-white text-xl justify-items-center mt-10 w-1/6 py-6 items-center"
       >
-        <img class="my-6 lg:my-10 row-span-3" src="@/assets/testimg.png" alt="" />
-        <a class="my-2 lg:my-8 col-span-2"> {{ presidentStore.selectedClub.clubName }}</a>
-        <a class="row-span-2">{{ name  }}</a>
+        <img class="my-6 lg:my-10 " src="@/assets/testimg.png" alt="" />
+        <a class="my-2 lg:my-8"> {{ presidentStore.selectedClub.clubName }}</a>
+        <a class="">{{ name  }}</a>
       </div>
     </div>
   </div>
