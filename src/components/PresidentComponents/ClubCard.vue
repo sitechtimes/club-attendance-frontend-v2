@@ -7,7 +7,7 @@
         <img class="my-6 lg:my-10 " src="@/assets/testimg.png" alt="" />
         <a class="my-2 lg:my-8"> {{ presidentStore.selectedClub.clubName }}</a>
         <a class="">{{ name  }}</a>
-      </div>
+      </div>t
     </div>
   </div>
   <div class="flex flex-row font-['sans']">
