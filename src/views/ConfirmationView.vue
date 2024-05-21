@@ -6,6 +6,10 @@
     <div class="w-[100vw] h-[100vh] overflow-hidden flex justify-center items-center">   
     <div class="w-[65vw] h-[80vh] flex flex-col justify-center
     bg-[#D8C377] rounded-4xl border-[1.5vw] relative">
+        <div class="absolute bg-white border-[0.5vw] w-[10vw] flex place-content-center  
+         rounded-full top-[-5vh] left-[calc(50%-5vw)]">
+         <img src="@/assets/SeagullCalendar.png" alt="Seagull Logo">
+        </div>
         <div class="absolute right-2 top-2">
         <button class="bg-white"
             @click="logAttendance">
