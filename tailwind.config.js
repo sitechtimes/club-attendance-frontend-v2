@@ -29,6 +29,7 @@ module.exports = {
       serif: ["Merriweather", "serif"],
       kranky: ["Kranky", "serif"],
       katibeh: ["Katibeh", "serif"],
+      itim: ["Itim", "serif"],
     },
     extend: {
       spacing: {

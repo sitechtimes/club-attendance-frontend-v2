@@ -8,11 +8,15 @@
     bg-[#D8C377] rounded-4xl border-[1.5vw] relative">
         <div class="absolute bg-white border-[0.5vw] w-[10vw] flex place-content-center  
          rounded-full top-[-5vh] left-[calc(50%-5vw)]">
-         <img src="@/assets/SeagullCalendar.png" alt="Seagull Logo">
+         <img src="@/assets/SeagullCalendar.png" alt="Seagull Logo" class="w-[9vw]">
+        </div>
+        <div class="absolute left-2 top-2 flex flex-col font-itim text-lg">
+         <div>{{ new Date().getMonth() }}/{{ new Date().getDate() }}/{{ new Date().getFullYear() }}</div>
+         <div>{{ $route.query.club }}</div>
         </div>
         <div class="absolute right-2 top-2">
         <button class="bg-white"
-            @click="logAttendance">
+            @click="back">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
             </svg>
@@ -22,22 +26,22 @@
     class = "flex flex-col items-center">
         <h1 
         class="text-3xl font-bold tracking-tight 
-        text-gray-900 sm:text-4xl text-center">
+        text-gray-900 sm:text-4xl text-center font-itim">
          Please Confirm Your Attendance to {{ $route.query.club }}
         </h1>
         <div
         class="mt-8">
             <button 
-            class="p-4 text-gold shadow-xl cursor-pointer rounded-md 
-            hover:scale-110 ease-in-out duration-300 bg-black 
-             w-36 h-18 flex justify-evenly"
+            class="p-4 text-black shadow-xl cursor-pointer rounded-full 
+            hover:scale-110 ease-in-out duration-300 bg-white 
+             w-36 h-18 flex justify-evenly font-itim text-lg"
             @click="logAttendance">
              Click Here
             </button>
         </div>
     </div>
     <div v-else-if="present"
-    class="flex flex-col items-center justify-center">
+    class="flex flex-col items-center">
         <h1 
         class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         Thank You!</h1>
@@ -62,6 +66,7 @@ const userStore = useUserStore();
 //const clubStore = useClubStore();
 let present = ref(false);
 const route = useRoute()
+const router = useRouter()
 async function logAttendance(){
     present.value = true 
     const attendanceData = {
@@ -71,6 +76,11 @@ async function logAttendance(){
     };
     userStore.updateAttendance(attendanceData)
     localStorage.removeItem("currentClub")
+};
+function back() {
+  router.push('/')
+  
+  localStorage.removeItem("currentClub")
 };
 
 defineProps({
