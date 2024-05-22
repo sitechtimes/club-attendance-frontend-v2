@@ -2,12 +2,13 @@
   <div class="font-['sans']">
     <div class="bg-dark-gray w-full">
       <div
-        class="mx-28 lg:mx-60 text-white text-xl justify-items-center mt-10 w-1/6 py-6 items-center"
+        class="gap-5 flex mx-14 text-white text-xl justify-items-center mt-10 py-6 items-center"
       >
-        <img class="my-6 lg:my-10 " src="@/assets/testimg.png" alt="" />
-        <a class="my-2 lg:my-8"> {{ presidentStore.selectedClub.clubName }}</a>
-        <a class="">{{ name  }}</a>
-      </div>t
+        <img class="lg:my-10" src="@/assets/testimg.png" alt="" />
+        <div class="flex flex-col w-1/2">
+        <a class="my-2 lg:my-8 text-6xl"> {{ presidentStore.selectedClub.clubName }}</a>
+        <a class="">{{ name  }}</a></div>
+        </div>
     </div>
   </div>
   <div class="flex flex-row font-['sans']">
@@ -41,7 +42,7 @@
         </button>
       </div>
     </div>
-    <div class="p-24 w-[100rem] h-[] overflow-x-auto">
+    <div class="m-12 w-[100rem] overflow-x-auto">
       <PresidentTable />
     </div>
   </div>
