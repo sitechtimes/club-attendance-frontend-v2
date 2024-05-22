@@ -71,7 +71,7 @@
                   <div
                     v-for="image in userStore.unapprovedImages"
                     :key="image.id"
-                    class="flex flex-col w-[29%]"
+                    class="flex flex-col w-[29%] overflow-y-auto"
                   >
                     <img
                       :src="image.thumbnailLink"
