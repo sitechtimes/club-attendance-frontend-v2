@@ -51,7 +51,7 @@
                     class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
                     placeholder="Search"
                     v-model="query"
-                    @input="onInput"
+                    @input="onOutput"
                   />
 
                   <div
@@ -259,6 +259,21 @@ const onInput = function () {
     // userStore.getAllClubData(userStore.uid)
   } else {
     userStore.clubs = userStore.allClubs.filter((item: object) =>
+      searchFilter(item, query.value)
+    );
+  }
+};
+const onOutput = function () {
+  // console.log(userStore.clubs, "this is clubs")
+  // console.log(userStore.allClubs, "this is allClubs")
+  if (query.value == "") {
+    userStore.unapprovedImages;
+    // userStore.getAllClubData(userStore.uid)
+  } else if (query == undefined) {
+    userStore.unapprovedImages;
+    // userStore.getAllClubData(userStore.uid)
+  } else {
+    userStore.unapprovedImages.filter((item: object) =>
       searchFilter(item, query.value)
     );
   }
