@@ -1,6 +1,6 @@
 <template>
-  <errorScreen v-if="userStore.user.role !== 'Admin'" />
-  <div v-if="userStore.user.role == 'Admin'" class="bg-[#363636]">
+  <errorScreen v-if="userStore.user['Client Authority'] !== 'Admin'" />
+  <div v-if="userStore.user['Client Authority'] == 'Admin'" class="bg-[#363636]">
     <section class="w-100% h-screen">
       <div class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10">
         <div class="w-[8%] text-white text-lg font-medium ">Administration</div>
