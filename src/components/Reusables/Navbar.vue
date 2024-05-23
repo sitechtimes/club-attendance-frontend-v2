@@ -13,7 +13,7 @@
         <RouterLink :to="`/`" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         Home</RouterLink> 
-        <RouterLink to='/club' 
+        <RouterLink :to="'/confirmation/?club=' + props.club" 
         class="font-normal font-katibeh text-[2rem] mr-[3rem]">
         Student</RouterLink> 
         <RouterLink to="/president" 

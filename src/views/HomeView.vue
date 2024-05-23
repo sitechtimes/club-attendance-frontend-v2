@@ -40,7 +40,7 @@
         </div>
       </div>
       <img src="@/assets/CroppedSammy.png" alt="Sammy the Seagull"
-        class="h-[30rem] ml-[103rem] -mt-[19rem] rotate-[30deg]" />
+        class="h-[30rem] ml-[103rem] -mt-[20rem] rotate-[30deg]" />
     </div>
     <div class="
   bg-black 

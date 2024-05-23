@@ -79,7 +79,6 @@ async function logAttendance(){
 };
 function back() {
   router.push('/')
-  
   localStorage.removeItem("currentClub")
 };
 
