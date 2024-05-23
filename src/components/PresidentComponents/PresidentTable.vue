@@ -1,5 +1,5 @@
 <template> 
-<div class="p-10 bg-black h-ful rounded-lg font-['Itim']">
+<div class="lg:p-10 p-4 bg-black h-ful rounded-lg font-['Itim']">
     <div class="relative overflow-x-auto overflow-y:auto bg-black">
         <table class="w-full text-sm text-left rtl:text-right text-black">
             <thead class="text-xl uppercase bg-black text-white">

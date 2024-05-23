@@ -1,17 +1,17 @@
 <template>
   <div class="font-['sans']">
-    <div class="bg-dark-gray w-full">
+    <div class="bg-dark-gray w-full lg:h-[16rem] h-[13rem]">
       <div
-        class="gap-5 flex mx-14 text-white text-xl justify-items-center mt-10 py-6 items-center"
+        class="gap-5 flex text-white text-xl justify-items-center m-10 items-center"
       >
-        <img class="lg:my-10" src="@/assets/testimg.png" alt="" />
-        <div class="flex flex-col w-1/2">
-        <a class="my-2 lg:my-8 text-6xl"> {{ presidentStore.selectedClub.clubName }}</a>
+        <img class="my-[4rem] lg:my-10 h-auto w-[10%] " src="@/assets/testimg.png" alt="" />
+        <div class="flex flex-col w-1/2 content-center">
+        <a class="lg:my-8 text-4xl lg:text-6xl "> {{ presidentStore.selectedClub.clubName }}</a>
         <a class="">{{ name  }}</a></div>
         </div>
     </div>
   </div>
-  <div class="flex flex-row font-['sans']">
+    <div class="flex flex-row font-['sans']">
     <div class="flex flex-col w-1/6 text-white h-[40.5rem] bg-dark-gray m-0">
       <div class="flex justify-center h-20 bg-black items-center text-2xl"> 
         <h1>Menu</h1>
@@ -42,7 +42,7 @@
         </button>
       </div>
     </div>
-    <div class="m-12 w-[100rem] overflow-x-auto">
+    <div class="m-12 lg:w-[100rem] w-[15%] overflow-x-auto">
       <PresidentTable />
     </div>
   </div>

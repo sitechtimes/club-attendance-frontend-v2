@@ -5,7 +5,7 @@
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <span class="self-center text-xl whitespace-nowrap text-white"
+      <span class="self-center text-3xl whitespace-nowrap text-white"
         >Club Attendance
       </span>
       <!-- log out button -->
