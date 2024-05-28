@@ -27,19 +27,14 @@
           <div>Log Out</div>
         </div>
       </div>
-      <div v-show="open" class="overflow-y-auto h-full">
-        <div
-          class="relative z-10"
-          aria-labelledby="modal-title"
-          role="dialog"
-          aria-modal="true"
-        >
+      <div v-show="open" class="h-full">
+        <div class="relative z-10" aria-labelledby="modal-title" role="dialog">
           <div class="fixed inset-0 z-10">
             <div
               class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
             >
               <div
-                class="relative transform overflow-hidden bg-[#363636] text-left shadow-xl transition-all w-screen h-screen"
+                class="relative transform bg-[#363636] text-left shadow-xl transition-all w-screen h-screen"
               >
                 <div
                   class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
@@ -71,7 +66,7 @@
                   <div
                     v-for="image in userStore.unapprovedImages"
                     :key="image.id"
-                    class="flex flex-col w-[29%] overflow-y-auto"
+                    class="flex flex-col w-[29%]"
                   >
                     <img
                       :src="image.thumbnailLink"
