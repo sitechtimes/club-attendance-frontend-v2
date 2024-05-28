@@ -2,7 +2,7 @@
   <div class="w-screen h-screen overflow-hidden relative">
     <Navbar :club="store.currentClub"></Navbar>
     <img src="@/assets/SeagullCalendar.png" alt="A seagull sitting on top of a calendar"
-      class="w-[240px] mt-[30px] ml-[30px]">
+      class="w-[240px] mt-[30px] ml-[30px] max-sm:w-[10vh]">
     <div class="bg-gold 
     w-[160rem] h-[45rem] origin-bottom -rotate-[30deg]
     overflow-hidden shrink-0 -ml-[35rem] -mt-[15vh] border">
