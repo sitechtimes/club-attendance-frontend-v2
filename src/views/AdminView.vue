@@ -1,7 +1,7 @@
 <template>
   <errorScreen v-if="userStore.user.role !== 'Admin'" />
   <div v-if="userStore.user.role == 'Admin'" class="bg-[#363636]">
-    <section class="w-100% h-screen">
+    <section class="w-full h-screen">
       <div
         class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
       >
@@ -27,7 +27,7 @@
           <div>Log Out</div>
         </div>
       </div>
-      <div v-show="open" class="h-full">
+      <div v-show="open" class="h-full w-full">
         <div class="relative z-10" aria-labelledby="modal-title" role="dialog">
           <div class="fixed inset-0 z-10">
             <div
@@ -44,7 +44,7 @@
                   </div>
                   <input
                     class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
-                    placeholder="Search"
+                    placeholder="Search unapprove image"
                     v-model="query"
                     @input="onOutput"
                   />
@@ -103,10 +103,11 @@
         </div>
       </div>
       <div
+        v-show="!open"
         class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
       >
         <div
-          class="flex flex-col pt-3 w-[29%] transform skew-x-6 hover:scale-105 ease-in-out duration-500 cursor-pointer"
+          class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
           v-for="item in userStore.clubs"
           :key="item.clubName"
           @click="pushToInfo(item.clubName)"
@@ -116,7 +117,7 @@
             alt="coding"
             class="h-[228px] rounded-t-[20px]"
           />
-          <div class="box flex flex-col items-end transform -skew-x-6">
+          <div class="box flex flex-col items-end">
             <div
               class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
             >
@@ -258,6 +259,30 @@ const onInput = function () {
     );
   }
 };
+
+const unapproveFilter = function (club: object, query: any) {
+  const splitQuery = query.split("");
+  const splitUnapproveImage = club.clubName.split("");
+  let i = 0;
+  let result = false;
+  splitQuery.forEach((character: any) => {
+    if (
+      i == splitQuery.length - 1 &&
+      character.toLowerCase() == splitUnapproveImage[i].toLowerCase()
+    ) {
+      result = true;
+    } else if (
+      character.toLowerCase() != splitUnapproveImage[i].toLowerCase()
+    ) {
+      result = false;
+    } else if (
+      character.toLowerCase() == splitUnapproveImage[i].toLowerCase()
+    ) {
+      i++;
+    }
+  });
+  return result;
+};
 const onOutput = function () {
   // console.log(userStore.clubs, "this is clubs")
   // console.log(userStore.allClubs, "this is allClubs")
@@ -269,7 +294,7 @@ const onOutput = function () {
     // userStore.getAllClubData(userStore.uid)
   } else {
     userStore.unapprovedImages.filter((item: object) =>
-      searchFilter(item, query.value)
+      unapproveFilter(item, query.value)
     );
   }
 };

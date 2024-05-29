@@ -70,7 +70,12 @@ export const useUserStore = defineStore("user", {
     clubs: [],
     clubMembers: [],
     allClubs: [],
-    unapprovedImages: [],
+    unapprovedImages: [
+      ref({
+        clubName: "",
+        image: "",
+      }),
+    ],
     user: ref({
       uid: "",
       firstName: "",
