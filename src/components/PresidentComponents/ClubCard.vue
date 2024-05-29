@@ -4,15 +4,16 @@
       <div
         class="gap-5 flex text-white text-xl justify-items-center m-10 items-center"
       >
-        <img class="my-[4rem] lg:my-10 h-auto w-[10%] " src="@/assets/testimg.png" alt="" />
+        <img class="my-[4rem] lg:my-10 h-auto w-[30%]" src="@/assets/testimg.png" alt="" />
         <div class="flex flex-col w-1/2 content-center">
-        <a class="lg:my-8 text-4xl lg:text-6xl "> {{ presidentStore.selectedClub.clubName }}</a>
+        <a class="lg:my-8 text-4xl lg:text-6xl"> {{ presidentStore.selectedClub.clubName }}</a>
         <a class="">{{ name  }}</a></div>
         </div>
     </div>
   </div>
-    <div class="flex flex-row font-['sans']">
-    <div class="flex flex-col w-1/6 text-white h-[40.5rem] bg-dark-gray m-0">
+    <div class="invisible lg:visible" ></div>
+    <div class="flex flex-row font-['sans'] ">
+    <div class="flex flex-col lg:w-1/6 text-white h-[40.5rem] bg-dark-gray m-0">
       <div class="flex justify-center h-20 bg-black items-center text-2xl"> 
         <h1>Menu</h1>
       </div>

@@ -9,8 +9,7 @@
         >Club Attendance
       </span>
       <!-- log out button -->
-
-      <div class="pr-20 lg:pr-0 flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <div class=" lg:pr-0 flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse mr-28 lg:mr-6">
         <button
           type="button"
           class="mx-20 text-black fixed bg-yellow hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2 px-10 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -36,7 +35,7 @@
                   <li
                     v-for="club in clubStore.club"
                     @click="dookie(club)"
-                    class="hover:text-gray hamburger-item hover:bg-sky-white text-white p-1  w-32"
+                    class="hover:text-gray hamburger-item hover:bg-sky-white text-white p-1 w-32"
                   >
                     {{ club.clubName }}
                   </li>
