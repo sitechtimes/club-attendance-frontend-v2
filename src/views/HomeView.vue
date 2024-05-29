@@ -2,15 +2,15 @@
   <div class="w-screen h-screen overflow-hidden relative">
     <Navbar :club="store.currentClub"></Navbar>
     <img src="@/assets/SeagullCalendar.png" alt="A seagull sitting on top of a calendar"
-      class="w-[240px] mt-[30px] ml-[30px] max-sm:w-[10vh]">
+      class="w-[240px] sm:mt-[30px] ml-[30px] max-sm:w-[15vh] max-sm:my-5">
     <div class="bg-gold 
-    w-[160rem] h-[45rem] origin-bottom -rotate-[30deg]
-    overflow-hidden shrink-0 -ml-[35rem] -mt-[15vh] border">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
-        <div class="mx-auto grid max-w-2xl grid-cols-1 
+    sm:w-[160rem] h-[45rem] origin-bottom sm:-rotate-[30deg]
+    overflow-hidden shrink-0 sm:-ml-[35rem] sm:-mt-[15vh] border max-sm:-skew-y-6">
+      <div class=" max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
+        <div class="grid max-w-2xl grid-cols-1 
         gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-          <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[15rem] mt-[9vh]">
-            <div class="lg:max-w-lg ">
+          <div class="lg:pr-8 lg:pt-4 sm:rotate-[30deg] sm:ml-[15rem] sm:mt-[9vh]">
+            <div class="lg:max-w-lg max-sm:skew-y-6 max-sm:mt-10">
               <h2 class="text-base font-semibold leading-7 text-black">
                 Attendance, made faster
               </h2>
@@ -25,7 +25,7 @@
               </p>
             </div>
             <div class="flex flex-col mt-8">
-              <Login class="" />
+              <Login class="max-sm:skew-y-6" />
               <!-- <img
              src="@/assets/sammy.jpg"
              alt="Sammy the Seagull"
