@@ -37,28 +37,16 @@
                 class="relative transform bg-[#363636] text-left shadow-xl transition-all w-screen h-screen"
               >
                 <div
-                  class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
+                  class="py-3 px-12 w-[6%] h-[8%] cursor-pointer rounded-full hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center"
                 >
-                  <div class="w-[8%] text-white text-lg font-medium">
-                    Administration
-                  </div>
-                  <input
-                    class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
-                    placeholder="Search unapprove image"
-                    v-model="query"
-                    @input="onOutput"
-                  />
-
-                  <div
-                    class="py-3 px-12 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center"
+                  <ArrowLeftOnRectangleIcon
+                    class="w-full"
                     @click="
                       function closecard() {
                         open = false;
                       }
                     "
-                  >
-                    close
-                  </div>
+                  />
                 </div>
                 <div
                   class="flex flex-row justify-evenly h-[50rem] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
@@ -144,6 +132,8 @@ import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/vue/24/solid";
+
 const query = ref("");
 let open = ref(false);
 const userStore = useUserStore();
@@ -260,9 +250,9 @@ const onInput = function () {
   }
 };
 
-const unapproveFilter = function (club: object, query: any) {
+const unapproveFilter = function (unapprovedImages: object, query: any) {
   const splitQuery = query.split("");
-  const splitUnapproveImage = club.clubName.split("");
+  const splitUnapproveImage = unapprovedImages.clubName.split("");
   let i = 0;
   let result = false;
   splitQuery.forEach((character: any) => {
