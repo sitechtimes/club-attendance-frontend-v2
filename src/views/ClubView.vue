@@ -2,11 +2,11 @@
   <div v-if="!store.user.isAuthenticated">
     <NotLoggedPageGuard />
   </div>
-  <div v-else-if="store.user.role !== 'Admin'">
+  <div v-else-if="store.user['Client Authority'] !== 'Admin'">
     <NoPermsPageGuard />
   </div>
   <div v-else-if="store.user.isAuthenticated &&
-    store.user.role == 'Admin'">
+    store.user['Client Authority'] == 'Admin'">
     <div class="w-screen h-auto flex flex-col">
       <div class="w-full h-[15vh] border-b-2 flex flex-row items-center justify-center">
         <div class="w-[30%] text-2xl pl-6">{{ clubStore.clubName }}</div>

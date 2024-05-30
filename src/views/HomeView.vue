@@ -96,10 +96,13 @@ async function verifyAuth(ssoObject: any) {
 }
 
 onMounted(async () => {
-  const string = route.query.code?.toString()
+  const codeString = route.query.code?.toString()
+  const clubString = route.query.club?.toString()
+  userStore.qrCodeClub = clubString
 
+  console.log(userStore.qrCodeClub)
   const stringObj = {
-    code: string
+    code: codeString
   }
 
   if (document.cookie.split('; ').filter(function (c) { return /user_data=/.test(c) }).toString()) {
@@ -116,7 +119,7 @@ onMounted(async () => {
       setTimeout(function push() { routePush("admin") }, 1000)
     }
   } else {
-    if (string) {
+    if (codeString) {
       await verifyAuth(stringObj)
       const userDataCookie = document.cookie.split('; ').filter(function (c) { return /user_data=/.test(c) }).toString()
 
@@ -142,7 +145,8 @@ onMounted(async () => {
         if (userStore.user["Client Authority"] === "Admin") {
           userStore.getAllClubData(userStore.user.uid)
           userStore.getUnapprovedClubs(userStore.user.uid)
-          setTimeout(function push() { routePush("admin") }, 1000)
+          routePush("admin")
+          // setTimeout(function push() { routePush("admin") }, 1000)
         }
       }
     } else {
