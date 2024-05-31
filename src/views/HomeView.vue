@@ -98,9 +98,18 @@ async function verifyAuth(ssoObject: any) {
 onMounted(async () => {
   const codeString = route.query.code?.toString()
   const clubString = route.query.club?.toString()
-  userStore.qrCodeClub = clubString
+  
+  if (document.cookie.split('; ').filter(function (c) { return /scanned_club=/.test(c) }).toString()) {
+    const lmao = getCookie("scanned_club")
+    console.log(lmao)
+  } else {
+    if(clubString) {
+      
+    } else {
+      console.log("there is no scanned club")
+    }
+  }
 
-  console.log(userStore.qrCodeClub)
   const stringObj = {
     code: codeString
   }
