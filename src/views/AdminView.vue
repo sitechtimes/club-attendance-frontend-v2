@@ -93,24 +93,36 @@
         class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
       >
         <div
-          class="flex bg-black w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer relative overflow-hidden"
+          class="bg-black overflow-hidden w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer relative overflow-hidden"
           v-for="item in userStore.clubs"
           :key="item.clubName"
           @click="pushToInfo(item.clubName)"
         >
-          <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px]" />
-          <div class="box flex flex-col justify-around text-center">
+          <div class="flex">
             <div
-              class="w-full flex flex-col justify-center rounded-b-[20px] h-[4.5rem]"
+              class="w-1/2 bg-cover bg-center h-48"
+              style="transform: skewX(-10deg); margin-left: -40px"
             >
+              <img
+                src="@/assets/coding.jpeg"
+                alt="coding"
+                class="h-full w-full object-cover"
+                style="transform: skewX(10deg)"
+              />
+            </div>
+            <div class="box flex flex-col justify-around text-center">
               <div
-                class="w-full flex flex-row items-center pb-[15px] justify-center"
+                class="w-full flex flex-col justify-center rounded-b-[20px] h-[4.5rem]"
               >
-                <div class="text-[#c2b669] text-xl">{{ item.clubName }}</div>
-              </div>
-              <div class="w-full flex justify-center items-center">
-                <div class="text-[#c2b669] text-sm">
-                  {{ item.clubPresident }}
+                <div
+                  class="w-full flex flex-row items-center pb-[15px] justify-center"
+                >
+                  <div class="text-[#c2b669] text-xl">{{ item.clubName }}</div>
+                </div>
+                <div class="w-full flex justify-center items-center">
+                  <div class="text-[#c2b669] text-sm">
+                    {{ item.clubPresident }}
+                  </div>
                 </div>
               </div>
             </div>
