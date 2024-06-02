@@ -83,6 +83,17 @@ function getCookie(name: string) {
   return c
 }
 
+function getCookieValue(name: string) {
+  const cookies = document.cookie.split('; ');
+  for (let cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split('=');
+    if (cookieName === name) {
+      return cookieValue;
+    }
+  }
+  return null;
+}
+
 async function verifyAuth(ssoObject: any) {
   const response = await fetch(`http://localhost:3000/ssoAuth`, {
     method: "POST",
@@ -100,11 +111,12 @@ onMounted(async () => {
   const clubString = route.query.club?.toString()
   
   if (document.cookie.split('; ').filter(function (c) { return /scanned_club=/.test(c) }).toString()) {
-    const lmao = getCookie("scanned_club")
-    console.log(lmao)
+    const lmao = getCookieValue("scanned_club")
+    userStore.qrCodeClub = lmao
   } else {
     if(clubString) {
-      
+      document.cookie = `scanned_club=${clubString}`
+      console.log(clubString)
     } else {
       console.log("there is no scanned club")
     }
