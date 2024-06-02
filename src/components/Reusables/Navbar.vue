@@ -7,19 +7,26 @@
       alt="A seagull sitting on top of a calendar" 
       class="h-[107px]"> -->
       </RouterLink>
-      <h1 class="text-white text-[64px] font-kranky ml-3">
+      <h1 class="text-white text-[64px] font-kranky ml-3 invisible nav:visible">
         Club Attendance</h1>
-      <div class="absolute right-[1rem]">
-        <RouterLink to="/confirmation" class="font-normal font-katibeh text-[2rem] mr-[3rem]">
-          Student</RouterLink>
-        <!-- currently routed to confirmation for testing, in future confirmation will be reached via qr code-->
-        <RouterLink to="/president" class="font-normal font-katibeh text-[2rem] mr-[3rem]">
-          President</RouterLink>
-        <RouterLink to="/admin" class="font-normal font-katibeh text-[2rem] mr-[3rem]">
-          Admin</RouterLink>
-        <RouterLink to="/calendar" class="font-normal font-katibeh text-[2rem]">
-          Calendar</RouterLink>
-        <button class="p-4 shadow-xl cursor-pointer rounded-md font-Katibeh
+      <div class="absolute right-[1rem] m-2">
+        <RouterLink :to="`/`" 
+        class="font-normal font-katibeh text-[2rem] mr-[3rem]">
+        Home</RouterLink> 
+        <RouterLink :to="'/confirmation/?club=' + props.club" 
+        class="font-normal font-katibeh text-[2rem] mr-[3rem]">
+        Student</RouterLink> 
+        <RouterLink to="/president" 
+        class="font-normal font-katibeh text-[2rem] mr-[3rem]">
+        President</RouterLink>
+        <RouterLink to='/admin' 
+        class="font-normal font-katibeh text-[2rem] mr-[3rem]">
+        Admin</RouterLink>
+        <RouterLink to="/calendar" 
+        class="font-normal font-katibeh text-[2rem]">
+        Calendar</RouterLink>
+        <button
+          class="p-4 shadow-xl cursor-pointer rounded-md font-Katibeh
           hover:scale-110 ease-in-out duration-300 w-36 h-18 flex 
           justify-evenly items-center text-black bg-gold rounded-[2rem]
           inline-flex ml-[1rem]">
@@ -31,5 +38,7 @@
 </template>
     
 <script setup lang="ts">
-
+const props = defineProps({
+  club: String
+})
 </script>

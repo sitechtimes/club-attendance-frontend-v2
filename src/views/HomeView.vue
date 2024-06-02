@@ -1,16 +1,16 @@
 <template>
   <div class="w-screen h-screen overflow-hidden relative">
-    <Navbar></Navbar>
+    <Navbar :club="store.currentClub"></Navbar>
     <img src="@/assets/SeagullCalendar.png" alt="A seagull sitting on top of a calendar"
-      class="w-[240px] mt-[30px] ml-[30px]">
+      class="w-[240px] sm:mt-[30px] ml-[30px] max-sm:w-[15vh] max-sm:my-5">
     <div class="bg-gold 
-    w-[160rem] h-[45rem] origin-bottom -rotate-[30deg]
-    overflow-hidden shrink-0 -ml-[35rem] -mt-[15vh] border">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
-        <div class="mx-auto grid max-w-2xl grid-cols-1 
+    sm:w-[160rem] h-[45rem] origin-bottom sm:-rotate-[30deg]
+    overflow-hidden shrink-0 sm:-ml-[35rem] sm:-mt-[15vh] border max-sm:-skew-y-6">
+      <div class=" max-w-7xl px-6 lg:px-8 2xl:ml-40 ">
+        <div class="grid max-w-2xl grid-cols-1 
         gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-          <div class="lg:pr-8 lg:pt-4 rotate-[30deg] ml-[15rem] mt-[9vh]">
-            <div class="lg:max-w-lg ">
+          <div class="lg:pr-8 lg:pt-4 sm:rotate-[30deg] sm:ml-[15rem] sm:mt-[9vh]">
+            <div class="lg:max-w-lg max-sm:skew-y-6 max-sm:mt-10">
               <h2 class="text-base font-semibold leading-7 text-black">
                 Attendance, made faster
               </h2>
@@ -25,7 +25,7 @@
               </p>
             </div>
             <div class="flex flex-col mt-8">
-              <Login class="" />
+              <Login class="max-sm:skew-y-6" />
               <!-- <img
              src="@/assets/sammy.jpg"
              alt="Sammy the Seagull"
@@ -40,7 +40,7 @@
         </div>
       </div>
       <img src="@/assets/CroppedSammy.png" alt="Sammy the Seagull"
-        class="h-[30rem] ml-[103rem] -mt-[19rem] rotate-[30deg]" />
+        class="h-[30rem] ml-[103rem] -mt-[20rem] rotate-[30deg]" />
     </div>
     <div class="
   bg-black 
@@ -61,12 +61,13 @@ import Login from "@/components/HomeComponents/Login.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 let store = useUserStore();
 let clubStore = useClubStore()
 
 const userStore = useUserStore()
 const router = useRouter()
+const route = useRoute()
 function routePush(route: string) {
   router.push(`${route}`)
 }
@@ -106,11 +107,19 @@ onMounted(() => {
   let loggedIn = false
   if (!document.cookie) {
     console.log("no user data")
+    if (route.query.club == undefined) {
+    store.updateUser(null, null)
+    } else {
+      store.updateUser(null, route.query.club)
+    }  
   } else {
     const userCookie = getCookie("user_data");
-    store.updateUser(userCookie)
+    if (route.query.club == undefined) {
+    store.updateUser(userCookie, null)
+    } else {
+    store.updateUser(userCookie, route.query.club)
+    } 
     loggedIn = true
-
     if (userStore.user.role === "Admin") {
       userStore.getAllClubData(userStore.user.uid)
       userStore.getUnapprovedClubs(userStore.user.uid)
@@ -122,7 +131,10 @@ onMounted(() => {
     } else {
       console.log("user is not authorized")
     }
-    return loggedIn
   }
+  if (route.query.club == undefined && store.currentClub != null && userStore.user.isAuthenticated) {
+    router.push(`/confirmation/?club=${store.currentClub}`)
+  }
+return loggedIn
 });
-</script>
+</script> 
