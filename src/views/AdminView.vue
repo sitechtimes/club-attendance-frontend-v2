@@ -27,7 +27,7 @@
           <div>Log Out</div>
         </div>
       </div>
-      <div v-show="open" class="h-full w-full">
+      <div v-show="open" class="h-full w-full overflow-y-auto">
         <div class="relative z-10" aria-labelledby="modal-title" role="dialog">
           <div class="fixed inset-0 z-10">
             <div
@@ -37,19 +37,17 @@
                 class="relative transform bg-[#363636] text-left shadow-xl transition-all w-screen h-screen"
               >
                 <div
-                  class="py-3 px-12 w-[6%] h-[8%] cursor-pointer rounded-full hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center"
+                  class="py-3 px-12 cursor-pointer w-[7%] rounded-full hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center fixed z-10 bottom-10 right-10"
+                  @click="
+                    function closecard() {
+                      open = false;
+                    }
+                  "
                 >
-                  <ArrowLeftOnRectangleIcon
-                    class="w-full"
-                    @click="
-                      function closecard() {
-                        open = false;
-                      }
-                    "
-                  />
+                  <ArrowLeftOnRectangleIcon class="" />
                 </div>
                 <div
-                  class="flex flex-row justify-evenly h-[50rem] h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+                  class="flex flex-row justify-evenly h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
                 >
                   <div
                     v-for="image in userStore.unapprovedImages"
@@ -92,10 +90,10 @@
       </div>
       <div
         v-show="!open"
-        class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+        class="bg-[#363636] h-auto justify-evenly flex items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
       >
         <div
-          class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
+          class="flex bg-black pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
           v-for="item in userStore.clubs"
           :key="item.clubName"
           @click="pushToInfo(item.clubName)"
@@ -103,11 +101,11 @@
           <img
             src="@/assets/coding.jpeg"
             alt="coding"
-            class="h-[228px] rounded-t-[20px]"
+            class="h-[228px] rounded-t-[20px] relative overflow-hidden"
           />
           <div class="box flex flex-col items-end">
             <div
-              class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
+              class="w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
             >
               <div class="w-full flex flex-row items-center justify-center">
                 <div class="text-[#c2b669] text-xl">{{ item.clubName }}</div>
