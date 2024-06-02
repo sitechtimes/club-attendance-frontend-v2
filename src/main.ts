@@ -12,7 +12,7 @@ const app = createApp(App);
 
 app.component(VueQrcode.name, VueQrcode);
 
-app.use(createPinia())
+app.use(createPinia());
 
 app.use(router)
 

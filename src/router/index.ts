@@ -9,7 +9,7 @@ const router = createRouter({
       component: () => import("../views/AdminView.vue"),
     },
     {
-      path: "/",
+      path: "/:club?",
       name: "home",
       component: () => import("../views/HomeView.vue"),
     },
@@ -37,7 +37,7 @@ const router = createRouter({
       component: () => import('../views/Loading.vue')
     },
     {
-      path: '/confirmation',
+      path: '/confirmation/:club?',
       name: 'confirmation',
       component: () => import('../views/ConfirmationView.vue')
     },

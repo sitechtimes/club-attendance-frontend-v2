@@ -7,7 +7,7 @@
         <div v-if="userStore.qrCodeClub !== undefined" class="overflow-hidden bg-white pt-20 lg:pt-24">
             <div v-if="!present" class="flex flex-col items-center justify-center">
                 <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    Please Confirm Your Attendance
+                    Please Confirm Your Attendance to {{ userStore.qrCodeClub }}
                 </h1>
                 <div class="flex flex-col mt-8">
                     <button
@@ -25,7 +25,7 @@
                 <p>Error</p>
             </div>
         </div>
-        <div v-if="userStore.qrCodeClub === undefined" class="flex flex-col items-center justify-center">
+        <div v-if="!userStore.qrCodeClub" class="flex flex-col items-center justify-center">
             <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 No Club Detected
             </h1>
@@ -56,6 +56,11 @@ const logAttendance = function () {
         clubName: userStore.qrCodeClub
     };
     userStore.updateAttendance(attendanceData)
+    localStorage.removeItem("currentClub")
+};
+function back() {
+  router.push('/')
+  localStorage.removeItem("currentClub")
 };
 
 defineProps({

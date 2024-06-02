@@ -7,7 +7,7 @@
       alt="A seagull sitting on top of a calendar" 
       class="h-[107px]"> -->
       </RouterLink>
-      <h1 class="text-white text-[64px] font-kranky ml-3">
+      <h1 class="text-white text-[64px] font-kranky ml-3 invisible nav:visible">
         Club Attendance</h1>
       <div class="absolute right-[1rem]">
         <RouterLink v-if="userStore.loggedIn" to="/confirmation" class="font-normal font-katibeh text-[2rem] mr-[3rem]">

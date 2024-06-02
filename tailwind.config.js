@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     screens: {
       sm: "480px",
-      md: "768px",
+      md: "800px",
       lg: "976px",
+      nav: "1365px",
       xl: "1440px",
     },
     colors: {
@@ -28,6 +29,7 @@ module.exports = {
       serif: ["Merriweather", "serif"],
       kranky: ["Kranky", "serif"],
       katibeh: ["Katibeh", "serif"],
+      itim: ["Itim", "serif"],
     },
     extend: {
       spacing: {
