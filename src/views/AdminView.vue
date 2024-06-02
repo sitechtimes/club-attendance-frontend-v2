@@ -5,9 +5,11 @@
       <div
         class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
       >
-        <div class="w-[8%] text-white text-lg font-medium">Administration</div>
+        <div class="xl:w-[8%] text-white lg:text-lg font-medium sm:text-sm">
+          Administration
+        </div>
         <input
-          class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
+          class="xl:w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2 sm:w-[45%]"
           placeholder="Search"
           v-model="query"
           @input="onInput"
@@ -21,7 +23,7 @@
           "
         />
         <div
-          class="p-3 w-[6%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 bg-yellow flex justify-evenly items-center"
+          class="p-3 xl:w-[6%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 bg-yellow flex justify-evenly items-center"
           @click="logOut"
         >
           <div>Log Out</div>
@@ -37,22 +39,22 @@
                 class="relative transform bg-[#363636] text-left shadow-xl transition-all w-screen h-screen"
               >
                 <div
-                  class="py-3 px-12 cursor-pointer w-[7%] rounded-full hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center fixed z-10 bottom-10 right-10"
+                  class="py-3 px-12 cursor-pointer xl:w-[7%] rounded-full hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center fixed z-10 bottom-10 xl:right-10 sm:w-[19%] sm:right-5"
                   @click="
                     function closecard() {
                       open = false;
                     }
                   "
                 >
-                  <ArrowLeftOnRectangleIcon class="" />
+                  <ArrowLeftOnRectangleIcon />
                 </div>
                 <div
-                  class="flex flex-row justify-evenly h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+                  class="flex flex-col justify-evenly h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
                 >
                   <div
                     v-for="image in userStore.unapprovedImages"
                     :key="image.id"
-                    class="flex flex-col w-[29%]"
+                    class="flex flex-col xl:w-[29%] sm:w-[50%]"
                   >
                     <img
                       :src="image.thumbnailLink"
@@ -69,12 +71,14 @@
                           {{ image.name }}
                         </h2>
                       </div>
-                      <div class="flex flex-row justify-between w-[29%]">
+                      <div
+                        class="flex flex-row justify-between xl:w-[30%] sm:w-[50%]"
+                      >
                         <button class="text-white" @click="verifyImage()">
                           Approve
                         </button>
                         <button
-                          class="text-white bg-red"
+                          class="text-white bg-red rounded"
                           @click="rejectImage(image)"
                         >
                           Reject
@@ -93,23 +97,20 @@
         class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
       >
         <div
-          class="bg-black overflow-hidden w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer relative overflow-hidden"
+          class="bg-black xl:w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer sm:w-[45%] sm: flex sm:flex-col"
           v-for="item in userStore.clubs"
           :key="item.clubName"
           @click="pushToInfo(item.clubName)"
         >
           <div class="flex">
-            <div
-              class="w-1/2 bg-cover bg-center h-48"
-              style="transform: skewX(-10deg); margin-left: -40px"
-            >
+            <div class="bg-cover bg-center h-48">
               <img
                 src="@/assets/coding.jpeg"
                 alt="coding"
                 class="h-full w-full object-cover"
-                style="transform: skewX(10deg)"
               />
             </div>
+
             <div class="box flex flex-col justify-around text-center">
               <div
                 class="w-full flex flex-col justify-center rounded-b-[20px] h-[4.5rem]"
