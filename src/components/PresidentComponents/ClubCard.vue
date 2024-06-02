@@ -1,5 +1,88 @@
 <template>
-  <div class="flex flex-col">
+  <div class="font-['sans']">
+    <div class="bg-dark-gray w-full lg:h-[16rem] h-[13rem]">
+      <div
+        class="gap-5 flex text-white text-xl justify-items-center m-10 items-center"
+      >
+        <img class="my-[4rem] lg:my-10 h-auto w-[30%]" src="@/assets/testimg.png" alt="" />
+        <div class="flex flex-col w-1/2 content-center">
+        <a class="lg:my-8 text-4xl lg:text-6xl"> {{ presidentStore.selectedClub.clubName }}</a>
+        <a class="">{{ name  }}</a></div>
+        </div>
+    </div>
+  </div>
+    <div class="invisible lg:visible" ></div>
+    <div class="flex flex-row font-['sans'] ">
+    <div class="flex flex-col lg:w-1/6 text-white h-[40.5rem] bg-dark-gray m-0">
+      <div class="flex justify-center h-20 bg-black items-center text-2xl"> 
+        <h1>Menu</h1>
+      </div>
+     
+
+      <div class="flex flex-col px-10 bg-dark-gray363636 py-4 h-full">
+        <button
+          class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
+        >
+          <a> Change Club Picture </a>
+        </button>
+
+        <button
+          type="button"
+          class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
+          @click="
+            changeDate = true;
+            open = true;
+          "
+        >
+          <a>Edit meeting date</a>
+        </button>
+        <button
+          class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
+        >
+          <a> Generate QR Code </a>
+        </button>
+      </div>
+    </div>
+    <div class="m-12 lg:w-[100rem] w-[15%] overflow-x-auto">
+      <PresidentTable />
+    </div>
+  </div>
+  <div v-show="changeDate">
+    <div
+      class="relative z-10"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="fixed inset-0 z-10 flex justify-center">
+        <div
+          class="flex w-full items-center justify-center p-4 text-center sm:p-0"
+        >
+          <div
+            class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+          >
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <ChangeDate />
+            </div>
+            <button
+              type="button"
+              class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
+              @click="
+                changeDate = false;
+                open = true;
+              "
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- club div -->
+<!-- <div class="flex flex-col">
     <div
       class="box flex flex-col items-end hover:scale-105 ease-in-out duration-500 cursor-pointer"
       @click="function openCard() {
@@ -18,10 +101,15 @@
           {{ nextMeeting }}
         </div>
       </div>
-    </div>
-    <div v-show="open">
-      <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    </div> -->
+<!-- modal -->
+<!--modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        ></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
           <div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
             <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
@@ -58,7 +146,7 @@
                 >
                   Add/Change meeting date
                 </button>
-                <button
+                <buttons
                   type="button"
                   class="w-full my-1 justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold bg-red text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                   @click="open = false"
@@ -70,8 +158,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <div v-show="qrCode">
+    </div> -->
+<!-- modal QR code  -->
+<!-- <div v-show="qrCode">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
@@ -105,8 +194,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <div v-show="changeDate">
+    </div> -->
+<!-- modal date change  -->
+<!-- <div v-show="changeDate">
       <div
         class="relative z-10"
         aria-labelledby="modal-title"
@@ -140,9 +230,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</template>
+    </div> -->
+<!-- </template> -->
 
 <script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
@@ -150,9 +239,10 @@ import { onMounted, ref } from "vue";
 import QrCode from "@/components/ClubComponents/QrCode.vue";
 import ChangeDate from "./ChangeDate.vue";
 import { usePresidentStore } from "@/stores/users";
-import { useClubStore } from "@/stores/club"
+import { useClubStore } from "@/stores/club";
+import PresidentTable from "@/components/PresidentComponents/PresidentTable.vue";
 
-const clubStore = useClubStore()
+const clubStore = useClubStore();
 const presidentStore = usePresidentStore();
 const props = defineProps({
   name: String,
@@ -163,22 +253,22 @@ const qrCode = ref(false);
 const changeDate = ref(false);
 
 function setVariables(name: string) {
-  presidentStore.selectedClub = name
-  if(new Date().getMonth() + 1 <= 7) {
-    let thisYear = new Date().getFullYear() - 1
-    let nextYear = new Date().getFullYear()
-    let yearVar = thisYear + '-' + nextYear
-    presidentStore.year = yearVar
+  presidentStore.selectedClub = name;
+  if (new Date().getMonth() + 1 <= 7) {
+    let thisYear = new Date().getFullYear() - 1;
+    let nextYear = new Date().getFullYear();
+    let yearVar = thisYear + "-" + nextYear;
+    presidentStore.year = yearVar;
   } else {
-    let thisYear = new Date().getFullYear()
-    let nextYear = new Date().getFullYear() + 1
-    let yearVar = thisYear + '-' + nextYear
-    presidentStore.year = yearVar
+    let thisYear = new Date().getFullYear();
+    let nextYear = new Date().getFullYear() + 1;
+    let yearVar = thisYear + "-" + nextYear;
+    presidentStore.year = yearVar;
   }
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .box {
   border-radius: 20px;
   width: 300px;
@@ -187,4 +277,4 @@ function setVariables(name: string) {
   box-shadow: 30px 30px 30px #cccccc, 0 0 0 #ffffff, 0 0 0 #cccccc inset,
     2px 2px 2px #ffffff inset;
 }
-</style>
+</style> -->
