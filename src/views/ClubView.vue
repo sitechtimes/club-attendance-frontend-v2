@@ -16,7 +16,6 @@
              alt="Sammy the Seagull"
              class="w-[300px] h-[30vh]"
          />
-        <!-- club photo placeholder -->
       </div>
       <div class="flex flex-col">
         <div class="flex flex-row">
@@ -69,8 +68,6 @@
 </template>
 
 <script setup lang="ts">
-//admin only 
-// import StudentCard from "@/components/StudentCard.vue";
 import { UserIcon } from "@heroicons/vue/20/solid";
 import { onMounted, ref } from "vue";
 import { useClubStore } from '../stores/club'
@@ -78,7 +75,6 @@ import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from "@/stores/users";
 import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
 import NoPermsPageGuard from '@/components/Reusables/NoPermsPageGuard.vue'
-//import LogOut from '@/components/Reusables/LogOut.vue'
 let store = useUserStore();
 const clubStore = useClubStore()
 const route = useRoute()
@@ -121,7 +117,6 @@ function logOut() {
       MemberOf: []
     })
   }
-  //routePush('/')
 }
 
 defineProps({

@@ -38,15 +38,18 @@
 </template>
 
 <script setup lang="ts">
-//anyone can see
 import NotLoggedPageGuard from '@/components/Reusables/NotLoggedPageGuard.vue'
 import { ref } from "vue";
 import { useUserStore } from "@/stores/users";
 import Navbar from "@/components/Reusables/Navbar.vue";
-import { onMounted } from 'vue';
-//import { useClubStore } from "@/stores/club";
+import { useRouter } from 'vue-router';
 const userStore = useUserStore();
 let present = ref(false);
+const router = useRouter()
+
+function deleteCookie(name: string) {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
 
 const logAttendance = function () {
     present.value = true
@@ -56,12 +59,10 @@ const logAttendance = function () {
         clubName: userStore.qrCodeClub
     };
     userStore.updateAttendance(attendanceData)
-    localStorage.removeItem("currentClub")
+    deleteCookie(userStore.qrCodeClub)
+    userStore.qrCodeClub = ''
 };
-function back() {
-  router.push('/')
-  localStorage.removeItem("currentClub")
-};
+
 
 defineProps({
     clubName: String,

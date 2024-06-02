@@ -198,13 +198,13 @@ function logOut() {
   userStore.loggedIn = false;
   userStore.user = {
     uid: "",
-    firstName: "",
-    lastName: "",
-    email: "",
+    ['First Name']: "",
+    ['Last Name']: "",
+    Email: "",
     picture: "",
-    role: "",
+    ['Client Authority']: "",
     isAuthenticated: false,
-    ClubData: {
+    ['Club Data']: {
       PresidentOf: [],
       MemberOf: [],
     },
