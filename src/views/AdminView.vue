@@ -1,41 +1,86 @@
 <template>
   <errorScreen v-if="userStore.user['Client Authority'] !== 'Admin'" />
   <div v-if="userStore.user['Client Authority'] == 'Admin'" class="bg-[#363636]">
-    <section class="w-100% h-screen">
-      <div class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10">
-        <div class="w-[8%] text-white text-lg font-medium ">Administration</div>
-        <input class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2 " placeholder="Search"
-          v-model="query" @input="onInput" />
-        <BellIcon class="h-[40%] fill-white hover:scale-110 ease-in-out duration-500 cursor-pointer" />
+    <section class="w-full h-screen">
+      <div
+        class="h-[15%] justify-center space-x-[3%] flex items-center sticky top-0 bg-black z-10"
+      >
+        <div class="w-[8%] text-white text-lg font-medium">Administration</div>
+        <input
+          class="w-[55%] border-2 border-black h-[45%] rounded-full pl-2 ml-2"
+          placeholder="Search"
+          v-model="query"
+          @input="onInput"
+        />
+        <BellIcon
+          class="h-[40%] fill-white hover:scale-110 ease-in-out duration-500 cursor-pointer"
+          @click="
+            function openCard() {
+              open = true;
+            }
+          "
+        />
         <div
           class="p-3 w-[6%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 bg-yellow flex justify-evenly items-center"
-          @click="logOut">
+          @click="logOut"
+        >
           <div>Log Out</div>
         </div>
-        <div
-          class="p-3 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 bg-yellow flex justify-evenly items-center"
-          @click="function openCard() { open = true }">
-          <div>Check Images</div>
-        </div>
       </div>
-      <div v-show="open">
-        <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-          <div class="fixed inset-0 z-10 overflow-y-auto">
-            <div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
+      <div v-show="open" class="h-full w-full overflow-y-auto">
+        <div class="relative z-10" aria-labelledby="modal-title" role="dialog">
+          <div class="fixed inset-0 z-10">
+            <div
+              class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
+            >
               <div
-                class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all w-screen h-screen">
-                <div class=" px-4 pb-4 pt-5 bg-[#c2b669] sm:p-6 sm:pb-4 flex flex-row-reverse ">
-                  <div
-                    class="py-3 px-12 w-[7%] cursor-pointer rounded-md hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center"
-                    @click="function closecard() { open = false }">
-                    close
-                  </div>
+                class="relative transform bg-[#363636] text-left shadow-xl transition-all w-screen h-screen"
+              >
+                <div
+                  class="py-3 px-12 cursor-pointer w-[7%] rounded-full hover:scale-105 ease-in-out duration-300 font-semibold bg-red text-white shadow-sm flex justify-evenly items-center fixed z-10 bottom-10 right-10"
+                  @click="
+                    function closecard() {
+                      open = false;
+                    }
+                  "
+                >
+                  <ArrowLeftOnRectangleIcon class="" />
                 </div>
-                <div class="flex flex-row justify-evenly h-100vh">
-                  <div v-for=" image  in  userStore.unapprovedImages " class="flex flex-col w-[30%]">
-                    <img :src=image.thumbnailLink class="h-[228px] rounded-t-[20px]">
-                    <h2> {{ image.name }}</h2>
+                <div
+                  class="flex flex-row justify-evenly h-auto justify-evenly items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+                >
+                  <div
+                    v-for="image in userStore.unapprovedImages"
+                    :key="image.id"
+                    class="flex flex-col w-[29%]"
+                  >
+                    <img
+                      :src="image.thumbnailLink"
+                      class="h-[228px] rounded-t-[20px]"
+                      @change="onFileChange"
+                    />
+                    <div
+                      class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
+                    >
+                      <div
+                        class="w-full flex flex-row items-center justify-center"
+                      >
+                        <h2 class="text-[#c2b669] text-2xl">
+                          {{ image.name }}
+                        </h2>
+                      </div>
+                      <div class="flex flex-row justify-between w-[29%]">
+                        <button class="text-white" @click="verifyImage()">
+                          Approve
+                        </button>
+                        <button
+                          class="text-white bg-red"
+                          @click="rejectImage(image)"
+                        >
+                          Reject
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -44,17 +89,31 @@
         </div>
       </div>
       <div
-        class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap">
-        <div class="flex flex-col pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
-          v-for=" item  in  userStore.clubs " @click="pushToInfo(item.clubName)">
-          <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px] rounded-t-[20px]" />
-          <div class="box flex flex-col items-end ">
-            <div class="bg-black w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]">
+        v-show="!open"
+        class="bg-[#363636] h-auto justify-evenly flex items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+      >
+        <div
+          class="flex bg-black pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
+          v-for="item in userStore.clubs"
+          :key="item.clubName"
+          @click="pushToInfo(item.clubName)"
+        >
+          <img
+            src="@/assets/coding.jpeg"
+            alt="coding"
+            class="h-[228px] rounded-t-[20px] relative overflow-hidden"
+          />
+          <div class="box flex flex-col items-end">
+            <div
+              class="w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
+            >
               <div class="w-full flex flex-row items-center justify-center">
                 <div class="text-[#c2b669] text-xl">{{ item.clubName }}</div>
               </div>
               <div class="w-full flex justify-center items-center">
-                <div class="text-[#c2b669] text-sm">{{ item.clubPresident }}</div>
+                <div class="text-[#c2b669] text-sm">
+                  {{ item.clubPresident }}
+                </div>
               </div>
             </div>
           </div>
@@ -71,85 +130,166 @@ import { useUserStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/solid";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/vue/24/solid";
 
-const query = ref('')
+const query = ref("");
 let open = ref(false);
 const userStore = useUserStore();
 const clubStore = useClubStore();
 const router = useRouter();
 
 function pushToInfo(clubName: string) {
-  clubStore.clubName = clubName
-  console.log(clubName)
-  const year = "2024-2025"
-  userStore.getClubMembers(clubName, year, userStore.user.uid)
-  setTimeout(() => routePush(`/club/?name=${clubStore.clubName}`), 1000)
+  clubStore.clubName = clubName;
+  console.log(clubName);
+  const year = "2024-2025";
+  userStore.getClubMembers(clubName, year, userStore.user.uid);
+  setTimeout(() => routePush(`/club/?name=${clubStore.clubName}`), 1000);
+}
+
+async function onFileChange() {
+  let verifyImage = new FormData();
+  verifyImage.append("uuid", "116015436799734947995");
+  verifyImage.append("clubName", "Art Club");
+  verifyImage.append("year", "2024-2025");
+  let response = await fetch("http://localhost:3000/approveImage", {
+    method: "PATCH",
+    mode: "cors",
+    body: verifyImage,
+  });
+  let data = await response.json();
+  console.log(data);
+}
+
+function verifyImage() {
+  console.log(onFileChange());
+}
+async function rejectImage(image: any) {
+  let rejectImage = {
+    year: "2024-2025",
+    uuid: "116015436799734947995",
+    imageId: image.id,
+  };
+  // rejectImage.append("uuid", "116015436799734947995");
+  // rejectImage.append("imageId", image.id);
+  console.log(JSON.stringify(rejectImage));
+  const response = await fetch("http://localhost:3000/unapproveImage", {
+    method: "PATCH",
+    cache: "force-cache",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+    body: JSON.stringify(rejectImage),
+  });
+  const data = await response.json();
+  console.log(data);
 }
 
 function routePush(route: string) {
-  router.push(`${route}`)
+  router.push(`${route}`);
 }
 
 function logOut() {
-  document.cookie.split(";").forEach(
-    function (c) {
-      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-    });
-  userStore.loggedIn = false
+  document.cookie.split(";").forEach(function (c) {
+    document.cookie = c
+      .replace(/^ +/, "")
+      .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+  });
+  userStore.loggedIn = false;
   userStore.user = {
-    uid: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    picture: '',
-    role: '',
+    uid: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    picture: "",
+    role: "",
     isAuthenticated: false,
-    ClubData: ({
+    ClubData: {
       PresidentOf: [],
-      MemberOf: []
-    })
-  }
-  routePush('/')
+      MemberOf: [],
+    },
+  };
+  routePush("/");
 }
 
 const searchFilter = function (club: object, query: any) {
-  const splitQuery = query.split('')
-  const splitClubName = club.clubName.split('')
-  let i = 0
-  let result = false
+  const splitQuery = query.split("");
+  const splitClubName = club.clubName.split("");
+  let i = 0;
+  let result = false;
   splitQuery.forEach((character: any) => {
-    if (i == (splitQuery.length - 1) && character.toLowerCase() == splitClubName[i].toLowerCase()) {
-      result = true
-    }
-    else if (character.toLowerCase() != splitClubName[i].toLowerCase()) {
-      result = false
-    }
-    else if (character.toLowerCase() == splitClubName[i].toLowerCase()) {
-      i++
+    if (
+      i == splitQuery.length - 1 &&
+      character.toLowerCase() == splitClubName[i].toLowerCase()
+    ) {
+      result = true;
+    } else if (character.toLowerCase() != splitClubName[i].toLowerCase()) {
+      result = false;
+    } else if (character.toLowerCase() == splitClubName[i].toLowerCase()) {
+      i++;
     }
   });
-  return result
-}
+  return result;
+};
 
 const onInput = function () {
   // console.log(userStore.clubs, "this is clubs")
   // console.log(userStore.allClubs, "this is allClubs")
-  if (query.value == '') {
-    userStore.clubs = userStore.allClubs
+  if (query.value == "") {
+    userStore.clubs = userStore.allClubs;
     // userStore.getAllClubData(userStore.uid)
-  }
-  else if (query == undefined) {
-    userStore.clubs = userStore.allClubs
+  } else if (query == undefined) {
+    userStore.clubs = userStore.allClubs;
     // userStore.getAllClubData(userStore.uid)
+  } else {
+    userStore.clubs = userStore.allClubs.filter((item: object) =>
+      searchFilter(item, query.value)
+    );
   }
-  else {
-    userStore.clubs = userStore.allClubs.filter((item: object) => searchFilter(item, query.value))
+};
+
+const unapproveFilter = function (unapprovedImages: object, query: any) {
+  const splitQuery = query.split("");
+  const splitUnapproveImage = unapprovedImages.clubName.split("");
+  let i = 0;
+  let result = false;
+  splitQuery.forEach((character: any) => {
+    if (
+      i == splitQuery.length - 1 &&
+      character.toLowerCase() == splitUnapproveImage[i].toLowerCase()
+    ) {
+      result = true;
+    } else if (
+      character.toLowerCase() != splitUnapproveImage[i].toLowerCase()
+    ) {
+      result = false;
+    } else if (
+      character.toLowerCase() == splitUnapproveImage[i].toLowerCase()
+    ) {
+      i++;
+    }
+  });
+  return result;
+};
+const onOutput = function () {
+  // console.log(userStore.clubs, "this is clubs")
+  // console.log(userStore.allClubs, "this is allClubs")
+  if (query.value == "") {
+    userStore.unapprovedImages;
+    // userStore.getAllClubData(userStore.uid)
+  } else if (query == undefined) {
+    userStore.unapprovedImages;
+    // userStore.getAllClubData(userStore.uid)
+  } else {
+    userStore.unapprovedImages.filter((item: object) =>
+      unapproveFilter(item, query.value)
+    );
   }
-}
+};
 
 onMounted(() => {
-  if (userStore.clubs = []) {
-    userStore.getAllClubData(userStore.user.uid)
+  if ((userStore.clubs = [])) {
+    userStore.getAllClubData(userStore.user.uid);
   }
-})
+});
 </script>

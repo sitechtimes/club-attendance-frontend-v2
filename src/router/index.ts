@@ -19,9 +19,9 @@ const router = createRouter({
       component: () => import("../views/PresidentView.vue"),
     },
     {
-      path: '/club',
-      name: 'club',
-      component: () => import('../views/ClubView.vue'),
+      path: "/club",
+      name: "club",
+      component: () => import("../views/ClubView.vue"),
       meta: {
         requireClub: true,
       },
@@ -32,9 +32,9 @@ const router = createRouter({
       component: () => import("../views/Calendar.vue"),
     },
     {
-      path: '/loading',
-      name: 'loading',
-      component: () => import('../views/Loading.vue')
+      path: "/loading",
+      name: "loading",
+      component: () => import("../views/Loading.vue"),
     },
     {
       path: '/confirmation/:club?',
@@ -47,10 +47,15 @@ const router = createRouter({
       component: () => import("../views/StudentView.vue"),
     },
     {
-      path: '/:pathMatch(.*)*',
+      path: "/:pathMatch(.*)*",
       name: "notFound",
-      component: () => import("../views/404.vue")
-    }
+      component: () => import("../views/404.vue"),
+    },
+    {
+      path: "/ConfirmImage",
+      name: "confirmimage",
+      component: () => import("../views/ConfirmImage.vue"),
+    },
   ],
 });
 

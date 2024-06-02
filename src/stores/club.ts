@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { ref } from 'vue'
 export const useClubStore = defineStore("club", {
   state: () => ({
+    fileUpload: true,
     clubName: "",
     clubPresident: "",
     user: "",
