@@ -90,24 +90,22 @@
       </div>
       <div
         v-show="!open"
-        class="bg-[#363636] h-auto justify-evenly flex items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
+        class="bg-[#363636] h-auto justify-evenly flex flex-col items-center p-6 items-center gap-6 md:flex-row md:flex-wrap"
       >
         <div
-          class="flex bg-black pt-3 w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer"
+          class="flex bg-black w-[29%] hover:scale-105 ease-in-out duration-500 cursor-pointer relative overflow-hidden"
           v-for="item in userStore.clubs"
           :key="item.clubName"
           @click="pushToInfo(item.clubName)"
         >
-          <img
-            src="@/assets/coding.jpeg"
-            alt="coding"
-            class="h-[228px] rounded-t-[20px] relative overflow-hidden"
-          />
-          <div class="box flex flex-col items-end">
+          <img src="@/assets/coding.jpeg" alt="coding" class="h-[228px]" />
+          <div class="box flex flex-col justify-around text-center">
             <div
-              class="w-full flex flex-col items-center justify-center rounded-b-[20px] h-[4.5rem]"
+              class="w-full flex flex-col justify-center rounded-b-[20px] h-[4.5rem]"
             >
-              <div class="w-full flex flex-row items-center justify-center">
+              <div
+                class="w-full flex flex-row items-center pb-[15px] justify-center"
+              >
                 <div class="text-[#c2b669] text-xl">{{ item.clubName }}</div>
               </div>
               <div class="w-full flex justify-center items-center">
