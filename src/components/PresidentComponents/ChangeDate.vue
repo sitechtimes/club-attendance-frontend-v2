@@ -14,13 +14,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { usePresidentStore } from "@/stores/users";
+import { useUserStore, usePresidentStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club"
 import { useRouter } from 'vue-router'
 // console.log(nextMeeting.value);
 const dateInput = ref("");
 const presidentStore = usePresidentStore()
 const clubStore = useClubStore()
+const userStore = useUserStore()
 const router = useRouter()
 let valid = true
 function routePush(route: string) {
@@ -42,11 +43,11 @@ function changeDate() {
 
   try {
     if (yearInput > yearToday || monthInput > monthToday && yearInput == yearToday || yearInput == yearToday && monthInput == monthToday && dayInput > dayToday) {
-      const clubDetails = { "year": "2024-2025", "clubName": `${presidentStore.selectedClub}`, "nextMeeting": `${nextMeeting}`, "uuid": "113380945040354412648" }
+      const clubDetails = { "year": "2024-2025", "clubName": `${clubStore.clubName}`, "nextMeeting": `${nextMeeting}`, "uuid": userStore.user.uid }
       presidentStore.changeNextMeet(clubDetails)
       clubStore.club = []
       console.log(clubDetails)
-      setTimeout(() => routePush("/"), 3000)
+      // setTimeout(() => routePush("/"), 3000)
     } else {
       console.log("please put in a valid date")
     }

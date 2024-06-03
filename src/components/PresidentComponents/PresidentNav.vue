@@ -65,10 +65,10 @@ const presidentStore = usePresidentStore()
 //   clubStore.getData(club, "2023-2024")
 // });
 console.log(userStore.user);
-console.log(userStore.userClubData.PresidentOf);
+console.log(userStore.user["Club Data"].PresidentOf);
 console.log("mounted");
 clubStore.club = [];
-userStore.user.ClubData.PresidentOf.forEach((club: string) => {
+userStore.user["Club Data"].PresidentOf.forEach((club: string) => {
   clubStore.getData(club, "2024-2025");
 });
 console.log(clubStore.club);
