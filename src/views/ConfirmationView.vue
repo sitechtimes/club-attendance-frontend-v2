@@ -4,7 +4,7 @@
     </div>
     <div v-else>
         <Navbar></Navbar>
-        <div v-if="userStore.qrCodeClub !== undefined" class="overflow-hidden bg-white pt-20 lg:pt-24">
+        <div v-if="userStore.qrCodeClub" class="overflow-hidden bg-white pt-20 lg:pt-24">
             <div v-if="!present" class="flex flex-col items-center justify-center">
                 <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     Please Confirm Your Attendance to {{ userStore.qrCodeClub }}
@@ -61,6 +61,7 @@ const logAttendance = function () {
     userStore.updateAttendance(attendanceData)
     deleteCookie(userStore.qrCodeClub)
     userStore.qrCodeClub = ''
+    router.push('/')
 };
 
 
