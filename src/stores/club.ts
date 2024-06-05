@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { ref } from 'vue'
 export const useClubStore = defineStore("club", {
   state: () => ({
+    qrCode: '',
     fileUpload: true,
     clubName: "",
     clubPresident: "",
@@ -30,7 +31,7 @@ export const useClubStore = defineStore("club", {
       this.clubAdvisor = club.clubAdivsor
       this.clubPresident = club.clubPresident
       this.room = club.room
-
+      this.qrCode = club.qrCodeLink
     }
   }
 });

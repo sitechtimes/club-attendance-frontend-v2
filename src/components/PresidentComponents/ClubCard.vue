@@ -22,6 +22,10 @@
       <div class="flex flex-col px-10 bg-dark-gray363636 py-4 h-full">
         <button
           class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
+          @click="
+            changeImage = true;
+            imageOpen = true;
+          "
         >
           <a> Change Club Picture </a>
         </button>
@@ -31,13 +35,18 @@
           class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
           @click="
             changeDate = true;
-            open = true;
+            dateOpen = true;
           "
         >
           <a>Edit meeting date</a>
         </button>
         <button
           class="text-black bg-gold font-medium rounded-lg text-sm px-10 py-4 mb-5"
+          @click=" 
+            console.log(clubStore.qrCode)
+            showQrCode = true;
+            qrOpen = true;
+          "
         >
           <a> Generate QR Code </a>
         </button>
@@ -69,7 +78,7 @@
               class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
               @click="
                 changeDate = false;
-                open = true;
+                dateOpen = true;
               "
             >
               Close
@@ -78,7 +87,71 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
+    <div v-show="changeImage">
+    <div
+      class="relative z-10"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="fixed inset-0 z-10 flex justify-center">
+        <div
+          class="flex w-full items-center justify-center p-4 text-center sm:p-0"
+        >
+          <div
+            class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+          >
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <ChangeImage />
+            </div>
+            <button
+              type="button"
+              class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
+              @click="
+                changeImage = false;
+                imageOpen = true;
+              "
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+   <div v-show="showQrCode">
+    <div
+      class="relative z-10"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="fixed inset-0 z-10 flex justify-center">
+        <div
+          class="flex w-full items-center justify-center p-4 text-center sm:p-0"
+        >
+          <div
+            class="flex flex-col px-6 py-4 sm:flex transform overflow-hidden rounded-lg items-center justify-center bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+          >
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <QrCode />
+            </div>
+            <button
+              type="button"
+              class="w-full my-1 rounded-md bg-red-600 px-3 bg-red py-2 text-sm font-semibold text-white shadow-sm hover:red-500 sm:ml-3 sm:w-fill sm:h-10"
+              @click="
+                showQrCode = false;
+                qrOpen = true;
+              "
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
 </template>
 
 <!-- club div -->
@@ -236,11 +309,12 @@
 <script setup lang="ts">
 import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 import { onMounted, ref } from "vue";
-import QrCode from "@/components/ClubComponents/QrCode.vue";
+import QrCode from "@/components/PresidentComponents/QrCode.vue";
 import ChangeDate from "./ChangeDate.vue";
 import { usePresidentStore } from "@/stores/users";
 import { useClubStore } from "@/stores/club";
 import PresidentTable from "@/components/PresidentComponents/PresidentTable.vue";
+import ChangeImage from "./ChangeImage.vue";
 
 const clubStore = useClubStore();
 const presidentStore = usePresidentStore();
@@ -248,9 +322,13 @@ const props = defineProps({
   name: String,
   nextMeeting: String,
 });
-let open = ref(false);
+let dateOpen = ref(false);
+let imageOpen = ref(false)
+let qrOpen = ref(false)
 const qrCode = ref(false);
 const changeDate = ref(false);
+const changeImage = ref(false);
+const showQrCode = ref(false)
 
 function setVariables(name: string) {
   presidentStore.selectedClub = name;
