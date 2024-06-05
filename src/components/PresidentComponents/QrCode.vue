@@ -1,6 +1,6 @@
 <template>
     <div class="mt-4">
-      <img :src="clubStore.qrCode" />
+      <img :src=clubStore.qrCode />
     </div>
   </template>
   

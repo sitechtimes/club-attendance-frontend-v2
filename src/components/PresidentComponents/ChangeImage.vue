@@ -32,6 +32,7 @@ function onFileChange(this: any, event: any) {
   // also append a uuid and clubName
   presidentStore.selectedImage = new FormData();
   presidentStore.selectedImage.append("clubName", "Art Club");
+  presidentStore.selectedImage.append("year", "2024-2025")
   presidentStore.selectedImage.append("uuid", "100231622882297228860");
   presidentStore.selectedImage.append(
     "image",

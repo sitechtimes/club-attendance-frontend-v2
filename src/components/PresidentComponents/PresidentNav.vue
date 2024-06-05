@@ -78,7 +78,7 @@ const year = new Date().getFullYear()
 function dookie(club: any) {
   presidentStore.selectedClub = club
   console.log(presidentStore.selectedClub, "asd");
-  clubStore.qrCode = presidentStore.selectedClub.qrCodeLink
+  clubStore.qrCode = presidentStore.selectedClub.qrcodeWeb
   userStore.getClubMembers(presidentStore.selectedClub.clubName,`${year}-${year+1}`, userStore.user.uid)
 }
 

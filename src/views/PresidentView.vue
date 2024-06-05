@@ -22,7 +22,7 @@ userStore.user.ClubData.PresidentOf.forEach((club: string) => {
   <div class="">
     <PresidentNav/>
 
-    <ClubCard name="gjfk" nextMeedting="jkhgkj"/>
+    <ClubCard/>
   </div>
 </template>
 

@@ -31,7 +31,6 @@ export const useClubStore = defineStore("club", {
       this.clubAdvisor = club.clubAdivsor
       this.clubPresident = club.clubPresident
       this.room = club.room
-      this.qrCode = club.qrCodeLink
     }
   }
 });
